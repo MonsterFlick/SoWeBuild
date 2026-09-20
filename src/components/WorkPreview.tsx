@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 
 /* ---------------------------------- Icons --------------------------------- */
@@ -252,14 +252,48 @@ function MicroservicesPreview() {
   );
 }
 
+/* -------------------------------- Real Site Iframe Preview -------------------------------- */
+
+function LiveIframePreview({ url, Fallback }: { url: string; Fallback: () => React.ReactElement }) {
+  const [loaded, setLoaded] = useState(false);
+  const [iframeFailed, setIframeFailed] = useState(false);
+
+  return (
+    <div className="relative w-full h-full bg-slate-950 overflow-hidden">
+      {!loaded && !iframeFailed && (
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/90 text-[10px] font-mono text-cyan gap-2">
+          <div className="size-4 rounded-full border-2 border-cyan border-t-transparent animate-spin" />
+          <span>Connecting to {url.replace("https://", "")}…</span>
+        </div>
+      )}
+
+      {iframeFailed ? (
+        <Fallback />
+      ) : (
+        <iframe
+          src={url}
+          title={url}
+          onLoad={() => setLoaded(true)}
+          onError={() => setIframeFailed(true)}
+          className={`w-[200%] h-[200%] origin-top-left scale-50 border-0 pointer-events-none transition-opacity duration-500 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+        />
+      )}
+    </div>
+  );
+}
+
 const PREVIEWS: Record<string, () => React.ReactElement> = {
   "https://fertisure.in": FertisurePreview,
   "https://alphatech-nutrition.in": AlphatechPreview,
 };
 
 export function WorkPreview({ link, index }: { link: string; index: number }) {
-  const Comp = PREVIEWS[link] || (index === 2 ? AiAgentPreview : MicroservicesPreview);
-  const displayUrl = link.startsWith("http") ? link.replace("https://", "") : "sowebuild.in/internal";
+  const FallbackComp = PREVIEWS[link] || (index === 2 ? AiAgentPreview : MicroservicesPreview);
+  const isRealSite = link.startsWith("http");
+  const displayUrl = isRealSite ? link.replace("https://", "") : "sowebuild.in/internal";
 
   return (
     <div className="w-full h-full flex flex-col rounded-2xl border border-white/15 bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden group-hover:border-primary-glow/50 transition-all duration-500">
@@ -283,9 +317,13 @@ export function WorkPreview({ link, index }: { link: string; index: number }) {
         </div>
       </div>
 
-      {/* Interactive Mockup Body */}
+      {/* Real Live Site or Interactive App Body */}
       <div className="flex-1 relative overflow-hidden">
-        <Comp />
+        {isRealSite ? (
+          <LiveIframePreview url={link} Fallback={FallbackComp} />
+        ) : (
+          <FallbackComp />
+        )}
       </div>
     </div>
   );
