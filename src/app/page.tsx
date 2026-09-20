@@ -14,6 +14,15 @@ import { DynamicHeadline } from "@/components/DynamicHeadline";
 
 /* ------------------------------- primitives -------------------------------- */
 
+function ArrowUpRightIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="7 7 17 7 17 17" />
+    </svg>
+  );
+}
+
 function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.35em] text-muted-foreground uppercase">
@@ -107,7 +116,7 @@ function ServiceRow({
           {note}
         </span>
         <span className="ml-3 text-primary opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 md:-translate-x-2">
-          ↗
+          <ArrowUpRightIcon className="size-4 inline" />
         </span>
       </span>
     </motion.button>
@@ -132,7 +141,7 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   }, [scrollYProgress, setMode]);
 
   return (
-    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[250vh]">
+    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[200vh]">
       <div className="sticky top-0 flex h-screen flex-col justify-center px-6 sm:px-10">
         <div className="mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw] lg:pr-6">
@@ -235,8 +244,8 @@ function WorkRail() {
                   <span className="font-mono text-[10px] tracking-widest text-foreground/60">
                     0{i + 1}
                   </span>
-                  <span className="font-mono text-[10px] tracking-widest text-primary-glow group-hover:translate-x-1 transition-transform">
-                    VISIT ↗
+                  <span className="font-mono text-[10px] tracking-widest text-primary-glow group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                    VISIT <ArrowUpRightIcon className="size-3 text-primary-glow stroke-[2.5]" />
                   </span>
                 </div>
                 <div>
@@ -337,7 +346,7 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex h-screen items-center px-6 pt-20 sm:px-10 overflow-hidden"
+        className="relative flex min-h-[85vh] items-center px-6 pt-20 pb-10 sm:px-10 overflow-hidden"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-7xl">
@@ -514,7 +523,9 @@ export default function Home() {
                 href="https://instagram.com/sowebuild.in"
                 onClick={() => window.open("https://instagram.com/sowebuild.in", "_blank")}
               >
-                Instagram: @sowebuild.in ↗
+                <span className="inline-flex items-center gap-1">
+                  Instagram: @sowebuild.in <ArrowUpRightIcon className="size-3 text-current stroke-[2.5]" />
+                </span>
               </GhostCta>
             </div>
           </Reveal>

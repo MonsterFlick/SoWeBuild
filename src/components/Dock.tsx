@@ -3,17 +3,72 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
 
+function HomeIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  );
+}
+
+function ZapIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function ServicesIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}
+
+function WorkIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+    </svg>
+  );
+}
+
+function AboutIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12.01" y2="8" />
+    </svg>
+  );
+}
+
+function ContactIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 2L11 13" />
+      <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+    </svg>
+  );
+}
+
 const ITEMS = [
-  { id: "home", label: "Home", glyph: "◉" },
-  { id: "technology", label: "Services", glyph: "▤" },
-  { id: "work", label: "Work", glyph: "◈" },
-  { id: "about", label: "About", glyph: "⌗" },
-  { id: "contact", label: "Contact", glyph: "→" },
+  { id: "home", label: "Home", Icon: HomeIcon },
+  { id: "inquiry", label: "Inquiry", Icon: ZapIcon },
+  { id: "technology", label: "Services", Icon: ServicesIcon },
+  { id: "work", label: "Work", Icon: WorkIcon },
+  { id: "about", label: "About", Icon: AboutIcon },
+  { id: "contact", label: "Contact", Icon: ContactIcon },
 ];
 
 const SECTION_MAP: Record<string, string> = {
   morph: "home",
-  inquiry: "contact",
 };
 
 export function Dock({ active, visible = true }: { active: string; visible?: boolean }) {
@@ -71,6 +126,8 @@ function DockItem({
     }
   };
 
+  const IconComp = item.Icon;
+
   return (
     <motion.a
       ref={ref}
@@ -92,7 +149,9 @@ function DockItem({
             style={{ willChange: "transform, width" }}
           />
         )}
-        <span className="relative z-10 text-[11px] leading-none opacity-80">{item.glyph}</span>
+        <span className="relative z-10 text-primary-glow">
+          <IconComp className="size-3.5" />
+        </span>
         <span className="relative z-10 hidden text-[11px] font-semibold tracking-tight sm:block">
           {item.label}
         </span>

@@ -3,6 +3,73 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
+/* -------------------------------- High Quality Vector Icons -------------------------------- */
+
+function AtomIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function BotIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="11" width="18" height="10" rx="2" />
+      <circle cx="12" cy="5" r="2" />
+      <path d="M12 7v4" />
+      <line x1="8" y1="16" x2="8.01" y2="16" strokeWidth="3" />
+      <line x1="16" y1="16" x2="16.01" y2="16" strokeWidth="3" />
+    </svg>
+  );
+}
+
+function RocketIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.55 1.62-2.48M12 15l-3-3m3 3l5.5-5.5a4.242 4.242 0 1 0-6-6L6 9l6 6z" />
+    </svg>
+  );
+}
+
+function CheckIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
+function ArrowUpIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="5 12 12 5 19 12" />
+    </svg>
+  );
+}
+
+function ArrowUpRightIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="7 7 17 7 17 17" />
+    </svg>
+  );
+}
+
 export type Mode = "website" | "chatbot" | "whatsapp" | "dashboard";
 export type DeviceMode = Mode | "form";
 
@@ -85,9 +152,9 @@ function WebsiteScreen() {
         {/* Feature Grid */}
         <div className="grid grid-cols-3 gap-2">
           {[
-            { title: "React 19", icon: "⚛️", detail: "Server Actions" },
-            { title: "AI Agents", icon: "🤖", detail: "Vector Search" },
-            { title: "Dev Server", icon: "🚀", detail: "Live Testing" },
+            { title: "React 19", Icon: AtomIcon, detail: "Server Actions" },
+            { title: "AI Agents", Icon: BotIcon, detail: "Vector Search" },
+            { title: "Dev Server", Icon: RocketIcon, detail: "Live Testing" },
           ].map((item, i) => (
             <motion.div
               key={item.title}
@@ -96,7 +163,9 @@ function WebsiteScreen() {
               transition={{ delay: 0.15 + i * 0.08 }}
               className="glass rounded-lg p-2 flex flex-col justify-between"
             >
-              <span className="text-xs">{item.icon}</span>
+              <span className="text-primary-glow">
+                <item.Icon className="size-3.5" />
+              </span>
               <div>
                 <div className="font-display text-[10px] font-semibold">{item.title}</div>
                 <div className="font-mono text-[7.5px] text-muted-foreground">{item.detail}</div>
@@ -108,7 +177,9 @@ function WebsiteScreen() {
         {/* Console Log Terminal */}
         <div className="rounded-lg border border-border bg-black/80 p-2 font-mono text-[8.5px] text-cyan flex items-center justify-between">
           <span className="truncate">$ sowebuild deploy --env=dev</span>
-          <span className="text-emerald-400 font-bold shrink-0">✓ LIVE</span>
+          <span className="text-emerald-400 font-bold shrink-0 flex items-center gap-1">
+            <CheckIcon className="size-3 text-emerald-400 stroke-[3]" /> LIVE
+          </span>
         </div>
       </div>
     </div>
@@ -176,8 +247,8 @@ function ChatbotScreen() {
 
         <div className="mt-1 flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-3 py-2 shadow-inner">
           <span className="text-[9px] text-muted-foreground flex-1 truncate">Ask AI Agent anything…</span>
-          <span className="size-5 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-[9px] font-bold text-white">
-            ↑
+          <span className="size-5 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white">
+            <ArrowUpIcon className="size-3 text-white" />
           </span>
         </div>
       </div>
@@ -189,9 +260,9 @@ function ChatbotScreen() {
 
 const WA = [
   { from: "them", text: "Hey! Can I test the development server demo for our web app?", time: "16:04" },
-  { from: "bot", text: "Hi 👋 Your dev environment is ready at dev.sowebuild.in. Sent login credentials!", time: "16:04" },
-  { from: "bot", text: "⚡ Webhook triggered: Lead qualified & stored in PostgreSQL.", time: "16:05" },
-  { from: "them", text: "Instant execution! 🔥 Thanks SoWeBuild team!", time: "16:05" },
+  { from: "bot", text: "Hi! Your dev environment is ready at dev.sowebuild.in. Sent login credentials!", time: "16:04" },
+  { from: "bot", text: "Webhook triggered: Lead qualified & stored in PostgreSQL.", time: "16:05" },
+  { from: "them", text: "Instant execution! Thanks SoWeBuild team!", time: "16:05" },
 ];
 
 function WhatsappScreen() {
@@ -206,13 +277,15 @@ function WhatsappScreen() {
     <div className={shell}>
       <div className="flex shrink-0 items-center justify-between border-b border-border bg-surface-2/80 px-3 py-2">
         <div className="flex items-center gap-2">
-          <span className="grid size-6 place-items-center rounded-full bg-emerald-500 text-[9px] font-bold text-black shadow-sm">
-            ✓
+          <span className="grid size-6 place-items-center rounded-full bg-emerald-500 text-black shadow-sm">
+            <CheckIcon className="size-3.5 text-black stroke-[3]" />
           </span>
           <div>
             <div className="text-[10.5px] leading-none font-bold flex items-center gap-1">
               SoWeBuild Dev Bot
-              <span className="text-emerald-400 text-[9px]">✓</span>
+              <span className="text-emerald-400 text-[9px]">
+                <CheckIcon className="size-2.5 inline text-emerald-400 stroke-[3]" />
+              </span>
             </div>
             <div className="mt-0.5 font-mono text-[8px] text-cyan">WhatsApp Automation API</div>
           </div>
@@ -242,8 +315,8 @@ function WhatsappScreen() {
             >
               {m.text}
             </div>
-            <span className="font-mono text-[7px] text-muted-foreground mt-0.5 px-1">
-              {m.time} {m.from === "bot" ? "✓✓" : ""}
+            <span className="font-mono text-[7px] text-muted-foreground mt-0.5 px-1 flex items-center gap-0.5">
+              {m.time} {m.from === "bot" && <CheckIcon className="size-2 text-cyan inline stroke-[3]" />}
             </span>
           </motion.div>
         ))}
@@ -368,9 +441,7 @@ function GlassSelect({
         <span className={selectedOption ? "text-foreground font-medium" : "text-muted-foreground/70"}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
-        <span className={`ml-1 text-[8px] text-primary-glow transition-transform duration-200 ${open ? "rotate-180" : ""}`}>
-          ▼
-        </span>
+        <ChevronDownIcon className={`size-3 text-primary-glow transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
 
       <AnimatePresence>
@@ -399,7 +470,7 @@ function GlassSelect({
                   }`}
                 >
                   <span className="truncate">{opt.label}</span>
-                  {isSelected && <span className="text-[9px] text-primary-glow">✓</span>}
+                  {isSelected && <CheckIcon className="size-3 text-primary-glow stroke-[2.5]" />}
                 </button>
               );
             })}
@@ -442,8 +513,8 @@ function FormScreen() {
             animate={{ opacity: 1, scale: 1 }}
             className="flex-1 flex flex-col items-center justify-center p-6 text-center space-y-3 glass rounded-xl border border-emerald-500/30 bg-emerald-500/10"
           >
-            <div className="size-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/40 animate-bounce">
-              ✓
+            <div className="size-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/40 animate-bounce">
+              <CheckIcon className="size-6 text-emerald-400 stroke-[2.5]" />
             </div>
             <div className="font-display text-base font-bold text-foreground">
               Inquiry Submitted!
@@ -515,9 +586,9 @@ function FormScreen() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="mt-0.5 w-full bg-[image:var(--gradient-violet)] text-primary-foreground font-semibold py-2.5 rounded-lg text-xs tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg shadow-primary/25 cursor-pointer active:scale-[0.99]"
+              className="mt-0.5 w-full bg-[image:var(--gradient-violet)] text-primary-foreground font-semibold py-2.5 rounded-lg text-xs tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 shadow-lg shadow-primary/25 cursor-pointer active:scale-[0.99]"
             >
-              Submit Project Inquiry ↗
+              Submit Project Inquiry <ArrowUpRightIcon className="size-3.5 text-primary-foreground" />
             </button>
           </form>
         )}
