@@ -132,8 +132,8 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   }, [scrollYProgress, setMode]);
 
   return (
-    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[360vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center pt-24 pb-12 px-6 sm:px-10">
+    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[250vh]">
+      <div className="sticky top-0 flex h-screen flex-col justify-center px-6 sm:px-10">
         <div className="mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw] lg:pr-6">
             <Eyebrow>One development studio · every capability</Eyebrow>
