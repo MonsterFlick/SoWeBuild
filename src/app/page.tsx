@@ -337,10 +337,10 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex min-h-screen flex-col justify-between px-6 pt-28 pb-16 sm:px-10"
+        className="relative flex min-h-screen items-center px-6 pt-28 pb-20 sm:px-10"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
-        <div className="relative mx-auto my-auto w-full max-w-7xl">
+        <div className="relative mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw]">
             <motion.div
               initial={{ opacity: 0 }}
@@ -393,50 +393,7 @@ export default function Home() {
             <DeviceFrame mode={mode} className="scale-[0.78] origin-top" />
           </div>
         </div>
-
-        {/* Hero Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: introStarted ? 1 : 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="relative z-10 mx-auto mt-8 flex items-center gap-2 font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase"
-        >
-          <span className="size-1.5 rounded-full bg-primary animate-ping" />
-          <span>Scroll to explore capabilities</span>
-          <motion.span
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="ml-1 text-primary font-bold"
-          >
-            ↓
-          </motion.span>
-        </motion.div>
       </section>
-
-      {/* TICKER MARQUEE */}
-      <div className="relative overflow-hidden border-y border-border py-4 bg-surface/30 flex">
-        <div className="animate-marquee flex w-max font-mono text-[10px] tracking-[0.3em] whitespace-nowrap text-muted-foreground uppercase">
-          {Array.from({ length: 4 }).map((_, r) => (
-            <span key={r} className="flex items-center">
-              {[
-                "Websites",
-                "AI Chatbots",
-                "Web Apps",
-                "WhatsApp Automation",
-                "Mobile Apps",
-                "Custom Backend Software",
-                "API Integrations",
-                "Dev Servers",
-              ].map((t) => (
-                <span key={t} className="flex items-center">
-                  <span className="mx-8">{t}</span>
-                  <span className="size-1 rounded-full bg-primary" />
-                </span>
-              ))}
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* MORPH SECTION */}
       <MorphSection setMode={setMode} />
