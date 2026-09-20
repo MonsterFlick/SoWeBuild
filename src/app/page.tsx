@@ -11,6 +11,7 @@ import { MODE_LABEL, type Mode } from "@/components/screens";
 import { Logo } from "@/components/Logo";
 import { IntroLoader } from "@/components/IntroLoader";
 import { DynamicHeadline } from "@/components/DynamicHeadline";
+import { WorkPreview } from "@/components/WorkPreview";
 
 /* ------------------------------- primitives -------------------------------- */
 
@@ -191,26 +192,30 @@ const WORK = [
   {
     name: "FERTISURE.IN",
     kind: "Healthcare & Fertility Platform",
-    tint: "from-primary/40 to-accent/20",
+    tint: "from-emerald-950/50 via-teal-900/30 to-primary/20",
     link: "https://fertisure.in",
+    tech: ["Next.js 15", "HIPAA Vault", "Tailwind CSS", "TypeScript"],
   },
   {
     name: "ALPHATECH-NUTRITION.IN",
     kind: "E-Commerce & Nutrition Platform",
-    tint: "from-accent/40 to-cyan/20",
+    tint: "from-purple-950/50 via-pink-900/30 to-accent/20",
     link: "https://alphatech-nutrition.in",
+    tech: ["Next.js App Router", "Shopify Headless", "Stripe API", "Redis"],
   },
   {
     name: "INTELLIGENT AI AGENTS",
     kind: "Custom RAG & WhatsApp Bots",
-    tint: "from-primary-glow/40 to-primary/10",
+    tint: "from-cyan-950/50 via-blue-900/30 to-primary-glow/20",
     link: "#contact",
+    tech: ["LangChain", "Pinecone Vector DB", "WhatsApp Webhooks", "OpenAI"],
   },
   {
     name: "BACKEND MICROSERVICES",
     kind: "High-Throughput APIs & Cloud Ops",
-    tint: "from-cyan/30 to-primary/25",
+    tint: "from-indigo-950/50 via-purple-900/30 to-cyan/20",
     link: "#contact",
+    tech: ["Node.js / Go", "PostgreSQL Cluster", "Docker / K8s", "AWS EC2"],
   },
 ];
 
@@ -226,34 +231,53 @@ function WorkRail() {
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
           <Eyebrow>Selected work & deployments</Eyebrow>
         </div>
-        <motion.div style={{ x }} className="mt-10 flex gap-6 pl-6 sm:pl-10">
+        <motion.div style={{ x }} className="mt-8 flex gap-6 pl-6 sm:pl-10">
           {WORK.map((w, i) => (
             <a
               key={w.name}
               href={w.link}
               target={w.link.startsWith("http") ? "_blank" : "_self"}
               rel="noreferrer"
-              className="glass group relative h-[46vh] w-[80vw] shrink-0 overflow-hidden rounded-3xl sm:w-[50vw] lg:w-[36vw] block"
+              className="glass group relative h-[54vh] w-[85vw] shrink-0 overflow-hidden rounded-3xl sm:w-[56vw] lg:w-[42vw] flex flex-col justify-between p-5 border border-white/10 hover:border-primary-glow/60 transition-colors duration-500 block"
             >
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${w.tint} opacity-80 transition-opacity duration-700 group-hover:opacity-100`}
+                className={`absolute inset-0 bg-gradient-to-br ${w.tint} opacity-60 transition-opacity duration-700 group-hover:opacity-90 pointer-events-none`}
               />
-              <div className="grid-field absolute inset-0 opacity-40" />
-              <div className="absolute inset-0 flex flex-col justify-between p-7">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] tracking-widest text-foreground/60">
+              <div className="grid-field absolute inset-0 opacity-30 pointer-events-none" />
+
+              {/* Card Header Info */}
+              <div className="relative z-10 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/70 border border-white/10 bg-black/50 px-2.5 py-0.5 rounded-full shrink-0">
                     0{i + 1}
                   </span>
-                  <span className="font-mono text-[10px] tracking-widest text-primary-glow group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    VISIT <ArrowUpRightIcon className="size-3 text-primary-glow stroke-[2.5]" />
-                  </span>
+                  <div>
+                    <div className="font-display text-base sm:text-lg font-bold tracking-tight text-white leading-tight">
+                      {w.name}
+                    </div>
+                    <div className="text-[10px] text-foreground/70 font-medium">{w.kind}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-display text-2xl sm:text-3xl font-bold tracking-tight">{w.name}</div>
-                  <div className="mt-1.5 text-xs text-foreground/70 font-medium">{w.kind}</div>
-                </div>
+                <span className="font-mono text-[9px] tracking-widest text-primary-glow group-hover:translate-x-1 transition-transform flex items-center gap-1 bg-primary/20 border border-primary/30 px-3 py-1 rounded-full shrink-0">
+                  VISIT <ArrowUpRightIcon className="size-3 text-primary-glow stroke-[2.5]" />
+                </span>
               </div>
-              <div className="animate-sweep absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-foreground/8 to-transparent opacity-0 group-hover:opacity-100" />
+
+              {/* Live Website Preview Browser Window Mockup */}
+              <div className="relative z-10 my-3 flex-1 w-full overflow-hidden rounded-2xl transition-transform duration-500 group-hover:scale-[1.01]">
+                <WorkPreview link={w.link} index={i} />
+              </div>
+
+              {/* Tech Stack Pills Footer */}
+              <div className="relative z-10 flex items-center gap-1.5 overflow-x-auto no-scrollbar font-mono text-[8px] text-muted-foreground pt-1 border-t border-white/10">
+                {w.tech.map((t) => (
+                  <span key={t} className="rounded-md bg-black/50 border border-white/10 px-2 py-0.5 text-slate-300 font-medium shrink-0">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="animate-sweep absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-foreground/8 to-transparent opacity-0 group-hover:opacity-100 pointer-events-none" />
             </a>
           ))}
         </motion.div>
