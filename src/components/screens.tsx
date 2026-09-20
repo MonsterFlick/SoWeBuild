@@ -429,7 +429,7 @@ function FormScreen() {
       <div className="flex-1 flex flex-col justify-between p-4.5 space-y-3 overflow-y-auto">
         <div className="flex flex-col gap-0.5">
           <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
-            Direct Studio Inquiry
+            Project Inquiry
           </h3>
           <p className="text-[11px] text-muted-foreground leading-snug">
             Fill out the details below for instant dev server allocation & custom quote.

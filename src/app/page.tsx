@@ -441,26 +441,20 @@ export default function Home() {
       {/* MORPH SECTION */}
       <MorphSection setMode={setMode} />
 
-      {/* INQUIRY SECTION (Centered Device Slab Form) */}
-      <section id="inquiry" data-section data-mode="form" className="relative h-screen">
-        <div className="sticky top-0 flex h-screen flex-col items-center justify-center pt-10 lg:justify-start lg:pt-12 px-6 overflow-hidden">
-          {/* Desktop Heading Context */}
-          <div className="relative z-10 text-center mb-3 hidden lg:block pointer-events-none">
-            <Eyebrow>Direct Studio Inquiry</Eyebrow>
-            <h2 className="mt-1.5 font-display text-2xl sm:text-3xl font-bold tracking-tight">
-              Start Your Project
-            </h2>
-            <p className="mt-1 text-[11px] text-muted-foreground">
-              Fill out your details below to receive an instant quote & dev server setup
-            </p>
-          </div>
-          {/* Subtle Background Typography */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.025] font-display text-[14vw] font-bold leading-none select-none text-center">
-            START<br />BUILDING
-          </div>
-          {/* Mobile centered device frame */}
-          <div className="relative z-10 flex justify-center lg:hidden">
-            <DeviceFrame mode="form" className="scale-[0.82] sm:scale-100 origin-center" />
+      {/* INQUIRY SECTION */}
+      <section id="inquiry" data-section data-mode="form" className="relative px-6 py-8 sm:px-10 sm:py-12 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.02] font-display text-[14vw] font-bold leading-none select-none text-center">
+          START<br />BUILDING
+        </div>
+        <div className="relative mx-auto w-full max-w-4xl flex flex-col items-center text-center z-10">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
+            Start Your Project
+          </h2>
+          <p className="mt-1 text-[11px] text-muted-foreground">
+            Fill out your details below to receive an instant quote & dev server setup
+          </p>
+          <div className="mt-6 flex justify-center w-full">
+            <DeviceFrame mode="form" className="scale-[0.88] sm:scale-100 origin-top shadow-2xl" />
           </div>
         </div>
       </section>

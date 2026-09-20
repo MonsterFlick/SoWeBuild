@@ -71,9 +71,9 @@ export function DeviceSlab({
   const { scrollYProgress } = useScroll();
   const p = useSpring(scrollYProgress, { stiffness: 60, damping: 24, mass: 0.6 });
 
-  // Fade out device slab after inquiry section (in technology, work, about, or contact sections)
-  const isHideSection = activeSection !== "home" && activeSection !== "morph" && activeSection !== "inquiry";
-  const isCentered = activeSection === "inquiry";
+  // Fade out floating device slab starting at inquiry section
+  const isHideSection = activeSection !== "home" && activeSection !== "morph";
+  const isCentered = false;
 
   const rawX = useTransform(p, [0, 0.2, 0.42, 0.6, 0.8, 1], [-1, -6, 2, -4, -8, 1]);
   const rawY = useTransform(p, [0, 0.2, 0.42, 0.6, 0.8, 1], [2, -4, 4, -2, 6, -3]);
