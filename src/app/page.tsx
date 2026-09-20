@@ -337,7 +337,7 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex flex-col justify-center px-6 pt-28 pb-10 sm:px-10 sm:pb-12"
+        className="relative flex h-screen items-center px-6 pt-20 sm:px-10 overflow-hidden"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-7xl">
