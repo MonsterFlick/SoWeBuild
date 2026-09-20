@@ -380,7 +380,7 @@ function GlassSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 2, scale: 0.98 }}
             transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-strong absolute left-0 right-0 top-full mt-1.5 z-50 rounded-xl border border-primary/30 p-1 shadow-2xl shadow-primary/25 backdrop-blur-2xl bg-background/95 overflow-hidden"
+            className="absolute left-0 right-0 top-full mt-1.5 z-50 rounded-xl border border-primary/40 p-1 shadow-2xl shadow-black bg-[#161224] overflow-hidden"
           >
             {options.map((opt) => {
               const isSelected = opt.value === value;
