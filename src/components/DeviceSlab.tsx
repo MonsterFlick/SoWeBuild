@@ -11,7 +11,7 @@ import {
   useTransform,
 } from "motion/react";
 
-import { Screen, type Mode, type DeviceMode } from "./screens";
+import { Screen, type DeviceMode } from "./screens";
 
 const SHAPE: Record<DeviceMode, { w: number; h: number; r: number; notch: boolean }> = {
   website: { w: 470, h: 320, r: 18, notch: false },

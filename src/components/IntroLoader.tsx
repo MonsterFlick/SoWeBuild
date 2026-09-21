@@ -15,9 +15,12 @@ export function IntroLoader({
   const bgControls = useAnimationControls();
 
   const onCompleteRef = useRef(onComplete);
-  onCompleteRef.current = onComplete;
   const onStartRevealRef = useRef(onStartReveal);
-  onStartRevealRef.current = onStartReveal;
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+    onStartRevealRef.current = onStartReveal;
+  }, [onComplete, onStartReveal]);
 
   useEffect(() => {
     // Stage 1: Slash appears immediately (0ms)

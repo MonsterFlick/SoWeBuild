@@ -82,7 +82,10 @@ function ServiceRow({
 }) {
   const ref = useRef<HTMLButtonElement>(null);
   const handleActivateRef = useRef(onActivate);
-  handleActivateRef.current = onActivate;
+
+  useEffect(() => {
+    handleActivateRef.current = onActivate;
+  }, [onActivate]);
 
   // Track when this specific row enters the middle 20% of the viewport vertically
   const inCenter = useInView(ref, { margin: "-40% 0px -40% 0px" });
@@ -541,7 +544,7 @@ export default function Home() {
           <Reveal>
             <Eyebrow>Contact Us</Eyebrow>
             <h2 className="mt-6 font-display text-[clamp(2.4rem,8vw,5.5rem)] leading-[0.88] font-bold">
-              LET'S BUILD
+              LET&apos;S BUILD
               <br />
               <span className="text-gradient">YOUR NEXT PRODUCT.</span>
             </h2>

@@ -1,7 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React from "react";
 
 /* ---------------------------------- Icons --------------------------------- */
 
@@ -10,16 +7,6 @@ function LockIcon({ className = "size-2.5" }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-    </svg>
-  );
-}
-
-function ExternalLinkIcon({ className = "size-3" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
     </svg>
   );
 }
@@ -198,7 +185,7 @@ function AiAgentPreview() {
       {/* Query Stream Demo */}
       <div className="bg-slate-950 rounded-lg p-2 border border-slate-800 font-mono text-[8px] space-y-1 flex-1 flex flex-col justify-between">
         <div>
-          <div className="text-slate-400">&gt; Query: "Synthesize Q3 sales & WhatsApp leads"</div>
+          <div className="text-slate-400">&gt; Query: &quot;Synthesize Q3 sales &amp; WhatsApp leads&quot;</div>
           <div className="text-cyan-300 font-semibold mt-0.5">&gt; Vector Search: Match 0.984</div>
         </div>
         <div className="bg-cyan-950/40 border border-cyan-500/30 text-cyan-200 p-1.5 rounded text-[7.5px]">
@@ -252,46 +239,13 @@ function MicroservicesPreview() {
   );
 }
 
-/* -------------------------------- Real Site Iframe Preview -------------------------------- */
-
-function LiveIframePreview({ url, Fallback }: { url: string; Fallback: () => React.ReactElement }) {
-  const [loaded, setLoaded] = useState(false);
-  const [iframeFailed, setIframeFailed] = useState(false);
-
-  return (
-    <div className="relative w-full h-full bg-slate-950 overflow-hidden">
-      {!loaded && !iframeFailed && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/90 text-[10px] font-mono text-cyan gap-2">
-          <div className="size-4 rounded-full border-2 border-cyan border-t-transparent animate-spin" />
-          <span>Connecting to {url.replace("https://", "")}…</span>
-        </div>
-      )}
-
-      {iframeFailed ? (
-        <Fallback />
-      ) : (
-        <iframe
-          src={url}
-          title={url}
-          onLoad={() => setLoaded(true)}
-          onError={() => setIframeFailed(true)}
-          className={`w-[200%] h-[200%] origin-top-left scale-50 border-0 pointer-events-none transition-opacity duration-500 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-          loading="lazy"
-        />
-      )}
-    </div>
-  );
-}
-
 const PREVIEWS: Record<string, () => React.ReactElement> = {
   "https://fertisure.in": FertisurePreview,
   "https://alphatech-nutrition.in": AlphatechPreview,
 };
 
 export function WorkPreview({ link, index }: { link: string; index: number }) {
-  const FallbackComp = PREVIEWS[link] || (index === 2 ? AiAgentPreview : MicroservicesPreview);
+  const PreviewComp = PREVIEWS[link] || (index === 2 ? AiAgentPreview : MicroservicesPreview);
   const isRealSite = link.startsWith("http");
   const displayUrl = isRealSite ? link.replace("https://", "") : "sowebuild.in/internal";
 
@@ -313,17 +267,13 @@ export function WorkPreview({ link, index }: { link: string; index: number }) {
 
         <div className="text-[8px] font-mono text-emerald-400 flex items-center gap-1">
           <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          LIVE
+          MOCKUP
         </div>
       </div>
 
-      {/* Real Live Site or Interactive App Body */}
+      {/* Interactive App Body */}
       <div className="flex-1 relative overflow-hidden">
-        {isRealSite ? (
-          <LiveIframePreview url={link} Fallback={FallbackComp} />
-        ) : (
-          <FallbackComp />
-        )}
+        <PreviewComp />
       </div>
     </div>
   );
