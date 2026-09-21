@@ -48,6 +48,15 @@ function ServerIcon({ className = "size-3.5" }: { className?: string }) {
   );
 }
 
+function LockIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
 export function WorkBentoGrid() {
   return (
     <section id="work" data-section data-mode="dashboard" className="relative px-6 py-24 sm:px-10 sm:py-32 overflow-hidden">
@@ -73,13 +82,13 @@ export function WorkBentoGrid() {
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-          {/* BENTO ITEM 1: FERTISURE (Large Hero - 7 cols) */}
+          {/* BENTO ITEM 1: FERTISURE (Large Hero - 6 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-7 group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-xl hover:border-emerald-500/50 transition-all duration-500"
+            className="md:col-span-6 group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-xl hover:border-emerald-500/50 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-teal-950/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none" />
             <div className="grid-field absolute inset-0 opacity-20 pointer-events-none" />
@@ -168,23 +177,27 @@ export function WorkBentoGrid() {
             </div>
           </motion.div>
 
-          {/* BENTO ITEM 2: ALPHATECH NUTRITION (5 cols) */}
+          {/* BENTO ITEM 2: ALPHATECH NUTRITION (Live Preview - 6 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-5 group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-xl hover:border-blue-500/50 transition-all duration-500"
+            className="md:col-span-6 group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-xl hover:border-blue-500/50 transition-all duration-500"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-950/40 via-indigo-950/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none" />
             <div className="grid-field absolute inset-0 opacity-20 pointer-events-none" />
 
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1 flex flex-col">
               {/* Header Badge Row */}
-              <div className="flex items-center justify-between gap-3 mb-6">
+              <div className="flex items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-2">
                   <span className="rounded-full bg-blue-500/20 border border-blue-500/30 px-2.5 py-0.5 font-mono text-[9px] font-bold text-blue-400 uppercase tracking-wider">
-                    02 // E-COMMERCE &amp; SECURITY
+                    02 // LIVE PREVIEW
+                  </span>
+                  <span className="flex items-center gap-1 font-mono text-[9px] text-blue-300">
+                    <span className="size-1.5 rounded-full bg-blue-400 animate-pulse" />
+                    LIVE PRODUCTION
                   </span>
                 </div>
 
@@ -199,50 +212,74 @@ export function WorkBentoGrid() {
                 </a>
               </div>
 
-              {/* Title & Core Subtitle */}
+              {/* Title & Short Subtitle (Clean, not too much info) */}
               <h3 className="font-display text-2xl font-bold tracking-tight text-white leading-tight">
-                Alpha Tech Nutrition — Anti-Counterfeit Sports Nutrition
+                Alpha Tech Nutrition
               </h3>
               <p className="mt-1 font-mono text-xs text-blue-300/80 font-medium">
-                High-Performance Gym Supplements &amp; QR Auth Verification
+                High-Performance Sports Nutrition &amp; 100% Anti-Counterfeit QR Engine
               </p>
 
-              <p className="mt-4 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                Architected high-conversion headless e-commerce store paired with a <strong>100% Anti-Counterfeit Protection System</strong>. Every supplement tub is minted with an individual cryptographic UUID hash for instant smartphone QR authenticity checks.
-              </p>
+              {/* Live Interactive Browser Preview Frame */}
+              <div className="relative mt-4 flex-1 min-h-[300px] sm:min-h-[340px] w-full overflow-hidden rounded-2xl border border-white/15 bg-black/80 shadow-2xl flex flex-col">
+                {/* Browser Topbar Chrome */}
+                <div className="flex items-center justify-between px-3.5 py-2 bg-neutral-900/90 border-b border-white/10 text-xs font-mono shrink-0">
+                  <div className="flex items-center gap-1.5">
+                    <span className="size-2.5 rounded-full bg-red-500/80" />
+                    <span className="size-2.5 rounded-full bg-amber-500/80" />
+                    <span className="size-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
 
-              {/* Feature highlight */}
-              <div className="mt-6 rounded-xl bg-black/40 border border-blue-500/20 p-3.5 space-y-2 font-mono text-xs">
-                <div className="flex items-center gap-2 text-blue-400 font-bold text-[11px]">
-                  <ShieldCheckIcon className="size-4" />
-                  <span>Cryptographic QR Verification Engine</span>
+                  <div className="flex items-center gap-1.5 rounded-md bg-black/60 border border-white/10 px-3 py-0.5 text-[10px] text-muted-foreground">
+                    <LockIcon className="size-2.5 text-emerald-400 shrink-0" />
+                    <span className="text-slate-200">alphatech-nutrition.in</span>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
+                    <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>200 OK</span>
+                  </div>
                 </div>
-                <p className="text-[10px] text-muted-foreground leading-normal">
-                  Real-time batch assay verification, tamper alerts on duplicate scans, and B2B wholesale distributor onboarding.
-                </p>
+
+                {/* Live Site Viewport Container */}
+                <div className="relative flex-1 w-full h-[260px] sm:h-[300px] overflow-hidden bg-neutral-950">
+                  <iframe
+                    src="https://alphatech-nutrition.in"
+                    title="Alpha Tech Nutrition Live Preview"
+                    loading="lazy"
+                    className="w-[142.85%] h-[142.85%] scale-[0.7] origin-top-left border-0"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  />
+                  
+                  {/* Subtle glass hover overlay */}
+                  <a
+                    href="https://alphatech-nutrition.in"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute inset-0 bg-transparent hover:bg-black/20 transition-colors flex items-center justify-center group/btn pointer-events-auto"
+                    title="Open alphatech-nutrition.in in new tab"
+                  >
+                    <span className="opacity-0 group-hover/btn:opacity-100 transition-opacity rounded-full bg-black/80 border border-white/20 px-3.5 py-1.5 text-xs font-mono text-white flex items-center gap-1.5 backdrop-blur-md shadow-xl">
+                      Open Full Site <ArrowUpRightIcon className="size-3" />
+                    </span>
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Bottom Metrics & Tech Stack */}
-            <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
-              <div className="grid grid-cols-2 gap-3 mb-4 text-center font-mono">
-                <div className="rounded-xl bg-black/50 border border-white/5 p-2">
-                  <div className="font-display text-lg sm:text-xl font-bold text-blue-400">100%</div>
-                  <div className="text-[9px] text-muted-foreground">Anti-Counterfeit Protection</div>
-                </div>
-                <div className="rounded-xl bg-black/50 border border-white/5 p-2">
-                  <div className="font-display text-lg sm:text-xl font-bold text-indigo-300">99.98%</div>
-                  <div className="text-[9px] text-muted-foreground">Verification Uptime</div>
-                </div>
-              </div>
-
-              {/* Tech Stack Pills */}
+            {/* Bottom Tech Stack & Feature Tag */}
+            <div className="relative z-10 mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap gap-1.5 font-mono text-[9px]">
                 {["Next.js App Router", "QR Cryptography", "Redis Cache", "Tailwind CSS", "Stripe API"].map((t) => (
                   <span key={t} className="rounded-md bg-black/60 border border-white/10 px-2.5 py-1 text-slate-300 font-medium">
                     {t}
                   </span>
                 ))}
+              </div>
+
+              <div className="flex items-center gap-1 text-xs font-mono text-blue-300">
+                <ShieldCheckIcon className="size-3.5 text-blue-400" />
+                <span className="text-[10px] font-semibold">100% Anti-Counterfeit</span>
               </div>
             </div>
           </motion.div>
