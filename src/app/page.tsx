@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, useInView } from "motion/react";
+import { motion, useScroll, useInView } from "motion/react";
 
 import { DeviceSlab, DeviceFrame } from "@/components/DeviceSlab";
 import { Dock } from "@/components/Dock";
@@ -12,7 +12,7 @@ import { MODE_LABEL, type Mode } from "@/components/screens";
 import { Logo } from "@/components/Logo";
 import { IntroLoader } from "@/components/IntroLoader";
 import { DynamicHeadline } from "@/components/DynamicHeadline";
-import { WorkPreview } from "@/components/WorkPreview";
+import { WorkBentoGrid } from "@/components/WorkBentoGrid";
 
 /* ------------------------------- primitives -------------------------------- */
 
@@ -138,7 +138,7 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   useEffect(() => {
-    return scrollYProgress.on("change", (v) => {
+    return scrollYProgress.on("change", (v: number) => {
       const i = Math.min(MORPH_STEPS.length - 1, Math.max(0, Math.floor(v * MORPH_STEPS.length)));
       setStep(i);
       setMode(MORPH_STEPS[i] as Mode);
@@ -190,105 +190,7 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   );
 }
 
-/* -------------------------------- work rail -------------------------------- */
 
-const WORK = [
-  {
-    name: "FERTISURE.IN",
-    kind: "Healthcare & Fertility Platform",
-    tint: "from-emerald-950/50 via-teal-900/30 to-primary/20",
-    link: "https://fertisure.in",
-    tech: ["Next.js 15", "HIPAA Vault", "Tailwind CSS", "TypeScript"],
-  },
-  {
-    name: "ALPHATECH-NUTRITION.IN",
-    kind: "E-Commerce & Nutrition Platform",
-    tint: "from-purple-950/50 via-pink-900/30 to-accent/20",
-    link: "https://alphatech-nutrition.in",
-    tech: ["Next.js App Router", "Shopify Headless", "Stripe API", "Redis"],
-  },
-  {
-    name: "INTELLIGENT AI AGENTS",
-    kind: "Custom RAG & WhatsApp Bots",
-    tint: "from-cyan-950/50 via-blue-900/30 to-primary-glow/20",
-    link: "#contact",
-    tech: ["LangChain", "Pinecone Vector DB", "WhatsApp Webhooks", "OpenAI"],
-  },
-  {
-    name: "BACKEND MICROSERVICES",
-    kind: "High-Throughput APIs & Cloud Ops",
-    tint: "from-indigo-950/50 via-purple-900/30 to-cyan/20",
-    link: "#contact",
-    tech: ["Node.js / Go", "PostgreSQL Cluster", "Docker / K8s", "AWS EC2"],
-  },
-];
-
-function WorkRail() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const raw = useTransform(scrollYProgress, [0, 1], ["2%", "-60%"]);
-  const x = useSpring(raw, { stiffness: 70, damping: 26 });
-
-  return (
-    <section ref={ref} id="work" data-section data-mode="dashboard" className="relative h-[280vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
-          <Eyebrow>Selected work & deployments</Eyebrow>
-        </div>
-        <motion.div style={{ x }} className="mt-8 flex gap-6 pl-6 sm:pl-10">
-          {WORK.map((w, i) => (
-            <a
-              key={w.name}
-              href={w.link}
-              target={w.link.startsWith("http") ? "_blank" : "_self"}
-              rel="noreferrer"
-              className="glass group relative h-[54vh] w-[85vw] shrink-0 overflow-hidden rounded-3xl sm:w-[56vw] lg:w-[42vw] flex flex-col justify-between p-5 border border-white/10 hover:border-primary-glow/60 transition-colors duration-500 block"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${w.tint} opacity-60 transition-opacity duration-700 group-hover:opacity-90 pointer-events-none`}
-              />
-              <div className="grid-field absolute inset-0 opacity-30 pointer-events-none" />
-
-              {/* Card Header Info */}
-              <div className="relative z-10 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-[10px] font-bold tracking-widest text-foreground/70 border border-white/10 bg-black/50 px-2.5 py-0.5 rounded-full shrink-0">
-                    0{i + 1}
-                  </span>
-                  <div>
-                    <div className="font-display text-base sm:text-lg font-bold tracking-tight text-white leading-tight">
-                      {w.name}
-                    </div>
-                    <div className="text-[10px] text-foreground/70 font-medium">{w.kind}</div>
-                  </div>
-                </div>
-                <span className="font-mono text-[9px] tracking-widest text-primary-glow group-hover:translate-x-1 transition-transform flex items-center gap-1 bg-primary/20 border border-primary/30 px-3 py-1 rounded-full shrink-0">
-                  VISIT <ArrowUpRightIcon className="size-3 text-primary-glow stroke-[2.5]" />
-                </span>
-              </div>
-
-              {/* Live Website Preview Browser Window Mockup */}
-              <div className="relative z-10 my-3 flex-1 w-full overflow-hidden rounded-2xl transition-transform duration-500 group-hover:scale-[1.01]">
-                <WorkPreview link={w.link} index={i} />
-              </div>
-
-              {/* Tech Stack Pills Footer */}
-              <div className="relative z-10 flex items-center gap-1.5 overflow-x-auto no-scrollbar font-mono text-[8px] text-muted-foreground pt-1 border-t border-white/10">
-                {w.tech.map((t) => (
-                  <span key={t} className="rounded-md bg-black/50 border border-white/10 px-2 py-0.5 text-slate-300 font-medium shrink-0">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="animate-sweep absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-foreground/8 to-transparent opacity-0 group-hover:opacity-100 pointer-events-none" />
-            </a>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 /* ---------------------------------- page ----------------------------------- */
 
@@ -495,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* WORK SECTION */}
-      <WorkRail />
+      <WorkBentoGrid />
 
       {/* ABOUT SECTION */}
       <section id="about" data-section data-mode="chatbot" className="relative px-6 py-32 sm:px-10">
