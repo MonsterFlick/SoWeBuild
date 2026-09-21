@@ -13,6 +13,7 @@ import { Logo } from "@/components/Logo";
 import { IntroLoader } from "@/components/IntroLoader";
 import { DynamicHeadline } from "@/components/DynamicHeadline";
 import { WorkBentoGrid } from "@/components/WorkBentoGrid";
+import { ServicesWorkbench } from "@/components/ServicesWorkbench";
 
 /* ------------------------------- primitives -------------------------------- */
 
@@ -56,77 +57,7 @@ function Reveal({
   );
 }
 
-/* --------------------------------- services -------------------------------- */
 
-const TECH_SERVICES: { name: string; mode: Mode; note: string }[] = [
-  { name: "Websites", mode: "website", note: "Sub-second, cinematic web experiences" },
-  { name: "Web Apps", mode: "dashboard", note: "Realtime, scalable SaaS platforms" },
-  { name: "Mobile Apps", mode: "chatbot", note: "Native-feel cross-platform apps" },
-  { name: "AI Chatbots", mode: "chatbot", note: "Grounded RAG agents on custom data" },
-  { name: "WhatsApp AI Bots", mode: "whatsapp", note: "Automated booking & customer care" },
-  { name: "AI Automation", mode: "dashboard", note: "Workflows & ops that run themselves" },
-  { name: "Custom Software", mode: "dashboard", note: "Tailored backend systems & infra" },
-  { name: "API & AI Integrations", mode: "website", note: "Seamless third-party API wiring" },
-];
-
-function ServiceRow({
-  index,
-  name,
-  note,
-  onActivate,
-}: {
-  index: number;
-  name: string;
-  note: string;
-  onActivate: () => void;
-}) {
-  const ref = useRef<HTMLButtonElement>(null);
-  const handleActivateRef = useRef(onActivate);
-
-  useEffect(() => {
-    handleActivateRef.current = onActivate;
-  }, [onActivate]);
-
-  // Track when this specific row enters the middle 20% of the viewport vertically
-  const inCenter = useInView(ref, { margin: "-40% 0px -40% 0px" });
-
-  useEffect(() => {
-    if (inCenter) {
-      handleActivateRef.current();
-    }
-  }, [inCenter]);
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseEnter={onActivate}
-      onFocus={onActivate}
-      onClick={onActivate}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.6, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative w-full border-t border-border py-5 text-left last:border-b"
-    >
-      <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-primary via-primary-glow to-transparent transition-transform duration-700 group-hover:scale-x-100" />
-      <span className="pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:linear-gradient(90deg,color-mix(in_oklab,var(--primary)_14%,transparent),transparent_60%)]" />
-      <span className="flex items-baseline gap-4">
-        <span className="font-mono text-[10px] text-muted-foreground">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="font-display text-2xl font-semibold tracking-tight transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
-          {name}
-        </span>
-        <span className="ml-auto hidden text-xs text-muted-foreground transition-colors group-hover:text-foreground/80 md:block">
-          {note}
-        </span>
-        <span className="ml-3 text-primary opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 md:-translate-x-2">
-          <ArrowUpRightIcon className="size-4 inline" />
-        </span>
-      </span>
-    </motion.button>
-  );
-}
 
 /* ------------------------------ morph section ------------------------------ */
 
@@ -363,38 +294,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section
-        id="technology"
-        data-section
-        data-mode="dashboard"
-        className="relative px-6 pt-12 pb-32 sm:px-10 sm:pt-16"
-      >
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="lg:max-w-[46vw] lg:pr-6">
-            <Reveal>
-              <Eyebrow>Engineering Services</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(2.2rem,6vw,4.5rem)] leading-[0.9] font-bold">
-                WHAT WE BUILD
-              </h2>
-              <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Interfaces, AI agents and backend systems engineered like modern products — built fast, tested rigorously, and hosted on isolated development environments.
-              </p>
-            </Reveal>
-            <div className="mt-12">
-              {TECH_SERVICES.map((s, i) => (
-                <ServiceRow
-                  key={s.name}
-                  index={i}
-                  name={s.name}
-                  note={s.note}
-                  onActivate={() => setMode(s.mode)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* SERVICES & CAPABILITIES WORKBENCH */}
+      <ServicesWorkbench onSelectService={(m) => setMode(m)} />
 
       {/* WORK SECTION */}
       <WorkBentoGrid />
