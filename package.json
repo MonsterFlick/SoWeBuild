@@ -9,7 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^1.0.9",
+    "gifenc": "^1.0.3",
+    "h264-mp4-encoder": "^1.0.12",
     "motion": "^13.4.0",
+    "mp4-muxer": "^5.2.2",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8"

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <rect width="200" height="200" rx="36" fill="#120F1D" />
+  <rect width="200" height="200" rx="36" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+  <circle cx="100" cy="80" r="45" fill="#BC37ED" opacity="0.25" filter="blur(24px)" />
+  <!-- Symbol Center -->
+  <g transform="translate(80, 42)">
+    <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetStacked)" filter="drop-shadow(0 0 12px rgba(188,55,237,0.6))" />
+  </g>
+  <!-- Centered Typography -->
+  <text x="100" y="138" text-anchor="middle" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="14" letter-spacing="0.22em" fill="#F8F7FA">SO WE</text>
+  <text x="100" y="162" text-anchor="middle" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="18" letter-spacing="0.18em" fill="#F8F7FA">
+    BUILD<tspan fill="#E870FD">.IN</tspan>
+  </text>
+  <defs>
+    <linearGradient id="violetStacked" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#E870FD" />
+      <stop offset="100%" stop-color="#BC37ED" />
+    </linearGradient>
+  </defs>
+</svg>

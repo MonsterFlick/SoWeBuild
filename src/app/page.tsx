@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring, useInView } from "motion/react";
 
 import { DeviceSlab, DeviceFrame } from "@/components/DeviceSlab";
@@ -355,14 +356,22 @@ export default function Home() {
         >
           <Logo />
         </motion.a>
-        <Magnetic strength={0.2} className="hidden sm:block">
-          <a
-            href="#contact"
-            className="glass rounded-full px-5 py-2 font-mono text-[10px] tracking-[0.25em] uppercase hover:text-primary-glow transition-colors"
+        <div className="flex items-center gap-3">
+          <Link
+            href="/brand-guidelines"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-mono text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground hover:border-white/25 transition-colors"
           >
-            Start a build
-          </a>
-        </Magnetic>
+            Brand Assets
+          </Link>
+          <Magnetic strength={0.2} className="hidden sm:block">
+            <a
+              href="#contact"
+              className="glass rounded-full px-5 py-2 font-mono text-[10px] tracking-[0.25em] uppercase hover:text-primary-glow transition-colors"
+            >
+              Start a build
+            </a>
+          </Magnetic>
+        </div>
       </header>
 
       {/* HERO SECTION */}
@@ -559,7 +568,13 @@ export default function Home() {
               <Logo size="small" />
               <span className="ml-2">© {new Date().getFullYear()} SoWeBuild</span>
             </div>
-            <span>sowebuild.in · Development · Software · AI</span>
+            <div className="flex items-center gap-4">
+              <Link href="/brand-guidelines" className="text-primary-glow hover:underline underline-offset-4 transition-colors">
+                Brand Guidelines & Assets
+              </Link>
+              <span>·</span>
+              <span>sowebuild.in · Development · Software · AI</span>
+            </div>
           </div>
         </div>
       </section>
