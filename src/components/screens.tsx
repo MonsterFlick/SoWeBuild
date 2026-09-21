@@ -198,7 +198,6 @@ const CHAT: { from: "bot" | "me"; text: string; tag?: string }[] = [
 function ChatbotScreen() {
   const [n, setN] = useState(1);
   useEffect(() => {
-    setN(1);
     const id = setInterval(() => setN((v) => (v >= CHAT.length ? 1 : v + 1)), 1100);
     return () => clearInterval(id);
   }, []);
@@ -268,7 +267,6 @@ const WA = [
 function WhatsappScreen() {
   const [n, setN] = useState(1);
   useEffect(() => {
-    setN(1);
     const id = setInterval(() => setN((v) => (v >= WA.length ? 1 : v + 1)), 1000);
     return () => clearInterval(id);
   }, []);
@@ -398,13 +396,6 @@ const PROJECT_TYPES = [
   { value: "mobile", label: "Mobile App (iOS / Android)" },
 ];
 
-const BUDGET_TIERS = [
-  { value: "tier1", label: "$1k - $3k (Starter)" },
-  { value: "tier2", label: "$3k - $8k (Pro Studio)" },
-  { value: "tier3", label: "$8k - $25k (Enterprise)" },
-  { value: "custom", label: "Custom Architecture" },
-];
-
 function GlassSelect({
   value,
   onChange,
@@ -482,16 +473,65 @@ function GlassSelect({
 }
 
 function FormScreen() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [countryCode, setCountryCode] = useState("+91");
   const [phone, setPhone] = useState("");
   const [projectType, setProjectType] = useState("");
-  const [budget, setBudget] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only accept numeric digits 0-9, max 10 digits
+    const numeric = e.target.value.replace(/\D/g, "").slice(0, 10);
+    setPhone(numeric);
+    if (error) setError(null);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+
+    if (phone.length !== 10) {
+      setError("Please enter a valid 10-digit numeric phone number.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          countryCode,
+          phone,
+          projectType: PROJECT_TYPES.find((p) => p.value === projectType)?.label || projectType,
+          message,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit inquiry.");
+      }
+
+      setSubmitted(true);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setProjectType("");
+      setMessage("");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to submit inquiry. Please try again.";
+      setError(msg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -520,65 +560,102 @@ function FormScreen() {
               Inquiry Submitted!
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              We've received your requirements. Our lead engineer will contact you on WhatsApp / Email within 2 hours.
+              We&apos;ve received your requirements. Our lead engineer will contact you on WhatsApp / Email within 2 hours.
             </p>
+            <button
+              type="button"
+              onClick={() => setSubmitted(false)}
+              className="mt-2 text-[11px] font-mono text-primary-glow hover:underline cursor-pointer"
+            >
+              Submit Another Inquiry →
+            </button>
           </motion.div>
         ) : (
           <form className="flex flex-col gap-2.5 flex-1" onSubmit={handleSubmit}>
+            {/* Error banner */}
+            {error && (
+              <div className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-1.5 text-[11px] text-destructive-foreground font-mono">
+                {error}
+              </div>
+            )}
+
             {/* Name & Email Row */}
             <div className="grid grid-cols-2 gap-2">
               <input
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Full Name *"
                 className="w-full bg-surface/60 border border-border/80 rounded-lg px-3 py-2 text-[11px] focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70 text-foreground"
               />
               <input
                 required
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Work Email *"
                 className="w-full bg-surface/60 border border-border/80 rounded-lg px-3 py-2 text-[11px] focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70 text-foreground"
               />
             </div>
 
-            {/* Country Code (3-digit input) + Phone Number Field */}
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={countryCode}
-                onChange={(e) => setCountryCode(e.target.value)}
-                maxLength={5}
-                placeholder="+91"
-                className="w-16 text-center bg-surface/60 border border-border/80 rounded-lg px-2 py-2 text-[11px] font-mono font-semibold text-primary-glow focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70"
-              />
-              <input
-                required
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone / WhatsApp Number *"
-                className="flex-1 bg-surface/60 border border-border/80 rounded-lg px-3 py-2 text-[11px] focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70 font-mono text-foreground"
-              />
+            {/* Country Code + Strict 10-digit Phone Number Field */}
+            <div className="flex flex-col gap-1">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={countryCode}
+                  onChange={(e) => setCountryCode(e.target.value.slice(0, 4))}
+                  maxLength={4}
+                  placeholder="+91"
+                  className="w-16 text-center bg-surface/60 border border-border/80 rounded-lg px-2 py-2 text-[11px] font-mono font-semibold text-primary-glow focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70"
+                />
+                <div className="relative flex-1">
+                  <input
+                    required
+                    type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    placeholder="10-digit Phone / WhatsApp *"
+                    className={`w-full bg-surface/60 border rounded-lg px-3 py-2 pr-12 text-[11px] focus:outline-none focus:bg-surface transition-colors placeholder:text-muted-foreground/70 font-mono text-foreground ${
+                      phone.length > 0 && phone.length < 10
+                        ? "border-amber-500/60 focus:border-amber-500"
+                        : phone.length === 10
+                        ? "border-emerald-500/60 focus:border-emerald-500"
+                        : "border-border/80 focus:border-primary/60"
+                    }`}
+                  />
+                  <span className={`absolute right-2.5 top-1/2 -translate-y-1/2 font-mono text-[9px] pointer-events-none ${
+                    phone.length === 10 ? "text-emerald-400 font-bold" : "text-muted-foreground/70"
+                  }`}>
+                    {phone.length}/10
+                  </span>
+                </div>
+              </div>
+              {phone.length > 0 && phone.length < 10 && (
+                <span className="text-[10px] text-amber-400 font-mono pl-1">
+                  Phone number must be exactly 10 numeric digits ({10 - phone.length} more needed)
+                </span>
+              )}
             </div>
 
-            {/* Custom Glass Select Dropdowns */}
-            <div className="grid grid-cols-2 gap-2 relative">
+            {/* Project Type Dropdown (No budget field) */}
+            <div className="relative w-full">
               <GlassSelect
                 value={projectType}
                 onChange={setProjectType}
-                placeholder="Project Type..."
+                placeholder="Select Project Type (e.g. Website, Chatbot, SaaS)..."
                 options={PROJECT_TYPES}
-              />
-              <GlassSelect
-                value={budget}
-                onChange={setBudget}
-                placeholder="Estimated Budget..."
-                options={BUDGET_TIERS}
               />
             </div>
 
             {/* Project Requirements Textarea */}
             <textarea
               rows={3}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Tell us about your project requirements, timeline, or tech stack..."
               className="w-full bg-surface/60 border border-border/80 rounded-lg px-3 py-2 text-[11px] flex-1 resize-none focus:outline-none focus:border-primary/60 focus:bg-surface transition-colors placeholder:text-muted-foreground/70 leading-relaxed text-foreground"
             />
@@ -586,9 +663,20 @@ function FormScreen() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="mt-0.5 w-full bg-[image:var(--gradient-violet)] text-primary-foreground font-semibold py-2.5 rounded-lg text-xs tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 shadow-lg shadow-primary/25 cursor-pointer active:scale-[0.99]"
+              disabled={loading}
+              className="mt-0.5 w-full bg-[image:var(--gradient-violet)] text-primary-foreground font-semibold py-2.5 rounded-lg text-xs tracking-wide hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 shadow-lg shadow-primary/25 cursor-pointer active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit Project Inquiry <ArrowUpRightIcon className="size-3.5 text-primary-foreground" />
+              {loading ? (
+                <>
+                  <span className="size-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Submitting Inquiry...</span>
+                </>
+              ) : (
+                <>
+                  <span>Submit Project Inquiry</span>
+                  <ArrowUpRightIcon className="size-3.5 text-primary-foreground" />
+                </>
+              )}
             </button>
           </form>
         )}
