@@ -40,6 +40,9 @@ yarn-error.log*
 .open-next/
 .wrangler/
 
+# local links
+swb-social/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

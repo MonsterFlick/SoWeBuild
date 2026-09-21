@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { motion, useScroll, useInView } from "motion/react";
+import { motion, useScroll, AnimatePresence } from "motion/react";
 
-import { DeviceSlab, DeviceFrame } from "@/components/DeviceSlab";
+import { DeviceSlab, DeviceFrame, ResponsiveDeviceFrame } from "@/components/DeviceSlab";
 import { Dock } from "@/components/Dock";
 import { CursorLight, Starfield } from "@/components/Ambient";
 import { PrimaryCta, GhostCta, Magnetic } from "@/components/Magnetic";
@@ -77,12 +77,14 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   }, [scrollYProgress, setMode]);
 
   return (
-    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[200vh]">
-      <div className="sticky top-0 flex h-screen flex-col justify-center px-6 sm:px-10">
+    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[220vh]">
+      <div className="sticky top-0 flex min-h-screen flex-col justify-center px-5 py-16 sm:px-10 sm:py-0">
         <div className="mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw] lg:pr-6">
             <Eyebrow>One development studio · every capability</Eyebrow>
-            <div className="mt-8 max-w-2xl">
+
+            {/* Desktop Full Stack of Headlines */}
+            <div className="mt-8 max-w-2xl hidden sm:block">
               {MORPH_STEPS.map((m, i) => (
                 <motion.p
                   key={m}
@@ -98,11 +100,29 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
                 </motion.p>
               ))}
             </div>
-            <div className="mt-8 flex items-center gap-3">
+
+            {/* Mobile Active Headline Only (prevents vertical screen blowout) */}
+            <div className="mt-6 sm:hidden min-h-[64px] flex items-center">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={MORPH_STEPS[step]}
+                  initial={{ opacity: 0, y: 6, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-display text-[clamp(1.4rem,5.5vw,2rem)] font-bold tracking-tight text-white leading-tight"
+                >
+                  {MODE_LABEL[MORPH_STEPS[step]]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+
+            {/* Step Indicators */}
+            <div className="mt-6 sm:mt-8 flex items-center gap-3">
               {MORPH_STEPS.map((m, i) => (
                 <span
                   key={m}
-                  className={`h-0.5 w-10 rounded-full transition-all duration-500 ${
+                  className={`h-0.5 w-8 sm:w-10 rounded-full transition-all duration-500 ${
                     i <= step ? "bg-primary" : "bg-border-strong"
                   }`}
                 />
@@ -111,8 +131,10 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
                 {String(step + 1).padStart(2, "0")} / 0{MORPH_STEPS.length}
               </span>
             </div>
-            <div className="mt-10 flex justify-center lg:hidden">
-              <DeviceFrame mode={MORPH_STEPS[step] as Mode} className="scale-[0.8] origin-top" />
+
+            {/* Mobile Device Screen Preview (Responsive, Zero Overflow) */}
+            <div className="mt-8 flex justify-center lg:hidden w-full">
+              <ResponsiveDeviceFrame mode={MORPH_STEPS[step] as Mode} />
             </div>
           </div>
         </div>
@@ -183,7 +205,7 @@ export default function Home() {
       <Dock active={active} visible={introStarted} />
 
       {/* TOP NAV BAR */}
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 sm:px-10 bg-background/40 backdrop-blur-md border-b border-border/40">
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-5 py-3.5 sm:px-10 sm:py-5 bg-background/60 backdrop-blur-xl border-b border-border/40">
         <motion.a
           href="#home"
           initial={{ opacity: 0 }}
@@ -192,13 +214,20 @@ export default function Home() {
         >
           <Logo />
         </motion.a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <Link
             href="/brand-guidelines"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 font-mono text-[10px] tracking-wider uppercase text-muted-foreground hover:text-foreground hover:border-white/25 transition-colors"
           >
             Brand Assets
           </Link>
+          <a
+            href="#inquiry"
+            className="sm:hidden inline-flex items-center gap-1 rounded-full bg-[image:var(--gradient-violet)] px-3 py-1 font-mono text-[10px] font-bold text-white shadow-md shadow-primary/20 hover:opacity-90 transition-opacity"
+          >
+            <span>Start Build</span>
+            <ArrowUpRightIcon className="size-3" />
+          </a>
           <Magnetic strength={0.2} className="hidden sm:block">
             <a
               href="#contact"
@@ -215,7 +244,7 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex min-h-[85vh] items-center px-6 pt-20 pb-10 sm:px-10 overflow-hidden"
+        className="relative flex min-h-[85vh] items-center px-5 pt-24 pb-12 sm:px-10 sm:pt-20 sm:pb-10 overflow-hidden"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-7xl">
@@ -242,7 +271,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: introStarted ? 1 : 0, y: introStarted ? 0 : 16 }}
               transition={{ delay: 0.7, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 flex flex-wrap items-center gap-3"
+              className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3"
             >
               <PrimaryCta href="#contact">Start a build</PrimaryCta>
               <GhostCta href="#technology">Explore services</GhostCta>
@@ -251,7 +280,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: introStarted ? 1 : 0, y: introStarted ? 0 : 16 }}
               transition={{ delay: 0.85, duration: 0.9 }}
-              className="mt-14 flex flex-wrap gap-x-10 gap-y-4"
+              className="mt-10 sm:mt-14 flex flex-wrap gap-x-8 gap-y-4 sm:gap-x-10"
             >
               {[
                 ["50+", "Products Shipped"],
@@ -259,7 +288,7 @@ export default function Home() {
                 ["Sub-Sec", "Response Latency"],
               ].map(([n, l]) => (
                 <div key={l}>
-                  <div className="font-display text-2xl font-bold tracking-tight">{n}</div>
+                  <div className="font-display text-xl sm:text-2xl font-bold tracking-tight">{n}</div>
                   <div className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">
                     {l}
                   </div>
@@ -267,8 +296,8 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-          <div className="mt-16 flex justify-center lg:hidden">
-            <DeviceFrame mode={mode} className="scale-[0.78] origin-top" />
+          <div className="mt-12 flex justify-center lg:hidden w-full">
+            <ResponsiveDeviceFrame mode={mode} />
           </div>
         </div>
       </section>
@@ -277,7 +306,7 @@ export default function Home() {
       <MorphSection setMode={setMode} />
 
       {/* INQUIRY SECTION */}
-      <section id="inquiry" data-section data-mode="form" className="relative px-6 py-8 sm:px-10 sm:py-12 overflow-hidden">
+      <section id="inquiry" data-section data-mode="form" className="relative px-4 py-12 sm:px-10 sm:py-16 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.02] font-display text-[14vw] font-bold leading-none select-none text-center">
           START<br />BUILDING
         </div>
@@ -285,11 +314,11 @@ export default function Home() {
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
             Start Your Project
           </h2>
-          <p className="mt-1 text-[11px] text-muted-foreground">
+          <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
             Fill out your details below to receive an instant quote & dev server setup
           </p>
-          <div className="mt-6 flex justify-center w-full">
-            <DeviceFrame mode="form" className="scale-[0.88] sm:scale-100 origin-top shadow-2xl" />
+          <div className="mt-6 flex justify-center w-full max-w-full">
+            <ResponsiveDeviceFrame mode="form" />
           </div>
         </div>
       </section>
@@ -301,7 +330,7 @@ export default function Home() {
       <WorkBentoGrid />
 
       {/* ABOUT SECTION */}
-      <section id="about" data-section data-mode="chatbot" className="relative px-6 py-32 sm:px-10">
+      <section id="about" data-section data-mode="chatbot" className="relative px-5 py-24 sm:px-10 sm:py-32">
         <div className="mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw] lg:pr-6">
             <Reveal>
@@ -315,7 +344,7 @@ export default function Home() {
                 We focus strictly on engineering excellence: fast web platforms, autonomous AI bots, and custom cloud architecture. We provide dedicated development server access so you test live code in real-time.
               </p>
             </Reveal>
-            <div className="mt-12 grid gap-3 sm:grid-cols-2">
+            <div className="mt-10 sm:mt-12 grid gap-3 sm:grid-cols-2">
               {[
                 ["Dedicated Dev Server", "Every build runs on active development servers for transparent testing."],
                 ["Instant Prototype", "Live preview environments from week one so you see real working software."],
@@ -340,13 +369,13 @@ export default function Home() {
         id="contact"
         data-section
         data-mode="whatsapp"
-        className="relative px-6 pt-24 pb-44 sm:px-10"
+        className="relative px-5 pt-20 pb-36 sm:px-10 sm:pt-24 sm:pb-44"
       >
         <div className="halo pointer-events-none absolute bottom-10 left-1/2 size-[520px] -translate-x-1/2 opacity-60" />
         <div className="relative mx-auto w-full max-w-7xl">
           <Reveal>
             <Eyebrow>Contact Us</Eyebrow>
-            <h2 className="mt-6 font-display text-[clamp(2.4rem,8vw,5.5rem)] leading-[0.88] font-bold">
+            <h2 className="mt-6 font-display text-[clamp(2.2rem,8vw,5.5rem)] leading-[0.92] font-bold">
               LET&apos;S BUILD
               <br />
               <span className="text-gradient">YOUR NEXT PRODUCT.</span>
@@ -354,7 +383,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
               <PrimaryCta href="mailto:sowebuild.in@gmail.com">
                 Email Us: sowebuild.in@gmail.com
               </PrimaryCta>
@@ -369,17 +398,17 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
+          <div className="mt-16 sm:mt-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-border pt-6 font-mono text-[10px] tracking-[0.25em] text-muted-foreground uppercase">
             <div className="flex items-center gap-2">
               <Logo size="small" />
               <span className="ml-2">© {new Date().getFullYear()} SoWeBuild</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <Link href="/brand-guidelines" className="text-primary-glow hover:underline underline-offset-4 transition-colors">
-                Brand Guidelines & Assets
+                Brand Guidelines &amp; Assets
               </Link>
               <span>·</span>
-              <span>sowebuild.in · Development · Software · AI</span>
+              <span className="text-[9px] sm:text-[10px]">sowebuild.in · Dev Studio</span>
             </div>
           </div>
         </div>

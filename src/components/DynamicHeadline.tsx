@@ -51,7 +51,7 @@ export function DynamicHeadline({ active = true }: { active?: boolean }) {
           initial={{ y: "110%", opacity: 0 }}
           animate={{ y: active ? "0%" : "110%", opacity: active ? 1 : 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-medium tracking-tight leading-[1.1] text-muted-foreground"
+          className="text-[clamp(1.4rem,3.5vw,2.75rem)] font-medium tracking-tight leading-[1.1] text-muted-foreground"
         >
           You have a problem.
         </motion.p>
@@ -63,7 +63,7 @@ export function DynamicHeadline({ active = true }: { active?: boolean }) {
           initial={{ y: "110%", opacity: 0 }}
           animate={{ y: active ? "0%" : "110%", opacity: active ? 1 : 0 }}
           transition={{ duration: 0.9, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold tracking-tighter leading-[1.05] text-foreground flex flex-wrap items-baseline gap-x-3 sm:gap-x-4"
+          className="text-[clamp(1.85rem,5.8vw,4.5rem)] font-bold tracking-tighter leading-[1.05] text-foreground flex flex-wrap items-baseline gap-x-2.5 sm:gap-x-4"
         >
           <span>So we build</span>
 

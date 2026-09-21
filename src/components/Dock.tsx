@@ -75,14 +75,14 @@ export function Dock({ active, visible = true }: { active: string; visible?: boo
   const mouseX = useMotionValue(Infinity);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-3 sm:bottom-6">
+    <div className="pointer-events-none fixed inset-x-0 bottom-[max(0.75rem,env(safe-area-inset-bottom,0.75rem))] z-50 flex justify-center px-2 sm:px-3 sm:bottom-6">
       <motion.div
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: visible ? 0 : 40, opacity: visible ? 1 : 0 }}
         transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         onMouseMove={(e) => mouseX.set(e.clientX)}
         onMouseLeave={() => mouseX.set(Infinity)}
-        className="glass-strong pointer-events-auto flex items-center gap-1 rounded-full p-1.5"
+        className="glass-strong pointer-events-auto flex items-center gap-0.5 sm:gap-1 rounded-full p-1 sm:p-1.5 shadow-2xl backdrop-blur-2xl border border-white/15"
       >
         {ITEMS.map((it) => (
           <DockItem key={it.id} item={it} active={active} mouseX={mouseX} />
@@ -137,7 +137,7 @@ function DockItem({
       className="relative block group"
     >
       <div
-        className={`relative flex items-center gap-2 rounded-full px-3 py-2 transition-colors duration-200 sm:px-4 ${
+        className={`relative flex items-center gap-1.5 sm:gap-2 rounded-full px-2.5 py-1.5 sm:px-4 sm:py-2 transition-colors duration-200 ${
           isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
         }`}
       >
@@ -157,9 +157,9 @@ function DockItem({
         </span>
       </div>
       
-      {/* Pure CSS Tooltip - No React state needed */}
+      {/* Tooltip shown only on pointer-hover devices, never stuck on mobile touch */}
       <span
-        className="glass absolute -top-9 left-1/2 -translate-x-1/2 rounded-md px-2 py-1 font-mono text-[9px] tracking-widest whitespace-nowrap uppercase sm:hidden z-20 pointer-events-none opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-out"
+        className="glass absolute -top-9 left-1/2 -translate-x-1/2 rounded-md px-2 py-1 font-mono text-[9px] tracking-widest whitespace-nowrap uppercase hidden sm:hidden pointer-events-none opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-all duration-200 ease-out z-20"
       >
         {item.label}
       </span>

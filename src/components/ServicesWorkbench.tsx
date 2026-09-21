@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { DeviceFrame } from "@/components/DeviceSlab";
+import { DeviceFrame, ResponsiveDeviceFrame } from "@/components/DeviceSlab";
 import type { Mode } from "@/components/screens";
 
 /* ---------------------------------- icons ---------------------------------- */
@@ -276,7 +276,7 @@ export function ServicesWorkbench({
   };
 
   return (
-    <section id="technology" data-section data-mode={active.mode} className="relative px-6 py-20 sm:px-10 sm:py-28 overflow-hidden">
+    <section id="technology" data-section data-mode={active.mode} className="relative px-5 py-16 sm:px-10 sm:py-28 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="pointer-events-none absolute -top-40 right-1/4 size-[600px] rounded-full bg-primary/10 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-10 left-10 size-[450px] rounded-full bg-accent/10 blur-[120px]" />
@@ -321,10 +321,38 @@ export function ServicesWorkbench({
           </div>
         </div>
 
+        {/* Mobile Horizontal Discipline Selector Rail (Immediately Above Workbench) */}
+        <div className="lg:hidden mt-8 mb-2">
+          <div className="flex items-center justify-between pb-2 font-mono text-[11px] text-muted-foreground uppercase tracking-wider">
+            <span>Tap to Switch Demo ({SERVICES.length})</span>
+            <span className="text-primary-glow font-bold truncate max-w-[170px]">{active.name}</span>
+          </div>
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none snap-x -mx-1 px-1">
+            {SERVICES.map((s) => {
+              const isSelected = s.id === selectedId;
+              const IconComp = s.icon;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => handleSelect(s)}
+                  className={`snap-start shrink-0 flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-mono font-medium transition-all duration-200 border cursor-pointer ${
+                    isSelected
+                      ? "bg-primary/25 border-primary-glow text-white shadow-md shadow-primary/20"
+                      : "bg-white/[0.03] border-white/10 text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  }`}
+                >
+                  <IconComp className={`size-3.5 ${isSelected ? "text-primary-glow" : "text-muted-foreground"}`} />
+                  <span className="whitespace-nowrap">{s.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Interactive Master-Detail Layout */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 8 Interactive Service Cards (6 cols) */}
-          <div className="lg:col-span-6 space-y-3">
+        <div className="mt-4 lg:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Desktop Left Column: 8 Interactive Service Cards (6 cols, hidden on mobile) */}
+          <div className="hidden lg:block lg:col-span-6 space-y-3">
             <div className="flex items-center justify-between pb-2 font-mono text-[11px] text-muted-foreground uppercase tracking-wider">
               <span>Select Discipline to Inspect</span>
               <span className="text-primary-glow font-bold">{SERVICES.length} Capabilities</span>
@@ -411,9 +439,9 @@ export function ServicesWorkbench({
             </div>
           </div>
 
-          {/* Right Column: Live Interactive Capability Workbench (6 cols) */}
-          <div className="lg:col-span-6 lg:sticky lg:top-24">
-            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/[0.02] backdrop-blur-2xl p-6 sm:p-7 shadow-2xl shadow-black/50">
+          {/* Right Column: Live Interactive Capability Workbench (6 cols on desktop, full width on mobile) */}
+          <div className="lg:col-span-6 lg:sticky lg:top-24 w-full">
+            <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/[0.02] backdrop-blur-2xl p-5 sm:p-7 shadow-2xl shadow-black/50">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent opacity-60 pointer-events-none" />
               <div className="grid-field absolute inset-0 opacity-20 pointer-events-none" />
 
@@ -425,8 +453,8 @@ export function ServicesWorkbench({
                     <span className="size-2.5 rounded-full bg-amber-500/80" />
                     <span className="size-2.5 rounded-full bg-emerald-500/80" />
                   </div>
-                  <span className="ml-2 font-mono text-[10px] tracking-widest text-muted-foreground uppercase font-semibold truncate max-w-[200px] sm:max-w-none">
-                    CAPABILITY WORKBENCH // {active.id.toUpperCase()}
+                  <span className="ml-2 font-mono text-[10px] tracking-widest text-muted-foreground uppercase font-semibold truncate max-w-[170px] sm:max-w-none">
+                    WORKBENCH // {active.id.toUpperCase()}
                   </span>
                 </div>
 
@@ -436,8 +464,8 @@ export function ServicesWorkbench({
                 </div>
               </div>
 
-              {/* Live Interactive Screen Demo Area */}
-              <div className="relative z-10 my-2 flex justify-center items-center min-h-[350px] sm:min-h-[380px] rounded-2xl bg-black/50 border border-white/10 p-2 sm:p-4 overflow-hidden">
+              {/* Live Interactive Screen Demo Area with ResponsiveDeviceFrame */}
+              <div className="relative z-10 my-2 flex justify-center items-center min-h-[280px] sm:min-h-[380px] rounded-2xl bg-black/50 border border-white/10 p-2 sm:p-4 overflow-hidden w-full">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={active.id}
@@ -447,10 +475,7 @@ export function ServicesWorkbench({
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full flex justify-center items-center"
                   >
-                    <DeviceFrame
-                      mode={active.mode}
-                      className="scale-[0.80] sm:scale-[0.92] origin-center shadow-2xl"
-                    />
+                    <ResponsiveDeviceFrame mode={active.mode} />
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -459,8 +484,8 @@ export function ServicesWorkbench({
               <div className="relative z-10 mt-6 pt-5 border-t border-white/10 space-y-4">
                 {/* Title & Summary */}
                 <div>
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-display text-xl font-bold text-white tracking-tight">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-white tracking-tight">
                       {active.name}
                     </h3>
                     <span className="font-mono text-xs font-bold text-primary-glow">
@@ -486,7 +511,7 @@ export function ServicesWorkbench({
                 </div>
 
                 {/* Tech Stack Pills */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
                   <div className="flex flex-wrap gap-1.5 font-mono text-[9px]">
                     {active.stack.map((t) => (
                       <span key={t} className="rounded-md bg-black/60 border border-white/10 px-2 py-0.5 text-slate-300 font-medium">
@@ -498,13 +523,53 @@ export function ServicesWorkbench({
                   {/* Direct Action Link to Inquiry */}
                   <a
                     href="#inquiry"
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[image:var(--gradient-violet)] px-4 py-2 font-mono text-xs font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 shrink-0"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[image:var(--gradient-violet)] px-4 py-2 font-mono text-xs font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 shrink-0"
                   >
                     <span>Configure {active.inquiryLabel}</span>
                     <ArrowUpRightIcon className="size-3.5" />
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile Bottom: Full Card List (for mobile users who want to inspect all 8) */}
+          <div className="lg:hidden w-full space-y-3 mt-4">
+            <div className="flex items-center justify-between pb-1 font-mono text-[11px] text-muted-foreground uppercase tracking-wider">
+              <span>All 8 Engineering Disciplines</span>
+            </div>
+            <div className="grid gap-2">
+              {SERVICES.map((s, index) => {
+                const isSelected = s.id === selectedId;
+                const IconComponent = s.icon;
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => handleSelect(s)}
+                    className={`relative w-full text-left rounded-xl p-3.5 transition-all duration-200 border flex items-center justify-between gap-3 cursor-pointer ${
+                      isSelected
+                        ? "bg-white/[0.06] border-primary-glow/70 shadow-md ring-1 ring-primary-glow/30"
+                        : "bg-white/[0.015] border-white/10"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className={`size-8 rounded-lg flex items-center justify-center shrink-0 ${isSelected ? "bg-primary/20 text-primary-glow" : "bg-black/50 text-muted-foreground"}`}>
+                        <IconComponent className="size-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-[8px] text-muted-foreground">0{index + 1}</span>
+                          <span className="font-display text-sm font-bold text-white truncate">{s.name}</span>
+                        </div>
+                        <div className="text-[10px] text-muted-foreground truncate">{s.note}</div>
+                      </div>
+                    </div>
+                    <div className="shrink-0 font-mono text-[10px] font-bold text-emerald-400">
+                      {s.metric.value}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

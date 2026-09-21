@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -58,6 +58,71 @@ export function DeviceFrame({ mode, className }: { mode: DeviceMode; className?:
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-foreground/[0.04] to-foreground/[0.08]" />
       </div>
     </motion.div>
+  );
+}
+
+export function ResponsiveDeviceFrame({
+  mode,
+  className,
+}: {
+  mode: DeviceMode;
+  className?: string;
+}) {
+  const s = SHAPE[mode];
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const el = wrapperRef.current?.parentElement;
+    if (!el) return;
+
+    const measure = () => {
+      const parentW = el.clientWidth;
+      if (parentW > 0) {
+        const factor = Math.min(1, Math.max(0.35, (parentW - 4) / s.w));
+        setScale(factor);
+        setMounted(true);
+      }
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [s.w]);
+
+  const w = mounted ? Math.round(s.w * scale) : "100%";
+  const h = mounted ? Math.round(s.h * scale) : s.h;
+
+  return (
+    <div
+      ref={wrapperRef}
+      className={`relative overflow-hidden flex items-center justify-center max-w-full mx-auto ${className ?? ""}`}
+      style={{
+        width: w,
+        height: h,
+        maxWidth: s.w,
+      }}
+    >
+      <div
+        style={{
+          width: s.w,
+          height: s.h,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <DeviceFrame mode={mode} />
+      </div>
+    </div>
   );
 }
 
