@@ -198,7 +198,10 @@ const CHAT: { from: "bot" | "me"; text: string; tag?: string }[] = [
 function ChatbotScreen() {
   const [n, setN] = useState(1);
   useEffect(() => {
-    const id = setInterval(() => setN((v) => (v >= CHAT.length ? 1 : v + 1)), 1100);
+    const id = setInterval(() => {
+      if (typeof document !== "undefined" && document.hidden) return;
+      setN((v) => (v >= CHAT.length ? 1 : v + 1));
+    }, 2200);
     return () => clearInterval(id);
   }, []);
 
@@ -267,7 +270,10 @@ const WA = [
 function WhatsappScreen() {
   const [n, setN] = useState(1);
   useEffect(() => {
-    const id = setInterval(() => setN((v) => (v >= WA.length ? 1 : v + 1)), 1000);
+    const id = setInterval(() => {
+      if (typeof document !== "undefined" && document.hidden) return;
+      setN((v) => (v >= WA.length ? 1 : v + 1));
+    }, 2400);
     return () => clearInterval(id);
   }, []);
 

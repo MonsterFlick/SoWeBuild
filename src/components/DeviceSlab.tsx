@@ -30,7 +30,7 @@ export function DeviceFrame({ mode, className }: { mode: DeviceMode; className?:
       className={`glass-strong slab-shadow relative overflow-visible p-[6px] border border-primary/20 ${className ?? ""}`}
     >
       {/* Outer Neon Glow Ring */}
-      <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-primary/30 via-primary-glow/20 to-accent/30 blur-xl opacity-60 -z-10 animate-pulse" />
+      <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-primary/30 via-primary-glow/20 to-accent/30 blur-xl opacity-60 -z-10 animate-pulse pointer-events-none" />
 
       {/* Main Inner Screen Area */}
       <div
@@ -97,7 +97,7 @@ export function ResponsiveDeviceFrame({
   }, [s.w]);
 
   const w = mounted ? Math.round(s.w * scale) : "100%";
-  const h = mounted ? Math.round(s.h * scale) : s.h;
+  const h = mounted ? Math.round(s.h * scale) : undefined;
 
   return (
     <div
@@ -106,6 +106,7 @@ export function ResponsiveDeviceFrame({
       style={{
         width: w,
         height: h,
+        aspectRatio: !mounted ? `${s.w} / ${s.h}` : undefined,
         maxWidth: s.w,
       }}
     >
@@ -127,6 +128,27 @@ export function ResponsiveDeviceFrame({
 }
 
 export function DeviceSlab({
+  mode,
+  activeSection,
+}: {
+  mode: DeviceMode;
+  activeSection?: string;
+}) {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (!isDesktop) return null;
+
+  return <DesktopDeviceSlab mode={mode} activeSection={activeSection} />;
+}
+
+function DesktopDeviceSlab({
   mode,
   activeSection,
 }: {

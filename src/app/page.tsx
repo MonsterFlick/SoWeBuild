@@ -68,17 +68,45 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   const [step, setStep] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
+  // On desktop, scroll drives the morph steps
   useEffect(() => {
     return scrollYProgress.on("change", (v: number) => {
-      const i = Math.min(MORPH_STEPS.length - 1, Math.max(0, Math.floor(v * MORPH_STEPS.length)));
-      setStep(i);
-      setMode(MORPH_STEPS[i] as Mode);
+      // Only drive on desktop screens
+      if (typeof window !== "undefined" && window.innerWidth >= 1024) {
+        const i = Math.min(MORPH_STEPS.length - 1, Math.max(0, Math.floor(v * MORPH_STEPS.length)));
+        setStep(i);
+        setMode(MORPH_STEPS[i] as Mode);
+      }
     });
   }, [scrollYProgress, setMode]);
 
+  // On mobile, auto-cycle through steps if user hasn't tapped
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+    const timer = setInterval(() => {
+      setStep((prev) => {
+        const next = (prev + 1) % MORPH_STEPS.length;
+        setMode(MORPH_STEPS[next] as Mode);
+        return next;
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [setMode]);
+
+  const handleManualStep = (i: number) => {
+    setStep(i);
+    setMode(MORPH_STEPS[i] as Mode);
+  };
+
   return (
-    <section ref={ref} id="morph" data-section data-mode={MORPH_STEPS[step] as Mode} className="relative h-[220vh]">
-      <div className="sticky top-0 flex min-h-screen flex-col justify-center px-5 py-16 sm:px-10 sm:py-0">
+    <section
+      ref={ref}
+      id="morph"
+      data-section
+      data-mode={MORPH_STEPS[step] as Mode}
+      className="relative lg:h-[220vh] h-auto"
+    >
+      <div className="lg:sticky lg:top-0 flex min-h-auto lg:min-h-screen flex-col justify-center px-5 py-12 sm:px-10 lg:py-0">
         <div className="mx-auto w-full max-w-7xl">
           <div className="lg:max-w-[46vw] lg:pr-6">
             <Eyebrow>One development studio · every capability</Eyebrow>
@@ -94,15 +122,16 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
                     filter: step === i ? "blur(0px)" : "blur(3px)",
                   }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-display text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.05] font-bold tracking-tight"
+                  className="font-display text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.05] font-bold tracking-tight cursor-pointer"
+                  onClick={() => handleManualStep(i)}
                 >
                   {MODE_LABEL[m]}
                 </motion.p>
               ))}
             </div>
 
-            {/* Mobile Active Headline Only (prevents vertical screen blowout) */}
-            <div className="mt-6 sm:hidden min-h-[64px] flex items-center">
+            {/* Mobile Active Headline Only */}
+            <div className="mt-6 sm:hidden min-h-[58px] flex items-center">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={MORPH_STEPS[step]}
@@ -110,24 +139,31 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-display text-[clamp(1.4rem,5.5vw,2rem)] font-bold tracking-tight text-white leading-tight"
+                  className="font-display text-[clamp(1.35rem,5.2vw,1.9rem)] font-bold tracking-tight text-white leading-tight"
                 >
                   {MODE_LABEL[MORPH_STEPS[step]]}
                 </motion.p>
               </AnimatePresence>
             </div>
 
-            {/* Step Indicators */}
-            <div className="mt-6 sm:mt-8 flex items-center gap-3">
+            {/* Step Indicators / Interactive Buttons */}
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 sm:gap-3">
               {MORPH_STEPS.map((m, i) => (
-                <span
+                <button
                   key={m}
-                  className={`h-0.5 w-8 sm:w-10 rounded-full transition-all duration-500 ${
-                    i <= step ? "bg-primary" : "bg-border-strong"
+                  type="button"
+                  onClick={() => handleManualStep(i)}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] transition-all cursor-pointer ${
+                    i === step
+                      ? "bg-primary text-primary-foreground font-semibold shadow-md shadow-primary/20 scale-105"
+                      : "bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground hover:bg-white/10"
                   }`}
-                />
+                >
+                  <span className="opacity-70">0{i + 1}</span>
+                  <span className="capitalize">{m}</span>
+                </button>
               ))}
-              <span className="font-mono text-[10px] tracking-widest text-muted-foreground">
+              <span className="font-mono text-[10px] tracking-widest text-muted-foreground ml-1">
                 {String(step + 1).padStart(2, "0")} / 0{MORPH_STEPS.length}
               </span>
             </div>
@@ -152,42 +188,31 @@ export default function Home() {
   const [active, setActive] = useState("home");
   const [introStarted, setIntroStarted] = useState(false);
 
+  // Optimized IntersectionObserver with ZERO synchronous getBoundingClientRect layout trashing
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-section]"));
-    const map = new Map<string, { el: HTMLElement; ratio: number }>();
 
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            map.set(e.target.id, { el: e.target as HTMLElement, ratio: e.intersectionRatio });
-          } else {
-            map.delete(e.target.id);
+        let bestEntry: IntersectionObserverEntry | null = null;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
+              bestEntry = entry;
+            }
           }
-        });
+        }
 
-        let bestEl: HTMLElement | null = null;
-        let maxRatio = -1;
-        const mid = window.innerHeight * 0.45;
-
-        map.forEach(({ el, ratio }) => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= mid && rect.bottom >= mid) {
-            bestEl = el;
-          } else if (!bestEl && ratio > maxRatio) {
-            maxRatio = ratio;
-            bestEl = el;
-          }
-        });
-
-        if (bestEl) {
-          const target = bestEl as HTMLElement;
-          setActive(target.id);
+        if (bestEntry && bestEntry.intersectionRatio > 0.15) {
+          const target = bestEntry.target as HTMLElement;
+          setActive((prev) => (prev !== target.id ? target.id : prev));
           const m = target.dataset["mode"] as Mode | undefined;
-          if (m) setMode(m);
+          if (m) {
+            setMode((prev) => (prev !== m ? m : prev));
+          }
         }
       },
-      { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0] }
+      { threshold: [0.2, 0.5, 0.8] }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -244,7 +269,7 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex min-h-[85vh] items-center px-5 pt-24 pb-12 sm:px-10 sm:pt-20 sm:pb-10 overflow-hidden"
+        className="relative flex min-h-[80vh] items-center px-5 pt-24 pb-12 sm:px-10 sm:pt-20 sm:pb-14 overflow-hidden"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-7xl">
@@ -254,7 +279,7 @@ export default function Home() {
               animate={{ opacity: introStarted ? 1 : 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Eyebrow>Development Server & Full-Stack Engineering</Eyebrow>
+              <Eyebrow>Development Server &amp; Full-Stack Engineering</Eyebrow>
             </motion.div>
             <div className="mt-7">
               <DynamicHeadline active={introStarted} />
@@ -296,9 +321,6 @@ export default function Home() {
               ))}
             </motion.div>
           </div>
-          <div className="mt-12 flex justify-center lg:hidden w-full">
-            <ResponsiveDeviceFrame mode={mode} />
-          </div>
         </div>
       </section>
 
@@ -315,7 +337,7 @@ export default function Home() {
             Start Your Project
           </h2>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
-            Fill out your details below to receive an instant quote & dev server setup
+            Fill out your details below to receive an instant quote &amp; dev server setup
           </p>
           <div className="mt-6 flex justify-center w-full max-w-full">
             <ResponsiveDeviceFrame mode="form" />
@@ -330,21 +352,39 @@ export default function Home() {
       <WorkBentoGrid />
 
       {/* ABOUT SECTION */}
-      <section id="about" data-section data-mode="chatbot" className="relative px-5 py-24 sm:px-10 sm:py-32">
+      <section id="about" data-section data-mode="chatbot" className="relative px-5 py-20 sm:px-10 sm:py-32">
         <div className="mx-auto w-full max-w-7xl">
-          <div className="lg:max-w-[46vw] lg:pr-6">
-            <Reveal>
-              <Eyebrow>About SoWeBuild</Eyebrow>
-              <h2 className="mt-6 font-display text-[clamp(1.9rem,4.6vw,3.4rem)] leading-[1] font-bold">
-                Full-Stack Execution. Zero Handoffs.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                We focus strictly on engineering excellence: fast web platforms, autonomous AI bots, and custom cloud architecture. We provide dedicated development server access so you test live code in real-time.
-              </p>
-            </Reveal>
-            <div className="mt-10 sm:mt-12 grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Left Column: Mission & Philosophy */}
+            <div className="lg:col-span-5">
+              <Reveal>
+                <Eyebrow>About SoWeBuild</Eyebrow>
+                <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1] font-bold">
+                  Full-Stack Execution. Zero Handoffs.
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="mt-6 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                  We focus strictly on engineering excellence: fast web platforms, autonomous AI bots, and custom cloud architecture. We provide dedicated development server access so you test live code in real-time.
+                </p>
+              </Reveal>
+              <Reveal delay={0.15}>
+                <div className="mt-8 flex items-center gap-4 text-xs font-mono text-muted-foreground border-t border-border pt-6">
+                  <div className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-emerald-400" />
+                    <span className="text-foreground font-medium">Dedicated Dev Servers</span>
+                  </div>
+                  <span>·</span>
+                  <div className="flex items-center gap-2">
+                    <span className="size-2 rounded-full bg-primary-glow" />
+                    <span className="text-foreground font-medium">Direct Engineering Comms</span>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right Column: 4 Architecture Feature Cards */}
+            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
               {[
                 ["Dedicated Dev Server", "Every build runs on active development servers for transparent testing."],
                 ["Instant Prototype", "Live preview environments from week one so you see real working software."],
@@ -352,9 +392,9 @@ export default function Home() {
                 ["Clean Ownership", "Full access to codebase, API specs, schemas, and deployment pipelines."],
               ].map(([t, d], i) => (
                 <Reveal key={t} delay={0.05 * i}>
-                  <div className="glass group h-full rounded-2xl p-5 transition-transform duration-500 hover:-translate-y-1">
-                    <div className="size-1.5 rounded-full bg-primary" />
-                    <div className="mt-4 font-display text-base font-semibold tracking-tight">{t}</div>
+                  <div className="glass group h-full rounded-2xl p-5 sm:p-6 transition-transform duration-500 hover:-translate-y-1">
+                    <div className="size-2 rounded-full bg-primary" />
+                    <div className="mt-4 font-display text-base sm:text-lg font-semibold tracking-tight text-white">{t}</div>
                     <div className="mt-2 text-xs leading-relaxed text-muted-foreground">{d}</div>
                   </div>
                 </Reveal>

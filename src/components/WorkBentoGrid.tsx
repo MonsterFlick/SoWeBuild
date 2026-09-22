@@ -220,51 +220,105 @@ export function WorkBentoGrid() {
                 High-Performance Sports Nutrition &amp; 100% Anti-Counterfeit QR Engine
               </p>
 
-              {/* Live Interactive Browser Preview Frame */}
-              <div className="relative mt-4 flex-1 min-h-[220px] sm:min-h-[340px] w-full overflow-hidden rounded-2xl border border-white/15 bg-black/80 shadow-2xl flex flex-col">
-                {/* Browser Topbar Chrome */}
-                <div className="flex items-center justify-between px-3.5 py-2 bg-neutral-900/90 border-b border-white/10 text-xs font-mono shrink-0">
-                  <div className="flex items-center gap-1.5">
-                    <span className="size-2.5 rounded-full bg-red-500/80" />
-                    <span className="size-2.5 rounded-full bg-amber-500/80" />
-                    <span className="size-2.5 rounded-full bg-emerald-500/80" />
+                {/* Live Interactive Browser Preview Frame */}
+                <div className="relative mt-4 flex-1 min-h-[220px] sm:min-h-[300px] w-full overflow-hidden rounded-2xl border border-white/15 bg-black/80 shadow-2xl flex flex-col">
+                  {/* Browser Topbar Chrome */}
+                  <div className="flex items-center justify-between px-3.5 py-2 bg-neutral-900/90 border-b border-white/10 text-xs font-mono shrink-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="size-2.5 rounded-full bg-red-500/80" />
+                      <span className="size-2.5 rounded-full bg-amber-500/80" />
+                      <span className="size-2.5 rounded-full bg-emerald-500/80" />
+                    </div>
+
+                    <div className="flex items-center gap-1.5 rounded-md bg-black/60 border border-white/10 px-2 sm:px-3 py-0.5 text-[9px] sm:text-[10px] text-muted-foreground truncate">
+                      <LockIcon className="size-2.5 text-emerald-400 shrink-0" />
+                      <span className="text-slate-200 truncate">alphatech-nutrition.in</span>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
+                      <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>200 OK</span>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 rounded-md bg-black/60 border border-white/10 px-2 sm:px-3 py-0.5 text-[9px] sm:text-[10px] text-muted-foreground truncate">
-                    <LockIcon className="size-2.5 text-emerald-400 shrink-0" />
-                    <span className="text-slate-200 truncate">alphatech-nutrition.in</span>
-                  </div>
+                  {/* High-Fidelity Interactive Preview Canvas */}
+                  <div className="relative flex-1 w-full min-h-[180px] sm:min-h-[240px] overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950/30 to-black p-4 flex flex-col justify-between select-none">
+                    <div className="grid-field absolute inset-0 opacity-15 pointer-events-none" />
 
-                  <div className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
-                    <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>200 OK</span>
+                    {/* Preview Navbar */}
+                    <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2.5">
+                      <div className="flex items-center gap-2">
+                        <span className="font-display text-xs font-black tracking-widest text-white uppercase">
+                          ALPHA<span className="text-blue-400">TECH</span>
+                        </span>
+                        <span className="rounded bg-blue-500/20 px-1.5 py-0.5 font-mono text-[8px] text-blue-300 border border-blue-500/30">
+                          PRO SERIES
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 font-mono text-[9px] text-slate-400">
+                        <span className="hidden sm:inline">PRODUCTS</span>
+                        <span className="hidden sm:inline">VERIFY QR</span>
+                        <span className="rounded-full bg-blue-600 px-2 py-0.5 text-white font-bold text-[8px]">
+                          CART (0)
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Preview Hero Showcase */}
+                    <div className="relative z-10 my-auto py-2 grid sm:grid-cols-2 gap-3 items-center">
+                      <div className="space-y-1.5">
+                        <div className="font-mono text-[9px] text-blue-400 font-semibold tracking-wider uppercase flex items-center gap-1.5">
+                          <span className="size-1.5 rounded-full bg-blue-400 animate-ping" />
+                          CRYPTOGRAPHIC BATCH TRACKING
+                        </div>
+                        <h4 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
+                          100% Pure Whey Isolate &amp; Lab-Tested Creatine
+                        </h4>
+                        <p className="text-[10px] text-slate-400 leading-snug line-clamp-2">
+                          Scannable anti-counterfeit QR cryptographic seal on every tub with instant lab certificate dispatch.
+                        </p>
+                      </div>
+
+                      {/* Micro QR Validation Card */}
+                      <div className="rounded-xl border border-blue-500/30 bg-blue-950/40 backdrop-blur-md p-2.5 space-y-1.5">
+                        <div className="flex items-center justify-between font-mono text-[8px]">
+                          <span className="text-slate-400">BATCH VALIDATION</span>
+                          <span className="text-emerald-400 font-bold flex items-center gap-1">
+                            <span className="size-1.5 rounded-full bg-emerald-400" />
+                            VERIFIED AUTHENTIC
+                          </span>
+                        </div>
+                        <div className="font-mono text-[9px] font-bold text-blue-200 tracking-wider">
+                          #AT-2025-W90-8842
+                        </div>
+                        <div className="flex items-center gap-2 pt-0.5">
+                          <span className="rounded bg-black/60 px-1.5 py-0.5 font-mono text-[8px] text-slate-300">
+                            Purity: 93.8%
+                          </span>
+                          <span className="rounded bg-black/60 px-1.5 py-0.5 font-mono text-[8px] text-slate-300">
+                            Heavy Metals: 0.00%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Preview Footer Direct Visit Link */}
+                    <div className="relative z-10 pt-2 border-t border-white/10 flex items-center justify-between">
+                      <span className="font-mono text-[9px] text-slate-500">
+                        Production build deployed on Vercel Edge
+                      </span>
+                      <a
+                        href="https://alphatech-nutrition.in"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 rounded-full bg-blue-500/20 border border-blue-400/40 px-2.5 py-1 font-mono text-[9px] font-bold text-blue-300 hover:bg-blue-500 hover:text-white transition-all shadow-md"
+                      >
+                        <span>Open Live Platform</span>
+                        <ArrowUpRightIcon className="size-2.5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                {/* Live Site Viewport Container */}
-                <div className="relative flex-1 w-full h-[200px] sm:h-[300px] overflow-hidden bg-neutral-950">
-                  <iframe
-                    src="https://alphatech-nutrition.in"
-                    title="Alpha Tech Nutrition Live Preview"
-                    loading="lazy"
-                    className="w-[142.85%] h-[142.85%] scale-[0.7] origin-top-left border-0"
-                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                  />
-                  
-                  {/* Subtle glass hover overlay */}
-                  <a
-                    href="https://alphatech-nutrition.in"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="absolute inset-0 bg-transparent hover:bg-black/20 transition-colors flex items-center justify-center group/btn pointer-events-auto"
-                    title="Open alphatech-nutrition.in in new tab"
-                  >
-                    <span className="opacity-0 group-hover/btn:opacity-100 transition-opacity rounded-full bg-black/80 border border-white/20 px-3.5 py-1.5 text-xs font-mono text-white flex items-center gap-1.5 backdrop-blur-md shadow-xl">
-                      Open Full Site <ArrowUpRightIcon className="size-3" />
-                    </span>
-                  </a>
-                </div>
-              </div>
             </div>
 
             {/* Bottom Tech Stack & Feature Tag */}

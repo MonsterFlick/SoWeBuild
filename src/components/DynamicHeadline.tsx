@@ -14,22 +14,18 @@ const WORDS = [
   "AI automation.",
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const wordVariants = {
+  hidden: { opacity: 0, y: 18 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.05, delayChildren: 0.1 }
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
   },
   exit: {
     opacity: 0,
-    transition: { staggerChildren: 0.02, staggerDirection: -1 }
-  }
-};
-
-const letterVariants = {
-  hidden: { opacity: 0, filter: "blur(12px)", y: 20 },
-  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-  exit: { opacity: 0, filter: "blur(8px)", y: -15, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } }
+    y: -16,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] as const },
+  },
 };
 
 export function DynamicHeadline({ active = true }: { active?: boolean }) {
@@ -67,26 +63,18 @@ export function DynamicHeadline({ active = true }: { active?: boolean }) {
         >
           <span>So we build</span>
 
-          {/* Letter-by-Letter Blur Animation */}
-          <span className="inline-grid [grid-template-areas:'stack'] align-baseline overflow-visible text-primary-glow">
+          {/* High-Performance Smooth Word Transition */}
+          <span className="inline-grid [grid-template-areas:'stack'] align-baseline overflow-visible text-primary-glow min-w-[140px] sm:min-w-[240px]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={WORDS[index]}
-                variants={containerVariants}
+                variants={wordVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="[grid-area:stack] whitespace-nowrap flex"
+                className="[grid-area:stack] whitespace-nowrap will-change-transform"
               >
-                {WORDS[index].split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    variants={letterVariants}
-                    style={{ display: "inline-block", whiteSpace: "pre" }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
+                {WORDS[index]}
               </motion.span>
             </AnimatePresence>
           </span>
