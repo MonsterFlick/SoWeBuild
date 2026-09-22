@@ -84,17 +84,17 @@ const shell = "absolute inset-0 flex flex-col overflow-hidden bg-background text
 
 function Chrome({ title, status = "ONLINE" }: { title: string; status?: string }) {
   return (
-    <div className="flex shrink-0 items-center justify-between border-b border-border/80 px-3.5 py-2.5 bg-surface/70 backdrop-blur-md">
+    <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-4 py-2.5 bg-black/80 backdrop-blur-xl">
       <div className="flex items-center gap-2">
-        <span className="size-2 rounded-full bg-destructive/80" />
-        <span className="size-2 rounded-full bg-primary-glow/80" />
-        <span className="size-2 rounded-full bg-cyan/80" />
-        <span className="ml-2 truncate font-mono text-[10px] tracking-widest text-muted-foreground uppercase font-semibold">
+        <span className="size-2.5 rounded-full bg-red-500/90 shadow-[0_0_8px_rgba(239,68,68,0.7)]" />
+        <span className="size-2.5 rounded-full bg-amber-400/90 shadow-[0_0_8px_rgba(251,191,36,0.7)]" />
+        <span className="size-2.5 rounded-full bg-emerald-400/90 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+        <span className="ml-2.5 truncate font-mono text-[10px] tracking-widest text-slate-300 uppercase font-bold">
           {title}
         </span>
       </div>
-      <div className="flex items-center gap-1.5 font-mono text-[9px] text-cyan bg-cyan/10 px-2 py-0.5 rounded-full border border-cyan/20">
-        <span className="size-1.5 rounded-full bg-cyan animate-pulse" />
+      <div className="flex items-center gap-1.5 font-mono text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30 shadow-sm">
+        <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
         {status}
       </div>
     </div>
@@ -185,14 +185,23 @@ function WebsiteScreen() {
     </div>
   );
 }
-
-/* ---------------------------------- chatbot --------------------------------- */
+/* ---------------------------------- chatbot --------------------------------- */
 
 const CHAT: { from: "bot" | "me"; text: string; tag?: string }[] = [
-  { from: "bot", text: "Hello! I'm the SoWeBuild AI Agent. How can I accelerate your product today?", tag: "RAG Agent v4" },
-  { from: "me", text: "Can you build a custom WhatsApp bot with PostgreSQL CRM sync?" },
-  { from: "bot", text: "Yes! We wire real-time webhooks, score lead intent, and handle instant automated bookings.", tag: "Intent 99.4%" },
-  { from: "me", text: "Deploy to dev server!" },
+  {
+    from: "bot",
+    text: "Hi! I'm the SoWeBuild AI Agent. How can I scale your product today?",
+    tag: "RAG Agent v4 · Live",
+  },
+  {
+    from: "me",
+    text: "Can you build a custom AI chatbot with documentation RAG & CRM sync?",
+  },
+  {
+    from: "bot",
+    text: "Yes! We engineer domain-trained RAG bots with <800ms latency & zero hallucination.",
+    tag: "99.8% Grounded",
+  },
 ];
 
 function ChatbotScreen() {
@@ -201,57 +210,85 @@ function ChatbotScreen() {
     const id = setInterval(() => {
       if (typeof document !== "undefined" && document.hidden) return;
       setN((v) => (v >= CHAT.length ? 1 : v + 1));
-    }, 2200);
+    }, 2500);
     return () => clearInterval(id);
   }, []);
 
   return (
     <div className={shell}>
-      <Chrome title="ai-agent · RAG pipeline" status="ACTIVE" />
-      <div className="flex flex-1 flex-col justify-end gap-2 p-3">
-        {CHAT.slice(0, n).map((m, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.35 }}
-            className={`max-w-[85%] flex flex-col gap-1 ${
-              m.from === "bot" ? "self-start" : "self-end"
-            }`}
-          >
-            <div
-              className={
-                m.from === "bot"
-                  ? "rounded-2xl rounded-bl-sm bg-surface-2 border border-border/60 px-3 py-2 text-[10px] leading-relaxed text-foreground/90 shadow-md"
-                  : "rounded-2xl rounded-br-sm bg-primary px-3 py-2 text-[10px] leading-relaxed text-primary-foreground font-medium shadow-md"
-              }
-            >
-              {m.text}
+      {/* Mobile Smartphone Header */}
+      <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-3.5 py-2.5 bg-black/90 backdrop-blur-xl">
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <div className="size-6 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-[9px]">
+              AI
             </div>
-            {m.tag && (
-              <span className="font-mono text-[7.5px] text-muted-foreground px-1">
-                {m.tag}
-              </span>
-            )}
-          </motion.div>
-        ))}
+            <span className="absolute bottom-0 right-0 size-2 rounded-full bg-emerald-400 border border-black shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+          </div>
+          <div>
+            <div className="text-[10px] leading-tight font-bold text-white flex items-center gap-1">
+              SoWeBuild AI Agent
+            </div>
+            <div className="text-[8px] font-mono text-slate-400">RAG pipeline · v4.2</div>
+          </div>
+        </div>
+        <span className="font-mono text-[7.5px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
+          ONLINE
+        </span>
+      </div>
 
-        <div className="flex items-center gap-1.5 self-start rounded-full bg-surface-2 px-3 py-1 border border-border/40">
-          <span className="font-mono text-[8px] text-primary-glow font-medium">AI Typing</span>
-          {[0, 1, 2].map((i) => (
-            <span
+      <div className="flex flex-1 flex-col justify-between p-3 space-y-2 overflow-hidden bg-gradient-to-b from-background via-surface/40 to-background">
+        {/* Active Chat Conversation Feed */}
+        <div className="flex flex-col gap-2 flex-1 justify-center">
+          {CHAT.slice(0, n).map((m, i) => (
+            <motion.div
               key={i}
-              className="size-1 rounded-full bg-primary-glow"
-              style={{ animation: `typing-dot 1.2s ${i * 0.15}s infinite` }}
-            />
+              initial={{ opacity: 0, y: 8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className={`max-w-[88%] flex flex-col gap-0.5 ${
+                m.from === "bot" ? "self-start" : "self-end"
+              }`}
+            >
+              <div
+                className={
+                  m.from === "bot"
+                    ? "rounded-2xl rounded-bl-xs bg-surface-2/90 border border-white/10 px-2.5 py-1.5 text-[9.5px] leading-snug text-slate-100 shadow-sm"
+                    : "rounded-2xl rounded-br-xs bg-[image:var(--gradient-violet)] px-2.5 py-1.5 text-[9.5px] leading-snug text-white font-medium shadow-md shadow-primary/20"
+                }
+              >
+                {m.text}
+              </div>
+              {m.tag && (
+                <span className="font-mono text-[7.5px] text-primary-glow/80 px-1 pt-0.5">
+                  {m.tag}
+                </span>
+              )}
+            </motion.div>
           ))}
+
+          {/* AI Typing Indicator */}
+          <div className="flex items-center gap-1.5 self-start rounded-full bg-surface-2 px-3 py-1 border border-white/10">
+            <span className="font-mono text-[8px] text-primary-glow font-semibold">AI Thinking</span>
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="size-1 rounded-full bg-primary-glow"
+                style={{ animation: `typing-dot 1.2s ${i * 0.15}s infinite` }}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-1 flex items-center gap-2 rounded-full border border-border/80 bg-surface/60 px-3 py-2 shadow-inner">
-          <span className="text-[9px] text-muted-foreground flex-1 truncate">Ask AI Agent anything…</span>
-          <span className="size-5 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white">
-            <ArrowUpIcon className="size-3 text-white" />
-          </span>
+        {/* Smartphone Bottom Input & Home Gesture Bar */}
+        <div className="flex flex-col gap-1.5 pt-1">
+          <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/80 px-3 py-1.5 shadow-inner">
+            <span className="text-[9.5px] text-slate-400 flex-1 truncate">Ask AI Agent anything…</span>
+            <span className="size-4.5 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white shrink-0">
+              <ArrowUpIcon className="size-2.5 text-white" />
+            </span>
+          </div>
+          <div className="h-1 w-20 rounded-full bg-white/20 mx-auto pointer-events-none" />
         </div>
       </div>
     </div>
@@ -261,10 +298,9 @@ function ChatbotScreen() {
 /* --------------------------------- whatsapp --------------------------------- */
 
 const WA = [
-  { from: "them", text: "Hey! Can I test the development server demo for our web app?", time: "16:04" },
-  { from: "bot", text: "Hi! Your dev environment is ready at dev.sowebuild.in. Sent login credentials!", time: "16:04" },
+  { from: "them", text: "Hey! Can I test our web app on the dev server?", time: "16:04" },
+  { from: "bot", text: "Hi! Your dev environment is ready at dev.sowebuild.in. Credentials sent!", time: "16:04" },
   { from: "bot", text: "Webhook triggered: Lead qualified & stored in PostgreSQL.", time: "16:05" },
-  { from: "them", text: "Instant execution! Thanks SoWeBuild team!", time: "16:05" },
 ];
 
 function WhatsappScreen() {
@@ -273,64 +309,74 @@ function WhatsappScreen() {
     const id = setInterval(() => {
       if (typeof document !== "undefined" && document.hidden) return;
       setN((v) => (v >= WA.length ? 1 : v + 1));
-    }, 2400);
+    }, 2600);
     return () => clearInterval(id);
   }, []);
 
   return (
     <div className={shell}>
-      <div className="flex shrink-0 items-center justify-between border-b border-border bg-surface-2/80 px-3 py-2">
+      {/* Authentic WhatsApp Business Header */}
+      <div className="flex shrink-0 items-center justify-between bg-[#1f2c34] border-b border-white/10 px-3.5 py-2.5">
         <div className="flex items-center gap-2">
-          <span className="grid size-6 place-items-center rounded-full bg-emerald-500 text-black shadow-sm">
-            <CheckIcon className="size-3.5 text-black stroke-[3]" />
-          </span>
+          <div className="relative">
+            <span className="grid size-6 place-items-center rounded-full bg-[#00a884] text-white shadow-sm font-bold text-[10px]">
+              WA
+            </span>
+          </div>
           <div>
-            <div className="text-[10.5px] leading-none font-bold flex items-center gap-1">
+            <div className="text-[10px] leading-tight font-bold text-white flex items-center gap-1">
               SoWeBuild Dev Bot
-              <span className="text-emerald-400 text-[9px]">
-                <CheckIcon className="size-2.5 inline text-emerald-400 stroke-[3]" />
+              <span className="text-[#00a884]">
+                <CheckIcon className="size-3 inline text-[#00a884] stroke-[3]" />
               </span>
             </div>
-            <div className="mt-0.5 font-mono text-[8px] text-cyan">WhatsApp Automation API</div>
+            <div className="text-[7.5px] font-mono text-[#8696a0]">WhatsApp Business API · 24/7</div>
           </div>
         </div>
-        <span className="font-mono text-[8px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20">
-          24/7 LIVE
+        <span className="font-mono text-[7.5px] bg-[#00a884]/15 text-[#00a884] px-2 py-0.5 rounded-full border border-[#00a884]/30 font-bold">
+          VERIFIED
         </span>
       </div>
 
-      <div className="scanline flex flex-1 flex-col justify-end gap-2 p-3">
-        {WA.slice(0, n).map((m, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: m.from === "bot" ? 16 : -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`max-w-[82%] flex flex-col ${
-              m.from === "bot" ? "self-end items-end" : "self-start items-start"
-            }`}
-          >
-            <div
-              className={
-                m.from === "bot"
-                  ? "rounded-xl rounded-tr-none bg-primary/90 px-3 py-2 text-[10px] text-primary-foreground shadow-sm"
-                  : "rounded-xl rounded-tl-none bg-surface-2 px-3 py-2 text-[10px] text-foreground/90 border border-border/40 shadow-sm"
-              }
+      {/* Dark WhatsApp Theme Chat Body */}
+      <div className="flex flex-1 flex-col justify-between p-3 space-y-2 overflow-hidden bg-[#0b141a]">
+        <div className="flex flex-col gap-2 flex-1 justify-center">
+          {WA.slice(0, n).map((m, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: m.from === "bot" ? 12 : -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`max-w-[88%] flex flex-col ${
+                m.from === "bot" ? "self-end items-end" : "self-start items-start"
+              }`}
             >
-              {m.text}
-            </div>
-            <span className="font-mono text-[7px] text-muted-foreground mt-0.5 px-1 flex items-center gap-0.5">
-              {m.time} {m.from === "bot" && <CheckIcon className="size-2 text-cyan inline stroke-[3]" />}
-            </span>
-          </motion.div>
-        ))}
-
-        <div className="flex items-center gap-1.5 pt-1">
-          {["[Request Demo]", "[View Pricing]", "[API Docs]"].map((chip) => (
-            <span key={chip} className="rounded-full bg-primary/10 border border-primary/30 px-2 py-1 font-mono text-[8px] text-primary-glow font-medium">
-              {chip}
-            </span>
+              <div
+                className={
+                  m.from === "bot"
+                    ? "rounded-xl rounded-tr-none bg-[#005c4b] px-3 py-1.5 text-[9.5px] text-white shadow-sm"
+                    : "rounded-xl rounded-tl-none bg-[#202c33] px-3 py-1.5 text-[9.5px] text-slate-100 border border-white/5 shadow-sm"
+                }
+              >
+                {m.text}
+              </div>
+              <span className="font-mono text-[7px] text-[#8696a0] mt-0.5 px-1 flex items-center gap-0.5">
+                {m.time} {m.from === "bot" && <span className="text-[#53bdeb] font-bold">✓✓</span>}
+              </span>
+            </motion.div>
           ))}
+        </div>
+
+        {/* Quick Action Chips & Smartphone Gesture Bar */}
+        <div className="flex flex-col gap-2 pt-1">
+          <div className="flex items-center gap-1.5">
+            {["[Request Demo]", "[View Pricing]", "[API Docs]"].map((chip) => (
+              <span key={chip} className="rounded-full bg-[#005c4b]/20 border border-[#005c4b]/40 px-2 py-0.5 font-mono text-[7.5px] text-[#25d366] font-semibold">
+                {chip}
+              </span>
+            ))}
+          </div>
+          <div className="h-1 w-20 rounded-full bg-white/20 mx-auto pointer-events-none" />
         </div>
       </div>
     </div>

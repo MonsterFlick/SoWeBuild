@@ -13,7 +13,7 @@ import { Logo } from "@/components/Logo";
 import { IntroLoader } from "@/components/IntroLoader";
 import { DynamicHeadline } from "@/components/DynamicHeadline";
 import { WorkBentoGrid } from "@/components/WorkBentoGrid";
-import { ServicesWorkbench } from "@/components/ServicesWorkbench";
+import { InquirySection } from "@/components/InquirySection";
 
 /* ------------------------------- primitives -------------------------------- */
 
@@ -66,17 +66,22 @@ const MORPH_STEPS: Mode[] = ["website", "chatbot", "whatsapp", "dashboard"];
 function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
-  // On desktop, scroll drives the morph steps
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  // Real-time 60FPS scroll tracking
   useEffect(() => {
-    return scrollYProgress.on("change", (v: number) => {
-      // Only drive on desktop screens
-      if (typeof window !== "undefined" && window.innerWidth >= 1024) {
-        const i = Math.min(MORPH_STEPS.length - 1, Math.max(0, Math.floor(v * MORPH_STEPS.length)));
-        setStep(i);
-        setMode(MORPH_STEPS[i] as Mode);
-      }
+    return scrollYProgress.on("change", (latest) => {
+      if (typeof window === "undefined" || window.innerWidth < 1024) return;
+      const i = Math.min(
+        MORPH_STEPS.length - 1,
+        Math.max(0, Math.floor(latest * MORPH_STEPS.length))
+      );
+      setStep(i);
+      setMode(MORPH_STEPS[i] as Mode);
     });
   }, [scrollYProgress, setMode]);
 
@@ -89,7 +94,7 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
         setMode(MORPH_STEPS[next] as Mode);
         return next;
       });
-    }, 4000);
+    }, 3500);
     return () => clearInterval(timer);
   }, [setMode]);
 
@@ -104,7 +109,7 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
       id="morph"
       data-section
       data-mode={MORPH_STEPS[step] as Mode}
-      className="relative lg:h-[220vh] h-auto"
+      className="relative lg:h-[180vh] h-auto"
     >
       <div className="lg:sticky lg:top-0 flex min-h-auto lg:min-h-screen flex-col justify-center px-5 py-12 sm:px-10 lg:py-0">
         <div className="mx-auto w-full max-w-7xl">
@@ -117,12 +122,12 @@ function MorphSection({ setMode }: { setMode: (m: Mode) => void }) {
                 <motion.p
                   key={m}
                   animate={{
-                    opacity: step === i ? 1 : 0.16,
-                    x: step === i ? 0 : -10,
-                    filter: step === i ? "blur(0px)" : "blur(3px)",
+                    opacity: step === i ? 1 : 0.15,
+                    x: step === i ? 0 : -6,
+                    filter: step === i ? "blur(0px)" : "blur(2px)",
                   }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="font-display text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.05] font-bold tracking-tight cursor-pointer"
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-display text-[clamp(1.6rem,4.2vw,3.4rem)] leading-[1.08] font-bold tracking-tight cursor-pointer"
                   onClick={() => handleManualStep(i)}
                 >
                   {MODE_LABEL[m]}
@@ -269,7 +274,7 @@ export default function Home() {
         id="home"
         data-section
         data-mode="website"
-        className="relative flex min-h-[80vh] items-center px-5 pt-24 pb-12 sm:px-10 sm:pt-20 sm:pb-14 overflow-hidden"
+        className="relative flex min-h-[85vh] items-center px-5 pt-32 pb-16 sm:px-10 sm:pt-36 sm:pb-24 lg:pt-36 overflow-hidden"
       >
         <div className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div className="relative mx-auto w-full max-w-7xl">
@@ -299,26 +304,7 @@ export default function Home() {
               className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3"
             >
               <PrimaryCta href="#contact">Start a build</PrimaryCta>
-              <GhostCta href="#technology">Explore services</GhostCta>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: introStarted ? 1 : 0, y: introStarted ? 0 : 16 }}
-              transition={{ delay: 0.85, duration: 0.9 }}
-              className="mt-10 sm:mt-14 flex flex-wrap gap-x-8 gap-y-4 sm:gap-x-10"
-            >
-              {[
-                ["50+", "Products Shipped"],
-                ["99.9%", "Uptime Guaranteed"],
-                ["Sub-Sec", "Response Latency"],
-              ].map(([n, l]) => (
-                <div key={l}>
-                  <div className="font-display text-xl sm:text-2xl font-bold tracking-tight">{n}</div>
-                  <div className="font-mono text-[9px] tracking-[0.25em] text-muted-foreground uppercase">
-                    {l}
-                  </div>
-                </div>
-              ))}
+              <GhostCta href="#work">Explore work</GhostCta>
             </motion.div>
           </div>
         </div>
@@ -328,48 +314,30 @@ export default function Home() {
       <MorphSection setMode={setMode} />
 
       {/* INQUIRY SECTION */}
-      <section id="inquiry" data-section data-mode="form" className="relative px-4 py-12 sm:px-10 sm:py-16 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.02] font-display text-[14vw] font-bold leading-none select-none text-center">
-          START<br />BUILDING
-        </div>
-        <div className="relative mx-auto w-full max-w-4xl flex flex-col items-center text-center z-10">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
-            Start Your Project
-          </h2>
-          <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
-            Fill out your details below to receive an instant quote &amp; dev server setup
-          </p>
-          <div className="mt-6 flex justify-center w-full max-w-full">
-            <ResponsiveDeviceFrame mode="form" />
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES & CAPABILITIES WORKBENCH */}
-      <ServicesWorkbench onSelectService={(m) => setMode(m)} />
+      <InquirySection />
 
       {/* WORK SECTION */}
       <WorkBentoGrid />
 
       {/* ABOUT SECTION */}
-      <section id="about" data-section data-mode="chatbot" className="relative px-5 py-20 sm:px-10 sm:py-32">
+      <section id="about" data-section data-mode="chatbot" className="relative px-5 py-14 sm:px-10 sm:py-20">
         <div className="mx-auto w-full max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
             {/* Left Column: Mission & Philosophy */}
             <div className="lg:col-span-5">
               <Reveal>
                 <Eyebrow>About SoWeBuild</Eyebrow>
-                <h2 className="mt-6 font-display text-[clamp(2rem,4.5vw,3.5rem)] leading-[1] font-bold">
+                <h2 className="mt-5 font-display text-[clamp(2rem,4.5vw,3.2rem)] leading-[1] font-bold">
                   Full-Stack Execution. Zero Handoffs.
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mt-6 text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  We focus strictly on engineering excellence: fast web platforms, autonomous AI bots, and custom cloud architecture. We provide dedicated development server access so you test live code in real-time.
+                <p className="mt-4 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  We focus strictly on engineering excellence: fast web platforms, autonomous AI bots, and custom cloud architecture with active development server testing.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
-                <div className="mt-8 flex items-center gap-4 text-xs font-mono text-muted-foreground border-t border-border pt-6">
+                <div className="mt-6 flex items-center gap-4 text-xs font-mono text-muted-foreground border-t border-border pt-5">
                   <div className="flex items-center gap-2">
                     <span className="size-2 rounded-full bg-emerald-400" />
                     <span className="text-foreground font-medium">Dedicated Dev Servers</span>
@@ -384,7 +352,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: 4 Architecture Feature Cards */}
-            <div className="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+            <div className="lg:col-span-7 grid gap-3.5 sm:grid-cols-2">
               {[
                 ["Dedicated Dev Server", "Every build runs on active development servers for transparent testing."],
                 ["Instant Prototype", "Live preview environments from week one so you see real working software."],
@@ -392,10 +360,10 @@ export default function Home() {
                 ["Clean Ownership", "Full access to codebase, API specs, schemas, and deployment pipelines."],
               ].map(([t, d], i) => (
                 <Reveal key={t} delay={0.05 * i}>
-                  <div className="glass group h-full rounded-2xl p-5 sm:p-6 transition-transform duration-500 hover:-translate-y-1">
+                  <div className="glass group h-full rounded-xl p-4 sm:p-5 transition-transform duration-300 hover:-translate-y-1">
                     <div className="size-2 rounded-full bg-primary" />
-                    <div className="mt-4 font-display text-base sm:text-lg font-semibold tracking-tight text-white">{t}</div>
-                    <div className="mt-2 text-xs leading-relaxed text-muted-foreground">{d}</div>
+                    <div className="mt-3 font-display text-base font-semibold tracking-tight text-white">{t}</div>
+                    <div className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{d}</div>
                   </div>
                 </Reveal>
               ))}
@@ -409,7 +377,7 @@ export default function Home() {
         id="contact"
         data-section
         data-mode="whatsapp"
-        className="relative px-5 pt-20 pb-36 sm:px-10 sm:pt-24 sm:pb-44"
+        className="relative px-5 pt-16 pb-28 sm:px-10 sm:pt-20 sm:pb-32"
       >
         <div className="halo pointer-events-none absolute bottom-10 left-1/2 size-[520px] -translate-x-1/2 opacity-60" />
         <div className="relative mx-auto w-full max-w-7xl">

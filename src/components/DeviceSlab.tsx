@@ -9,50 +9,122 @@ import {
   useScroll,
   useSpring,
   useTransform,
+  type MotionValue,
 } from "motion/react";
 
 import { Screen, type DeviceMode } from "./screens";
 
 const SHAPE: Record<DeviceMode, { w: number; h: number; r: number; notch: boolean }> = {
-  website: { w: 470, h: 320, r: 18, notch: false },
-  chatbot: { w: 310, h: 420, r: 30, notch: false },
-  whatsapp: { w: 270, h: 450, r: 38, notch: true },
-  dashboard: { w: 490, h: 330, r: 14, notch: false },
+  website: { w: 520, h: 350, r: 20, notch: false },
+  chatbot: { w: 340, h: 460, r: 32, notch: false },
+  whatsapp: { w: 300, h: 480, r: 36, notch: false },
+  dashboard: { w: 540, h: 360, r: 16, notch: false },
   form: { w: 450, h: 575, r: 22, notch: false },
 };
 
-export function DeviceFrame({ mode, className }: { mode: DeviceMode; className?: string }) {
+export function DeviceFrame({
+  mode,
+  className,
+  pathLength,
+}: {
+  mode: DeviceMode;
+  className?: string;
+  pathLength?: MotionValue<number>;
+}) {
   const s = SHAPE[mode];
+  const isForm = mode === "form";
+
   return (
     <motion.div
-      animate={{ width: s.w, height: s.h, borderRadius: s.r + 8 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      className={`glass-strong slab-shadow relative overflow-visible p-[6px] border border-primary/20 ${className ?? ""}`}
+      animate={{ width: s.w, height: s.h, borderRadius: s.r + 10 }}
+      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+      className={`relative overflow-visible p-[7px] bg-gradient-to-b from-white/15 via-black/90 to-purple-950/80 border border-white/20 rounded-[inherit] shadow-[0_30px_80px_-15px_rgba(0,0,0,0.95),0_0_90px_rgba(168,85,247,0.35)] backdrop-blur-3xl ${className ?? ""}`}
     >
-      {/* Outer Neon Glow Ring */}
-      <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-primary/30 via-primary-glow/20 to-accent/30 blur-xl opacity-60 -z-10 animate-pulse pointer-events-none" />
+      {/* Outer Multi-Layer Neon Glow Aura */}
+      <div
+        className={`absolute -inset-3 rounded-[inherit] bg-gradient-to-tr ${
+          isForm
+            ? "from-purple-600/60 via-emerald-400/50 to-cyan-400/60 blur-3xl opacity-90 animate-pulse"
+            : "from-primary/50 via-primary-glow/40 to-accent/40 blur-2xl opacity-75 animate-pulse"
+        } -z-10 pointer-events-none`}
+      />
+
+      {/* Scroll-Driven Animated Integrated Fiber-Optic Glass Border */}
+      {pathLength && (
+        <svg
+          className="absolute -inset-[2px] size-[calc(100%+4px)] pointer-events-none z-30 overflow-visible"
+          viewBox={`0 0 ${s.w + 4} ${s.h + 4}`}
+        >
+          <defs>
+            <linearGradient id="sleek-fiber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#c084fc" stopOpacity="0.95" />
+              <stop offset="50%" stopColor="#34d399" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.95" />
+            </linearGradient>
+          </defs>
+
+          {/* 1. Subtle Glass Guide Track */}
+          <rect
+            x="2"
+            y="2"
+            width={s.w}
+            height={s.h}
+            rx={s.r + 8}
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.08)"
+            strokeWidth="2"
+          />
+
+          {/* 2. Soft Ambient Sheen Layer */}
+          <motion.rect
+            x="2"
+            y="2"
+            width={s.w}
+            height={s.h}
+            rx={s.r + 8}
+            fill="none"
+            stroke="url(#sleek-fiber-grad)"
+            strokeWidth="5"
+            opacity="0.3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ pathLength }}
+          />
+
+          {/* 3. Sleek Integrated Fiber-Optic Light Rim */}
+          <motion.rect
+            x="2"
+            y="2"
+            width={s.w}
+            height={s.h}
+            rx={s.r + 8}
+            fill="none"
+            stroke="url(#sleek-fiber-grad)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ pathLength }}
+          />
+        </svg>
+      )}
 
       {/* Main Inner Screen Area */}
       <div
         className="ring-inner relative h-full w-full overflow-hidden bg-background"
         style={{ borderRadius: s.r }}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={mode}
-            initial={{ opacity: 0, filter: "blur(14px)", scale: 1.05 }}
-            animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-            exit={{ opacity: 0, filter: "blur(14px)", scale: 0.97 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, filter: "blur(6px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(6px)" }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0"
           >
             <Screen mode={mode} />
           </motion.div>
         </AnimatePresence>
-
-        {s.notch && (
-          <div className="absolute top-1.5 left-1/2 h-1.5 w-14 -translate-x-1/2 rounded-full bg-foreground/30 shadow-inner" />
-        )}
 
         {/* Diagonal Sheen Reflection */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-foreground/[0.04] to-foreground/[0.08]" />
@@ -64,9 +136,11 @@ export function DeviceFrame({ mode, className }: { mode: DeviceMode; className?:
 export function ResponsiveDeviceFrame({
   mode,
   className,
+  pathLength,
 }: {
   mode: DeviceMode;
   className?: string;
+  pathLength?: MotionValue<number>;
 }) {
   const s = SHAPE[mode];
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -102,7 +176,7 @@ export function ResponsiveDeviceFrame({
   return (
     <div
       ref={wrapperRef}
-      className={`relative overflow-hidden flex items-center justify-center max-w-full mx-auto ${className ?? ""}`}
+      className={`relative overflow-visible flex items-center justify-center max-w-full mx-auto ${className ?? ""}`}
       style={{
         width: w,
         height: h,
@@ -114,14 +188,14 @@ export function ResponsiveDeviceFrame({
         style={{
           width: s.w,
           height: s.h,
-          transform: `scale(${scale})`,
-          transformOrigin: "top left",
+          transform: `translateX(-50%) scale(${scale})`,
+          transformOrigin: "top center",
           position: "absolute",
           top: 0,
-          left: 0,
+          left: "50%",
         }}
       >
-        <DeviceFrame mode={mode} />
+        <DeviceFrame mode={mode} pathLength={pathLength} />
       </div>
     </div>
   );
@@ -156,16 +230,17 @@ function DesktopDeviceSlab({
   activeSection?: string;
 }) {
   const { scrollYProgress } = useScroll();
-  const p = useSpring(scrollYProgress, { stiffness: 60, damping: 24, mass: 0.6 });
+  const p = useSpring(scrollYProgress, { stiffness: 280, damping: 28, mass: 0.2 });
 
-  // Fade out floating device slab starting at inquiry section
+  // Floating desktop slab only active for hero and morph sections
   const isHideSection = activeSection !== "home" && activeSection !== "morph";
   const isCentered = false;
+  const currentMode = mode;
 
   const rawX = useTransform(p, [0, 0.2, 0.42, 0.6, 0.8, 1], [-1, -6, 2, -4, -8, 1]);
-  const rawY = useTransform(p, [0, 0.2, 0.42, 0.6, 0.8, 1], [2, -4, 4, -2, 6, -3]);
-  const scale = useTransform(p, [0, 0.3, 0.6, 0.85, 1], [1, 0.92, 1.02, 0.94, 0.8]);
-  const scrollTilt = useTransform(p, [0, 1], [-4, 8]);
+  const rawY = useTransform(p, [0, 0.2, 0.42, 0.6, 0.8, 1], [-6, -4, 4, -2, 6, -3]);
+  const scale = useTransform(p, [0, 0.3, 0.6, 0.85, 1], [1.12, 0.96, 1.05, 0.96, 0.8]);
+  const scrollTilt = useTransform(p, [0, 0.2, 1], [0, -2, 8]);
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -192,27 +267,29 @@ function DesktopDeviceSlab({
   const x = useMotionTemplate`${rawX}vw`;
   const y = useMotionTemplate`${rawY}vh`;
 
+  if (isHideSection) return null;
+
   return (
     <motion.div
       animate={{
         x: isCentered ? "0vw" : "25vw",
         opacity: isHideSection ? 0 : 1,
-        scale: isHideSection ? 0.85 : 1,
+        scale: isHideSection ? 0.85 : isCentered ? 1.05 : 1,
         pointerEvents: isCentered ? "auto" : "none",
       }}
-      transition={{ duration: isHideSection ? 0.35 : 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-20 hidden items-center justify-center lg:flex"
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-30 hidden items-center justify-center lg:flex"
     >
       <motion.div
         style={{
           x: isCentered ? 0 : x,
-          y: isCentered ? 0 : y,
-          scale: isCentered ? 1 : scale,
+          y: isCentered ? 80 : y,
+          scale: isCentered ? 0.95 : scale,
           perspective: 1400,
         }}
         className="relative flex items-center justify-center"
       >
-        <div className="halo absolute size-[420px] opacity-70 pointer-events-none" />
+        <div className="halo absolute size-[450px] opacity-75 pointer-events-none" />
         <motion.div
           style={{
             rotateY: isCentered ? 0 : rotY,
@@ -221,7 +298,7 @@ function DesktopDeviceSlab({
             transformStyle: "preserve-3d",
           }}
         >
-          <DeviceFrame mode={isCentered ? "form" : mode} />
+          <DeviceFrame mode={currentMode} />
         </motion.div>
       </motion.div>
     </motion.div>
