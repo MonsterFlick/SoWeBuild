@@ -1,106 +1,107 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+
+interface Particle {
+  x: number;
+  y: number;
+  radius: number;
+  baseX: number;
+  baseY: number;
+  alpha: number;
+  color: string;
+  speed: number;
+  angle: number;
+}
 
 export default function BackgroundCanvas() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Desktop only, fine pointer, motion allowed
+    // Check reduced motion preference
     if (
       typeof window === "undefined" ||
-      window.innerWidth < 1024 ||
-      window.matchMedia("(pointer: coarse)").matches ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
       return;
     }
 
-    const container = containerRef.current;
-    if (!container) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    // Scene, Camera, Renderer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      55,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.z = 90;
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance",
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    container.appendChild(renderer.domElement);
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let particles: Particle[] = [];
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 25 : 55;
 
-    // Subtle ambient stars strictly in the outer peripheral margins — ZERO clutter behind main text
-    const particleCount = 60;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
-    const colorAccent = new THREE.Color("#c6ff3d");
-    const colorDim = new THREE.Color("#4a4a58");
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
 
-    for (let i = 0; i < particleCount; i++) {
-      // Disperse exclusively along outer edges so the reading plane is clean
-      const angle = (i / particleCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
-      const radius = 55 + Math.random() * 45; // Center radius 0-55 is 100% clear of dots
+      ctx.scale(dpr, dpr);
+      initParticles();
+    };
 
-      positions[i * 3] = Math.cos(angle) * radius * 1.4;
-      positions[i * 3 + 1] = Math.sin(angle) * radius * 0.9;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+    const colorAccent = "rgba(198, 255, 61, 0.4)";
+    const colorDim = "rgba(120, 120, 140, 0.25)";
 
-      const chosenColor = Math.random() > 0.85 ? colorAccent : colorDim;
-      colors[i * 3] = chosenColor.r;
-      colors[i * 3 + 1] = chosenColor.g;
-      colors[i * 3 + 2] = chosenColor.b;
-    }
+    const initParticles = () => {
+      particles = [];
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const minRadius = Math.min(width, height) * 0.32; // Keep center clear of particles
+      const maxRadius = Math.max(width, height) * 0.65;
 
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      for (let i = 0; i < particleCount; i++) {
+        const angle = (i / particleCount) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+        const dist = minRadius + Math.random() * (maxRadius - minRadius);
+        const x = centerX + Math.cos(angle) * dist * 1.2;
+        const y = centerY + Math.sin(angle) * dist * 0.8;
 
-    const material = new THREE.PointsMaterial({
-      size: 1.2,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.28,
-      blending: THREE.AdditiveBlending,
-    });
+        const isAccent = Math.random() > 0.82;
+        particles.push({
+          x,
+          y,
+          baseX: x,
+          baseY: y,
+          radius: isAccent ? 1.5 + Math.random() * 1 : 1 + Math.random() * 0.8,
+          alpha: isAccent ? 0.45 : 0.25,
+          color: isAccent ? colorAccent : colorDim,
+          speed: 0.0002 + Math.random() * 0.0003,
+          angle,
+        });
+      }
+    };
 
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
 
-    // Mouse tracking with smooth lerp
+    // Smooth mouse parallax
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      targetX = (e.clientX / window.innerWidth - 0.5) * 12;
-      targetY = (e.clientY / window.innerHeight - 0.5) * 12;
+      targetX = (e.clientX / width - 0.5) * 20;
+      targetY = (e.clientY / height - 0.5) * 20;
     };
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    if (!isMobile) {
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    }
 
-    // Window resize
-    const handleResize = () => {
-      if (!renderer || !camera) return;
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Animation Loop
     let animId: number;
     let isVisible = true;
 
@@ -109,45 +110,61 @@ export default function BackgroundCanvas() {
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    const animate = () => {
-      animId = requestAnimationFrame(animate);
+    const render = () => {
+      animId = requestAnimationFrame(render);
 
       if (!isVisible) return;
 
-      // Gentle camera parallax
+      // Smooth lerp mouse parallax
       mouseX += (targetX - mouseX) * 0.04;
       mouseY += (targetY - mouseY) * 0.04;
-      camera.position.x = mouseX;
-      camera.position.y = -mouseY;
-      camera.lookAt(scene.position);
 
-      // Barely perceptible drift
-      particles.rotation.z += 0.00015;
+      ctx.clearRect(0, 0, width, height);
 
-      renderer.render(scene, camera);
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.angle += p.speed;
+
+        // Subtle slow orbital drift around center
+        const dx = p.baseX - centerX;
+        const dy = p.baseY - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const currentAngle = Math.atan2(dy, dx) + p.speed;
+
+        p.baseX = centerX + Math.cos(currentAngle) * dist;
+        p.baseY = centerY + Math.sin(currentAngle) * dist;
+
+        // Apply mouse parallax
+        p.x = p.baseX + mouseX;
+        p.y = p.baseY + mouseY;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      }
     };
 
-    animate();
+    render();
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-
-      if (container && renderer.domElement) {
-        container.removeChild(renderer.domElement);
+      if (!isMobile) {
+        window.removeEventListener("mousemove", handleMouseMove);
       }
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden opacity-30"
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      style={{ opacity: 0.6 }}
       aria-hidden="true"
     />
   );

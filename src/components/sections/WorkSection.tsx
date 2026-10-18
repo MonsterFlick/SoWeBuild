@@ -15,9 +15,18 @@ export default function WorkSection() {
     const section = sectionRef.current;
     if (!section) return;
 
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 1024;
     const cards = section.querySelectorAll(".work-card");
+
+    if (isReducedMotion || isMobile) {
+      gsap.set(cards, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const tweens: gsap.core.Tween[] = [];
     cards.forEach((card) => {
-      gsap.fromTo(
+      const tw = gsap.fromTo(
         card,
         { opacity: 0, y: 30 },
         {
@@ -27,22 +36,31 @@ export default function WorkSection() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
+            start: "top 85%",
             once: true,
           },
         }
       );
+      tweens.push(tw);
     });
+
+    return () => {
+      tweens.forEach((tw) => {
+        tw.kill();
+        tw.scrollTrigger?.kill();
+      });
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="work"
-      className="section-padding"
       style={{
         background: "var(--color-bg)",
         position: "relative",
+        paddingTop: "clamp(1.5rem, 4vw, 4.5rem)",
+        paddingBottom: "var(--space-section)",
       }}
     >
       <div className="container-wide">
@@ -52,9 +70,9 @@ export default function WorkSection() {
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "space-between",
-            marginBottom: "3rem",
+            marginBottom: "clamp(1.5rem, 3vw, 2.75rem)",
             flexWrap: "wrap",
-            gap: "1.5rem",
+            gap: "1.25rem",
           }}
         >
           <div>
@@ -80,7 +98,7 @@ export default function WorkSection() {
         </div>
 
         {/* 2-Column Responsive Grid: Both Cards Fit Beautifully On Screen */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
           {/* ============================================================== */}
           {/* PROJECT 1: FERTISURE */}
           {/* ============================================================== */}
@@ -97,12 +115,12 @@ export default function WorkSection() {
             {/* Top Bar: Name of Site + 2 Buttons */}
             <div
               style={{
-                padding: "1.5rem clamp(1.25rem, 2vw, 1.75rem)",
+                padding: "clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-                gap: "1rem",
+                gap: "0.75rem",
                 borderBottom: "1px solid var(--color-border)",
               }}
             >
@@ -158,7 +176,7 @@ export default function WorkSection() {
             <div
               style={{
                 background: "linear-gradient(180deg, #0e1218 0%, #06090e 100%)",
-                padding: "clamp(0.75rem, 1.5vw, 1.25rem)",
+                padding: "clamp(0.5rem, 1.5vw, 1.25rem)",
               }}
             >
               {/* Window Chrome Header */}
@@ -207,11 +225,11 @@ export default function WorkSection() {
                 }}
               >
                 <Image
-                  src="/work-fertisure-official.png"
+                  src="/work-fertisure-official.webp"
                   alt="FertiSure Website Snap"
                   width={1440}
                   height={900}
-                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{
                     width: "100%",
                     height: "auto",
@@ -239,12 +257,12 @@ export default function WorkSection() {
             {/* Top Bar: Name of Site + 2 Buttons */}
             <div
               style={{
-                padding: "1.5rem clamp(1.25rem, 2vw, 1.75rem)",
+                padding: "clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
                 flexWrap: "wrap",
-                gap: "1rem",
+                gap: "0.75rem",
                 borderBottom: "1px solid var(--color-border)",
               }}
             >
@@ -300,7 +318,7 @@ export default function WorkSection() {
             <div
               style={{
                 background: "linear-gradient(180deg, #130f1d 0%, #08060c 100%)",
-                padding: "clamp(0.75rem, 1.5vw, 1.25rem)",
+                padding: "clamp(0.5rem, 1.5vw, 1.25rem)",
               }}
             >
               {/* Window Chrome Header */}
@@ -349,11 +367,11 @@ export default function WorkSection() {
                 }}
               >
                 <Image
-                  src="/work-alphatech-official.png"
+                  src="/work-alphatech-official.webp"
                   alt="Alpha Tech Nutrition Website Snap"
                   width={1440}
                   height={825}
-                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   style={{
                     width: "100%",
                     height: "auto",

@@ -93,7 +93,14 @@ export default function ContactSection() {
     const container = containerRef.current;
     if (!section || !container) return;
 
-    gsap.fromTo(
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 1024;
+    if (isReducedMotion || isMobile) {
+      gsap.set(container, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const tw = gsap.fromTo(
       container,
       { opacity: 0, y: 30 },
       {
@@ -108,6 +115,11 @@ export default function ContactSection() {
         },
       }
     );
+
+    return () => {
+      tw.kill();
+      tw.scrollTrigger?.kill();
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -167,15 +179,14 @@ export default function ContactSection() {
       <div className="container-wide">
         <div
           ref={containerRef}
-          style={{ opacity: 0 }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
         >
           {/* Left Column: Studio Line & Assurance */}
           <div className="lg:col-span-5">
-            <div className="label" style={{ marginBottom: "1.25rem" }}>
+            <div className="label" style={{ marginBottom: "0.75rem" }}>
               Start a Build
             </div>
-            <h2 className="heading-xl" style={{ marginBottom: "1.25rem" }}>
+            <h2 className="heading-xl" style={{ marginBottom: "1rem" }}>
               Got a problem?
               <br />
               <span className="serif-accent">We build</span> the solution.
@@ -185,7 +196,7 @@ export default function ContactSection() {
               style={{
                 color: "var(--color-text-secondary)",
                 lineHeight: 1.65,
-                marginBottom: "2.5rem",
+                marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
               Tell us what you need. We review every brief and return a detailed technical roadmap with transparent estimates within 24 hours.
@@ -197,7 +208,7 @@ export default function ContactSection() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "1.25rem",
-                marginBottom: "2.5rem",
+                marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
               {[
@@ -322,7 +333,7 @@ export default function ContactSection() {
                 background: "var(--color-surface)",
                 borderRadius: "var(--radius-xl)",
                 border: "1px solid var(--color-border)",
-                padding: "clamp(1.75rem, 3vw, 2.5rem)",
+                padding: "clamp(1.25rem, 2.5vw, 2.5rem)",
                 position: "relative",
               }}
             >
@@ -427,7 +438,7 @@ export default function ContactSection() {
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })}
                             placeholder=" "
                           />
-                          <label>10-Digit Phone / WhatsApp *</label>
+                          <label>Phone / WhatsApp *</label>
                         </div>
                       </div>
                     </div>

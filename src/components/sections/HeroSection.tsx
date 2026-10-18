@@ -60,6 +60,17 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
 
     if (!section || !headline || !subtitle || !scrollHint) return;
 
+    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+
+    if (isReducedMotion) {
+      gsap.set([subtitle, scrollHint], { opacity: 1, y: 0 });
+      const inners = headline.querySelectorAll(".hero-line-inner");
+      gsap.set(inners, { y: "0%" });
+      setIsLoaded(true);
+      return;
+    }
+
     const tl = gsap.timeline();
 
     // Split headline into lines
@@ -74,41 +85,48 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
     tl.to(headline.querySelectorAll(".hero-line-inner"), {
       y: "0%",
       stagger: 0.12,
-      duration: 1.2,
+      duration: 1.1,
       ease: "power4.out",
     });
 
     tl.fromTo(
       subtitle,
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 25 },
       { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" },
       "-=0.6"
     );
 
     tl.fromTo(
       scrollHint,
-      { opacity: 0, y: 20 },
+      { opacity: 0, y: 15 },
       { opacity: 1, y: 0, duration: 0.6, ease: "power4.out" },
       "-=0.3"
     );
 
-    // Parallax on scroll
-    gsap.to(headline, {
-      y: -150,
-      scale: 0.9,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1.5,
-      },
-    });
+    // Parallax on desktop scroll only (avoid scroll lag on phones)
+    let parallaxTween: gsap.core.Tween | null = null;
+    if (!isTouch) {
+      parallaxTween = gsap.to(headline, {
+        y: -120,
+        scale: 0.94,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+    }
 
     setIsLoaded(true);
 
     return () => {
       tl.kill();
+      if (parallaxTween) {
+        parallaxTween.kill();
+        parallaxTween.scrollTrigger?.kill();
+      }
     };
   }, [ready]);
 
@@ -132,7 +150,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
       yTo(y);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
@@ -140,15 +158,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
     <section
       ref={sectionRef}
       id="hero"
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        overflow: "hidden",
-        padding: "var(--space-gutter)",
-      }}
+      className="hero-section"
     >
       {/* Interactive gradient background */}
       <div
@@ -182,10 +192,10 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         <div
           className="label"
           style={{
-            marginBottom: "2rem",
+            marginBottom: "clamp(0.75rem, 1.5vw, 1.5rem)",
             display: "flex",
             alignItems: "center",
-            gap: "0.75rem",
+            gap: "0.6rem",
           }}
         >
           <span
@@ -239,7 +249,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 style={{
                   display: "inline-grid",
                   gridTemplateAreas: "'stack'",
-                  minWidth: "min(340px, 85vw)",
+                  minWidth: "min(280px, 86vw)",
+                  maxWidth: "100%",
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -270,17 +281,17 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
           className="body-lg"
           style={{
             maxWidth: "560px",
-            marginTop: "2.25rem",
+            marginTop: "clamp(0.875rem, 1.8vw, 1.75rem)",
             opacity: 0,
             color: "var(--color-text-secondary)",
-            lineHeight: 1.65,
+            lineHeight: 1.6,
           }}
         >
           We design and engineer bespoke web applications, flagship digital products, and automated software for ambitious brands worldwide.
         </p>
 
         {/* CTA */}
-        <div style={{ marginTop: "2.75rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <div style={{ marginTop: "clamp(1.125rem, 2.2vw, 2.25rem)", display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
           <a href="#contact" className="btn-primary">
             <span>Start a project</span>
             <svg
@@ -307,12 +318,12 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         {/* Studio Credential Strip */}
         <div
           style={{
-            marginTop: "3.5rem",
+            marginTop: "clamp(1.25rem, 2.5vw, 2.5rem)",
             display: "flex",
             alignItems: "center",
-            gap: "clamp(1.5rem, 3.5vw, 3.5rem)",
+            gap: "clamp(1.25rem, 3vw, 3.5rem)",
             flexWrap: "wrap",
-            paddingTop: "2rem",
+            paddingTop: "clamp(0.875rem, 1.8vw, 1.5rem)",
             borderTop: "1px solid rgba(255, 255, 255, 0.05)",
           }}
         >
@@ -351,12 +362,12 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
       {/* Scroll hint */}
       <div
         ref={scrollHintRef}
+        className="hidden lg:flex"
         style={{
           position: "absolute",
           bottom: "2rem",
           left: "50%",
           transform: "translateX(-50%)",
-          display: "flex",
           flexDirection: "column",
           alignItems: "center",
           gap: "0.5rem",

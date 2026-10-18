@@ -1,35 +1,38 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Navigation() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
-  const lastScrollY = useRef(0);
 
+  // Monitor scroll for glass backdrop activation
   useEffect(() => {
     const handleScroll = () => {
-      const currentY = window.scrollY;
-      const isScrollingDown = currentY > lastScrollY.current;
-
-      if (currentY > 100) {
-        setIsVisible(!isScrollingDown || isMenuOpen);
-      } else {
-        setIsVisible(true);
-      }
-
-      lastScrollY.current = currentY;
+      setHasScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Lock body scroll cleanly when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
   }, [isMenuOpen]);
 
   const navLinks = [
@@ -46,20 +49,49 @@ export default function Navigation() {
     { label: "Brand Guidelines", href: "/brand-guidelines" },
   ];
 
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+
+      // Smooth scroll to target after menu starts closing
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 80);
+    } else {
+      setIsMenuOpen(false);
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+  };
+
   return (
     <>
-      <motion.nav
+      <header
         ref={navRef}
-        initial={{ y: 0 }}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 100,
-          padding: "1.25rem var(--space-gutter)",
+          padding: "clamp(0.875rem, 2vw, 1.25rem) var(--space-gutter)",
+          background: hasScrolled || isMenuOpen ? "rgba(7, 7, 10, 0.85)" : "transparent",
+          backdropFilter: hasScrolled || isMenuOpen ? "blur(16px)" : "none",
+          WebkitBackdropFilter: hasScrolled || isMenuOpen ? "blur(16px)" : "none",
+          borderBottom:
+            hasScrolled || isMenuOpen
+              ? "1px solid rgba(255, 255, 255, 0.08)"
+              : "1px solid transparent",
+          transition: "background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
         }}
       >
         <div
@@ -69,18 +101,26 @@ export default function Navigation() {
             justifyContent: "space-between",
             maxWidth: "1600px",
             margin: "0 auto",
+            width: "100%",
           }}
         >
           {/* Logo */}
           <a
             href="/"
+            onClick={() => {
+              if (isMenuOpen) setIsMenuOpen(false);
+            }}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "1.125rem",
+              fontSize: "clamp(1.125rem, 2vw, 1.25rem)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
               color: "var(--color-text)",
               textDecoration: "none",
+              position: "relative",
+              zIndex: 102,
+              display: "inline-flex",
+              alignItems: "baseline",
             }}
           >
             SWB
@@ -88,18 +128,15 @@ export default function Navigation() {
           </a>
 
           {/* Desktop links */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "2.5rem",
-            }}
-            className="hidden md:flex"
+          <nav
+            className="hidden md:flex items-center gap-10"
+            aria-label="Desktop Navigation"
           >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="link-sweep"
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -114,186 +151,200 @@ export default function Navigation() {
               </a>
             ))}
 
-            <MagneticButton as="a" href="#contact" className="btn-primary" strength={0.2}>
+            <MagneticButton
+              as="a"
+              href="#contact"
+              onClick={(e?: React.MouseEvent) => {
+                if (e) handleLinkClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, "#contact");
+              }}
+              className="btn-primary"
+              strength={0.2}
+            >
               <span>Start a build</span>
             </MagneticButton>
-          </div>
+          </nav>
 
-          {/* Menu toggle */}
+          {/* Mobile menu toggle with morphing SVG icon */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden"
+            className="flex md:hidden items-center justify-center"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: isMenuOpen ? 0 : "5px",
-              background: "none",
-              border: "none",
+              background: "rgba(255, 255, 255, 0.04)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              borderRadius: "var(--radius-full)",
               cursor: "pointer",
               padding: "8px",
+              width: "42px",
+              height: "42px",
               position: "relative",
-              width: "32px",
-              height: "32px",
-              alignItems: "center",
-              justifyContent: "center",
+              zIndex: 102,
+              color: "var(--color-text)",
+              WebkitTapHighlightColor: "transparent",
             }}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            <motion.span
-              animate={{
-                rotate: isMenuOpen ? 45 : 0,
-                y: isMenuOpen ? 0 : -3,
-              }}
-              style={{
-                width: "20px",
-                height: "1.5px",
-                background: "var(--color-text)",
-                display: "block",
-                position: isMenuOpen ? "absolute" : "relative",
-              }}
-            />
-            <motion.span
-              animate={{
-                rotate: isMenuOpen ? -45 : 0,
-                y: isMenuOpen ? 0 : 3,
-              }}
-              style={{
-                width: "20px",
-                height: "1.5px",
-                background: "var(--color-text)",
-                display: "block",
-                position: isMenuOpen ? "absolute" : "relative",
-              }}
-            />
-          </button>
-
-          {/* Desktop menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="hidden md:flex"
-            style={{
-              display: "none",
-              alignItems: "center",
-              gap: "0.5rem",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.6875rem",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              color: "var(--color-text-secondary)",
-            }}
-          >
-            Menu
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <motion.path
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={isMenuOpen ? { d: "M5 5L19 19" } : { d: "M4 7h16" }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+              />
+              <motion.path
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                animate={isMenuOpen ? { d: "M5 19L19 5" } : { d: "M4 17h16" }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+              />
+            </svg>
           </button>
         </div>
-      </motion.nav>
+      </header>
 
-      {/* Fullscreen menu overlay */}
+      {/* Fullscreen responsive mobile menu overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.6, ease: [0.87, 0, 0.13, 1] }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: "fixed",
-              inset: 0,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
               zIndex: 99,
-              background: "var(--color-bg)",
+              background: "#07070a",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
-              padding: "var(--space-gutter)",
+              justifyContent: "space-between",
+              overflowY: "auto",
+              WebkitOverflowScrolling: "touch",
+              padding: "clamp(5rem, 14vh, 7rem) var(--space-gutter) 2.5rem",
             }}
           >
             <div style={{ maxWidth: "1600px", margin: "0 auto", width: "100%" }}>
+              <div
+                className="label"
+                style={{
+                  fontSize: "0.625rem",
+                  color: "var(--color-accent)",
+                  marginBottom: "1rem",
+                  letterSpacing: "0.15em",
+                }}
+              >
+                NAVIGATION
+              </div>
+
               {menuLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  initial={{ y: 60, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -30, opacity: 0 }}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{
-                    duration: 0.5,
-                    delay: 0.1 + i * 0.06,
+                    duration: 0.3,
+                    delay: 0.05 + i * 0.04,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   style={{
-                    display: "block",
+                    display: "flex",
+                    alignItems: "baseline",
                     fontFamily: "var(--font-display)",
-                    fontSize: "clamp(2rem, 6vw, 5rem)",
+                    fontSize: "clamp(1.6rem, 5vw, 2.5rem)",
                     fontWeight: 700,
                     letterSpacing: "-0.03em",
                     color: "var(--color-text)",
                     textDecoration: "none",
-                    padding: "0.5rem 0",
-                    borderBottom: "1px solid var(--color-border)",
-                    transition: "color 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-accent)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-text)";
+                    padding: "0.75rem 0",
+                    borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                    transition: "color 0.2s ease",
                   }}
                 >
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.6875rem",
-                      color: "var(--color-text-muted)",
-                      marginRight: "1.5rem",
+                      color: "var(--color-accent)",
+                      marginRight: "1rem",
+                      width: "1.5rem",
+                      flexShrink: 0,
                     }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  {link.label}
+                  <span>{link.label}</span>
                 </motion.a>
               ))}
 
-              {/* Menu footer */}
+              {/* Direct CTA button in mobile drawer */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                style={{
-                  marginTop: "3rem",
-                  display: "flex",
-                  gap: "2rem",
-                  flexWrap: "wrap",
-                }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.3 }}
+                style={{ marginTop: "2rem" }}
               >
                 <a
-                  href="mailto:sowebuild.in@gmail.com"
+                  href="#contact"
+                  onClick={(e) => handleLinkClick(e, "#contact")}
+                  className="btn-primary"
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    color: "var(--color-text-secondary)",
-                    textDecoration: "none",
+                    width: "100%",
+                    justifyContent: "center",
+                    padding: "1rem",
+                    fontSize: "0.8125rem",
                   }}
                 >
-                  sowebuild.in@gmail.com
-                </a>
-                <a
-                  href="https://instagram.com/sowebuild.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    color: "var(--color-text-secondary)",
-                    textDecoration: "none",
-                  }}
-                >
-                  @sowebuild.in
+                  <span>Start a project →</span>
                 </a>
               </motion.div>
             </div>
+
+            {/* Menu footer info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.3 }}
+              style={{
+                marginTop: "2.5rem",
+                paddingTop: "1.5rem",
+                borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem",
+                maxWidth: "1600px",
+                margin: "2.5rem auto 0",
+                width: "100%",
+              }}
+            >
+              <a
+                href="mailto:sowebuild.in@gmail.com"
+                className="mono"
+                style={{
+                  fontSize: "0.75rem",
+                  color: "var(--color-text-secondary)",
+                  textDecoration: "none",
+                }}
+              >
+                sowebuild.in@gmail.com
+              </a>
+              <span
+                className="mono"
+                style={{
+                  fontSize: "0.6875rem",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                Mumbai, IN · Worldwide
+              </span>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -51,12 +51,13 @@ export default function ServicesSection() {
     if (!section || !header || !grid) return;
 
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isReducedMotion) {
+    const isMobile = window.innerWidth < 1024;
+    if (isReducedMotion || isMobile) {
       gsap.set([header, grid.children], { opacity: 1, y: 0 });
       return;
     }
 
-    gsap.fromTo(
+    const headerTw = gsap.fromTo(
       header,
       { opacity: 0, y: 24 },
       {
@@ -72,7 +73,7 @@ export default function ServicesSection() {
       }
     );
 
-    gsap.fromTo(
+    const gridTw = gsap.fromTo(
       grid.children,
       { opacity: 0, y: 24 },
       {
@@ -88,6 +89,13 @@ export default function ServicesSection() {
         },
       }
     );
+
+    return () => {
+      headerTw.kill();
+      headerTw.scrollTrigger?.kill();
+      gridTw.kill();
+      gridTw.scrollTrigger?.kill();
+    };
   }, []);
 
   return (
@@ -106,14 +114,13 @@ export default function ServicesSection() {
           ref={headerRef}
           style={{
             maxWidth: "700px",
-            marginBottom: "3.5rem",
-            opacity: 0,
+            marginBottom: "clamp(1.75rem, 3.5vw, 3rem)",
           }}
         >
-          <div className="label" style={{ marginBottom: "1.25rem" }}>
+          <div className="label" style={{ marginBottom: "0.75rem" }}>
             Capabilities
           </div>
-          <h2 className="heading-xl" style={{ marginBottom: "1.25rem" }}>
+          <h2 className="heading-xl" style={{ marginBottom: "1rem" }}>
             What we <span className="serif-accent">build</span>
           </h2>
           <p
@@ -132,14 +139,14 @@ export default function ServicesSection() {
         {/* 2x2 Capabilities Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
         >
           {CAPABILITIES.map((cap) => (
-            <div key={cap.num} className="opacity-0">
+            <div key={cap.num}>
               <SpotlightCard className="h-full">
                 <div
                   style={{
-                    padding: "clamp(2rem, 3vw, 2.5rem)",
+                    padding: "clamp(1.5rem, 2.5vw, 2.25rem)",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",

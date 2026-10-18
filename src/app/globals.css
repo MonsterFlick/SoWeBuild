@@ -50,9 +50,9 @@
   --ease-back-out: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Spacing */
-  --space-section: clamp(5rem, 12vh, 10rem);
-  --space-section-lg: clamp(7rem, 18vh, 14rem);
-  --space-gutter: clamp(1.25rem, 3vw, 3rem);
+  --space-section: clamp(2.75rem, 6vw, 6.5rem);
+  --space-section-lg: clamp(3.5rem, 8vw, 8.5rem);
+  --space-gutter: clamp(1rem, 3.5vw, 2.5rem);
 }
 
 /* ============================================
@@ -115,40 +115,44 @@ body {
 
 .heading-display {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(3rem, 10vw, 9rem);
-  line-height: 0.95;
+  font-size: clamp(2.25rem, 7.5vw, 7.5rem);
+  line-height: 0.98;
   letter-spacing: -0.04em;
   font-weight: 700;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .heading-xl {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(2.5rem, 7vw, 6rem);
-  line-height: 1;
+  font-size: clamp(1.85rem, 5vw, 4.5rem);
+  line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 700;
+  overflow-wrap: break-word;
 }
 
 .heading-lg {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.05;
+  font-size: clamp(1.5rem, 3.8vw, 3.25rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 600;
+  overflow-wrap: break-word;
 }
 
 .heading-md {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  line-height: 1.1;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1.2;
   letter-spacing: -0.02em;
   font-weight: 600;
 }
 
 .heading-sm {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  line-height: 1.2;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.25;
   letter-spacing: -0.01em;
   font-weight: 600;
 }
@@ -168,14 +172,14 @@ body {
 }
 
 .body-lg {
-  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+  line-height: 1.68;
   color: var(--color-text-secondary);
 }
 
 .body-md {
-  font-size: clamp(0.9375rem, 1vw, 1.0625rem);
-  line-height: 1.7;
+  font-size: clamp(0.875rem, 0.95vw, 1rem);
+  line-height: 1.65;
 }
 
 .mono {
@@ -192,11 +196,12 @@ body {
   inset: -50%;
   width: 200%;
   height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 128px 128px;
-  opacity: 0.03;
+  opacity: 0.028;
   pointer-events: none;
   z-index: 9999;
+  will-change: transform;
   animation: grain 8s steps(10) infinite;
 }
 
@@ -211,6 +216,13 @@ body {
   70% { transform: translate(0%, 15%); }
   80% { transform: translate(3%, 35%); }
   90% { transform: translate(-10%, 10%); }
+}
+
+@media (pointer: coarse) {
+  .grain::before {
+    animation: none;
+    transform: none;
+  }
 }
 
 /* ============================================
@@ -241,6 +253,35 @@ body {
 .section-padding-lg {
   padding-top: var(--space-section-lg);
   padding-bottom: var(--space-section-lg);
+}
+
+/* ============================================
+   HERO SECTION RESPONSIVENESS (Zero Unwanted Gaps)
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: var(--space-gutter);
+  padding-right: var(--space-gutter);
+
+  /* Mobile: compact, natural flow right below navbar, no dead voids */
+  min-height: auto;
+  justify-content: flex-start;
+  padding-top: clamp(5.25rem, 14vw, 6.25rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    justify-content: center;
+    padding-top: clamp(5rem, 10vh, 7rem);
+    padding-bottom: clamp(2.5rem, 5vh, 4rem);
+  }
 }
 
 /* ============================================

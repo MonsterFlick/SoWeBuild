@@ -15,7 +15,7 @@ const fontDisplay = Syne({
   subsets: ["latin"],
   variable: "--font-syne",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
 });
 
 const fontSans = DM_Sans({
@@ -28,7 +28,7 @@ const fontMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   display: "swap",
-  weight: ["400", "500", "700"],
+  weight: ["400", "500"],
 });
 
 /* Instrument Serif is available in next/font/google but only as italic

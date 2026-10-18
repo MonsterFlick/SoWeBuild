@@ -13,18 +13,21 @@ export default function ScrollProgress() {
     const bar = barRef.current;
     if (!bar) return;
 
-    gsap.to(bar, {
+    const tween = gsap.to(bar, {
       scaleX: 1,
       ease: "none",
       scrollTrigger: {
         trigger: document.documentElement,
         start: "top top",
         end: "bottom bottom",
-        scrub: 0.3,
+        scrub: 0.2,
       },
     });
 
-    gsap.set(bar, { scaleX: 0 });
+    return () => {
+      tween.kill();
+      tween.scrollTrigger?.kill();
+    };
   }, []);
 
   return (
@@ -41,6 +44,7 @@ export default function ScrollProgress() {
         transformOrigin: "left",
         zIndex: 101,
         transform: "scaleX(0)",
+        willChange: "transform",
       }}
     />
   );

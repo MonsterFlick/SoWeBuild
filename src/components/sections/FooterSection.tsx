@@ -41,7 +41,7 @@ export default function FooterSection() {
         borderTop: "1px solid var(--color-border)",
       }}
     >
-      <div className="container-wide" style={{ padding: "3rem var(--space-gutter) 2rem" }}>
+      <div className="container-wide" style={{ padding: "clamp(2rem, 4vw, 3rem) var(--space-gutter) 1.5rem" }}>
         {/* Main Compact Row */}
         <div
           style={{
@@ -50,7 +50,7 @@ export default function FooterSection() {
             justifyContent: "space-between",
             flexWrap: "wrap",
             gap: "2rem",
-            paddingBottom: "2.5rem",
+            paddingBottom: "clamp(1.5rem, 3vw, 2.5rem)",
           }}
         >
           {/* Brand & Tagline */}

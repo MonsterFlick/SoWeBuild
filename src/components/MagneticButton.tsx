@@ -38,8 +38,9 @@ export default function MagneticButton({
       gsap.to(ref.current, {
         x: dx * strength,
         y: dy * strength,
-        duration: 0.4,
+        duration: 0.35,
         ease: "power3.out",
+        overwrite: "auto",
       });
     },
     [isTouch, strength]
@@ -50,8 +51,9 @@ export default function MagneticButton({
     gsap.to(ref.current, {
       x: 0,
       y: 0,
-      duration: 0.7,
+      duration: 0.6,
       ease: "elastic.out(1, 0.3)",
+      overwrite: "auto",
     });
   }, []);
 

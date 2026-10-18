@@ -33,11 +33,13 @@ export default function ScrambleText({
       return;
     }
 
+    let activeInterval: NodeJS.Timeout | null = null;
+
     const scramble = () => {
       let iteration = 0;
       const length = text.length;
 
-      const interval = setInterval(() => {
+      activeInterval = setInterval(() => {
         setDisplayText(
           text
             .split("")
@@ -49,18 +51,18 @@ export default function ScrambleText({
         );
 
         if (iteration >= length) {
-          clearInterval(interval);
+          if (activeInterval) clearInterval(activeInterval);
         }
 
         iteration += 1 / 3;
       }, speed);
-
-      return () => clearInterval(interval);
     };
 
     if (trigger === "mount") {
-      const cleanup = scramble();
-      return cleanup;
+      scramble();
+      return () => {
+        if (activeInterval) clearInterval(activeInterval);
+      };
     }
 
     if (trigger === "inView") {
@@ -77,7 +79,10 @@ export default function ScrambleText({
       );
 
       observer.observe(el);
-      return () => observer.disconnect();
+      return () => {
+        observer.disconnect();
+        if (activeInterval) clearInterval(activeInterval);
+      };
     }
   }, [text, speed, chars, trigger]);
 

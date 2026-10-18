@@ -15,30 +15,45 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Respect reduced motion preference
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Check if device is coarse pointer only (mobile/tablet)
+    const isTouchOnly =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse) and (hover: none)").matches;
+
+    // On mobile touch devices, allow hardware-accelerated 120Hz native momentum scroll
+    if (prefersReducedMotion || isTouchOnly) {
+      return;
+    }
+
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.085,
+      wheelMultiplier: 0.95,
       smoothWheel: true,
-      // Respect reduced motion preference
-      ...(window.matchMedia("(prefers-reduced-motion: reduce)").matches && {
-        lerp: 1,
-        smoothWheel: false,
-      }),
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
 
-    // Sync Lenis with GSAP ticker
+    // Synchronize Lenis with GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const onTick = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
 
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(onTick);
+    // Smooth over micro-lag without abrupt jumps
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(onTick);
+      lenisRef.current = null;
     };
   }, []);
 
