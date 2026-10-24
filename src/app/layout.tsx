@@ -44,7 +44,7 @@ const fontSerif = localFont({
 export const metadata: Metadata = {
   title: "SoWeBuild — Technology Development Studio",
   description:
-    "SoWeBuild is a technology development studio building high-performance websites, web apps, mobile apps, AI chatbots, WhatsApp automation, custom software, and cloud infrastructure. You have a problem. So we build the solution.",
+    "SoWeBuild is a technology development studio building high-performance websites, web apps, mobile apps, AI chatbots, WhatsApp automation, custom software, and cloud infrastructure. Engineered from zero to production. So We Build.",
   keywords: [
     "SoWeBuild",
     "sowebuild.in",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SoWeBuild — Technology Development Studio",
     description:
-      "You have a problem. So we build the solution. High-performance websites, web apps, AI chatbots & WhatsApp automation.",
+      "Engineered from zero to production. High-performance websites, web apps, AI chatbots & WhatsApp automation. So We Build.",
     url: "https://sowebuild.in",
     siteName: "SoWeBuild",
     type: "website",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SoWeBuild — Technology Development Studio",
     description:
-      "You have a problem. So we build the solution. High-performance websites, web apps, AI chatbots & automation.",
+      "Engineered from zero to production. High-performance websites, web apps, AI chatbots & automation. So We Build.",
   },
   robots: {
     index: true,

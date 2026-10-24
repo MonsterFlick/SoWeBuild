@@ -49,7 +49,7 @@ export function DynamicHeadline({ active = true }: { active?: boolean }) {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="text-[clamp(1.4rem,3.5vw,2.75rem)] font-medium tracking-tight leading-[1.1] text-muted-foreground"
         >
-          You have a problem.
+          Got an ambitious vision?
         </motion.p>
       </div>
 

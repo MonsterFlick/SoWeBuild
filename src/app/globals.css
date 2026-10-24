@@ -19,6 +19,10 @@
   --color-accent-dim: rgba(198, 255, 61, 0.08);
   --color-error: #ff4444;
   --color-success: #00c853;
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-muted-foreground: var(--color-text-secondary);
+  --color-primary: var(--color-accent);
 
   /* Radii */
   --radius-sm: 4px;
@@ -59,54 +63,56 @@
    BASE STYLES
    ============================================ */
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
-}
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+  }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
 
-body {
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
+  body {
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 
-::selection {
-  background-color: rgba(198, 255, 61, 0.3);
-  color: var(--color-text);
+  ::selection {
+    background-color: rgba(198, 255, 61, 0.3);
+    color: var(--color-text);
+  }
 }
 
 /* ============================================

@@ -77,7 +77,7 @@ export default function FooterSection() {
                 lineHeight: 1.5,
               }}
             >
-              You have a problem. So we build the solution.
+              Engineered from zero to production. So We Build.
             </p>
           </div>
 

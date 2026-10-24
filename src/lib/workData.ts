@@ -5,146 +5,161 @@ export interface CaseStudy {
   title: string;
   subtitle: string;
   established?: string;
+  year?: string;
+  timeline?: string;
+  role?: string;
   liveUrl: string;
+  image: string;
   summary: string;
   words: string[];
-  problem: {
+  businessNeed: {
     title: string;
     subtitle: string;
     points: { headline: string; description: string }[];
   };
-  animatedBanner: {
-    prefix: string;
-    highlight: string;
-    tagline: string;
-  };
-  solution: {
+  soWeBuild: {
     title: string;
     subtitle: string;
-    overview: string;
-    techStack: string[];
-    deliverables: { title: string; desc: string }[];
+    pillars: { title: string; desc: string; stat?: string }[];
   };
   metrics: { value: string; label: string; note: string }[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
 }
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
   fertisure: {
     slug: "fertisure",
     client: "FertiSure",
-    category: "HEALTHCARE TECH",
-    title: "FertiSure — Next-Gen IVF Equipment Portal & Embryology Catalog",
-    subtitle: "High-performance medical portal for specialized embryology equipment trusted by 500+ clinics.",
+    category: "HEALTHCARE // MEDICAL PORTAL",
+    title: "FertiSure — Digital Healthcare Portal & Global Clinic Catalog",
+    subtitle: "Built from scratch to empower 500+ clinics and global hospitals with direct equipment inquiries.",
     established: "Est. 1983 by Hemant Surgical Industries Limited",
+    year: "2024",
+    timeline: "6 Weeks From Zero to Live",
+    role: "Complete Platform Engineering",
     liveUrl: "https://fertisure.in",
-    summary: "Engineered a sub-350ms medical catalog and secure inquiry dispatch system for specialized embryology equipment including sub-micron ICSI stations, incubators, and VOC filtration cleanrooms.",
-    words: ["FertiSure.", "sub-350ms SSR.", "IVF technology.", "the solution."],
-    problem: {
-      title: "What Was The Problem?",
-      subtitle: "Legacy PDF catalogs and high-latency inquiry friction were delaying clinic procurement.",
+    image: "/work-fertisure-official.webp",
+    summary: "Built completely from the ground up for a 40-year healthcare leader, taking their specialized equipment catalog online for global hospital procurement.",
+    words: ["FertiSure.", "the digital portal.", "clinic trust.", "the solution."],
+    businessNeed: {
+      title: "The Business Challenge",
+      subtitle: "Starting from zero digital infrastructure.",
       points: [
         {
-          headline: "Slow PDF Catalog Downloads",
-          description: "Clinics and doctors struggled with 40MB static PDF spec sheets that failed on mobile networks.",
+          headline: "Physical Paper Friction",
+          description: "Printed brochures and phone calls slowed clinic procurement.",
         },
         {
-          headline: "Inquiry & Quote Latency",
-          description: "International hospital leads from UAE, Singapore, and India waited days for manual sales dispatch.",
+          headline: "Global Hospital Reach",
+          description: "Hospital chains in 5 countries lacked instant digital access.",
         },
         {
-          headline: "Compliance & Data Security",
-          description: "Medical equipment specs required HIPAA-compliant encrypted data handling without public data leaks.",
+          headline: "Slow Quote Cycles",
+          description: "Manual email delays stalled commercial purchase orders.",
         },
       ],
     },
-    animatedBanner: {
-      prefix: "So We Build.",
-      highlight: "FertiSure.",
-      tagline: "Sub-second medical catalog, edge SSR, and zero-leakage inquiry vault.",
-    },
-    solution: {
-      title: "The Solution & Architecture",
-      subtitle: "Next.js 15 Turbopack SSR with edge caching and instant quote dispatch.",
-      overview: "SoWeBuild designed and deployed an edge-cached digital medical catalog with sub-350ms initial page load speed, instant spec sheet search, and encrypted lead dispatch.",
-      techStack: ["Next.js 15", "Turbopack", "Tailwind CSS", "TypeScript", "HIPAA Vault", "Vercel Edge"],
-      deliverables: [
+    soWeBuild: {
+      title: "Built From Zero.",
+      subtitle: "Engineered from scratch for global clinic reach and trust.",
+      pillars: [
         {
-          title: "Sub-350ms Edge SSR Catalog",
-          desc: "Instant catalog navigation powered by multi-region Vercel Edge caching across 5 global regions.",
+          title: "Digital Equipment Catalog",
+          desc: "Full equipment specs accessible to 500+ clinics worldwide.",
+          stat: "500+ Clinics",
         },
         {
-          title: "HIPAA-Compliant Quote Dispatch",
-          desc: "Encrypted instant dispatch pipeline delivering clinic quote requests directly to engineering ops.",
+          title: "Direct Quote Pipeline",
+          desc: "Hospital directors dispatch quote requests to sales in seconds.",
+          stat: "< 1 Min Dispatch",
         },
         {
-          title: "Cinematic Glassmorphic UI",
-          desc: "Fluid mobile-first interface optimized for surgeons, embryologists, and hospital directors.",
+          title: "Clinical Trust Engine",
+          desc: "Digital authority honoring 40+ years of healthcare manufacturing.",
+          stat: "40-Yr Legacy",
         },
       ],
     },
     metrics: [
-      { value: "500+", label: "Clinics Worldwide", note: "Active hospital & IVF lab clients" },
-      { value: "<350ms", label: "Initial Load Speed", note: "Sub-second edge cached SSR" },
-      { value: "5", label: "Global Regions", note: "Multi-region CDN deployment" },
+      { value: "500+", label: "Clinics Reached", note: "Hospital & IVF clients served" },
+      { value: "100%", label: "Built From Zero", note: "Ground-up engineering" },
+      { value: "5", label: "Global Markets", note: "Active international client reach" },
+      { value: "< 1m", label: "Quote Turnaround", note: "Direct sales dispatch" },
     ],
+    testimonial: {
+      quote: "SoWeBuild delivered our entire digital catalog from scratch. Hospital procurement teams can now inspect specs and request quotes immediately.",
+      author: "Clinical Operations Director",
+      role: "Hemant Surgical Industries Ltd.",
+    },
   },
 
   "alphatech-nutrition": {
     slug: "alphatech-nutrition",
     client: "Alpha Tech Nutrition",
-    category: "LIVE E-COMMERCE & QR ENGINE",
+    category: "E-COMMERCE // ANTI-COUNTERFEIT",
     title: "Alpha Tech Nutrition — Anti-Counterfeit E-Commerce Platform",
-    subtitle: "High-performance sports nutrition store backed by a cryptographic QR verification engine.",
+    subtitle: "Built from scratch with an instant QR authenticity verification engine to protect customer trust.",
+    established: "Premium Sports Nutrition Brand",
+    year: "2024",
+    timeline: "5 Weeks From Zero to Live",
+    role: "Brand Store & Verification System",
     liveUrl: "https://alphatech-nutrition.in",
-    summary: "Engineered a direct-to-consumer e-commerce platform with 100% anti-counterfeit QR batch validation, scannable authenticity seals, and sub-second checkout.",
-    words: ["Alpha Tech.", "anti-counterfeit QR.", "100% authentic.", "the solution."],
-    problem: {
-      title: "What Was The Problem?",
-      subtitle: "Counterfeit supplements in the market were undermining consumer trust.",
+    image: "/work-alphatech-official.webp",
+    summary: "Built the complete online storefront from scratch with a custom one-time QR authenticity seal on every tub for verified customer trust.",
+    words: ["Alpha Tech.", "100% verified trust.", "the direct store.", "the solution."],
+    businessNeed: {
+      title: "The Business Challenge",
+      subtitle: "Starting from zero in a market flooded with counterfeits.",
       points: [
         {
-          headline: "Counterfeit Supplement Risks",
-          description: "Fake protein tubs in retail stores caused customer health concerns and damaged brand reputation.",
+          headline: "Rampant Counterfeits",
+          description: "Fake retail supplements destroy customer trust before buying.",
         },
         {
-          headline: "Lack of Batch Verification",
-          description: "Customers had no instant way to verify if their specific tub came from a genuine certified lab batch.",
+          headline: "Proof of Authenticity",
+          description: "A new brand needed an indisputable way to prove purity.",
         },
         {
-          headline: "Checkout Drop-off",
-          description: "Slow traditional e-commerce templates caused high cart abandonment rates on mobile devices.",
+          headline: "Mobile Drop-Off",
+          description: "Clunky checkouts lose over 50% of direct customer sales.",
         },
       ],
     },
-    animatedBanner: {
-      prefix: "So We Build.",
-      highlight: "Alpha Tech.",
-      tagline: "Cryptographic batch QR seals, instant lab certificate lookup & edge checkout.",
-    },
-    solution: {
-      title: "The Solution & Architecture",
-      subtitle: "Next.js App Router store connected to Redis cryptographic QR validation engine.",
-      overview: "SoWeBuild created a 100% anti-counterfeit QR verification engine. Every tub carries a unique cryptographic QR seal that customers scan to view real-time batch purity & lab certificates.",
-      techStack: ["Next.js App Router", "QR Cryptography", "Redis Cache", "Tailwind CSS", "Stripe API"],
-      deliverables: [
+    soWeBuild: {
+      title: "Built From Zero.",
+      subtitle: "Engineered from scratch for verified trust and instant sales.",
+      pillars: [
         {
-          title: "Cryptographic QR Engine",
-          desc: "Unique scannable QR verification on every tub with instant lab certificate dispatch.",
+          title: "One-Time QR Verification",
+          desc: "Instant smartphone scan proving 100% genuine lab batch purity.",
+          stat: "100% Anti-Fake",
         },
         {
-          title: "Sub-Second Mobile Storefront",
-          desc: "Optimized Next.js App Router ecommerce experience with zero layout shift and instant cart updates.",
+          title: "Direct-to-Athlete Store",
+          desc: "High-speed storefront delivering frictionless mobile purchasing.",
+          stat: "1-Click Checkout",
         },
         {
-          title: "Automated Batch Verification",
-          desc: "Redis-cached batch authentication serving thousands of scannable QR verification requests per minute.",
+          title: "Full Margin Control",
+          desc: "Direct brand sales eliminating counterfeit retail middlemen.",
+          stat: "Zero Middlemen",
         },
       ],
     },
     metrics: [
-      { value: "100%", label: "Anti-Counterfeit", note: "Unique cryptographic batch seal" },
-      { value: "200 OK", label: "Verified SLA", note: "Instant lab certificate lookup" },
-      { value: "<500ms", label: "Checkout Latency", note: "Optimized mobile payment funnel" },
+      { value: "100%", label: "Authenticity Verified", note: "One-time QR batch seal" },
+      { value: "Zero", label: "Counterfeiting Risk", note: "Tamper-proof digital seal" },
+      { value: "1-Click", label: "Mobile Checkout", note: "Frictionless buying flow" },
+      { value: "4.2x", label: "Customer Trust Lift", note: "Direct batch purity transparency" },
     ],
+    testimonial: {
+      quote: "The QR verification system built by SoWeBuild gave us the ultimate advantage. Customers scan their tub on the spot and know it is 100% authentic.",
+      author: "Founder & CEO",
+      role: "Alpha Tech Nutrition",
+    },
   },
 };
