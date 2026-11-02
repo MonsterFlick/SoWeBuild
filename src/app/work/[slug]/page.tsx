@@ -171,11 +171,11 @@ export default async function WorkSlugPage({
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Client Profile</span>
                   <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
                   {cs.client}
                 </div>
                 {cs.established && (
-                  <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                  <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
                     {cs.established}
                   </div>
                 )}
@@ -187,10 +187,10 @@ export default async function WorkSlugPage({
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Timeline &amp; Year</span>
                   <span className="font-mono text-[10px] font-semibold text-[#887E94]">{cs.year || "2024"}</span>
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
                   {cs.timeline || "Production"}
                 </div>
-                <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
                   Ground-Up Turnaround
                 </div>
               </div>
@@ -201,10 +201,10 @@ export default async function WorkSlugPage({
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Engineering Scope</span>
                   <span className="size-1.5 rounded-full bg-[#16131D]" />
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
                   {cs.role || "Complete Custom Build"}
                 </div>
-                <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
                   Zero Templates • 100% Bespoke
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default async function WorkSlugPage({
                 </div>
                 <div className="font-mono text-[10px] sm:text-xs font-bold text-[#16131D] mt-2 uppercase tracking-wider flex items-center gap-1.5">
                   <span className="size-1.5 rounded-full bg-[#c6ff3d] shrink-0" />
-                  <span className="truncate">{m.label}</span>
+                  <span className="leading-tight break-words">{m.label}</span>
                 </div>
                 <div className="text-[11px] sm:text-xs text-[#585062] mt-1.5 sm:mt-2 leading-relaxed">
                   {m.note}

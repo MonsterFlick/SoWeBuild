@@ -243,7 +243,7 @@
 .container-wide {
   width: 100%;
   max-width: 1600px;
-  margin: 0 auto;
+  margin-inline: auto;
   padding-left: var(--space-gutter);
   padding-right: var(--space-gutter);
 }
@@ -251,7 +251,7 @@
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-inline: auto;
   padding-left: var(--space-gutter);
   padding-right: var(--space-gutter);
 }
