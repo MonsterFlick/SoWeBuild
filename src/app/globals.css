@@ -5,24 +5,28 @@
    ============================================ */
 
 @theme {
-  /* Colors */
-  --color-bg: #07070a;
-  --color-surface: #0f0f14;
-  --color-surface-elevated: #16161e;
-  --color-border: #1a1a24;
-  --color-border-subtle: #12121a;
-  --color-text: #f3efe6;
-  --color-text-secondary: #8a8a99;
-  --color-text-muted: #55555f;
+  /* Colors - Warm Ivory Canvas, Signature Electric Lime Accent & Deep Slate-Purple Text */
+  --color-bg: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F5F1EB;
+  --color-border: #E8E2EE;
+  --color-border-subtle: #F2EDF7;
+  --color-text: #16131D;
+  --color-text-secondary: #585062;
+  --color-text-muted: #887E94;
   --color-accent: #c6ff3d;
-  --color-accent-hover: #d4ff6a;
-  --color-accent-dim: rgba(198, 255, 61, 0.08);
-  --color-error: #ff4444;
-  --color-success: #00c853;
+  --color-accent-hover: #b4f028;
+  --color-accent-dim: rgba(198, 255, 61, 0.12);
+  --color-error: #E11D48;
+  --color-success: #059669;
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
   --color-muted-foreground: var(--color-text-secondary);
   --color-primary: var(--color-accent);
+  --color-primary-glow: #c6ff3d;
+  --color-purple-deep: #261A3B;
+  --color-purple-soft: #F5EDFA;
+  --color-purple-tint: #ECE4F5;
 
   /* Radii */
   --radius-sm: 4px;
@@ -110,8 +114,8 @@
   }
 
   ::selection {
-    background-color: rgba(198, 255, 61, 0.3);
-    color: var(--color-text);
+    background-color: rgba(198, 255, 61, 0.45);
+    color: #121019;
   }
 }
 
@@ -204,7 +208,8 @@
   height: 200%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 128px 128px;
-  opacity: 0.028;
+  opacity: 0.022;
+  mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 9999;
   will-change: transform;
@@ -307,9 +312,9 @@
    ============================================ */
 
 .glass {
-  background: rgba(15, 15, 20, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--color-border);
 }
 
@@ -352,6 +357,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(22, 19, 29, 0.04);
 }
 
 .spotlight-card::before {
@@ -360,7 +366,7 @@
   inset: 0;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(198, 255, 61, 0.06),
+    rgba(198, 255, 61, 0.08),
     transparent 40%
   );
   opacity: 0;
@@ -380,7 +386,7 @@
   border-radius: inherit;
   background: radial-gradient(
     400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(198, 255, 61, 0.15),
+    rgba(198, 255, 61, 0.22),
     transparent 40%
   );
   opacity: 0;
@@ -447,19 +453,22 @@
   padding: 1rem 2rem;
   font-family: var(--font-mono), monospace;
   font-size: 0.8125rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-bg);
+  color: #121019;
   background: var(--color-accent);
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.4s var(--ease-out-expo);
+  box-shadow: 0 4px 18px -2px rgba(198, 255, 61, 0.5);
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
 }
 
 .btn-primary:hover {
   transform: scale(1.02);
+  box-shadow: 0 6px 24px -2px rgba(198, 255, 61, 0.65);
 }
 
 .btn-primary::before {
@@ -490,20 +499,23 @@
   padding: 1rem 2rem;
   font-family: var(--font-mono), monospace;
   font-size: 0.8125rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-text);
-  background: transparent;
+  background: rgba(22, 19, 29, 0.02);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: border-color 0.4s var(--ease-out-expo),
-              color 0.4s var(--ease-out-expo);
+              color 0.4s var(--ease-out-expo),
+              background 0.4s var(--ease-out-expo);
 }
 
 .btn-outline:hover {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: #121019;
+  background: rgba(198, 255, 61, 0.18);
 }
 
 /* ============================================
@@ -595,10 +607,11 @@
   padding: 0.5rem 1.25rem;
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-secondary);
-  background: transparent;
+  background: rgba(22, 19, 29, 0.02);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -606,13 +619,15 @@
 }
 
 .chip:hover {
-  border-color: var(--color-text-secondary);
+  border-color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .chip.active {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-bg);
+  color: #121019;
+  font-weight: 700;
 }
 
 /* ============================================

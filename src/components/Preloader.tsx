@@ -111,7 +111,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "#07070a",
+        background: "#FAF8F5",
       }}
     >
       {/* Counter */}
@@ -122,12 +122,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           right: "clamp(1.5rem, 4vw, 3rem)",
           fontFamily: "var(--font-mono)",
           fontSize: "clamp(0.875rem, 1vw, 1rem)",
-          color: "#8a8a99",
+          color: "#585062",
           letterSpacing: "0.1em",
         }}
       >
         <span ref={counterRef}>000</span>
-        <span style={{ color: "#55555f" }}> / 100</span>
+        <span style={{ color: "#887E94" }}> / 100</span>
       </div>
 
       {/* Progress bar */}
@@ -138,7 +138,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           left: 0,
           width: "100%",
           height: "2px",
-          background: "rgba(255, 255, 255, 0.08)",
+          background: "rgba(22, 19, 29, 0.08)",
         }}
       >
         <div
@@ -146,7 +146,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           style={{
             height: "100%",
             background: "var(--color-accent)",
-            boxShadow: "0 0 12px var(--color-accent)",
+            boxShadow: "0 0 14px var(--color-accent)",
             width: "0%",
           }}
         />
@@ -174,7 +174,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
               fontSize: "clamp(1.75rem, 7.5vw, 5rem)",
               fontWeight: 800,
               letterSpacing: "-0.04em",
-              color: "#f3efe6",
+              color: "var(--color-text)",
               transform: "translateY(115%)",
             }}
           >
@@ -205,7 +205,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           fontSize: "clamp(0.625rem, 0.8vw, 0.75rem)",
           textTransform: "uppercase",
           letterSpacing: "0.18em",
-          color: "#8a8a99",
+          color: "#685979",
           opacity: 0,
         }}
       >
@@ -218,7 +218,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         style={{
           position: "absolute",
           inset: 0,
-          background: "#07070a",
+          background: "#FAF8F5",
           zIndex: -1,
         }}
       />

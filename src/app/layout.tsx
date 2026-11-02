@@ -8,7 +8,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#07070a",
+  themeColor: "#FAF8F5",
 };
 
 const fontDisplay = Syne({

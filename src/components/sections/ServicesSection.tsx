@@ -159,7 +159,13 @@ export default function ServicesSection() {
                       style={{
                         fontFamily: "var(--font-mono)",
                         fontSize: "0.75rem",
-                        color: "var(--color-accent)",
+                        fontWeight: 700,
+                        color: "#16131D",
+                        background: "rgba(198, 255, 61, 0.35)",
+                        border: "1px solid rgba(198, 255, 61, 0.7)",
+                        padding: "0.2rem 0.6rem",
+                        borderRadius: "var(--radius-full)",
+                        width: "fit-content",
                         marginBottom: "1rem",
                         letterSpacing: "0.1em",
                       }}
@@ -192,7 +198,7 @@ export default function ServicesSection() {
                           fontFamily: "var(--font-mono)",
                           fontSize: "0.625rem",
                           color: "var(--color-text-secondary)",
-                          background: "rgba(255, 255, 255, 0.03)",
+                          background: "rgba(22, 19, 29, 0.02)",
                           border: "1px solid var(--color-border)",
                           padding: "0.3rem 0.65rem",
                           borderRadius: "var(--radius-full)",

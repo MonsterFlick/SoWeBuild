@@ -45,7 +45,7 @@ export function CaseStudyHeadline({
         initial={{ opacity: 0.8, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="font-serif italic text-[clamp(1.35rem,3.2vw,2.2rem)] font-normal tracking-tight text-[#f3efe6]/80 mb-3"
+        className="font-serif italic text-[clamp(1.35rem,3.2vw,2.2rem)] font-normal tracking-tight text-[#585062] mb-3"
       >
         {hook}
       </motion.p>
@@ -55,7 +55,7 @@ export function CaseStudyHeadline({
         initial={{ opacity: 0.9, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="w-full text-[clamp(2.2rem,6vw,4.8rem)] font-bold tracking-tighter text-[#f3efe6] leading-tight"
+        className="w-full text-[clamp(2.2rem,6vw,4.8rem)] font-bold tracking-tighter text-[#16131D] leading-tight"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 items-baseline gap-x-3 md:gap-x-4 text-center md:text-left">
           {/* Left Column: Anchored against center seam — zero shifting */}
@@ -73,7 +73,7 @@ export function CaseStudyHeadline({
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="[grid-area:stack] whitespace-nowrap text-[#c6ff3d] drop-shadow-[0_0_35px_rgba(198,255,61,0.5)] will-change-transform"
+                  className="[grid-area:stack] whitespace-nowrap text-[#c6ff3d] drop-shadow-[0_2px_20px_rgba(160,240,30,0.45)] will-change-transform"
                 >
                   {words[index]}
                 </motion.span>

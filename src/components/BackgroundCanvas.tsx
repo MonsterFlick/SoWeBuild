@@ -53,8 +53,8 @@ export default function BackgroundCanvas() {
       initParticles();
     };
 
-    const colorAccent = "rgba(198, 255, 61, 0.4)";
-    const colorDim = "rgba(120, 120, 140, 0.25)";
+    const colorAccent = "rgba(198, 255, 61, 0.65)";
+    const colorDim = "rgba(160, 145, 180, 0.25)";
 
     const initParticles = () => {
       particles = [];

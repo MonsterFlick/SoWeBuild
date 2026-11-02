@@ -203,7 +203,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "#c6ff3d",
+              background: "var(--color-accent)",
               display: "inline-block",
             }}
           />
@@ -324,7 +324,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             gap: "clamp(1.25rem, 3vw, 3.5rem)",
             flexWrap: "wrap",
             paddingTop: "clamp(0.875rem, 1.8vw, 1.5rem)",
-            borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+            borderTop: "1px solid var(--color-border)",
           }}
         >
           {[

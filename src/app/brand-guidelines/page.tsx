@@ -57,28 +57,28 @@ export default function BrandGuidelinesPage() {
 
             {/* Quick Spec Metric Badges */}
             <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 font-mono text-xs">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md">
-                <div className="text-[10px] text-primary-glow font-bold">ASSET PROTOCOL</div>
+              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#16131D] font-bold">ASSET PROTOCOL</div>
                 <div className="mt-1 text-sm font-bold text-foreground">100% Code</div>
                 <div className="text-[10px] text-muted-foreground">Zero AI Images</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md">
-                <div className="text-[10px] text-cyan-400 font-bold">CORE ACCENT</div>
-                <div className="mt-1 text-sm font-bold text-foreground">#BC37ED</div>
-                <div className="text-[10px] text-muted-foreground">Electric Violet</div>
+              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#16131D] font-bold">CORE ACCENT</div>
+                <div className="mt-1 text-sm font-bold text-foreground">#c6ff3d</div>
+                <div className="text-[10px] text-muted-foreground">Electric Lime</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md">
-                <div className="text-[10px] text-primary-glow font-bold">TYPOGRAPHY</div>
-                <div className="mt-1 text-sm font-bold text-foreground">Space Grotesk</div>
-                <div className="text-[10px] text-muted-foreground">+ Manrope & Mono</div>
+              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#16131D] font-bold">TYPOGRAPHY</div>
+                <div className="mt-1 text-sm font-bold text-foreground">Syne &amp; Serif</div>
+                <div className="text-[10px] text-muted-foreground">+ DM Sans &amp; Mono</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md">
-                <div className="text-[10px] text-cyan-400 font-bold">MOTION READY</div>
-                <div className="mt-1 text-sm font-bold text-foreground">MP4 & GIF</div>
-                <div className="text-[10px] text-muted-foreground">60 FPS Cinematic</div>
+              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#16131D] font-bold">CANVAS TONE</div>
+                <div className="mt-1 text-sm font-bold text-foreground">#FAF8F5</div>
+                <div className="text-[10px] text-muted-foreground">Warm Ivory</div>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function BrandGuidelinesPage() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-32 border-t border-white/10 px-6 py-12 sm:px-10">
+      <footer className="mt-32 border-t border-[#E8E0EE] bg-white px-6 py-12 sm:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 sm:flex-row font-mono text-xs text-muted-foreground">
           <div className="flex items-center gap-3">
             <Logo size="small" />

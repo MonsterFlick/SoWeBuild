@@ -84,12 +84,12 @@ export default function Navigation() {
           right: 0,
           zIndex: 100,
           padding: "clamp(0.875rem, 2vw, 1.25rem) var(--space-gutter)",
-          background: hasScrolled || isMenuOpen ? "rgba(7, 7, 10, 0.85)" : "transparent",
+          background: hasScrolled || isMenuOpen ? "rgba(250, 248, 245, 0.9)" : "transparent",
           backdropFilter: hasScrolled || isMenuOpen ? "blur(16px)" : "none",
           WebkitBackdropFilter: hasScrolled || isMenuOpen ? "blur(16px)" : "none",
           borderBottom:
             hasScrolled || isMenuOpen
-              ? "1px solid rgba(255, 255, 255, 0.08)"
+              ? "1px solid var(--color-border)"
               : "1px solid transparent",
           transition: "background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
         }}
@@ -169,8 +169,8 @@ export default function Navigation() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="flex md:hidden items-center justify-center"
             style={{
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              background: "rgba(22, 19, 29, 0.03)",
+              border: "1px solid var(--color-border)",
               borderRadius: "var(--radius-full)",
               cursor: "pointer",
               padding: "8px",
@@ -218,7 +218,7 @@ export default function Navigation() {
               right: 0,
               bottom: 0,
               zIndex: 99,
-              background: "#07070a",
+              background: "#FAF8F5",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -262,7 +262,7 @@ export default function Navigation() {
                     color: "var(--color-text)",
                     textDecoration: "none",
                     padding: "0.75rem 0",
-                    borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                    borderBottom: "1px solid var(--color-border)",
                     transition: "color 0.2s ease",
                   }}
                 >
@@ -313,7 +313,7 @@ export default function Navigation() {
               style={{
                 marginTop: "2.5rem",
                 paddingTop: "1.5rem",
-                borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+                borderTop: "1px solid var(--color-border)",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",

@@ -241,8 +241,8 @@ export default function ContactSection() {
                       width: "2.5rem",
                       height: "2.5rem",
                       borderRadius: "var(--radius-md)",
-                      background: "rgba(255, 255, 255, 0.03)",
-                      border: "1px solid var(--color-border)",
+                      background: "#16131D",
+                      border: "1px solid rgba(198, 255, 61, 0.4)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -360,14 +360,15 @@ export default function ContactSection() {
                               borderRadius: "var(--radius-full)",
                               fontFamily: "var(--font-mono)",
                               fontSize: "0.75rem",
+                              fontWeight: isSelected ? 700 : 500,
                               border: isSelected
                                 ? "1px solid var(--color-accent)"
                                 : "1px solid var(--color-border)",
                               background: isSelected
-                                ? "rgba(198, 255, 61, 0.08)"
-                                : "rgba(255, 255, 255, 0.02)",
-                              color: isSelected
                                 ? "var(--color-accent)"
+                                : "rgba(22, 19, 29, 0.02)",
+                              color: isSelected
+                                ? "#121019"
                                 : "var(--color-text-secondary)",
                               cursor: "pointer",
                               transition: "all 0.2s ease",
@@ -522,12 +523,13 @@ export default function ContactSection() {
                       width: 64,
                       height: 64,
                       borderRadius: "50%",
-                      background: "rgba(198, 255, 61, 0.1)",
+                      background: "#16131D",
                       border: "1px solid var(--color-accent)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       margin: "0 auto 1.5rem",
+                      boxShadow: "0 0 20px rgba(198, 255, 61, 0.3)",
                     }}
                   >
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -560,16 +562,17 @@ export default function ContactSection() {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "0.5rem",
-                      padding: "0.5rem 1rem",
+                      padding: "0.5rem 1.1rem",
                       borderRadius: "var(--radius-full)",
-                      background: "rgba(198, 255, 61, 0.06)",
-                      border: "1px solid rgba(198, 255, 61, 0.2)",
+                      background: "rgba(198, 255, 61, 0.25)",
+                      border: "1px solid rgba(198, 255, 61, 0.6)",
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.6875rem",
-                      color: "var(--color-accent)",
+                      fontWeight: 700,
+                      color: "#121019",
                     }}
                   >
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#c6ff3d" }} />
+                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#121019" }} />
                     Status: Priority Project Review In Progress
                   </div>
 

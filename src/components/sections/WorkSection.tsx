@@ -108,6 +108,7 @@ export default function WorkSection() {
               borderRadius: "var(--radius-xl)",
               border: "1px solid var(--color-border)",
               background: "var(--color-surface)",
+              boxShadow: "0 10px 30px -10px rgba(88, 28, 135, 0.06)",
               overflow: "hidden",
               transition: "border-color 0.3s ease, transform 0.3s ease",
             }}
@@ -129,11 +130,14 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "var(--color-accent)",
+                    color: "#c6ff3d",
+                    background: "#16131D",
+                    padding: "0.2rem 0.65rem",
+                    borderRadius: "var(--radius-full)",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    display: "block",
-                    marginBottom: "0.2rem",
+                    display: "inline-block",
+                    marginBottom: "0.4rem",
                   }}
                 >
                   Medical Equipment Platform
@@ -175,15 +179,15 @@ export default function WorkSection() {
             {/* Snap of Website in Sleek Browser Frame */}
             <div
               style={{
-                background: "linear-gradient(180deg, #0e1218 0%, #06090e 100%)",
+                background: "linear-gradient(180deg, #261A3B 0%, #1A1128 100%)",
                 padding: "clamp(0.5rem, 1.5vw, 1.25rem)",
               }}
             >
               {/* Window Chrome Header */}
               <div
                 style={{
-                  background: "rgba(0, 0, 0, 0.6)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  background: "rgba(45, 30, 68, 0.95)",
+                  border: "1px solid rgba(167, 139, 250, 0.2)",
                   borderBottom: "none",
                   borderRadius: "var(--radius-md) var(--radius-md) 0 0",
                   padding: "0.6rem 1rem",
@@ -193,20 +197,20 @@ export default function WorkSection() {
                 }}
               >
                 <div style={{ display: "flex", gap: "5px" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
                 </div>
 
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "var(--color-text-secondary)",
-                    background: "rgba(255, 255, 255, 0.04)",
+                    color: "#c6ff3d",
+                    background: "rgba(198, 255, 61, 0.08)",
                     padding: "0.15rem 0.75rem",
                     borderRadius: "var(--radius-full)",
-                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                    border: "1px solid rgba(198, 255, 61, 0.25)",
                   }}
                 >
                   https://fertisure.in
@@ -218,10 +222,10 @@ export default function WorkSection() {
               {/* Complete Uncut Screenshot */}
               <div
                 style={{
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(167, 139, 250, 0.15)",
                   borderRadius: "0 0 var(--radius-md) var(--radius-md)",
                   overflow: "hidden",
-                  background: "#080c10",
+                  background: "#1E1330",
                 }}
               >
                 <Image
@@ -250,6 +254,7 @@ export default function WorkSection() {
               borderRadius: "var(--radius-xl)",
               border: "1px solid var(--color-border)",
               background: "var(--color-surface)",
+              boxShadow: "0 10px 30px -10px rgba(88, 28, 135, 0.06)",
               overflow: "hidden",
               transition: "border-color 0.3s ease, transform 0.3s ease",
             }}
@@ -271,11 +276,14 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "var(--color-accent)",
+                    color: "#c6ff3d",
+                    background: "#16131D",
+                    padding: "0.2rem 0.65rem",
+                    borderRadius: "var(--radius-full)",
                     letterSpacing: "0.08em",
                     textTransform: "uppercase",
-                    display: "block",
-                    marginBottom: "0.2rem",
+                    display: "inline-block",
+                    marginBottom: "0.4rem",
                   }}
                 >
                   D2C Storefront & Verification
@@ -317,15 +325,15 @@ export default function WorkSection() {
             {/* Snap of Website in Sleek Browser Frame */}
             <div
               style={{
-                background: "linear-gradient(180deg, #130f1d 0%, #08060c 100%)",
+                background: "linear-gradient(180deg, #2A1A40 0%, #1B102C 100%)",
                 padding: "clamp(0.5rem, 1.5vw, 1.25rem)",
               }}
             >
               {/* Window Chrome Header */}
               <div
                 style={{
-                  background: "rgba(0, 0, 0, 0.6)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  background: "rgba(45, 30, 68, 0.95)",
+                  border: "1px solid rgba(167, 139, 250, 0.2)",
                   borderBottom: "none",
                   borderRadius: "var(--radius-md) var(--radius-md) 0 0",
                   padding: "0.6rem 1rem",
@@ -335,20 +343,20 @@ export default function WorkSection() {
                 }}
               >
                 <div style={{ display: "flex", gap: "5px" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(221, 214, 254, 0.4)" }} />
                 </div>
 
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "var(--color-text-secondary)",
-                    background: "rgba(255, 255, 255, 0.04)",
+                    color: "#c6ff3d",
+                    background: "rgba(198, 255, 61, 0.08)",
                     padding: "0.15rem 0.75rem",
                     borderRadius: "var(--radius-full)",
-                    border: "1px solid rgba(255, 255, 255, 0.06)",
+                    border: "1px solid rgba(198, 255, 61, 0.25)",
                   }}
                 >
                   https://alphatech-nutrition.in
@@ -360,10 +368,10 @@ export default function WorkSection() {
               {/* Complete Uncut Screenshot */}
               <div
                 style={{
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(167, 139, 250, 0.15)",
                   borderRadius: "0 0 var(--radius-md) var(--radius-md)",
                   overflow: "hidden",
-                  background: "#0a0710",
+                  background: "#1B102C",
                 }}
               >
                 <Image
