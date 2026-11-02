@@ -89,11 +89,11 @@ export default async function WorkSlugPage({
 
       {/* Atmospheric Ambient Lighting Gradients */}
       <div
-        className="pointer-events-none fixed top-0 right-1/4 size-[400px] sm:size-[700px] rounded-full blur-[140px] sm:blur-[180px] -z-10 opacity-20"
+        className="pointer-events-none fixed top-0 right-1/4 size-[700px] rounded-full blur-[180px] -z-10 opacity-25"
         style={{ background: "radial-gradient(circle, rgba(198,255,61,0.12) 0%, transparent 70%)" }}
       />
       <div
-        className="pointer-events-none fixed top-[45%] left-[-100px] size-[350px] sm:size-[600px] rounded-full blur-[120px] sm:blur-[160px] -z-10 opacity-15"
+        className="pointer-events-none fixed top-[45%] left-[-100px] size-[600px] rounded-full blur-[160px] -z-10 opacity-15"
         style={{ background: "radial-gradient(circle, rgba(147,51,234,0.06) 0%, transparent 70%)" }}
       />
 
@@ -107,15 +107,15 @@ export default async function WorkSlugPage({
             href="/#work"
             className="group inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs text-[#585062] hover:text-[#16131D] transition-colors shrink-0"
           >
-            <span className="flex size-7 items-center justify-center rounded-full bg-purple-900/[0.04] border border-[#E8E2EE] group-hover:border-[#c6ff3d] group-hover:bg-[#c6ff3d]/15 transition-all">
-              <ArrowLeftIcon className="size-3.5 text-[#585062] group-hover:text-[#16131D] transition-colors" />
+            <span className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-purple-900/[0.04] border border-[#E8E2EE] group-hover:border-[#c6ff3d] group-hover:bg-[#c6ff3d]/15 transition-all">
+              <ArrowLeftIcon className="size-3 sm:size-3.5 text-[#585062] group-hover:text-[#16131D] transition-colors" />
             </span>
             <span className="hidden sm:inline">Back to Selected Work</span>
-            <span className="sm:hidden text-[11px] font-semibold">Work</span>
+            <span className="sm:hidden font-semibold">Work</span>
           </Link>
 
           {/* Studio Brand Mark */}
-          <Link href="/" className="font-display text-xs sm:text-base font-extrabold tracking-tight text-[#16131D] hover:opacity-80 transition-opacity shrink-0">
+          <Link href="/" className="font-display text-xs sm:text-base font-extrabold tracking-tight text-[#16131D] hover:opacity-80 transition-opacity truncate px-2">
             SOWEBUILD<span className="text-[#c6ff3d]">.</span>IN
           </Link>
 
@@ -134,12 +134,12 @@ export default async function WorkSlugPage({
       </header>
 
       {/* ============================================================== */}
-      {/* HERO SECTION                                                   */}
+      {/* HERO SECTION: IDENTITY, HEADLINE & METADATA CHIPS              */}
       {/* ============================================================== */}
       <main className="relative z-10 pt-24 sm:pt-32 lg:pt-36">
         <div className="container-wide">
-          {/* Breadcrumb + Category */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#585062] mb-4 sm:mb-6">
+          {/* Breadcrumb + Category Chip */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#585062] mb-3 sm:mb-4">
             <Link href="/" className="hover:text-[#16131D] transition-colors">Studio</Link>
             <span>/</span>
             <Link href="/#work" className="hover:text-[#16131D] transition-colors">Case Study</Link>
@@ -156,46 +156,79 @@ export default async function WorkSlugPage({
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-4 sm:mt-6 font-display text-base sm:text-xl lg:text-2xl text-[#585062] max-w-3xl font-normal leading-snug">
+          <p className="mt-3 sm:mt-5 font-display text-base sm:text-xl lg:text-2xl text-[#585062] max-w-3xl font-normal leading-snug">
             {cs.subtitle}
           </p>
 
-          {/* Architectural Specification Bar (Clean editorial metadata - NO repetitive chunky chips) */}
-          <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#E8E2EE]">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 font-mono">
-              <div className="min-w-0">
-                <span className="text-[10px] uppercase tracking-widest text-[#887E94] block mb-1">Client Profile</span>
-                <span className="font-display font-bold text-sm sm:text-base text-[#16131D] block truncate">{cs.client}</span>
+          {/* ============================================================== */}
+          {/* THE PROJECT SPECIFICATIONS (METADATA CHIPS STRIP)             */}
+          {/* ============================================================== */}
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#E8E2EE]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              {/* Chip 1: Client Profile */}
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Client Profile</span>
+                  <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
+                </div>
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                  {cs.client}
+                </div>
                 {cs.established && (
-                  <span className="text-[10px] text-[#585062] block truncate mt-0.5">{cs.established}</span>
+                  <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                    {cs.established}
+                  </div>
                 )}
               </div>
 
-              <div className="min-w-0">
-                <span className="text-[10px] uppercase tracking-widest text-[#887E94] block mb-1">Timeline &amp; Year</span>
-                <span className="font-display font-bold text-sm sm:text-base text-[#16131D] block truncate">{cs.timeline || "Production"}</span>
-                <span className="text-[10px] text-[#585062] block truncate mt-0.5">Launched {cs.year || "2024"}</span>
-              </div>
-
-              <div className="min-w-0">
-                <span className="text-[10px] uppercase tracking-widest text-[#887E94] block mb-1">Engineering Scope</span>
-                <span className="font-display font-bold text-sm sm:text-base text-[#16131D] block truncate">Complete Custom Build</span>
-                <span className="text-[10px] text-[#585062] block truncate mt-0.5">100% Bespoke Code</span>
-              </div>
-
-              <div className="min-w-0 flex flex-col justify-between">
-                <div>
-                  <span className="text-[10px] uppercase tracking-widest text-[#887E94] block mb-1">Live Deployment</span>
-                  <a
-                    href={cs.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-mono font-semibold text-xs sm:text-sm text-[#16131D] hover:text-[#c6ff3d] transition-colors truncate group"
-                  >
-                    <span className="truncate">{cs.liveUrl.replace("https://", "")}</span>
-                    <ArrowUpRightIcon className="size-3.5 text-[#16131D] group-hover:text-[#c6ff3d] shrink-0 transition-colors" />
-                  </a>
+              {/* Chip 2: Timeline & Launch */}
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Timeline &amp; Year</span>
+                  <span className="font-mono text-[10px] font-semibold text-[#887E94]">{cs.year || "2024"}</span>
                 </div>
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                  {cs.timeline || "Production"}
+                </div>
+                <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                  Ground-Up Turnaround
+                </div>
+              </div>
+
+              {/* Chip 3: Engineering Scope */}
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Engineering Scope</span>
+                  <span className="size-1.5 rounded-full bg-[#16131D]" />
+                </div>
+                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] truncate">
+                  {cs.role || "Complete Custom Build"}
+                </div>
+                <div className="font-mono text-[11px] text-[#585062] mt-1 truncate">
+                  Zero Templates • 100% Bespoke
+                </div>
+              </div>
+
+              {/* Chip 4: Live Platform (Interactive Chip) */}
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 flex flex-col justify-between min-w-0">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Live Platform</span>
+                    <span className="size-2 rounded-full bg-[#c6ff3d] animate-pulse" />
+                  </div>
+                  <div className="font-mono font-semibold text-xs sm:text-sm text-[#16131D] truncate">
+                    {cs.liveUrl.replace("https://", "")}
+                  </div>
+                </div>
+                <a
+                  href={cs.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-between gap-1 font-mono text-[11px] sm:text-xs font-bold text-[#16131D] bg-[#FAF8F5] hover:bg-[#c6ff3d] px-3 py-1.5 rounded-lg border border-[#E8E2EE] hover:border-[#c6ff3d] mt-3 transition-all group"
+                >
+                  <span>Visit Platform</span>
+                  <ArrowUpRightIcon className="size-3 text-[#16131D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
               </div>
             </div>
           </div>
@@ -203,8 +236,9 @@ export default async function WorkSlugPage({
 
         {/* ============================================================== */}
         {/* OFFICIAL REAL PRODUCT SHOWCASE (BROWSER WINDOW MOCKUP)         */}
+        {/* Balanced spacing from chips: mt-14 sm:mt-20 lg:mt-24          */}
         {/* ============================================================== */}
-        <section className="container-wide mt-10 sm:mt-14">
+        <section className="container-wide mt-14 sm:mt-20 lg:mt-24">
           <div className="rounded-xl sm:rounded-2xl lg:rounded-3xl border border-purple-200/50 bg-gradient-to-b from-[#261A3B] to-[#1A1128] overflow-hidden shadow-xl sm:shadow-2xl shadow-purple-950/15 ring-1 ring-purple-900/10">
             {/* macOS / Chrome Window Bar */}
             <div className="flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3.5 border-b border-purple-800/40 bg-[#2E2046]/95 backdrop-blur-xl gap-2">
@@ -253,19 +287,30 @@ export default async function WorkSlugPage({
         </section>
 
         {/* ============================================================== */}
-        {/* MEASURED BUSINESS IMPACT (METRICS OUTCOMES)                    */}
+        {/* SECTION 01: MEASURED BUSINESS IMPACT (OUTCOME METRICS CHIPS)   */}
+        {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="container-wide mt-16 sm:mt-24">
-          <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-5 sm:mb-6">
-            <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-            <span>MEASURED BUSINESS IMPACT</span>
+        <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
+          <div className="max-w-2xl mb-6 sm:mb-8">
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-2 sm:mb-3">
+              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
+              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px]">
+                01 // MEASURED BUSINESS IMPACT
+              </span>
+            </div>
+            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
+              Real builds. <span className="font-serif italic font-normal text-[#16131D]">Measured</span> results.
+            </h2>
+            <p className="mt-2 text-xs sm:text-base text-[#585062] font-mono">
+              Key business performance and production metrics delivered for {cs.client}.
+            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {cs.metrics.map((m) => (
               <div
                 key={m.label}
-                className="spotlight-card rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-6 lg:p-7 backdrop-blur-xl relative overflow-hidden shadow-sm shadow-purple-950/3"
+                className="spotlight-card rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-6 lg:p-7 backdrop-blur-xl relative overflow-hidden shadow-sm shadow-purple-950/3 hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300"
               >
                 <div className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#16131D] tracking-tight">
                   {m.value}
@@ -283,13 +328,16 @@ export default async function WorkSlugPage({
         </section>
 
         {/* ============================================================== */}
-        {/* SECTION 01: THE BUSINESS CHALLENGE (STARTING FROM ZERO)        */}
+        {/* SECTION 02: THE BUSINESS CHALLENGE (STARTING FROM ZERO)        */}
+        {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="container-wide mt-16 sm:mt-24">
+        <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
           <div className="max-w-2xl mb-8 sm:mb-12">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-2 sm:mb-3">
               <TargetIcon className="size-3.5 text-[#16131D]" />
-              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">01 // THE BUSINESS CHALLENGE</span>
+              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+                02 // THE BUSINESS CHALLENGE
+              </span>
             </div>
 
             <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
@@ -333,9 +381,10 @@ export default async function WorkSlugPage({
         </section>
 
         {/* ============================================================== */}
-        {/* SECTION 02: SO WE BUILD (THE BRAND KINETIC BANNER)            */}
+        {/* SECTION 03: SO WE BUILD (THE BRAND KINETIC BANNER)            */}
+        {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="relative mt-16 sm:mt-24 mb-16 sm:mb-24 py-14 sm:py-20 overflow-hidden border-y border-[#E8E2EE] bg-[#FAF8F5]">
+        <section className="relative mt-16 sm:mt-24 lg:mt-28 mb-16 sm:mb-24 lg:mb-28 py-14 sm:py-20 overflow-hidden border-y border-[#E8E2EE] bg-[#FAF8F5]">
           <div
             className="pointer-events-none absolute inset-0 opacity-20"
             style={{
@@ -362,13 +411,15 @@ export default async function WorkSlugPage({
         </section>
 
         {/* ============================================================== */}
-        {/* SECTION 03: SO WE BUILD — THE GROUND-UP EXECUTION              */}
+        {/* SECTION 04: SO WE BUILD — THE GROUND-UP EXECUTION              */}
         {/* ============================================================== */}
         <section className="container-wide">
           <div className="max-w-2xl mb-8 sm:mb-12">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-3">
               <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">02 // SO WE BUILD</span>
+              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+                03 // SO WE BUILD
+              </span>
             </div>
 
             <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
@@ -449,8 +500,9 @@ export default async function WorkSlugPage({
 
         {/* ============================================================== */}
         {/* NEXT CASE STUDY TRANSITION                                     */}
+        {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="container-wide mt-16 sm:mt-24">
+        <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
           <div className="relative rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-white p-6 sm:p-10 lg:p-12 overflow-hidden shadow-lg shadow-purple-950/4">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
               {/* Text Info */}
@@ -514,8 +566,9 @@ export default async function WorkSlugPage({
 
         {/* ============================================================== */}
         {/* "SO WE BUILD." STUDIO CALL TO ACTION                           */}
+        {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="container-wide mt-16 sm:mt-24 text-center">
+        <section className="container-wide mt-16 sm:mt-24 lg:mt-28 text-center">
           <div className="rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-gradient-to-b from-[#FAF8F5] to-white px-4 py-12 sm:px-10 sm:py-16 shadow-md shadow-purple-950/3">
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#585062]">
               BUILT FOR AMBITIOUS BRANDS
@@ -549,8 +602,9 @@ export default async function WorkSlugPage({
 
       {/* ============================================================== */}
       {/* STUDIO LUXURY FOOTER                                           */}
+      {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
       {/* ============================================================== */}
-      <footer className="border-t border-[#E8E2EE] bg-white py-8 sm:py-12 mt-16 sm:mt-24">
+      <footer className="border-t border-[#E8E2EE] bg-white py-8 sm:py-12 mt-16 sm:mt-24 lg:mt-28">
         <div className="container-wide flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
           <div>
             <div className="font-display font-extrabold text-sm sm:text-base text-[#16131D]">
