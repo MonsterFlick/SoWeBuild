@@ -39,13 +39,13 @@ export function CaseStudyHeadline({
   if (!words || words.length === 0) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center text-center select-none font-display w-full">
+    <div className="flex flex-col items-center justify-center text-center select-none font-display w-full px-2">
       {/* Line 1: Hook */}
       <motion.p
         initial={{ opacity: 0.8, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="font-serif italic text-[clamp(1.35rem,3.2vw,2.2rem)] font-normal tracking-tight text-[#585062] mb-3"
+        className="font-serif italic text-[clamp(1.15rem,2.8vw,2rem)] font-normal tracking-tight text-[#585062] mb-2 sm:mb-3"
       >
         {hook}
       </motion.p>
@@ -55,31 +55,24 @@ export function CaseStudyHeadline({
         initial={{ opacity: 0.9, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="w-full text-[clamp(2.2rem,6vw,4.8rem)] font-bold tracking-tighter text-[#16131D] leading-tight"
+        className="w-full text-[clamp(1.75rem,5.2vw,4.5rem)] font-bold tracking-tight text-[#16131D] leading-tight"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 items-baseline gap-x-3 md:gap-x-4 text-center md:text-left">
-          {/* Left Column: Anchored against center seam — zero shifting */}
-          <div className="md:text-right whitespace-nowrap">
-            <span>So we build</span>
-          </div>
-
-          {/* Right Column: Starts from center seam and expands right */}
-          <div className="md:text-left">
-            <span className="inline-grid [grid-template-areas:'stack'] align-baseline min-h-[1.2em]">
-              <AnimatePresence mode="popLayout">
-                <motion.span
-                  key={words[index]}
-                  variants={wordVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="[grid-area:stack] whitespace-nowrap text-[#c6ff3d] drop-shadow-[0_2px_20px_rgba(160,240,30,0.45)] will-change-transform"
-                >
-                  {words[index]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-          </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-1 text-center">
+          <span className="whitespace-nowrap">So we build</span>
+          <span className="inline-grid [grid-template-areas:'stack'] align-baseline min-h-[1.2em]">
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={words[index]}
+                variants={wordVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="[grid-area:stack] text-[#c6ff3d] drop-shadow-[0_2px_16px_rgba(160,240,30,0.4)] will-change-transform"
+              >
+                {words[index]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </div>
       </motion.h2>
     </div>
