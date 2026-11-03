@@ -186,7 +186,7 @@ export default function ContactSection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
         >
           {/* Left Column: Studio Line & Assurance */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 max-w-lg lg:max-w-none">
             <div className="label" style={{ marginBottom: "0.75rem" }}>
               Start a Build
             </div>
@@ -208,6 +208,7 @@ export default function ContactSection() {
 
             {/* Engineering Assurance Badges */}
             <div
+              className="w-full text-left"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -283,6 +284,7 @@ export default function ContactSection() {
 
             {/* Direct Studio Channels */}
             <div
+              className="w-full text-left"
               style={{
                 padding: "1.25rem",
                 borderRadius: "var(--radius-lg)",

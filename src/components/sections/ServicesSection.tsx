@@ -273,10 +273,10 @@ export default function ServicesSection() {
         {/* ============================================================== */}
         {/* MASTER CATALOGUE HEADER                                        */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
-          <div className="max-w-3xl">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-14 text-center sm:text-left">
+          <div className="max-w-3xl flex flex-col items-center sm:items-start">
             {/* Eyebrow Label with Neon Green Spark Dot & Hover Indicator */}
-            <div className="label flex flex-wrap items-center gap-2 mb-3">
+            <div className="label flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-3">
               <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
               <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase">
                 Master Services Catalogue
@@ -287,7 +287,7 @@ export default function ServicesSection() {
               </span>
             </div>
 
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-3">
+            <h2 className="heading-xl tracking-tight text-[#161124] mb-3 text-center sm:text-left">
               A Complete Digital, Creative, <br className="hidden sm:inline" />
               <span className="font-serif italic font-normal text-[#7C3AED]">
                 Technology &amp; Growth
@@ -295,21 +295,21 @@ export default function ServicesSection() {
               Agency.
             </h2>
 
-            <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed">
+            <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed text-center sm:text-left">
               We operate across 10 specialized divisions delivering full-lifecycle digital dominance.
               Zero generic handoffs — direct senior architecture from strategic inception to global scale.
             </p>
           </div>
 
-          {/* Action Buttons: Expand/Collapse All */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Action Buttons: Balanced on mobile */}
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2.5 w-full sm:w-auto">
             <button
               onClick={isAllExpanded ? handleCollapseAll : handleExpandAll}
-              className="inline-flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-4 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-sm cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-3.5 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-sm cursor-pointer text-center"
             >
-              <span>{isAllExpanded ? "Collapse All Drawers" : "Expand All Drawers"}</span>
+              <span>{isAllExpanded ? "Collapse All" : "Expand All"}</span>
               <ChevronDownIcon
-                className={`size-3.5 text-[#7C3AED] transition-transform duration-300 ${
+                className={`size-3 text-[#7C3AED] transition-transform duration-300 ${
                   isAllExpanded ? "rotate-180" : ""
                 }`}
               />
@@ -317,7 +317,7 @@ export default function ServicesSection() {
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-2 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-2 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all text-center"
             >
               <span>Brief a Project</span>
               <ArrowUpRightIcon className="size-3" />
@@ -399,8 +399,8 @@ export default function ServicesSection() {
         {/* ADDITIONAL SPECIALIZED INDUSTRY FRAMEWORKS                     */}
         {/* ============================================================== */}
         <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#E8DFF2]">
-          <div className="max-w-3xl mb-8 sm:mb-12">
-            <div className="label flex items-center gap-2 mb-2">
+          <div className="max-w-3xl mb-8 sm:mb-12 flex flex-col items-center sm:items-start text-center sm:text-left mx-auto sm:mx-0">
+            <div className="label flex items-center justify-center sm:justify-start gap-2 mb-2">
               <span className="size-1.5 rounded-full bg-[#7C3AED]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
                 Specialized Solutions By Industry

@@ -43,18 +43,9 @@ export default function FooterSection() {
     >
       <div className="container-wide" style={{ padding: "clamp(2rem, 4vw, 3rem) var(--space-gutter) 1.5rem" }}>
         {/* Main Compact Row */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "2rem",
-            paddingBottom: "clamp(1.5rem, 3vw, 2.5rem)",
-          }}
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8 pb-6 sm:pb-8 text-center sm:text-left">
           {/* Brand & Tagline */}
-          <div>
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             <div
               style={{
                 fontFamily: "var(--font-display)",
@@ -82,14 +73,7 @@ export default function FooterSection() {
           </div>
 
           {/* Nav Links in horizontal strip */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1.75rem",
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex items-center justify-center gap-6 sm:gap-7 flex-wrap">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -110,14 +94,7 @@ export default function FooterSection() {
           </div>
 
           {/* Time, Status & Back to Top */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1.5rem",
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex items-center justify-center gap-5 sm:gap-6 flex-wrap">
             <div
               style={{
                 display: "flex",
@@ -182,17 +159,7 @@ export default function FooterSection() {
         </div>
 
         {/* Bottom Compact Legal & Social Strip */}
-        <div
-          style={{
-            borderTop: "1px solid var(--color-border)",
-            paddingTop: "1.5rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
+        <div className="border-t border-[var(--color-border)] pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
           <span
             className="mono"
             style={{
@@ -203,7 +170,7 @@ export default function FooterSection() {
             © {new Date().getFullYear()} SoWeBuild Studio. Engineered in India for the world.
           </span>
 
-          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", justifyContent: "center" }}>
             <a
               href="mailto:sowebuild.in@gmail.com"
               className="link-sweep mono"

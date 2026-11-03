@@ -65,18 +65,9 @@ export default function WorkSection() {
     >
       <div className="container-wide">
         {/* Section Header */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            marginBottom: "clamp(1.5rem, 3vw, 2.75rem)",
-            flexWrap: "wrap",
-            gap: "1.25rem",
-          }}
-        >
-          <div>
-            <div className="label" style={{ marginBottom: "0.75rem" }}>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12 text-center sm:text-left">
+          <div className="flex flex-col items-center sm:items-start">
+            <div className="label mb-2">
               Selected Work
             </div>
             <h2 className="heading-xl">
@@ -84,15 +75,7 @@ export default function WorkSection() {
               <span className="serif-accent">Measured</span> results.
             </h2>
           </div>
-          <p
-            className="body-lg"
-            style={{
-              maxWidth: "400px",
-              color: "var(--color-text-secondary)",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
+          <p className="body-lg max-w-md text-center sm:text-left mx-auto sm:mx-0 text-[var(--color-text-secondary)]">
             Digital products and flagship platforms engineered by our studio.
           </p>
         </div>
@@ -114,17 +97,7 @@ export default function WorkSection() {
             }}
           >
             {/* Top Bar: Name of Site + 2 Buttons */}
-            <div
-              style={{
-                padding: "clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: "0.75rem",
-                borderBottom: "1px solid var(--color-border)",
-              }}
-            >
+            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--color-border)] text-left">
               <div>
                 <span
                   style={{
@@ -155,21 +128,19 @@ export default function WorkSection() {
                 </h3>
               </div>
 
-              {/* The 2 Buttons */}
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+              {/* The 2 Buttons: Balanced on Mobile */}
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
                 <a
                   href="https://fertisure.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ padding: "0.55rem 1.1rem", fontSize: "0.75rem" }}
+                  className="btn-primary w-full sm:w-auto text-center justify-center text-xs py-2 px-3"
                 >
                   <span>Visit Live ↗</span>
                 </a>
                 <Link
                   href="/work/fertisure"
-                  className="btn-outline"
-                  style={{ padding: "0.55rem 1rem", fontSize: "0.75rem" }}
+                  className="btn-outline w-full sm:w-auto text-center justify-center text-xs py-2 px-3"
                 >
                   <span>Case Study</span>
                 </Link>
@@ -260,17 +231,7 @@ export default function WorkSection() {
             }}
           >
             {/* Top Bar: Name of Site + 2 Buttons */}
-            <div
-              style={{
-                padding: "clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: "0.75rem",
-                borderBottom: "1px solid var(--color-border)",
-              }}
-            >
+            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--color-border)] text-left">
               <div>
                 <span
                   style={{
@@ -301,21 +262,19 @@ export default function WorkSection() {
                 </h3>
               </div>
 
-              {/* The 2 Buttons */}
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+              {/* The 2 Buttons: Balanced on Mobile */}
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
                 <a
                   href="https://alphatech-nutrition.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary"
-                  style={{ padding: "0.55rem 1.1rem", fontSize: "0.75rem" }}
+                  className="btn-primary w-full sm:w-auto text-center justify-center text-xs py-2 px-3"
                 >
                   <span>Visit Live ↗</span>
                 </a>
                 <Link
                   href="/work/alphatech-nutrition"
-                  className="btn-outline"
-                  style={{ padding: "0.55rem 1rem", fontSize: "0.75rem" }}
+                  className="btn-outline w-full sm:w-auto text-center justify-center text-xs py-2 px-3"
                 >
                   <span>Case Study</span>
                 </Link>

@@ -139,23 +139,11 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
 
       {/* Main content */}
       <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          maxWidth: "1600px",
-          margin: "0 auto",
-          width: "100%",
-        }}
+        className="w-full max-w-[1600px] mx-auto relative z-[2] flex flex-col items-center sm:items-start text-center sm:text-left"
       >
         {/* Label */}
         <div
-          className="label"
-          style={{
-            marginBottom: "clamp(0.75rem, 1.5vw, 1.5rem)",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.6rem",
-          }}
+          className="label mb-3 sm:mb-4 inline-flex items-center gap-2"
         >
           <span
             style={{
@@ -171,11 +159,11 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         </div>
 
         {/* Headline */}
-        <div ref={headlineRef} style={{ userSelect: "none" }}>
+        <div ref={headlineRef} className="w-full text-center sm:text-left" style={{ userSelect: "none" }}>
           {/* Brand Studio Title */}
-          <div className="hero-line" style={{ overflow: "visible", display: "block" }}>
+          <div className="hero-line w-full text-center sm:text-left" style={{ overflow: "visible", display: "block" }}>
             <h1
-              className="hero-line-inner heading-display"
+              className="hero-line-inner heading-display text-center sm:text-left"
               style={{
                 display: "block",
                 letterSpacing: "-0.04em",
@@ -191,7 +179,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
 
           {/* Changing Deliverable Animation (Tight, Natural Line Gap) */}
           <div
-            className="hero-line"
+            className="hero-line w-full text-center sm:text-left"
             style={{
               overflow: "visible",
               display: "block",
@@ -199,11 +187,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             }}
           >
             <div
-              className="hero-line-inner heading-display"
+              className="hero-line-inner heading-display flex items-baseline justify-center sm:justify-start flex-wrap w-full"
               style={{
-                display: "flex",
-                alignItems: "baseline",
-                flexWrap: "wrap",
                 color: "var(--color-accent)",
                 lineHeight: 0.98,
                 margin: 0,
@@ -243,21 +228,19 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         {/* Subtitle */}
         <p
           ref={subtitleRef}
-          className="body-lg"
+          className="body-lg text-center sm:text-left mx-auto sm:mx-0 max-w-[560px] text-[#5A5068]"
           style={{
-            maxWidth: "560px",
-            marginTop: "clamp(0.75rem, 1.5vw, 1.25rem)",
+            marginTop: "clamp(0.875rem, 1.8vw, 1.5rem)",
             opacity: 1,
-            color: "var(--color-text-secondary)",
             lineHeight: 1.6,
           }}
         >
           We design and engineer bespoke web applications, flagship digital products, and automated software for ambitious brands worldwide.
         </p>
 
-        {/* CTA */}
-        <div style={{ marginTop: "clamp(1.125rem, 2.2vw, 2.25rem)", display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
-          <a href="#contact" className="btn-primary">
+        {/* CTA Buttons */}
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center sm:justify-start gap-3 w-full sm:w-auto">
+          <a href="#contact" className="btn-primary w-full sm:w-auto text-center justify-center">
             <span>Start a project</span>
             <svg
               width="16"
@@ -275,47 +258,28 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               />
             </svg>
           </a>
-          <a href="#work" className="btn-outline">
+          <a href="#work" className="btn-outline w-full sm:w-auto text-center justify-center">
             <span>Explore selected work</span>
           </a>
         </div>
 
-        {/* Studio Credential Strip */}
+        {/* Studio Credential Strip: Balanced 3-column grid across mobile */}
         <div
-          style={{
-            marginTop: "clamp(1.25rem, 2.5vw, 2.5rem)",
-            display: "flex",
-            alignItems: "center",
-            gap: "clamp(1.25rem, 3vw, 3.5rem)",
-            flexWrap: "wrap",
-            paddingTop: "clamp(0.875rem, 1.8vw, 1.5rem)",
-            borderTop: "1px solid var(--color-border)",
-          }}
+          className="w-full mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-2 sm:gap-8 text-center sm:text-left"
         >
           {[
             { val: "99.9%", lbl: "System Reliability" },
-            { val: "100%", lbl: "Code & Design Ownership" },
-            { val: "1-on-1", lbl: "Direct Senior Engineering" },
+            { val: "100%", lbl: "Code Ownership" },
+            { val: "1-on-1", lbl: "Senior Lead" },
           ].map((stat) => (
-            <div key={stat.lbl}>
+            <div key={stat.lbl} className="flex flex-col items-center sm:items-start">
               <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.25rem",
-                  fontWeight: 700,
-                  color: "var(--color-text)",
-                  lineHeight: 1.1,
-                }}
+                className="font-display text-base sm:text-xl font-bold text-[var(--color-text)] leading-tight"
               >
                 {stat.val}
               </div>
               <div
-                className="label"
-                style={{
-                  fontSize: "0.5625rem",
-                  color: "var(--color-text-muted)",
-                  marginTop: "0.25rem",
-                }}
+                className="label text-[8px] sm:text-[10px] text-[var(--color-text-muted)] mt-1 tracking-tight sm:tracking-wider leading-tight"
               >
                 {stat.lbl}
               </div>

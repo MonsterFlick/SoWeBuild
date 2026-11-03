@@ -280,11 +280,11 @@
   padding-left: var(--space-gutter);
   padding-right: var(--space-gutter);
 
-  /* Mobile: compact, natural flow right below navbar, no dead voids */
-  min-height: auto;
-  justify-content: flex-start;
-  padding-top: clamp(5.25rem, 14vw, 6.25rem);
-  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+  /* Mobile: balanced, full-height luxury hero, centered in viewport */
+  min-height: calc(100svh - 4.5rem);
+  justify-content: center;
+  padding-top: clamp(5rem, 12vw, 6.5rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
 }
 
 @media (min-width: 1024px) {
