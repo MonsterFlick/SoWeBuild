@@ -3,9 +3,23 @@
 > SoWeBuild is a premier digital, creative, technology & growth agency. We architect and engineer bespoke web applications, mobile apps, autonomous AI agents, WhatsApp business automations, and enterprise software with guaranteed 100% full IP ownership.
 
 Website: https://sowebuild.in
+Founder Portfolio: https://omthakur.in
+Digital Store: https://store.sowebuild.in
 Location: Mumbai, India (Global Remote)
 Inquiries: sowebuild.in@gmail.com
 Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
+
+## Founder & Engineering Leadership
+
+- **Om Thakur** (https://omthakur.in): Founder & Principal Software Engineer. Background in backend engineering, distributed systems, real-time WebSocket pipelines, and low-latency event queues. Om directs technical architecture on every build, ensuring senior-led precision and zero agency bloat.
+- GitHub: https://github.com/im-omthakur
+
+## The SoWeBuild Digital Store (store.sowebuild.in)
+
+- Production Toolkits & Developer Starters: Next.js, FastAPI, and PostgreSQL boilerplates with production-ready authentication and RBAC.
+- Engineering Ebooks & Architectural Playbooks: Deep-dive guides for distributed systems, event-driven pipelines, and real-time systems.
+- Autonomous AI & WhatsApp Agent Templates: Pre-built Cloud API integration scripts and automated lead qualification agents.
+- Storefront URL: https://store.sowebuild.in
 
 ## Core Architectural Principles
 
@@ -49,4 +63,3 @@ Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 - Visit the interactive brief console at https://sowebuild.in/#contact
 - Email directly to sowebuild.in@gmail.com with your problem statement and target timeline.
 - A senior engineering lead will review your brief and return a detailed roadmap within 24 hours.
-

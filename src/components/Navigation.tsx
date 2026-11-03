@@ -53,6 +53,8 @@ export default function Navigation() {
     { label: "Selected Work", href: "#work" },
     { label: "Master Services", href: "#services" },
     { label: "Studio Standards & FAQ", href: "#faq" },
+    { label: "Store (Tools & Books) ↗", href: "https://store.sowebuild.in", isExternal: true },
+    { label: "Founder (Om Thakur) ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Start a Project", href: "#contact" },
     { label: "Brand Guidelines", href: "/brand-guidelines" },
   ];
@@ -112,32 +114,44 @@ export default function Navigation() {
             width: "100%",
           }}
         >
-          {/* Logo */}
-          <a
-            href="/"
-            onClick={() => {
-              if (isMenuOpen) setIsMenuOpen(false);
-            }}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.125rem, 2vw, 1.25rem)",
-              fontWeight: 800,
-              letterSpacing: "-0.04em",
-              color: "var(--color-text)",
-              textDecoration: "none",
-              position: "relative",
-              zIndex: 102,
-              display: "inline-flex",
-              alignItems: "baseline",
-            }}
-          >
-            SWB
-            <span style={{ color: "var(--color-neon, #c6ff3d)", marginLeft: "2px" }}>.</span>
-          </a>
+          {/* Logo & Mobile Store Badge */}
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              onClick={() => {
+                if (isMenuOpen) setIsMenuOpen(false);
+              }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.125rem, 2vw, 1.25rem)",
+                fontWeight: 800,
+                letterSpacing: "-0.04em",
+                color: "var(--color-text)",
+                textDecoration: "none",
+                position: "relative",
+                zIndex: 102,
+                display: "inline-flex",
+                alignItems: "baseline",
+              }}
+            >
+              SWB
+              <span style={{ color: "var(--color-neon, #c6ff3d)", marginLeft: "2px" }}>.</span>
+            </a>
+
+            <a
+              href="https://store.sowebuild.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden inline-flex items-center gap-1 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#161124] hover:border-[#7C3AED] transition-colors"
+            >
+              <span>Store ↗</span>
+              <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
+            </a>
+          </div>
 
           {/* Desktop links */}
           <nav
-            className="hidden md:flex items-center gap-10"
+            className="hidden md:flex items-center gap-8 lg:gap-10"
             aria-label="Desktop Navigation"
           >
             {navLinks.map((link) => (
@@ -158,6 +172,19 @@ export default function Navigation() {
                 {link.label}
               </a>
             ))}
+
+            {/* Top Navigation Store Pill */}
+            <a
+              href="https://store.sowebuild.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] hover:bg-white px-3 py-1 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:shadow-sm transition-all"
+            >
+              <span>Store ↗</span>
+              <span className="text-[10px] bg-[#F5EDFA] text-[#7C3AED] px-1.5 py-0.5 rounded-full font-bold">
+                Tools &amp; Ebooks
+              </span>
+            </a>
 
             <MagneticButton
               as="a"
@@ -255,6 +282,8 @@ export default function Navigation() {
                 <motion.a
                   key={link.label}
                   href={link.href}
+                  target={link.isExternal ? "_blank" : undefined}
+                  rel={link.isExternal ? "noopener noreferrer" : undefined}
                   onClick={(e) => handleLinkClick(e, link.href)}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}

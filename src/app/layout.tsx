@@ -150,9 +150,28 @@ export default function RootLayout({
         priceRange: "$$$",
         currenciesAccepted: "INR, USD, EUR, GBP, AED",
         paymentAccepted: "Bank Transfer, Stripe, Wire Transfer",
+        founder: {
+          "@type": "Person",
+          name: "Om Thakur",
+          url: "https://omthakur.in",
+          jobTitle: "Founder & Principal Software Engineer",
+          sameAs: [
+            "https://omthakur.in",
+            "https://github.com/im-omthakur",
+            "https://github.com/MonsterFlick",
+          ],
+        },
+        subOrganization: {
+          "@type": "OnlineStore",
+          name: "SoWeBuild Store",
+          url: "https://store.sowebuild.in",
+          description: "Production toolkits, developer ebooks, architectural playbooks, and starter systems.",
+        },
         sameAs: [
           "https://instagram.com/sowebuild.in",
           "https://github.com/MonsterFlick/SoWeBuild",
+          "https://omthakur.in",
+          "https://store.sowebuild.in",
         ],
         knowsAbout: [
           "Web Application Development",

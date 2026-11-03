@@ -12,6 +12,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import WorkSection from "@/components/sections/WorkSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import FAQSection from "@/components/sections/FAQSection";
+import EcosystemSection from "@/components/sections/EcosystemSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
@@ -53,7 +54,10 @@ export default function HomePage() {
         {/* 4. Studio Standards & AEO Knowledge Architecture */}
         <FAQSection />
 
-        {/* 5. Start a Build / Project Brief Configurator */}
+        {/* 5. Founder Leadership & Digital Store Ecosystem */}
+        <EcosystemSection />
+
+        {/* 6. Start a Build / Project Brief Configurator */}
         <ContactSection />
       </main>
 

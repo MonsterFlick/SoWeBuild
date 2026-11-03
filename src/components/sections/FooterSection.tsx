@@ -31,9 +31,9 @@ export default function FooterSection() {
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
     { label: "Standards", href: "#faq" },
+    { label: "Store ↗", href: "https://store.sowebuild.in", isExternal: true },
+    { label: "Founder ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Contact", href: "#contact" },
-    { label: "Brand", href: "/brand-guidelines" },
-    { label: "llms.txt", href: "/llms.txt" },
   ];
 
   return (
@@ -81,6 +81,8 @@ export default function FooterSection() {
               <a
                 key={link.label}
                 href={link.href}
+                target={link.isExternal ? "_blank" : undefined}
+                rel={link.isExternal ? "noopener noreferrer" : undefined}
                 className="link-sweep"
                 style={{
                   fontFamily: "var(--font-mono)",
@@ -174,6 +176,32 @@ export default function FooterSection() {
           </span>
 
           <div className="flex gap-4 sm:gap-6 items-center justify-center flex-wrap">
+            <a
+              href="https://store.sowebuild.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-secondary)",
+                textDecoration: "none",
+              }}
+            >
+              Digital Store ↗
+            </a>
+            <a
+              href="https://omthakur.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-secondary)",
+                textDecoration: "none",
+              }}
+            >
+              Om Thakur (Founder) ↗
+            </a>
             <a
               href="/sitemap.xml"
               className="link-sweep mono"
