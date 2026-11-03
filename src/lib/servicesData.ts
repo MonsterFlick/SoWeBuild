@@ -12,6 +12,7 @@ export interface IndustrySolution {
   tagline: string;
   solutions: string[];
   serviceCategoryRef: string;
+  shortBadge?: string;
   complianceBadge?: string;
   complianceNote?: string;
 }
@@ -196,44 +197,93 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
       "Ethical Medical Communication",
     ],
     serviceCategoryRef: "web-development",
+    shortBadge: "NMC 2026",
     complianceBadge: "NMC Ethical Guidelines Compliant",
     complianceNote: "Strictly aligned with The National Medical Commission (NMC) Guidelines on Ethical Advertising and Public Communication by Hospitals/Medical Institutions and Registered Medical Practitioners (issued October 6, 2026).",
   },
   {
     name: "Real Estate",
-    tagline: "High-conversion property showcases with automated lead capture & broker portals.",
-    solutions: ["Property portals", "Listing websites", "Lead management"],
+    tagline: "High-conversion property showcases with automated lead capture, RERA disclosures & broker portals.",
+    solutions: [
+      "Property Portals & Listing Websites",
+      "Interactive Masterplans & Unit Viewers",
+      "Automated Broker & Lead Management",
+      "Site Visit & Booking Pipelines",
+    ],
     serviceCategoryRef: "mobile-software",
+    shortBadge: "RERA Aligned",
+    complianceBadge: "RERA & Consumer Transparency Standards",
+    complianceNote: "Engineered with mandatory RERA registration disclosures, verified carpet area representations, automated broker lead attribution, and real-time inventory locking.",
   },
   {
     name: "Education",
-    tagline: "Scalable digital learning hubs, student portals, and enrollment automation.",
-    solutions: ["LMS platforms", "School websites", "Admission management"],
+    tagline: "Scalable digital learning hubs, student portals, and automated high-concurrency admissions.",
+    solutions: [
+      "LMS Platforms & Student Portals",
+      "Institutional & University Websites",
+      "Admission & Fee Payment Automation",
+      "Faculty & Examination Management",
+    ],
     serviceCategoryRef: "web-development",
+    shortBadge: "DPDP / FERPA",
+    complianceBadge: "Student Privacy & UGC / NEP Aligned",
+    complianceNote: "Built in adherence with Indian DPDP Act & global FERPA student data privacy norms, role-based educator/guardian access, and high-load admission pipelines.",
   },
   {
     name: "Manufacturing",
-    tagline: "Industrial B2B platforms, technical spec catalogs, and operational automation.",
-    solutions: ["Corporate websites", "Product catalogues", "Business automation"],
+    tagline: "Industrial B2B platforms, technical spec catalogs, and operational workflow automation.",
+    solutions: [
+      "Corporate B2B Websites & Portals",
+      "Technical Spec Sheets & CAD Downloads",
+      "Distributor & Vendor Extranets",
+      "Custom Request for Quote (RFQ) Engines",
+    ],
     serviceCategoryRef: "ai-automation",
+    shortBadge: "ISO & B2B Ready",
+    complianceBadge: "Industrial Grade & ISO/ERP Specifications",
+    complianceNote: "Engineered for technical buyer evaluation with downloadable spec sheets, enterprise ERP synchronizations, automated RFQ workflows, and verified distributor extranets.",
   },
   {
     name: "Retail & E-commerce",
-    tagline: "High-speed digital storefronts with multi-warehouse sync and automated billing.",
-    solutions: ["Online stores", "Inventory & order management", "Payment integration"],
+    tagline: "Sub-second headless storefronts with multi-warehouse sync, automated billing, and abandoned cart recovery.",
+    solutions: [
+      "High-Performance Online Stores",
+      "Inventory & Multi-Warehouse Sync",
+      "Automated GST Billing & Payment Gateways",
+      "WhatsApp Automation & Retention Flows",
+    ],
     serviceCategoryRef: "ecommerce-solutions",
+    shortBadge: "PCI-DSS Level 1",
+    complianceBadge: "PCI-DSS & DPDP Act Data Privacy",
+    complianceNote: "Bank-grade encrypted 256-bit checkouts, automated GST-compliant e-invoicing, DPDP Act consent management, and sub-second load times engineered for flash sales.",
   },
   {
     name: "Hospitality",
-    tagline: "Direct reservation engines, guest booking experiences, and POS integrations.",
-    solutions: ["Hotel websites", "Restaurant systems", "Booking platforms"],
+    tagline: "Direct reservation engines, dining booking experiences, and POS integrations that bypass heavy OTA fees.",
+    solutions: [
+      "Direct Hotel Reservation Websites",
+      "Restaurant Booking & Menu Systems",
+      "Multi-Property Central Portals",
+      "POS & Payment Terminal Integrations",
+    ],
     serviceCategoryRef: "web-development",
+    shortBadge: "Direct Engine",
+    complianceBadge: "Zero-Commission Direct Revenue Architecture",
+    complianceNote: "Bypasses 18–30% OTA commissions with direct guest booking engines, instant room inventory calendar sync, automated WhatsApp itineraries, and secure POS integrations.",
   },
   {
     name: "Professional Services",
-    tagline: "Authority brand flagships, secure client document vaults, and automated CRM.",
-    solutions: ["Portfolio websites", "Client portals", "CRM & lead flows"],
+    tagline: "Authority brand flagships, secure client document vaults, automated billing, and high-trust lead funnels.",
+    solutions: [
+      "Authority Portfolio & Practice Websites",
+      "Encrypted Client Portals & KYC Vaults",
+      "Automated Consultation & Calendar Booking",
+      "CRM & Retainer Billing Integration",
+    ],
     serviceCategoryRef: "mobile-software",
+    shortBadge: "SOC-2 & NDA",
+    complianceBadge: "Enterprise Confidentiality & SOC-2 Protocols",
+    complianceNote: "Strict bilateral NDA governance, client document vaults with end-to-end encryption, multi-jurisdiction regulatory disclosures, and automated consultation workflows.",
   },
 ];
 

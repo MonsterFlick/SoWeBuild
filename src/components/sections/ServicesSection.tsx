@@ -429,10 +429,10 @@ export default function ServicesSection() {
                       <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2.5 py-0.5 rounded-full border border-[#E8DFF2]">
                         SECTOR 0{idx + 1}
                       </span>
-                      {ind.complianceBadge && (
+                      {ind.shortBadge && (
                         <span className="font-mono text-[9px] font-bold text-[#15803D] bg-[#DCFCE7] border border-[#BBF7D0] px-2 py-0.5 rounded-full flex items-center gap-1">
                           <ShieldCheckIcon className="size-2.5 text-[#15803D]" />
-                          NMC 2026
+                          {ind.shortBadge}
                         </span>
                       )}
                     </div>
@@ -482,27 +482,76 @@ export default function ServicesSection() {
               </div>
             ))}
 
-            {/* Inquire Custom Industry Card */}
-            <div className="rounded-2xl border border-dashed border-[#7C3AED]/40 bg-[#F5EDFA]/40 p-5 sm:p-6 flex flex-col justify-between text-center items-center">
+            {/* Sector 08: Bespoke & Custom Sectors */}
+            <div className="rounded-2xl border border-[#7C3AED]/30 bg-gradient-to-b from-[#F5EDFA]/40 to-white p-5 sm:p-6 shadow-sm hover:border-[#7C3AED] hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#7C3AED] font-bold mb-2">
-                  CUSTOM SECTOR //
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2.5 py-0.5 rounded-full border border-[#E8DFF2]">
+                      SECTOR 08
+                    </span>
+                    <span className="font-mono text-[9px] font-bold text-[#7C3AED] bg-[#F5EDFA] border border-[#E8DFF2] px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <ShieldCheckIcon className="size-2.5 text-[#7C3AED]" />
+                      Custom SLAs
+                    </span>
+                  </div>
+                  <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_6px_#c6ff3d]" />
                 </div>
-                <h4 className="font-display text-lg font-bold text-[#161124] mb-2">
-                  Need a Bespoke Industry Architecture?
+
+                <h4 className="font-display text-lg font-bold text-[#161124] mb-1.5 group-hover:text-[#7C3AED] transition-colors">
+                  Enterprise &amp; Bespoke Sectors
                 </h4>
-                <p className="text-xs text-[#5A5068] leading-relaxed">
-                  We engineer tailor-made enterprise portals, secure data pipelines, and custom software for specialized industries.
+
+                <p className="text-xs text-[#5A5068] leading-relaxed mb-4">
+                  Deep domain engineering for FinTech, Agritech, Aerospace, Legal, Defense, or Logistics.
                 </p>
               </div>
 
-              <a
-                href="#contact"
-                className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-2 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all"
-              >
-                <span>Request Custom Brief</span>
-                <ArrowUpRightIcon className="size-3" />
-              </a>
+              <div className="pt-3 border-t border-[#F2EBF7]">
+                <div className="font-mono text-[9px] uppercase tracking-wider text-[#8C8299] mb-2">
+                  Specialized Solutions
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  {[
+                    "Custom Regulatory Data Vaults",
+                    "Proprietary Workflow & Logic Engines",
+                    "Multi-Party Approval & Audit Trails",
+                    "Legacy ERP & Core API Integrations",
+                  ].map((sol) => (
+                    <div
+                      key={sol}
+                      className="flex items-center gap-1.5 font-mono text-[11px] text-[#161124]"
+                    >
+                      <span className="size-1 rounded-full bg-[#7C3AED]" />
+                      <span>{sol}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Assurance Box */}
+                <div className="mt-4 pt-3 border-t border-[#F2EBF7] p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E8DFF2]">
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <ShieldCheckIcon className="size-3.5 text-[#7C3AED]" />
+                    <span className="font-mono text-[9px] font-bold text-[#7C3AED] uppercase tracking-wider">
+                      Tailored Enterprise Engineering
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-[#5A5068] leading-relaxed">
+                    Bespoke isolated tenancy architectures, dedicated IP transfer agreements, custom NDAs, and senior-led technical discovery within 24 hours.
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <div className="mt-4 pt-2">
+                  <a
+                    href="#contact"
+                    className="w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-2 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all"
+                  >
+                    <span>Request Custom Brief</span>
+                    <ArrowUpRightIcon className="size-3" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
