@@ -180,22 +180,22 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 display: "block",
                 letterSpacing: "-0.04em",
                 color: "var(--color-text)",
-                lineHeight: 1.12,
-                paddingBottom: "0.1em",
+                lineHeight: 0.98,
+                margin: 0,
+                padding: 0,
               }}
             >
               SoWeBuild<span style={{ color: "var(--color-neon, #c6ff3d)" }}>.</span>
             </h1>
           </div>
 
-          {/* Changing Deliverable Animation (Zero Bottom Clipping) */}
+          {/* Changing Deliverable Animation (Tight, Natural Line Gap) */}
           <div
             className="hero-line"
             style={{
               overflow: "visible",
               display: "block",
-              marginTop: "clamp(0.2rem, 0.8vw, 0.5rem)",
-              paddingBottom: "0.3em",
+              marginTop: "clamp(0.05rem, 0.4vw, 0.25rem)",
             }}
           >
             <div
@@ -205,17 +205,15 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 alignItems: "baseline",
                 flexWrap: "wrap",
                 color: "var(--color-accent)",
-                lineHeight: 1.18,
-                paddingBottom: "0.2em",
+                lineHeight: 0.98,
+                margin: 0,
+                padding: 0,
               }}
             >
               <span
                 style={{
                   display: "inline-grid",
                   gridTemplateAreas: "'stack'",
-                  minWidth: "min(280px, 86vw)",
-                  maxWidth: "100%",
-                  paddingBottom: "0.25em",
                   overflow: "visible",
                 }}
               >
@@ -231,7 +229,6 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                       whiteSpace: "nowrap",
                       willChange: "transform, opacity, filter",
                       color: "var(--color-accent)",
-                      paddingBottom: "0.2em",
                       display: "inline-block",
                     }}
                   >
@@ -249,7 +246,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
           className="body-lg"
           style={{
             maxWidth: "560px",
-            marginTop: "clamp(0.875rem, 1.8vw, 1.75rem)",
+            marginTop: "clamp(0.75rem, 1.5vw, 1.25rem)",
             opacity: 1,
             color: "var(--color-text-secondary)",
             lineHeight: 1.6,
