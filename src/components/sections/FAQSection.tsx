@@ -126,7 +126,7 @@ export default function FAQSection() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left">
           <div className="max-w-3xl flex flex-col items-center sm:items-start mx-auto sm:mx-0">
             <div className="label flex items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
+              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
                 Studio Standards &amp; Architecture FAQ
               </span>
@@ -199,7 +199,7 @@ export default function FAQSection() {
                     </td>
                     <td className="py-4 px-4 font-medium text-[#161124] bg-[#F5EDFA]/30 align-top">
                       <div className="flex items-start gap-2">
-                        <span className="size-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="size-4 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5">
                           <CheckIcon className="size-3" />
                         </span>
                         <span className="text-[#161124] font-semibold">{row.soWeBuild}</span>

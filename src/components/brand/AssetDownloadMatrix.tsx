@@ -128,7 +128,7 @@ const ASSET_CATALOG: AssetEntry[] = [
     size: "232 KB",
     dimensions: "2160×2160 (4K UHD)",
     path: "/brand/sowebuild-instagram-pfp.png",
-    description: "Optimized 4K circular crop profile avatar with Royal Violet slash and Neon Green spark dot.",
+    description: "Optimized 4K circular crop profile avatar with Royal Violet slash.",
   },
   {
     title: "Instagram Ring Avatar (4K)",
@@ -137,7 +137,7 @@ const ASSET_CATALOG: AssetEntry[] = [
     size: "296 KB",
     dimensions: "2160×2160 (4K UHD)",
     path: "/brand/sowebuild-instagram-pfp-ring.png",
-    description: "4K UHD Instagram profile picture with Royal Violet and Neon Green outer ring.",
+    description: "4K UHD Instagram profile picture with Royal Violet outer ring.",
   },
   {
     title: "Glow Avatar (4K UHD)",
@@ -191,7 +191,7 @@ export function AssetDownloadMatrix() {
               onClick={() => setFilter(cat)}
               className={`rounded-full px-3.5 py-1 transition-all cursor-pointer ${
                 filter === cat
-                  ? "bg-[#161124] text-[#c6ff3d] font-bold shadow-sm"
+                  ? "bg-[#161124] text-white font-bold shadow-sm"
                   : "text-[#5A5068] hover:text-[#161124]"
               }`}
             >
@@ -211,7 +211,7 @@ export function AssetDownloadMatrix() {
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="inline-flex items-center gap-1.5 rounded-md bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#161124]">
-                  <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
+                  <span className="size-1.5 rounded-full bg-[#7C3AED]" />
                   {asset.format}
                 </span>
                 <span className="font-mono text-[11px] text-[#5A5068]">{asset.size}</span>
@@ -233,10 +233,10 @@ export function AssetDownloadMatrix() {
               <a
                 href={asset.path}
                 download
-                className="inline-flex items-center gap-1.5 rounded-lg bg-[#161124] px-3 py-1.5 font-mono text-xs font-bold text-[#c6ff3d] hover:bg-black transition-all shadow-sm cursor-pointer"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#7C3AED] px-3 py-1.5 font-mono text-xs font-bold text-white hover:bg-[#6D28D9] transition-all shadow-sm cursor-pointer"
               >
                 <span>Download</span>
-                <svg className="size-3.5 text-[#c6ff3d]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg className="size-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />

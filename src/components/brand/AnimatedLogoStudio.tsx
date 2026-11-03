@@ -233,7 +233,7 @@ export function AnimatedLogoStudio() {
 
               {/* Status Pill */}
               <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-white/90 px-3 py-1 font-mono text-[10px] text-foreground backdrop-blur-md shadow-xs">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="size-2 rounded-full bg-primary animate-pulse" />
                 <span>
                   {activeTab === "mp4" ? "H.264 // 60 FPS // 1080p FULL HD" : activeTab === "gif" ? "GIF89a // 50 FRAMES // 25 FPS LOOP" : "LIVE 2D RETINA CANVAS"}
                 </span>

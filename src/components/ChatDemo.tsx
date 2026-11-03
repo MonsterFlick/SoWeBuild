@@ -95,13 +95,13 @@ export default function ChatDemo() {
             width: 36,
             height: 36,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #c6ff3d, #88cc00)",
+            background: "linear-gradient(135deg, #7C3AED, #9333EA)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: "0.875rem",
             fontWeight: 700,
-            color: "#07070a",
+            color: "#FAF8F5",
           }}
         >
           S
@@ -110,7 +110,7 @@ export default function ChatDemo() {
           <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "#f3efe6" }}>
             SoWeBuild Bot
           </div>
-          <div style={{ fontSize: "0.6875rem", color: "#c6ff3d" }}>Online</div>
+          <div style={{ fontSize: "0.6875rem", color: "#7C3AED" }}>Online</div>
         </div>
       </div>
 

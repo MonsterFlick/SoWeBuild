@@ -535,13 +535,13 @@ export default function ContactSection() {
                       alignItems: "center",
                       justifyContent: "center",
                       margin: "0 auto 1.5rem",
-                      boxShadow: "0 0 20px rgba(198, 255, 61, 0.3)",
+                      boxShadow: "0 0 20px rgba(124, 58, 237, 0.3)",
                     }}
                   >
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                       <path
                         d="M7 14l5 5L21 9"
-                        stroke="#c6ff3d"
+                        stroke="#7C3AED"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"

@@ -129,8 +129,8 @@ export default function ArchitectureConsole() {
               width: 6,
               height: 6,
               borderRadius: "50%",
-              background: "#c6ff3d",
-              boxShadow: "0 0 8px #c6ff3d",
+              background: "var(--color-accent, #7C3AED)",
+              boxShadow: "0 0 8px rgba(124, 58, 237, 0.5)",
             }}
           />
           <span

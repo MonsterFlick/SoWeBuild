@@ -190,8 +190,8 @@ export default function TerminalDemo() {
               gap: "0.375rem",
               padding: "0.125rem 0.5rem",
               borderRadius: "var(--radius-full)",
-              background: "rgba(198, 255, 61, 0.1)",
-              color: "#c6ff3d",
+              background: "rgba(124, 58, 237, 0.15)",
+              color: "#A78BFA",
               fontSize: "0.625rem",
               textTransform: "uppercase",
               letterSpacing: "0.1em",
@@ -202,7 +202,7 @@ export default function TerminalDemo() {
                 width: 6,
                 height: 6,
                 borderRadius: "50%",
-                background: "#c6ff3d",
+                background: "#7C3AED",
                 animation: "pulse 2s ease-in-out infinite",
               }}
             />
@@ -214,7 +214,7 @@ export default function TerminalDemo() {
       {/* Terminal body */}
       <div style={{ padding: "1.25rem", minHeight: "280px", color: "#8a8a99" }}>
         {lines.map((line, i) => (
-          <div key={i} style={{ color: i === 0 ? "#c6ff3d" : "#8a8a99" }}>
+          <div key={i} style={{ color: i === 0 ? "#A78BFA" : "#8a8a99" }}>
             {line}
           </div>
         ))}
@@ -242,7 +242,7 @@ export default function TerminalDemo() {
                   style={{
                     width: `${progress}%`,
                     height: "100%",
-                    background: "#c6ff3d",
+                    background: "#7C3AED",
                     transition: "width 0.1s linear",
                     borderRadius: 2,
                   }}
@@ -271,7 +271,7 @@ export default function TerminalDemo() {
                   padding: "0.75rem",
                   borderRadius: "var(--radius-md)",
                   border: "1px solid var(--color-border)",
-                  background: "rgba(198, 255, 61, 0.02)",
+                  background: "rgba(124, 58, 237, 0.05)",
                 }}
               >
                 <div
@@ -280,7 +280,7 @@ export default function TerminalDemo() {
                     fontWeight: 700,
                     color:
                       typeof score.value === "number" && scoreValues[i] >= 90
-                        ? "#c6ff3d"
+                        ? "#7C3AED"
                         : "#f3efe6",
                   }}
                 >

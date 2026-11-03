@@ -161,7 +161,7 @@ export default function ProcessSection() {
               y1="0"
               x2="1"
               y2="100%"
-              stroke="#c6ff3d"
+              stroke="#7C3AED"
               strokeWidth="2"
               strokeLinecap="round"
             />

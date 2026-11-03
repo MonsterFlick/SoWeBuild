@@ -5,7 +5,7 @@
    ============================================ */
 
 @theme {
-  /* Colors - Warm Ivory Canvas, Regal Royal Violet Accent & Deep Obsidian-Violet Text, Neon Green Spark Addon */
+  /* Colors - Warm Ivory Canvas, Regal Royal Violet Accent & Deep Obsidian-Violet Text */
   --color-bg: #FAF8F5;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #F5EDFA;
@@ -17,8 +17,8 @@
   --color-accent: #7C3AED;
   --color-accent-hover: #6D28D9;
   --color-accent-dim: rgba(124, 58, 237, 0.08);
-  --color-neon: #c6ff3d;
-  --color-neon-dim: rgba(198, 255, 61, 0.15);
+  --color-neon: #7C3AED;
+  --color-neon-dim: rgba(124, 58, 237, 0.12);
   --color-error: #E11D48;
   --color-success: #059669;
   --color-background: var(--color-bg);

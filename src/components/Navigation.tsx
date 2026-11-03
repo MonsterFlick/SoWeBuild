@@ -135,7 +135,7 @@ export default function Navigation() {
               }}
             >
               SWB
-              <span style={{ color: "var(--color-neon, #c6ff3d)", marginLeft: "2px" }}>.</span>
+              <span style={{ color: "var(--color-accent, #7C3AED)", marginLeft: "2px" }}>.</span>
             </a>
 
             <a
@@ -145,7 +145,6 @@ export default function Navigation() {
               className="md:hidden inline-flex items-center gap-1 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#161124] hover:border-[#7C3AED] transition-colors"
             >
               <span>Store ↗</span>
-              <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
             </a>
           </div>
 

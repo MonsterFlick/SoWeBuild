@@ -141,16 +141,6 @@ console.log('==============================================\n');
     glowColor: 'rgba(124, 58, 237, 0.35)'
   });
 
-  // Neon Green Spark Dot
-  ctx.save();
-  ctx.fillStyle = '#c6ff3d';
-  ctx.shadowColor = 'rgba(198, 255, 61, 0.85)';
-  ctx.shadowBlur = 40;
-  ctx.beginPath();
-  ctx.arc(size / 2 + symW / 2 + 60, size / 2 + symH / 2 - 120, 28, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-
   saveToAll('sowebuild-avatar-glow.png', canvas.toBuffer('image/png'));
 }
 
@@ -553,16 +543,6 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#7C3AED', strok
     glowColor: 'rgba(124, 58, 237, 0.35)'
   });
 
-  // Neon Green Spark Dot
-  ctx.save();
-  ctx.fillStyle = '#c6ff3d';
-  ctx.shadowColor = 'rgba(198, 255, 61, 0.85)';
-  ctx.shadowBlur = 40;
-  ctx.beginPath();
-  ctx.arc(size / 2 + symW / 2 + 60, size / 2 + symH / 2 - 120, 28, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-
   const buffer = canvas.toBuffer('image/png');
   saveToAll('sowebuild-instagram-pfp.png', buffer);
   saveToAll('instagram-pfp.png', buffer);
@@ -589,7 +569,7 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#7C3AED', strok
   const ringGrad = ctx.createLinearGradient(200, 200, size - 200, size - 200);
   ringGrad.addColorStop(0, '#9333EA');
   ringGrad.addColorStop(0.5, '#7C3AED');
-  ringGrad.addColorStop(1, '#c6ff3d');
+  ringGrad.addColorStop(1, '#6D28D9');
   ctx.strokeStyle = ringGrad;
   ctx.lineWidth = 12;
   ctx.beginPath();
@@ -627,8 +607,6 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#7C3AED', strok
   <g transform="translate(380, 300) scale(8)">
     <polygon points="26,2 38,2 14,58 2,58" fill="url(#symbolGrad)" filter="url(#glowFilter)" />
   </g>
-  <!-- Neon Spark Dot -->
-  <circle cx="700" cy="740" r="28" fill="#c6ff3d" filter="drop-shadow(0 0 16px rgba(198,255,61,0.85))" />
   <defs>
     <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.16" />

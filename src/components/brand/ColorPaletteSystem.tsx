@@ -28,14 +28,14 @@ const COLOR_TOKENS: ColorToken[] = [
     contrastRating: "AAA",
   },
   {
-    name: "Neon Green Spark",
-    role: "Addon High-Energy Spark & Status Dot",
-    hex: "#c6ff3d",
-    rgb: "rgb(198, 255, 61)",
-    oklch: "oklch(0.92 0.22 125)",
-    cssVar: "var(--color-neon)",
-    textColor: "#121019",
-    contrastRatio: "14.2:1",
+    name: "Royal Accent Hover",
+    role: "Hover States, Active Rings & Emphasized Accents",
+    hex: "#6D28D9",
+    rgb: "rgb(109, 40, 217)",
+    oklch: "oklch(0.51 0.23 290)",
+    cssVar: "var(--color-accent-hover)",
+    textColor: "#FFFFFF",
+    contrastRatio: "8.5:1",
     contrastRating: "AAA",
   },
   {
@@ -174,7 +174,7 @@ export function ColorPaletteSystem() {
             Ivory Violet Color Tokens
           </h2>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Formulated for the Ivory Violet luxury light theme with Warm Ivory (#FAF8F5) canvas, Royal Violet (#7C3AED), and Neon Green (#c6ff3d) spark dot. Every token is formulated in OKLCH for perceptually uniform lightness and gamut accuracy.
+            Formulated for the Ivory Violet luxury light theme with Warm Ivory (#FAF8F5) canvas, Royal Violet (#7C3AED), and Deep Purple Ink (#161124). Every token is formulated in OKLCH for perceptually uniform lightness and gamut accuracy.
           </p>
         </div>
       </div>

@@ -110,7 +110,7 @@ export default function EasterEgg() {
               fontFamily: "var(--font-mono)",
               fontSize: "clamp(0.75rem, 1.2vw, 0.9375rem)",
               lineHeight: 1.8,
-              color: "#c6ff3d",
+              color: "#7C3AED",
               maxWidth: "500px",
               padding: "2rem",
             }}
@@ -121,7 +121,7 @@ export default function EasterEgg() {
                 key={i}
                 style={{
                   opacity: line ? 1 : 0.3,
-                  color: i === 0 ? "#c6ff3d" : i >= 7 ? "#f3efe6" : "#8a8a99",
+                  color: i === 0 ? "#7C3AED" : i >= 7 ? "#f3efe6" : "#8a8a99",
                 }}
               >
                 {line || "\u00A0"}
@@ -132,7 +132,7 @@ export default function EasterEgg() {
                 display: "inline-block",
                 width: "8px",
                 height: "16px",
-                background: "#c6ff3d",
+                background: "#7C3AED",
                 animation: "blink 1s step-end infinite",
               }}
             />

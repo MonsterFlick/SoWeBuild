@@ -103,7 +103,7 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "#c6ff3d",
+                    color: "#FAF8F5",
                     background: "#16131D",
                     padding: "0.2rem 0.65rem",
                     borderRadius: "var(--radius-full)",
@@ -177,11 +177,11 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "#c6ff3d",
-                    background: "rgba(198, 255, 61, 0.08)",
+                    color: "#A78BFA",
+                    background: "rgba(167, 139, 250, 0.12)",
                     padding: "0.15rem 0.75rem",
                     borderRadius: "var(--radius-full)",
-                    border: "1px solid rgba(198, 255, 61, 0.25)",
+                    border: "1px solid rgba(167, 139, 250, 0.25)",
                   }}
                 >
                   https://fertisure.in
@@ -237,7 +237,7 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "#c6ff3d",
+                    color: "#FAF8F5",
                     background: "#16131D",
                     padding: "0.2rem 0.65rem",
                     borderRadius: "var(--radius-full)",
@@ -311,11 +311,11 @@ export default function WorkSection() {
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.625rem",
-                    color: "#c6ff3d",
-                    background: "rgba(198, 255, 61, 0.08)",
+                    color: "#A78BFA",
+                    background: "rgba(167, 139, 250, 0.12)",
                     padding: "0.15rem 0.75rem",
                     borderRadius: "var(--radius-full)",
-                    border: "1px solid rgba(198, 255, 61, 0.25)",
+                    border: "1px solid rgba(167, 139, 250, 0.25)",
                   }}
                 >
                   https://alphatech-nutrition.in

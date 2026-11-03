@@ -148,8 +148,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "var(--color-neon, #c6ff3d)",
-              boxShadow: "0 0 8px rgba(198, 255, 61, 0.6)",
+              background: "var(--color-accent, #7C3AED)",
+              boxShadow: "0 0 8px rgba(124, 58, 237, 0.5)",
               display: "inline-block",
             }}
           />
@@ -171,7 +171,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 padding: 0,
               }}
             >
-              SoWeBuild<span style={{ color: "var(--color-neon, #c6ff3d)" }}>.</span>
+              SoWeBuild<span style={{ color: "var(--color-accent, #7C3AED)" }}>.</span>
             </h1>
           </div>
 

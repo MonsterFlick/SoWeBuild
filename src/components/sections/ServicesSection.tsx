@@ -271,10 +271,9 @@ export default function ServicesSection() {
         {/* ============================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-14 text-center sm:text-left">
           <div className="max-w-3xl flex flex-col items-center sm:items-start">
-            {/* Eyebrow Label with Neon Green Spark Dot */}
+            {/* Eyebrow Label */}
             <div className="label flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase">
+              <span className="bg-[#1E1330] text-white px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase border border-[#7C3AED]/40 shadow-xs">
                 Master Services Catalogue
               </span>
             </div>
@@ -422,7 +421,7 @@ export default function ServicesSection() {
                         </span>
                       )}
                     </div>
-                    <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_6px_#c6ff3d]" />
+                    <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.4)]" />
                   </div>
 
                   <h4 className="font-display text-lg font-bold text-[#161124] mb-1.5 group-hover:text-[#7C3AED] transition-colors">
@@ -481,7 +480,7 @@ export default function ServicesSection() {
                       Custom SLAs
                     </span>
                   </div>
-                  <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_6px_#c6ff3d]" />
+                  <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_6px_rgba(124,58,237,0.4)]" />
                 </div>
 
                 <h4 className="font-display text-lg font-bold text-[#161124] mb-1.5 group-hover:text-[#7C3AED] transition-colors">

@@ -181,7 +181,7 @@ export default async function WorkSlugPage({
 
           {/* Studio Brand Mark */}
           <Link href="/" className="font-display text-xs sm:text-base font-extrabold tracking-tight text-[#161124] hover:opacity-80 transition-opacity truncate px-2">
-            SOWEBUILD<span className="text-[#c6ff3d]">.</span>IN
+            SOWEBUILD<span className="text-[#7C3AED]">.</span>IN
           </Link>
 
           {/* Visit Live Platform CTA */}
@@ -209,8 +209,8 @@ export default async function WorkSlugPage({
             <span>/</span>
             <Link href="/#work" className="hover:text-[#16131D] transition-colors">Case Study</Link>
             <span>/</span>
-            <span className="font-semibold flex items-center gap-1.5 bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px]">
-              <span className="size-1.5 rounded-full bg-[#c6ff3d] animate-pulse" />
+            <span className="font-semibold flex items-center gap-1.5 bg-[#F5EDFA] text-[#7C3AED] border border-[#E8DFF2] px-2.5 py-0.5 rounded-full text-[10px]">
+              <span className="size-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
               {cs.category}
             </span>
           </div>
@@ -279,7 +279,7 @@ export default async function WorkSlugPage({
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">Live Platform</span>
-                    <span className="size-2 rounded-full bg-[#c6ff3d] animate-pulse" />
+                    <span className="size-2 rounded-full bg-[#7C3AED] animate-pulse" />
                   </div>
                   <div className="font-mono font-semibold text-xs sm:text-sm text-[#161124] truncate">
                     {cs.liveUrl.replace("https://", "")}
@@ -315,13 +315,13 @@ export default async function WorkSlugPage({
               </div>
 
               {/* URL Bar */}
-              <div className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-purple-700/50 bg-[#1F1430] px-3 sm:px-4 py-1 sm:py-1.5 font-mono text-[11px] sm:text-xs text-[#c6ff3d] max-w-[200px] xs:max-w-xs sm:max-w-md w-full justify-center min-w-0">
-                <svg className="size-3 text-[#c6ff3d] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <div className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-purple-700/50 bg-[#1F1430] px-3 sm:px-4 py-1 sm:py-1.5 font-mono text-[11px] sm:text-xs text-[#7C3AED] max-w-[200px] xs:max-w-xs sm:max-w-md w-full justify-center min-w-0">
+                <svg className="size-3 text-[#7C3AED] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
                 <span className="text-white font-medium truncate">{cs.liveUrl}</span>
-                <span className="ml-0.5 size-1.5 rounded-full bg-[#c6ff3d] shrink-0" />
+                <span className="ml-0.5 size-1.5 rounded-full bg-[#7C3AED] shrink-0" />
               </div>
 
               {/* Direct Open Button */}
@@ -329,7 +329,7 @@ export default async function WorkSlugPage({
                 href={cs.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-purple-700/40 bg-purple-900/40 px-3 py-1 font-mono text-[11px] font-semibold text-purple-200 hover:text-[#121019] hover:bg-[#c6ff3d] hover:border-[#c6ff3d] transition-all shrink-0"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-purple-700/40 bg-purple-900/40 px-3 py-1 font-mono text-[11px] font-semibold text-purple-200 hover:text-white hover:bg-[#7C3AED] hover:border-[#7C3AED] transition-all shrink-0"
               >
                 <span>Visit Site</span>
                 <ArrowUpRightIcon className="size-3" />
@@ -358,8 +358,8 @@ export default async function WorkSlugPage({
         <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
           <div className="max-w-2xl mb-6 sm:mb-8">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-2 sm:mb-3">
-              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px]">
+              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
+              <span className="bg-[#1E1330] text-white border border-purple-500/30 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px]">
                 01 // MEASURED BUSINESS IMPACT
               </span>
             </div>
@@ -400,7 +400,7 @@ export default async function WorkSlugPage({
           <div className="max-w-2xl mb-8 sm:mb-12">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-2 sm:mb-3">
               <TargetIcon className="size-3.5 text-[#7C3AED]" />
-              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+              <span className="bg-[#1E1330] text-white border border-purple-500/30 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
                 02 // THE BUSINESS CHALLENGE
               </span>
             </div>
@@ -423,10 +423,10 @@ export default async function WorkSlugPage({
               >
                 <div>
                   <div className="font-mono text-xs font-bold text-[#161124] mb-4 sm:mb-5 flex items-center justify-between">
-                    <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px]">
+                    <span className="bg-[#1E1330] text-white border border-purple-500/30 px-2.5 py-0.5 rounded-full text-[10px]">
                       CHALLENGE 0{index + 1}
                     </span>
-                    <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
+                    <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
                   </div>
                   <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-[#161124] leading-snug">
                     {p.headline}
@@ -481,8 +481,8 @@ export default async function WorkSlugPage({
         <section className="container-wide">
           <div className="max-w-2xl mb-8 sm:mb-12">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-3">
-              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
+              <span className="bg-[#1E1330] text-white border border-purple-500/30 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
                 03 // SO WE BUILD
               </span>
             </div>
@@ -531,7 +531,7 @@ export default async function WorkSlugPage({
                     <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8C8299]">
                       Result
                     </span>
-                    <span className="font-mono text-[11px] sm:text-xs font-bold text-[#121019] bg-[#c6ff3d] px-2.5 py-0.5 rounded-full shadow-sm">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-white bg-[#7C3AED] px-2.5 py-0.5 rounded-full shadow-sm">
                       {pillar.stat}
                     </span>
                   </div>
@@ -611,7 +611,7 @@ export default async function WorkSlugPage({
                 >
                   <div className="px-3.5 py-2 border-b border-purple-800/30 bg-[#2E2046] flex items-center justify-between font-mono text-[10px] text-[#DDD6FE]">
                     <span className="truncate pr-2">{otherCs.category}</span>
-                    <span className="text-[#c6ff3d] shrink-0 font-bold">View Case Study →</span>
+                    <span className="text-[#7C3AED] shrink-0 font-bold">View Case Study →</span>
                   </div>
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1A1128]">
                     <Image
@@ -640,7 +640,7 @@ export default async function WorkSlugPage({
             </span>
             <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#161124] mt-2 sm:mt-3 leading-tight">
               Have A Vision To Launch, Scale, Or Automate? <br className="hidden sm:inline" />
-              <span className="font-serif italic font-normal text-[#161124]">So We Build<span className="text-[#c6ff3d]">.</span></span>
+              <span className="font-serif italic font-normal text-[#161124]">So We Build<span className="text-[#7C3AED]">.</span></span>
             </h2>
             <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#5A5068] max-w-xl mx-auto leading-relaxed px-2">
               We design and engineer bespoke web applications, flagship digital products, and automated software for ambitious brands worldwide.
@@ -673,7 +673,7 @@ export default async function WorkSlugPage({
         <div className="container-wide flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
           <div>
             <div className="font-display font-extrabold text-sm sm:text-base text-[#161124]">
-              SOWEBUILD<span className="text-[#c6ff3d]">.</span>IN
+              SOWEBUILD<span className="text-[#7C3AED]">.</span>IN
             </div>
             <div className="font-mono text-[11px] sm:text-xs text-[#5A5068] mt-1">
               Technology Development Studio — Mumbai &amp; Global

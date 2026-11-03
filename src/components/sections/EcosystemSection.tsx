@@ -57,7 +57,7 @@ export default function EcosystemSection() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left">
           <div className="max-w-3xl flex flex-col items-center sm:items-start mx-auto sm:mx-0">
             <div className="label flex items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
+              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
                 Ecosystem &amp; Engineering Direction
               </span>
@@ -100,8 +100,7 @@ export default function EcosystemSection() {
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#7C3AED] font-bold bg-[#F5EDFA] border border-[#E8DFF2] px-3 py-1 rounded-full">
                   Leadership &amp; Engineering Direction
                 </span>
-                <span className="font-mono text-xs text-[#8C8299] flex items-center gap-1.5">
-                  <span className="size-1.5 rounded-full bg-emerald-500" />
+                <span className="font-mono text-xs text-[#8C8299]">
                   Principal Lead
                 </span>
               </div>
@@ -151,7 +150,7 @@ export default function EcosystemSection() {
 
             <div className="pt-6 border-t border-[#F2EBF7] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
-                <div className="size-9 rounded-full bg-[#161124] text-[#c6ff3d] flex items-center justify-center font-display font-black text-sm">
+                <div className="size-9 rounded-full bg-[#161124] text-white flex items-center justify-center font-display font-black text-sm">
                   OT
                 </div>
                 <div>
@@ -187,7 +186,7 @@ export default function EcosystemSection() {
                   The SoWeBuild Repository &amp; Store
                 </span>
                 <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-[#161124] bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-0.5 rounded-full">
-                  <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
+                  <span className="size-1.5 rounded-full bg-[#7C3AED]" />
                   store.sowebuild.in
                 </span>
               </div>
