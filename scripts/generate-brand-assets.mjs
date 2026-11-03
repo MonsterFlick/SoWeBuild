@@ -10,13 +10,14 @@ const { createH264MP4Encoder } = H264EncoderPkg;
 const BRAND_DIR = path.resolve('public', 'brand');
 fs.mkdirSync(BRAND_DIR, { recursive: true });
 
-// Register Google Fonts
-const fontSpaceGrotesk = path.resolve('scripts', 'fonts', 'SpaceGrotesk.ttf');
+// Register Fonts
+const fontSyne = path.resolve('scripts', 'fonts', 'Syne-Variable.ttf');
 const fontManrope = path.resolve('scripts', 'fonts', 'Manrope.ttf');
 const fontMono = path.resolve('scripts', 'fonts', 'JetBrainsMono.ttf');
+const fontSpaceGrotesk = path.resolve('scripts', 'fonts', 'SpaceGrotesk.ttf');
 
-if (fs.existsSync(fontSpaceGrotesk)) {
-  GlobalFonts.registerFromPath(fontSpaceGrotesk, 'Space Grotesk');
+if (fs.existsSync(fontSyne)) {
+  GlobalFonts.registerFromPath(fontSyne, 'Syne');
 }
 if (fs.existsSync(fontManrope)) {
   GlobalFonts.registerFromPath(fontManrope, 'Manrope');
@@ -24,42 +25,44 @@ if (fs.existsSync(fontManrope)) {
 if (fs.existsSync(fontMono)) {
   GlobalFonts.registerFromPath(fontMono, 'JetBrains Mono');
 }
+if (fs.existsSync(fontSpaceGrotesk)) {
+  GlobalFonts.registerFromPath(fontSpaceGrotesk, 'Space Grotesk');
+}
 
-console.log('Registered fonts successfully.');
+console.log('Registered fonts successfully for Ivory Violet Brand Suite.');
 
 /* -------------------------------------------------------------------------- */
-/* 1. Generate Vector SVGs (Old Theme: Violet / Magenta Cyber Glow)           */
+/* 1. Generate Vector SVGs (Ivory Violet Theme)                               */
 /* -------------------------------------------------------------------------- */
 
 const SVG_SYMBOL = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 60" fill="none">
   <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetGlow)" />
   <defs>
     <linearGradient id="violetGlow" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="35%" stop-color="#E870FD" />
-      <stop offset="75%" stop-color="#BC37ED" />
-      <stop offset="100%" stop-color="#7C3AED" />
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="60%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
     </linearGradient>
   </defs>
 </svg>`;
 
 const SVG_SYMBOL_GLOW = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect width="120" height="120" rx="28" fill="#120F1D" />
-  <rect width="120" height="120" rx="28" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
-  <circle cx="60" cy="60" r="38" fill="url(#aura)" opacity="0.65" filter="blur(16px)" />
+  <rect width="120" height="120" rx="28" fill="#FFFFFF" />
+  <rect width="120" height="120" rx="28" stroke="#E8DFF2" stroke-width="1.5" />
+  <circle cx="60" cy="60" r="38" fill="url(#aura)" opacity="0.15" filter="blur(16px)" />
   <g transform="translate(40, 30)">
-    <polygon points="26,2 38,2 14,58 2,58" fill="url(#symbolGrad)" filter="drop-shadow(0 0 12px rgba(188,55,237,0.7))" />
+    <polygon points="26,2 38,2 14,58 2,58" fill="url(#symbolGrad)" filter="drop-shadow(0 4px 12px rgba(124,58,237,0.28))" />
   </g>
   <defs>
     <radialGradient id="aura" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#E870FD" stop-opacity="0.9" />
-      <stop offset="60%" stop-color="#BC37ED" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#120F1D" stop-opacity="0" />
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#9333EA" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="symbolGrad" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="35%" stop-color="#E870FD" />
-      <stop offset="100%" stop-color="#BC37ED" />
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="60%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
     </linearGradient>
   </defs>
 </svg>`;
@@ -67,18 +70,18 @@ const SVG_SYMBOL_GLOW = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12
 const SVG_LOGO_DARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
   <!-- Symbol -->
   <g transform="translate(20, 10)">
-    <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetGlowDark)" filter="drop-shadow(0 0 8px rgba(232,112,253,0.45))" />
+    <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetGlowDark)" filter="drop-shadow(0 0 10px rgba(124,58,237,0.5))" />
   </g>
   <!-- Wordmark -->
-  <text x="74" y="34" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#F8F7FA">SO WE</text>
-  <text x="74" y="60" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#F8F7FA">
-    BUILD<tspan fill="#E870FD">.IN</tspan>
+  <text x="74" y="34" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#FAF8F5">SO WE</text>
+  <text x="74" y="60" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#FAF8F5">
+    BUILD<tspan fill="#c6ff3d">.IN</tspan>
   </text>
   <defs>
     <linearGradient id="violetGlowDark" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="40%" stop-color="#E870FD" />
-      <stop offset="100%" stop-color="#BC37ED" />
+      <stop offset="0%" stop-color="#C4B5FD" />
+      <stop offset="40%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#7C3AED" />
     </linearGradient>
   </defs>
 </svg>`;
@@ -89,37 +92,37 @@ const SVG_LOGO_LIGHT = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320
     <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetGlowLight)" />
   </g>
   <!-- Wordmark -->
-  <text x="74" y="34" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#0F172A">SO WE</text>
-  <text x="74" y="60" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#0F172A">
-    BUILD<tspan fill="#9333EA">.IN</tspan>
+  <text x="74" y="34" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#161124">SO WE</text>
+  <text x="74" y="60" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#161124">
+    BUILD<tspan fill="#7C3AED">.IN</tspan>
   </text>
   <defs>
     <linearGradient id="violetGlowLight" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#A855F7" />
-      <stop offset="60%" stop-color="#7E22CE" />
-      <stop offset="100%" stop-color="#581C87" />
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="60%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
     </linearGradient>
   </defs>
 </svg>`;
 
 const SVG_LOGO_STACKED = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <rect width="200" height="200" rx="36" fill="#120F1D" />
-  <rect width="200" height="200" rx="36" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
-  <circle cx="100" cy="80" r="45" fill="#BC37ED" opacity="0.25" filter="blur(24px)" />
+  <rect width="200" height="200" rx="36" fill="#FAF8F5" />
+  <rect width="200" height="200" rx="36" stroke="#E8DFF2" stroke-width="1.5" />
+  <circle cx="100" cy="80" r="45" fill="#7C3AED" opacity="0.12" filter="blur(18px)" />
   <!-- Symbol Center -->
   <g transform="translate(80, 42)">
-    <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetStacked)" filter="drop-shadow(0 0 12px rgba(188,55,237,0.6))" />
+    <polygon points="26,2 38,2 14,58 2,58" fill="url(#violetStacked)" filter="drop-shadow(0 4px 12px rgba(124,58,237,0.25))" />
   </g>
   <!-- Centered Typography -->
-  <text x="100" y="138" text-anchor="middle" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="14" letter-spacing="0.22em" fill="#F8F7FA">SO WE</text>
-  <text x="100" y="162" text-anchor="middle" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="18" letter-spacing="0.18em" fill="#F8F7FA">
-    BUILD<tspan fill="#E870FD">.IN</tspan>
+  <text x="100" y="138" text-anchor="middle" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="14" letter-spacing="0.22em" fill="#161124">SO WE</text>
+  <text x="100" y="162" text-anchor="middle" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" letter-spacing="0.18em" fill="#161124">
+    BUILD<tspan fill="#7C3AED">.IN</tspan>
   </text>
   <defs>
     <linearGradient id="violetStacked" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="45%" stop-color="#E870FD" />
-      <stop offset="100%" stop-color="#BC37ED" />
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="60%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
     </linearGradient>
   </defs>
 </svg>`;
@@ -130,43 +133,59 @@ fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-logo-dark.svg'), SVG_LOGO_DARK)
 fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-logo-light.svg'), SVG_LOGO_LIGHT);
 fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-logo-stacked.svg'), SVG_LOGO_STACKED);
 
-console.log('Wrote all 5 vector SVG files.');
+console.log('Wrote all 5 vector SVG files in Ivory Violet identity.');
 
 /* -------------------------------------------------------------------------- */
 /* 2. Generate True 4K Ultra-DPI PNGs (3840 x 1200 & 3840 x 3840)             */
 /* -------------------------------------------------------------------------- */
 
-function renderLogoToCanvas4K(width, height) {
+function renderLogoToCanvas4K(width, height, isDark = false) {
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
-  // Background - Deep Cyber Obsidian
-  ctx.fillStyle = '#08090C';
-  ctx.fillRect(0, 0, width, height);
+  if (isDark) {
+    // Deep Purple Ink / Obsidian Void
+    ctx.fillStyle = '#161124';
+    ctx.fillRect(0, 0, width, height);
 
-  // Subtle 4K grid pattern
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
-  const gridStep = Math.round(width / 80);
-  for (let gx = 0; gx < width; gx += gridStep) {
-    for (let gy = 0; gy < height; gy += gridStep) {
-      ctx.fillRect(gx, gy, 2, 2);
+    // Subtle 4K grid pattern
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+    const gridStep = Math.round(width / 80);
+    for (let gx = 0; gx < width; gx += gridStep) {
+      for (let gy = 0; gy < height; gy += gridStep) {
+        ctx.fillRect(gx, gy, 2, 2);
+      }
     }
+
+    // Radial royal violet glow
+    const radial = ctx.createRadialGradient(width * 0.18, height * 0.5, 20, width * 0.18, height * 0.5, height * 0.85);
+    radial.addColorStop(0, 'rgba(124, 58, 237, 0.28)');
+    radial.addColorStop(0.6, 'rgba(109, 40, 217, 0.12)');
+    radial.addColorStop(1, 'rgba(22, 17, 36, 0)');
+    ctx.fillStyle = radial;
+    ctx.fillRect(0, 0, width, height);
+  } else {
+    // Warm Ivory Canvas (#FAF8F5)
+    ctx.fillStyle = '#FAF8F5';
+    ctx.fillRect(0, 0, width, height);
+
+    // Subtle 4K dot matrix
+    ctx.fillStyle = 'rgba(22, 17, 36, 0.035)';
+    const gridStep = Math.round(width / 80);
+    for (let gx = 0; gx < width; gx += gridStep) {
+      for (let gy = 0; gy < height; gy += gridStep) {
+        ctx.fillRect(gx, gy, 2, 2);
+      }
+    }
+
+    // Soft warm violet ambient aura
+    const radial = ctx.createRadialGradient(width * 0.18, height * 0.5, 20, width * 0.18, height * 0.5, height * 0.9);
+    radial.addColorStop(0, 'rgba(124, 58, 237, 0.08)');
+    radial.addColorStop(0.6, 'rgba(198, 255, 61, 0.04)');
+    radial.addColorStop(1, 'rgba(250, 248, 245, 0)');
+    ctx.fillStyle = radial;
+    ctx.fillRect(0, 0, width, height);
   }
-
-  // Deep ambient violet radial glow
-  const radial = ctx.createRadialGradient(width * 0.18, height * 0.5, 20, width * 0.18, height * 0.5, height * 0.9);
-  radial.addColorStop(0, 'rgba(232, 112, 253, 0.35)');
-  radial.addColorStop(0.4, 'rgba(188, 55, 237, 0.18)');
-  radial.addColorStop(1, 'rgba(8, 9, 12, 0)');
-  ctx.fillStyle = radial;
-  ctx.fillRect(0, 0, width, height);
-
-  // Cyan counter-glow
-  const cyanRadial = ctx.createRadialGradient(width * 0.85, height * 0.5, 30, width * 0.85, height * 0.5, height * 0.75);
-  cyanRadial.addColorStop(0, 'rgba(0, 240, 255, 0.12)');
-  cyanRadial.addColorStop(1, 'rgba(8, 9, 12, 0)');
-  ctx.fillStyle = cyanRadial;
-  ctx.fillRect(0, 0, width, height);
 
   const scale = height / 100;
   const markX = 40 * scale;
@@ -175,17 +194,23 @@ function renderLogoToCanvas4K(width, height) {
   ctx.save();
   ctx.translate(markX, markY);
 
-  // Draw slash polygon with glowing specular gradient
+  // Draw slash polygon
   const sGrad = ctx.createLinearGradient(0, 0, 40 * scale, 60 * scale);
-  sGrad.addColorStop(0, '#FFFFFF');
-  sGrad.addColorStop(0.35, '#E870FD');
-  sGrad.addColorStop(0.75, '#BC37ED');
-  sGrad.addColorStop(1, '#7C3AED');
+  if (isDark) {
+    sGrad.addColorStop(0, '#C4B5FD');
+    sGrad.addColorStop(0.5, '#8B5CF6');
+    sGrad.addColorStop(1, '#7C3AED');
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.6)';
+    ctx.shadowBlur = 28 * (scale / 4);
+  } else {
+    sGrad.addColorStop(0, '#9333EA');
+    sGrad.addColorStop(0.6, '#7C3AED');
+    sGrad.addColorStop(1, '#6D28D9');
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.35)';
+    ctx.shadowBlur = 20 * (scale / 4);
+  }
 
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.85)';
-  ctx.shadowBlur = 36 * (scale / 4);
   ctx.fillStyle = sGrad;
-
   ctx.beginPath();
   ctx.moveTo(26 * scale, 2 * scale);
   ctx.lineTo(38 * scale, 2 * scale);
@@ -195,54 +220,61 @@ function renderLogoToCanvas4K(width, height) {
   ctx.fill();
   ctx.restore();
 
-  // Draw 4K Typography
+  // Draw 4K Typography using Syne
   ctx.save();
-  ctx.fillStyle = '#F8F7FA';
-  ctx.font = `700 ${22 * scale}px "Space Grotesk", system-ui, sans-serif`;
+  ctx.fillStyle = isDark ? '#FAF8F5' : '#161124';
+  ctx.font = `700 ${22 * scale}px "Syne", system-ui, sans-serif`;
   ctx.letterSpacing = `${2 * scale}px`;
   ctx.fillText('SO WE', 95 * scale, 46 * scale);
 
-  ctx.font = `700 ${26 * scale}px "Space Grotesk", system-ui, sans-serif`;
+  ctx.font = `700 ${26 * scale}px "Syne", system-ui, sans-serif`;
   ctx.fillText('BUILD', 95 * scale, 76 * scale);
 
   const buildMetrics = ctx.measureText('BUILD');
-  ctx.fillStyle = '#E870FD';
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.9)';
-  ctx.shadowBlur = 24 * (scale / 4);
+  if (isDark) {
+    ctx.fillStyle = '#c6ff3d';
+    ctx.shadowColor = 'rgba(198, 255, 61, 0.7)';
+    ctx.shadowBlur = 20 * (scale / 4);
+  } else {
+    ctx.fillStyle = '#7C3AED';
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
+    ctx.shadowBlur = 12 * (scale / 4);
+  }
   ctx.fillText('.IN', 95 * scale + buildMetrics.width + 1 * scale, 76 * scale);
   ctx.restore();
 
   return canvas;
 }
 
-// 4K Ultra-Wide Logo (3840 x 1200)
-console.log('Rendering 4K Ultra-Wide Logo Master (3840 x 1200)...');
-const logoCanvasDark = renderLogoToCanvas4K(3840, 1200);
+// 4K Ultra-Wide Logos (3840 x 1200)
+console.log('Rendering 4K Ultra-Wide Light Master Logo (3840 x 1200)...');
+const logoCanvasLight = renderLogoToCanvas4K(3840, 1200, false);
+fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-logo-light.png'), logoCanvasLight.toBuffer('image/png'));
+
+console.log('Rendering 4K Ultra-Wide Dark Inverted Master Logo (3840 x 1200)...');
+const logoCanvasDark = renderLogoToCanvas4K(3840, 1200, true);
 fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-logo-dark.png'), logoCanvasDark.toBuffer('image/png'));
 
 // 4K Square Symbol Icon Master (3840 x 3840)
-console.log('Rendering 4K Square Symbol Icon Master (3840 x 3840)...');
+console.log('Rendering 4K Square Symbol Icon Master in Warm Ivory (3840 x 3840)...');
 const symbolCanvas = createCanvas(3840, 3840);
 {
   const ctx = symbolCanvas.getContext('2d');
-  ctx.fillStyle = '#08090C';
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, 3840, 3840);
 
-  // Massive radial glowing energy bloom
+  // Elegant subtle radial glow
   const radial = ctx.createRadialGradient(1920, 1920, 100, 1920, 1920, 1800);
-  radial.addColorStop(0, 'rgba(232, 112, 253, 0.45)');
-  radial.addColorStop(0.35, 'rgba(188, 55, 237, 0.25)');
-  radial.addColorStop(0.7, 'rgba(124, 58, 237, 0.1)');
-  radial.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  radial.addColorStop(0, 'rgba(124, 58, 237, 0.18)');
+  radial.addColorStop(0.5, 'rgba(198, 255, 61, 0.05)');
+  radial.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = radial;
   ctx.fillRect(0, 0, 3840, 3840);
 
-  // Subtle cyan edge flare
-  const cyanRadial = ctx.createRadialGradient(1100, 2700, 50, 1100, 2700, 1200);
-  cyanRadial.addColorStop(0, 'rgba(0, 240, 255, 0.12)');
-  cyanRadial.addColorStop(1, 'rgba(8, 9, 12, 0)');
-  ctx.fillStyle = cyanRadial;
-  ctx.fillRect(0, 0, 3840, 3840);
+  // Border frame
+  ctx.strokeStyle = '#E8DFF2';
+  ctx.lineWidth = 16;
+  ctx.strokeRect(120, 120, 3600, 3600);
 
   ctx.save();
   const scale = 3840 / 120; // 32x scale
@@ -251,13 +283,12 @@ const symbolCanvas = createCanvas(3840, 3840);
   ctx.translate(1920 - markW / 2, 1920 - markH / 2);
 
   const sGrad = ctx.createLinearGradient(0, 0, markW, markH);
-  sGrad.addColorStop(0, '#FFFFFF');
-  sGrad.addColorStop(0.35, '#E870FD');
-  sGrad.addColorStop(0.75, '#BC37ED');
-  sGrad.addColorStop(1, '#7C3AED');
+  sGrad.addColorStop(0, '#9333EA');
+  sGrad.addColorStop(0.6, '#7C3AED');
+  sGrad.addColorStop(1, '#6D28D9');
 
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.95)';
-  ctx.shadowBlur = 120;
+  ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
+  ctx.shadowBlur = 80;
   ctx.fillStyle = sGrad;
 
   const scX = markW / 40;
@@ -279,7 +310,7 @@ console.log('Wrote 4K PNG raster files.');
 /* -------------------------------------------------------------------------- */
 
 async function generateAnimatedGIF() {
-  console.log('Rendering High-Definition Animated GIF (960 x 540)...');
+  console.log('Rendering High-Definition Animated GIF in Ivory Violet (960 x 540)...');
   const width = 960;
   const height = 540;
   const totalFrames = 36;
@@ -292,12 +323,12 @@ async function generateAnimatedGIF() {
   for (let i = 0; i < totalFrames; i++) {
     const t = i / totalFrames; // 0 to 1
 
-    // Background Void
-    ctx.fillStyle = '#120F1D';
+    // Background Warm Ivory Canvas (#FAF8F5)
+    ctx.fillStyle = '#FAF8F5';
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle grid dots in background
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+    // Subtle dot grid
+    ctx.fillStyle = 'rgba(22, 17, 36, 0.04)';
     for (let gx = 20; gx < width; gx += 40) {
       for (let gy = 20; gy < height; gy += 40) {
         ctx.fillRect(gx, gy, 1.5, 1.5);
@@ -305,11 +336,11 @@ async function generateAnimatedGIF() {
     }
 
     // Radial breathing violet glow
-    const glowPulse = 0.35 + 0.2 * Math.sin(t * Math.PI * 2);
+    const glowPulse = 0.12 + 0.08 * Math.sin(t * Math.PI * 2);
     const rad = ctx.createRadialGradient(width * 0.35, height * 0.5, 30, width * 0.35, height * 0.5, 380);
-    rad.addColorStop(0, `rgba(232, 112, 253, ${glowPulse})`);
-    rad.addColorStop(0.5, `rgba(188, 55, 237, ${glowPulse * 0.6})`);
-    rad.addColorStop(1, 'rgba(18, 15, 29, 0)');
+    rad.addColorStop(0, `rgba(124, 58, 237, ${glowPulse})`);
+    rad.addColorStop(0.6, `rgba(109, 40, 217, ${glowPulse * 0.4})`);
+    rad.addColorStop(1, 'rgba(250, 248, 245, 0)');
     ctx.fillStyle = rad;
     ctx.fillRect(0, 0, width, height);
 
@@ -327,12 +358,12 @@ async function generateAnimatedGIF() {
 
     // Base slash gradient
     const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
-    polyGrad.addColorStop(0, '#FFFFFF');
-    polyGrad.addColorStop(0.35, '#E870FD');
-    polyGrad.addColorStop(1, '#BC37ED');
+    polyGrad.addColorStop(0, '#9333EA');
+    polyGrad.addColorStop(0.6, '#7C3AED');
+    polyGrad.addColorStop(1, '#6D28D9');
 
-    ctx.shadowColor = 'rgba(232, 112, 253, 0.85)';
-    ctx.shadowBlur = 35 + 15 * Math.sin(t * Math.PI * 2);
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.35)';
+    ctx.shadowBlur = 24 + 10 * Math.sin(t * Math.PI * 2);
     ctx.fillStyle = polyGrad;
 
     ctx.beginPath();
@@ -363,28 +394,36 @@ async function generateAnimatedGIF() {
     ctx.translate(slashX + 175, slashY + 84 + textFloatY);
 
     // "SO WE"
-    ctx.fillStyle = '#F8F7FA';
-    ctx.font = '700 52px "Space Grotesk", system-ui, sans-serif';
+    ctx.fillStyle = '#161124';
+    ctx.font = '700 52px "Syne", system-ui, sans-serif';
     ctx.letterSpacing = '6px';
     ctx.fillText('SO WE', 0, 0);
 
     // "BUILD"
-    ctx.font = '700 64px "Space Grotesk", system-ui, sans-serif';
+    ctx.font = '700 64px "Syne", system-ui, sans-serif';
     ctx.fillText('BUILD', 0, 68);
 
-    // ".IN" with pulsing neon bloom
+    // ".IN" with Royal Violet & Neon Spark accent
     const buildWidth = ctx.measureText('BUILD').width;
-    ctx.fillStyle = '#E870FD';
-    ctx.shadowColor = 'rgba(232, 112, 253, 0.9)';
-    ctx.shadowBlur = 24 + 10 * Math.cos(t * Math.PI * 2);
+    ctx.fillStyle = '#7C3AED';
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
+    ctx.shadowBlur = 14 + 6 * Math.cos(t * Math.PI * 2);
     ctx.fillText('.IN', buildWidth + 6, 68);
+
+    // Neon Spark dot
+    ctx.fillStyle = '#c6ff3d';
+    ctx.shadowColor = 'rgba(198, 255, 61, 0.8)';
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
+    ctx.arc(buildWidth + 88, 56, 5, 0, Math.PI * 2);
+    ctx.fill();
 
     ctx.restore();
 
     // Tech metadata subtitle
     ctx.font = '500 14px "JetBrains Mono", monospace';
     ctx.letterSpacing = '6px';
-    ctx.fillStyle = 'rgba(159, 160, 172, 0.75)';
+    ctx.fillStyle = '#5A5068';
     ctx.fillText('TECHNOLOGY STUDIO // SOWEBUILD.IN', slashX + 175, slashY + 188 + textFloatY);
 
     // Get RGBA pixel data
@@ -406,11 +445,11 @@ async function generateAnimatedGIF() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. Generate Animated 4K MP4 Video Intro (3840 x 2160 UHD @ 60 FPS)        */
+/* 4. Generate Animated 4K MP4 Video Intro (3840 x 2160 UHD @ 30 FPS)        */
 /* -------------------------------------------------------------------------- */
 
 async function generateAnimatedMP4() {
-  console.log('Rendering 4K UHD Animated Video Intro (3840 x 2160 @ 30 FPS)...');
+  console.log('Rendering 4K UHD Animated Video Intro in Ivory Violet (3840 x 2160 @ 30 FPS)...');
   const width = 3840;
   const height = 2160;
   const fps = 30;
@@ -420,7 +459,7 @@ async function generateAnimatedMP4() {
   encoder.width = width;
   encoder.height = height;
   encoder.frameRate = fps;
-  encoder.kbps = 16000; // Ultra-crisp 16 Mbps bitrate
+  encoder.kbps = 16000;
   encoder.speed = 10;
   encoder.initialize();
 
@@ -430,36 +469,29 @@ async function generateAnimatedMP4() {
   for (let i = 0; i < totalFrames; i++) {
     const t = i / totalFrames; // 0 to 1
 
-    // Background Void
-    ctx.fillStyle = '#08090C';
+    // Background Warm Ivory Canvas (#FAF8F5)
+    ctx.fillStyle = '#FAF8F5';
     ctx.fillRect(0, 0, width, height);
 
-    // 4K Cyber Grid
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.035)';
+    // 4K Subtle Grid
+    ctx.fillStyle = 'rgba(22, 17, 36, 0.035)';
     for (let gx = 0; gx < width; gx += 96) {
       for (let gy = 0; gy < height; gy += 96) {
         ctx.fillRect(gx, gy, 3, 3);
       }
     }
 
-    // Glowing energy aura
-    const pulse = 0.4 + 0.25 * Math.sin(t * Math.PI * 2);
+    // Glowing energy aura in Royal Violet
+    const pulse = 0.14 + 0.08 * Math.sin(t * Math.PI * 2);
     const rad = ctx.createRadialGradient(width * 0.32, height * 0.5, 80, width * 0.32, height * 0.5, 1200);
-    rad.addColorStop(0, `rgba(232, 112, 253, ${pulse * 0.9})`);
-    rad.addColorStop(0.45, `rgba(188, 55, 237, ${pulse * 0.55})`);
-    rad.addColorStop(1, 'rgba(8, 9, 12, 0)');
+    rad.addColorStop(0, `rgba(124, 58, 237, ${pulse})`);
+    rad.addColorStop(0.5, `rgba(198, 255, 61, ${pulse * 0.3})`);
+    rad.addColorStop(1, 'rgba(250, 248, 245, 0)');
     ctx.fillStyle = rad;
     ctx.fillRect(0, 0, width, height);
 
-    // Cyan counter-glow
-    const cyanAura = ctx.createRadialGradient(width * 0.8, height * 0.6, 60, width * 0.8, height * 0.6, 1000);
-    cyanAura.addColorStop(0, 'rgba(0, 240, 255, 0.12)');
-    cyanAura.addColorStop(1, 'rgba(8, 9, 12, 0)');
-    ctx.fillStyle = cyanAura;
-    ctx.fillRect(0, 0, width, height);
-
     // Slash geometry scaled for 4K
-    const slashScale = 14.4; // 4x scale compared to 960x540
+    const slashScale = 14.4;
     const slashX = width * 0.2;
     const slashY = height * 0.5 - (30 * slashScale);
 
@@ -471,13 +503,12 @@ async function generateAnimatedMP4() {
     ctx.translate(slashX, slashY);
 
     const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
-    polyGrad.addColorStop(0, '#FFFFFF');
-    polyGrad.addColorStop(0.35, '#E870FD');
-    polyGrad.addColorStop(0.75, '#BC37ED');
-    polyGrad.addColorStop(1, '#7C3AED');
+    polyGrad.addColorStop(0, '#9333EA');
+    polyGrad.addColorStop(0.6, '#7C3AED');
+    polyGrad.addColorStop(1, '#6D28D9');
 
-    ctx.shadowColor = 'rgba(232, 112, 253, 0.95)';
-    ctx.shadowBlur = 120 + 40 * Math.sin(t * Math.PI * 2);
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.45)';
+    ctx.shadowBlur = 80 + 30 * Math.sin(t * Math.PI * 2);
     ctx.fillStyle = polyGrad;
 
     ctx.beginPath();
@@ -507,38 +538,37 @@ async function generateAnimatedMP4() {
     ctx.translate(slashX + 700, slashY + 336 + floatY);
 
     // "SO WE"
-    ctx.fillStyle = '#F8F7FA';
-    ctx.font = '700 208px "Space Grotesk", system-ui, sans-serif';
+    ctx.fillStyle = '#161124';
+    ctx.font = '700 208px "Syne", system-ui, sans-serif';
     ctx.letterSpacing = '24px';
     ctx.fillText('SO WE', 0, 0);
 
     // "BUILD"
-    ctx.font = '700 256px "Space Grotesk", system-ui, sans-serif';
+    ctx.font = '700 256px "Syne", system-ui, sans-serif';
     ctx.fillText('BUILD', 0, 272);
 
     // ".IN"
     const bMetrics = ctx.measureText('BUILD');
-    ctx.fillStyle = '#E870FD';
-    ctx.shadowColor = 'rgba(232, 112, 253, 0.95)';
-    ctx.shadowBlur = 80 + 30 * Math.sin(t * Math.PI * 2);
+    ctx.fillStyle = '#7C3AED';
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.45)';
+    ctx.shadowBlur = 48 + 20 * Math.sin(t * Math.PI * 2);
     ctx.fillText('.IN', bMetrics.width + 24, 272);
+
+    // Neon Spark dot
+    ctx.fillStyle = '#c6ff3d';
+    ctx.shadowColor = 'rgba(198, 255, 61, 0.9)';
+    ctx.shadowBlur = 36;
+    ctx.beginPath();
+    ctx.arc(bMetrics.width + 360, 220, 20, 0, Math.PI * 2);
+    ctx.fill();
 
     ctx.restore();
 
     // Subtitle Spec
     ctx.font = '500 56px "JetBrains Mono", monospace';
     ctx.letterSpacing = '24px';
-    ctx.fillStyle = 'rgba(159, 160, 172, 0.8)';
+    ctx.fillStyle = '#5A5068';
     ctx.fillText('STUDIO // SOWEBUILD.IN', slashX + 700, slashY + 750 + floatY);
-
-    // Subtle laser beam scanline
-    const scanY = ((t * 1.5) % 1) * height;
-    const scanGrad = ctx.createLinearGradient(0, scanY - 8, 0, scanY + 8);
-    scanGrad.addColorStop(0, 'rgba(232, 112, 253, 0)');
-    scanGrad.addColorStop(0.5, 'rgba(232, 112, 253, 0.35)');
-    scanGrad.addColorStop(1, 'rgba(232, 112, 253, 0)');
-    ctx.fillStyle = scanGrad;
-    ctx.fillRect(0, scanY - 8, width, 16);
 
     const imgData = ctx.getImageData(0, 0, width, height);
     encoder.addFrameRgba(imgData.data);
@@ -558,7 +588,7 @@ async function generateAnimatedMP4() {
 async function main() {
   await generateAnimatedGIF();
   await generateAnimatedMP4();
-  console.log('All 4K brand assets successfully generated via 100% code!');
+  console.log('All brand assets successfully updated to Ivory Violet identity!');
 }
 
 main().catch(err => {

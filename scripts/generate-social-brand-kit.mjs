@@ -4,8 +4,6 @@ import { createCanvas, GlobalFonts } from '@napi-rs/canvas';
 
 const BRAND_DIRS = [
   path.resolve('public', 'brand'),
-  path.resolve('swb-social', 'brand'),
-  path.resolve('d:/Progency/swb-social/brand')
 ];
 
 // Ensure all output directories exist
@@ -18,11 +16,11 @@ BRAND_DIRS.forEach(dir => {
 });
 
 // Register Fonts
-const fontSpaceGrotesk = path.resolve('scripts', 'fonts', 'SpaceGrotesk.ttf');
+const fontSyne = path.resolve('scripts', 'fonts', 'Syne-Variable.ttf');
 const fontManrope = path.resolve('scripts', 'fonts', 'Manrope.ttf');
 const fontMono = path.resolve('scripts', 'fonts', 'JetBrainsMono.ttf');
 
-if (fs.existsSync(fontSpaceGrotesk)) GlobalFonts.registerFromPath(fontSpaceGrotesk, 'Space Grotesk');
+if (fs.existsSync(fontSyne)) GlobalFonts.registerFromPath(fontSyne, 'Syne');
 if (fs.existsSync(fontManrope)) GlobalFonts.registerFromPath(fontManrope, 'Manrope');
 if (fs.existsSync(fontMono)) GlobalFonts.registerFromPath(fontMono, 'JetBrains Mono');
 
@@ -57,10 +55,10 @@ function roundRect(ctx, x, y, w, h, r) {
  */
 function drawSlashSymbol(ctx, x, y, width, height, options = {}) {
   const {
-    isDark = true,
+    isDark = false,
     glow = true,
     glowBlur = 36,
-    glowColor = 'rgba(232, 112, 253, 0.85)',
+    glowColor = 'rgba(124, 58, 237, 0.35)',
     gradientStops = null
   } = options;
 
@@ -74,14 +72,13 @@ function drawSlashSymbol(ctx, x, y, width, height, options = {}) {
   if (gradientStops && gradientStops.length) {
     gradientStops.forEach(st => grad.addColorStop(st.offset, st.color));
   } else if (isDark) {
-    grad.addColorStop(0, '#FFFFFF');
-    grad.addColorStop(0.35, '#E870FD');
-    grad.addColorStop(0.75, '#BC37ED');
+    grad.addColorStop(0, '#C4B5FD');
+    grad.addColorStop(0.4, '#8B5CF6');
     grad.addColorStop(1, '#7C3AED');
   } else {
-    grad.addColorStop(0, '#A855F7');
-    grad.addColorStop(0.5, '#7E22CE');
-    grad.addColorStop(1, '#581C87');
+    grad.addColorStop(0, '#9333EA');
+    grad.addColorStop(0.6, '#7C3AED');
+    grad.addColorStop(1, '#6D28D9');
   }
 
   if (glow) {
@@ -102,7 +99,7 @@ function drawSlashSymbol(ctx, x, y, width, height, options = {}) {
 }
 
 console.log('\n==============================================');
-console.log('🎨 Generating Official Social Media Brand Kit in 4K Quality');
+console.log('🎨 Generating Official Social Media Brand Kit in Ivory Violet (4K)');
 console.log('==============================================\n');
 
 /* -------------------------------------------------------------------------- */
@@ -113,44 +110,46 @@ console.log('==============================================\n');
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext('2d');
 
-  // Background - Deep cyber obsidian
-  ctx.fillStyle = '#08090C';
+  // Background - Warm Ivory Canvas
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, size, size);
 
-  // Deep ambient violet/cyan radial aura
+  // Soft ambient violet radial aura
   const aura = ctx.createRadialGradient(size / 2, size / 2, 80, size / 2, size / 2, 960);
-  aura.addColorStop(0, 'rgba(232, 112, 253, 0.48)');
-  aura.addColorStop(0.4, 'rgba(188, 55, 237, 0.28)');
-  aura.addColorStop(0.75, 'rgba(124, 58, 237, 0.12)');
-  aura.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  aura.addColorStop(0, 'rgba(124, 58, 237, 0.16)');
+  aura.addColorStop(0.5, 'rgba(198, 255, 61, 0.04)');
+  aura.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = aura;
-  ctx.fillRect(0, 0, size, size);
-
-  // Subtle cyan counter-glow in bottom-left
-  const cyanGlow = ctx.createRadialGradient(size * 0.26, size * 0.74, 40, size * 0.26, size * 0.74, 640);
-  cyanGlow.addColorStop(0, 'rgba(0, 240, 255, 0.12)');
-  cyanGlow.addColorStop(1, 'rgba(8, 9, 12, 0)');
-  ctx.fillStyle = cyanGlow;
   ctx.fillRect(0, 0, size, size);
 
   // Subtle circular framing guide (safe zone for circular crop)
   ctx.save();
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#E8DFF2';
+  ctx.lineWidth = 6;
   ctx.beginPath();
   ctx.arc(size / 2, size / 2, 980, 0, Math.PI * 2);
   ctx.stroke();
   ctx.restore();
 
-  // Draw Glowing Symbol - 640 x 960 px in 4K
+  // Draw Symbol - 640 x 960 px in 4K
   const symW = 640;
   const symH = 960;
   drawSlashSymbol(ctx, size / 2 - symW / 2, size / 2 - symH / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 120,
-    glowColor: 'rgba(232, 112, 253, 0.95)'
+    glowBlur: 60,
+    glowColor: 'rgba(124, 58, 237, 0.35)'
   });
+
+  // Neon Green Spark Dot
+  ctx.save();
+  ctx.fillStyle = '#c6ff3d';
+  ctx.shadowColor = 'rgba(198, 255, 61, 0.85)';
+  ctx.shadowBlur = 40;
+  ctx.beginPath();
+  ctx.arc(size / 2 + symW / 2 + 60, size / 2 + symH / 2 - 120, 28, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
 
   saveToAll('sowebuild-avatar-glow.png', canvas.toBuffer('image/png'));
 }
@@ -163,88 +162,87 @@ console.log('==============================================\n');
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext('2d');
 
-  // Background
-  ctx.fillStyle = '#0B0D13';
+  // Background - Warm Ivory
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, size, size);
 
-  // Radial Glow behind symbol
-  const radial = ctx.createRadialGradient(size / 2, 840, 40, size / 2, 840, 760);
-  radial.addColorStop(0, 'rgba(188, 55, 237, 0.38)');
-  radial.addColorStop(0.6, 'rgba(124, 58, 237, 0.14)');
-  radial.addColorStop(1, 'rgba(11, 13, 19, 0)');
+  // Soft Radial Glow behind symbol
+  const radial = ctx.createRadialGradient(size / 2, 800, 40, size / 2, 800, 760);
+  radial.addColorStop(0, 'rgba(124, 58, 237, 0.14)');
+  radial.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = radial;
   ctx.fillRect(0, 0, size, size);
 
   // Draw Symbol
-  const symW = 400;
-  const symH = 600;
-  drawSlashSymbol(ctx, size / 2 - symW / 2, 480, symW, symH, {
-    isDark: true,
+  const symW = 380;
+  const symH = 570;
+  drawSlashSymbol(ctx, size / 2 - symW / 2, 460, symW, symH, {
+    isDark: false,
     glow: true,
-    glowBlur: 90,
-    glowColor: 'rgba(232, 112, 253, 0.85)'
+    glowBlur: 48,
+    glowColor: 'rgba(124, 58, 237, 0.3)'
   });
 
-  // Typography in 4K
+  // Typography in 4K using Syne
   ctx.save();
   ctx.textAlign = 'center';
-  ctx.fillStyle = '#F8F7FA';
-  ctx.font = '700 152px "Space Grotesk", sans-serif';
+  ctx.fillStyle = '#161124';
+  ctx.font = '700 152px "Syne", sans-serif';
   ctx.letterSpacing = '24px';
-  ctx.fillText('SO WE', size / 2, 1360);
+  ctx.fillText('SO WE', size / 2, 1340);
 
-  ctx.font = '800 204px "Space Grotesk", sans-serif';
+  ctx.font = '800 204px "Syne", sans-serif';
   ctx.letterSpacing = '16px';
 
   // Measure to color .IN
   const buildText = 'BUILD';
   const inText = '.IN';
-  ctx.font = '800 204px "Space Grotesk", sans-serif';
+  ctx.font = '800 204px "Syne", sans-serif';
   const buildW = ctx.measureText(buildText).width;
   const inW = ctx.measureText(inText).width;
   const totalW = buildW + inW;
   const startX = size / 2 - totalW / 2;
 
   ctx.textAlign = 'left';
-  ctx.fillStyle = '#FFFFFF';
-  ctx.fillText(buildText, startX, 1600);
+  ctx.fillStyle = '#161124';
+  ctx.fillText(buildText, startX, 1580);
 
-  ctx.fillStyle = '#E870FD';
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.85)';
-  ctx.shadowBlur = 48;
-  ctx.fillText(inText, startX + buildW, 1600);
+  ctx.fillStyle = '#7C3AED';
+  ctx.shadowColor = 'rgba(124, 58, 237, 0.35)';
+  ctx.shadowBlur = 32;
+  ctx.fillText(inText, startX + buildW, 1580);
   ctx.restore();
 
-  // Subtle Tagline at bottom
+  // Tagline at bottom
   ctx.save();
   ctx.textAlign = 'center';
-  ctx.font = '600 60px "Manrope", sans-serif';
-  ctx.fillStyle = '#94A3B8';
-  ctx.letterSpacing = '8px';
-  ctx.fillText('TECHNOLOGY PARTNER', size / 2, 1760);
+  ctx.font = '600 54px "Manrope", sans-serif';
+  ctx.fillStyle = '#5A5068';
+  ctx.letterSpacing = '10px';
+  ctx.fillText('TECHNOLOGY STUDIO', size / 2, 1750);
   ctx.restore();
 
   saveToAll('sowebuild-avatar-stacked.png', canvas.toBuffer('image/png'));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 3. Profile Picture: Minimal High-Contrast (2160 x 2160 UHD Master)         */
+/* 3. Profile Picture: Minimal Clean Ivory (2160 x 2160 UHD Master)           */
 /* -------------------------------------------------------------------------- */
 {
   const size = 2160;
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = '#050608';
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, size, size);
 
   const symW = 680;
   const symH = 1020;
   drawSlashSymbol(ctx, size / 2 - symW / 2, size / 2 - symH / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 40,
-    glowColor: 'rgba(232, 112, 253, 0.65)'
+    glowBlur: 32,
+    glowColor: 'rgba(124, 58, 237, 0.25)'
   });
 
   saveToAll('sowebuild-avatar-minimal.png', canvas.toBuffer('image/png'));
@@ -261,17 +259,17 @@ console.log('==============================================\n');
   const symW = 760;
   const symH = 1140;
   drawSlashSymbol(ctx, size / 2 - symW / 2, size / 2 - symH / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 80,
-    glowColor: 'rgba(232, 112, 253, 0.9)'
+    glowBlur: 40,
+    glowColor: 'rgba(124, 58, 237, 0.3)'
   });
 
   saveToAll('sowebuild-avatar-transparent.png', canvas.toBuffer('image/png'));
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. Profile Picture: Light Mode Avatar (2160 x 2160 Master)                 */
+/* 5. Profile Picture: Pure White Surface (2160 x 2160 Master)                */
 /* -------------------------------------------------------------------------- */
 {
   const size = 2160;
@@ -291,7 +289,7 @@ console.log('==============================================\n');
   saveToAll('sowebuild-avatar-white.png', canvas.toBuffer('image/png'));
 }
 
-function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strokeWidth = 4) {
+function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#7C3AED', strokeWidth = 4) {
   ctx.save();
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
@@ -340,26 +338,26 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
-  // Background
-  ctx.fillStyle = '#08090C';
+  // Background Warm Ivory
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, width, height);
 
   // Ambient glows
   const grad1 = ctx.createRadialGradient(480, height / 2, 40, 480, height / 2, 900);
-  grad1.addColorStop(0, 'rgba(188, 55, 237, 0.26)');
-  grad1.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  grad1.addColorStop(0, 'rgba(124, 58, 237, 0.12)');
+  grad1.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = grad1;
   ctx.fillRect(0, 0, width, height);
 
   const grad2 = ctx.createRadialGradient(width - 400, height / 2, 40, width - 400, height / 2, 800);
-  grad2.addColorStop(0, 'rgba(0, 240, 255, 0.14)');
-  grad2.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  grad2.addColorStop(0, 'rgba(198, 255, 61, 0.08)');
+  grad2.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = grad2;
   ctx.fillRect(0, 0, width, height);
 
   // Subtle grid lines
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(22, 17, 36, 0.035)';
+  ctx.lineWidth = 1.5;
   for (let x = 0; x < width; x += 120) {
     ctx.beginPath();
     ctx.moveTo(x, 0);
@@ -368,7 +366,7 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   }
 
   // Border frame
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+  ctx.strokeStyle = '#E8DFF2';
   ctx.lineWidth = 4;
   roundRect(ctx, 32, 32, width - 64, height - 64, 32);
   ctx.stroke();
@@ -377,31 +375,29 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const symW = 152;
   const symH = 228;
   drawSlashSymbol(ctx, 160, (height - symH) / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 48,
-    glowColor: 'rgba(232, 112, 253, 0.85)'
+    glowBlur: 32,
+    glowColor: 'rgba(124, 58, 237, 0.3)'
   });
 
   ctx.save();
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = '800 88px "Space Grotesk", sans-serif';
+  ctx.fillStyle = '#161124';
+  ctx.font = '800 88px "Syne", sans-serif';
   ctx.letterSpacing = '8px';
   ctx.fillText('SO WE', 370, height / 2 - 24);
 
-  ctx.font = '800 108px "Space Grotesk", sans-serif';
+  ctx.font = '800 108px "Syne", sans-serif';
   ctx.fillText('BUILD', 370, height / 2 + 100);
 
   const bMetrics = ctx.measureText('BUILD');
-  ctx.fillStyle = '#E870FD';
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.85)';
-  ctx.shadowBlur = 32;
+  ctx.fillStyle = '#7C3AED';
   ctx.fillText('.IN', 370 + bMetrics.width + 8, height / 2 + 100);
   ctx.restore();
 
   // Divider line
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#E8DFF2';
+  ctx.lineWidth = 2.5;
   ctx.beginPath();
   ctx.moveTo(980, 130);
   ctx.lineTo(980, height - 130);
@@ -409,24 +405,24 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
 
   // Right Value Proposition & Capabilities
   ctx.save();
-  ctx.font = '800 64px "Space Grotesk", sans-serif';
-  ctx.fillStyle = '#FFFFFF';
-  ctx.fillText('You have a problem. We build the solution.', 1060, 260);
+  ctx.font = '800 64px "Syne", sans-serif';
+  ctx.fillStyle = '#161124';
+  ctx.fillText('Engineered by Builders, Not Account Managers.', 1060, 260);
 
-  ctx.font = '500 40px "Manrope", sans-serif';
-  ctx.fillStyle = '#94A3B8';
-  ctx.fillText('Done-for-you technology partner · Turnkey delivery · Zero tech stress.', 1060, 350);
+  ctx.font = '500 38px "Manrope", sans-serif';
+  ctx.fillStyle = '#5A5068';
+  ctx.fillText('Digital product & technology development studio · 100% Client Code Ownership.', 1060, 350);
 
-  // 3 Capability Badges with vector icons in 4K
+  // 3 Capability Badges
   const badges = [
-    { text: 'Bespoke Websites & Web Apps', icon: 'bolt', col: '#BC37ED' },
-    { text: '24/7 AI Assistants', icon: 'chip', col: '#00F0FF' },
-    { text: 'WhatsApp Lead Pipelines', icon: 'phone', col: '#10B981' }
+    { text: 'Bespoke Web & Apps', icon: 'bolt', col: '#7C3AED' },
+    { text: 'AI Agents & Automation', icon: 'chip', col: '#9333EA' },
+    { text: 'WhatsApp Lead Pipelines', icon: 'phone', col: '#059669' }
   ];
 
   let bX = 1060;
   const bY = 440;
-  ctx.font = '700 32px "Space Grotesk", sans-serif';
+  ctx.font = '700 32px "Syne", sans-serif';
 
   badges.forEach(b => {
     const tW = ctx.measureText(b.text).width;
@@ -435,11 +431,11 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
     const pW = tW + padL + padR;
     const pH = 88;
 
-    ctx.fillStyle = '#0F131D';
+    ctx.fillStyle = '#FFFFFF';
     roundRect(ctx, bX, bY, pW, pH, 44);
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-    ctx.lineWidth = 2.4;
+    ctx.strokeStyle = '#E8DFF2';
+    ctx.lineWidth = 2;
     ctx.stroke();
 
     drawVectorIcon(ctx, b.icon, bX + 44, bY + 44, 36, b.col);
@@ -452,8 +448,8 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
 
   // Website & CTA at bottom right
   ctx.textAlign = 'right';
-  ctx.font = '700 40px "Space Grotesk", sans-serif';
-  ctx.fillStyle = '#E870FD';
+  ctx.font = '700 40px "Syne", sans-serif';
+  ctx.fillStyle = '#7C3AED';
   ctx.fillText('sowebuild.in  →', width - 140, height - 110);
   ctx.restore();
 
@@ -469,71 +465,59 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = '#08090C';
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, width, height);
 
   // Radial Glows
   const glowL = ctx.createRadialGradient(width * 0.25, height * 0.5, 40, width * 0.25, height * 0.5, 1100);
-  glowL.addColorStop(0, 'rgba(188, 55, 237, 0.26)');
-  glowL.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  glowL.addColorStop(0, 'rgba(124, 58, 237, 0.12)');
+  glowL.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = glowL;
   ctx.fillRect(0, 0, width, height);
 
   const glowR = ctx.createRadialGradient(width * 0.8, height * 0.5, 40, width * 0.8, height * 0.5, 1000);
-  glowR.addColorStop(0, 'rgba(0, 240, 255, 0.16)');
-  glowR.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  glowR.addColorStop(0, 'rgba(198, 255, 61, 0.08)');
+  glowR.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = glowR;
   ctx.fillRect(0, 0, width, height);
 
-  // Grid
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-  ctx.lineWidth = 2;
-  for (let x = 0; x < width; x += 120) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, height);
-    ctx.stroke();
-  }
-
   // Border frame
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+  ctx.strokeStyle = '#E8DFF2';
   ctx.lineWidth = 4;
   roundRect(ctx, 40, 40, width - 80, height - 80, 40);
   ctx.stroke();
 
-  // Brand lockup on right / center-right
+  // Brand lockup
   const lockupX = 920;
   const symW = 180;
   const symH = 270;
   drawSlashSymbol(ctx, lockupX, 230, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 60,
-    glowColor: 'rgba(232, 112, 253, 0.85)'
+    glowBlur: 36,
+    glowColor: 'rgba(124, 58, 237, 0.3)'
   });
 
   ctx.save();
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = '800 116px "Space Grotesk", sans-serif';
+  ctx.fillStyle = '#161124';
+  ctx.font = '800 116px "Syne", sans-serif';
   ctx.letterSpacing = '10px';
   ctx.fillText('SO WE', lockupX + 230, 350);
 
-  ctx.font = '800 144px "Space Grotesk", sans-serif';
+  ctx.font = '800 144px "Syne", sans-serif';
   ctx.fillText('BUILD', lockupX + 230, 490);
 
   const bMet = ctx.measureText('BUILD');
-  ctx.fillStyle = '#E870FD';
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.85)';
-  ctx.shadowBlur = 36;
+  ctx.fillStyle = '#7C3AED';
   ctx.fillText('.IN', lockupX + 230 + bMet.width + 12, 490);
 
   // Headline & Subtitle in 4K
-  ctx.font = '700 56px "Space Grotesk", sans-serif';
-  ctx.fillStyle = '#CBD5E1';
-  ctx.fillText('The Modern Done-For-You Technology Partner', lockupX, 630);
+  ctx.font = '700 54px "Syne", sans-serif';
+  ctx.fillStyle = '#161124';
+  ctx.fillText('The Modern Done-For-You Technology Studio', lockupX, 630);
 
-  ctx.font = '500 38px "Manrope", sans-serif';
-  ctx.fillStyle = '#94A3B8';
+  ctx.font = '500 36px "Manrope", sans-serif';
+  ctx.fillStyle = '#5A5068';
   ctx.fillText('Websites · Web Apps · AI Assistants · WhatsApp Automation · Cloud Hosting', lockupX, 720);
   ctx.restore();
 
@@ -548,34 +532,36 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = '#08090C';
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, size, size);
 
   // Radial Aura
   const aura = ctx.createRadialGradient(size / 2, size / 2, 60, size / 2, size / 2, 960);
-  aura.addColorStop(0, 'rgba(232, 112, 253, 0.48)');
-  aura.addColorStop(0.38, 'rgba(188, 55, 237, 0.28)');
-  aura.addColorStop(0.72, 'rgba(124, 58, 237, 0.12)');
-  aura.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  aura.addColorStop(0, 'rgba(124, 58, 237, 0.16)');
+  aura.addColorStop(0.5, 'rgba(198, 255, 61, 0.04)');
+  aura.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = aura;
-  ctx.fillRect(0, 0, size, size);
-
-  // Subtle cyan edge illumination
-  const cyanAura = ctx.createRadialGradient(size * 0.31, size * 0.7, 40, size * 0.31, size * 0.7, 600);
-  cyanAura.addColorStop(0, 'rgba(0, 240, 255, 0.12)');
-  cyanAura.addColorStop(1, 'rgba(8, 9, 12, 0)');
-  ctx.fillStyle = cyanAura;
   ctx.fillRect(0, 0, size, size);
 
   // Centered Slash Symbol in 4K
   const symW = 640;
   const symH = 960;
   drawSlashSymbol(ctx, size / 2 - symW / 2, size / 2 - symH / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 110,
-    glowColor: 'rgba(232, 112, 253, 0.95)'
+    glowBlur: 48,
+    glowColor: 'rgba(124, 58, 237, 0.35)'
   });
+
+  // Neon Green Spark Dot
+  ctx.save();
+  ctx.fillStyle = '#c6ff3d';
+  ctx.shadowColor = 'rgba(198, 255, 61, 0.85)';
+  ctx.shadowBlur = 40;
+  ctx.beginPath();
+  ctx.arc(size / 2 + symW / 2 + 60, size / 2 + symH / 2 - 120, 28, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
 
   const buffer = canvas.toBuffer('image/png');
   saveToAll('sowebuild-instagram-pfp.png', buffer);
@@ -588,27 +574,24 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = '#08090C';
+  ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, size, size);
 
   // Radial Aura
   const aura = ctx.createRadialGradient(size / 2, size / 2, 60, size / 2, size / 2, 960);
-  aura.addColorStop(0, 'rgba(232, 112, 253, 0.44)');
-  aura.addColorStop(0.4, 'rgba(188, 55, 237, 0.24)');
-  aura.addColorStop(1, 'rgba(8, 9, 12, 0)');
+  aura.addColorStop(0, 'rgba(124, 58, 237, 0.15)');
+  aura.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = aura;
   ctx.fillRect(0, 0, size, size);
 
-  // Sleek cyber neon ring near the edge of the circular crop
+  // Sleek violet ring near circular crop
   ctx.save();
   const ringGrad = ctx.createLinearGradient(200, 200, size - 200, size - 200);
-  ringGrad.addColorStop(0, '#E870FD');
-  ringGrad.addColorStop(0.5, '#BC37ED');
-  ringGrad.addColorStop(1, '#00F0FF');
+  ringGrad.addColorStop(0, '#9333EA');
+  ringGrad.addColorStop(0.5, '#7C3AED');
+  ringGrad.addColorStop(1, '#c6ff3d');
   ctx.strokeStyle = ringGrad;
-  ctx.lineWidth = 8;
-  ctx.shadowColor = 'rgba(232, 112, 253, 0.65)';
-  ctx.shadowBlur = 36;
+  ctx.lineWidth = 12;
   ctx.beginPath();
   ctx.arc(size / 2, size / 2, 980, 0, Math.PI * 2);
   ctx.stroke();
@@ -618,10 +601,10 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   const symW = 620;
   const symH = 930;
   drawSlashSymbol(ctx, size / 2 - symW / 2, size / 2 - symH / 2, symW, symH, {
-    isDark: true,
+    isDark: false,
     glow: true,
-    glowBlur: 100,
-    glowColor: 'rgba(232, 112, 253, 0.95)'
+    glowBlur: 48,
+    glowColor: 'rgba(124, 58, 237, 0.3)'
   });
 
   saveToAll('sowebuild-instagram-pfp-ring.png', canvas.toBuffer('image/png'));
@@ -632,31 +615,33 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
 /* -------------------------------------------------------------------------- */
 {
   const SVG_AVATAR = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" fill="none">
-  <!-- Background -->
-  <rect width="1080" height="1080" fill="#08090C" />
+  <!-- Background Warm Ivory -->
+  <rect width="1080" height="1080" fill="#FAF8F5" />
+  <!-- Border -->
+  <rect width="1080" height="1080" stroke="#E8DFF2" stroke-width="8" />
   <!-- Ambient Radial Glow -->
   <circle cx="540" cy="540" r="480" fill="url(#bgGlow)" />
   <!-- Safe Zone Border -->
-  <circle cx="540" cy="540" r="490" stroke="rgba(255,255,255,0.06)" stroke-width="2" />
-  <!-- Center Glowing Slash Symbol -->
+  <circle cx="540" cy="540" r="490" stroke="#E8DFF2" stroke-width="2" />
+  <!-- Center Slash Symbol -->
   <g transform="translate(380, 300) scale(8)">
     <polygon points="26,2 38,2 14,58 2,58" fill="url(#symbolGrad)" filter="url(#glowFilter)" />
   </g>
+  <!-- Neon Spark Dot -->
+  <circle cx="700" cy="740" r="28" fill="#c6ff3d" filter="drop-shadow(0 0 16px rgba(198,255,61,0.85))" />
   <defs>
     <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#E870FD" stop-opacity="0.45" />
-      <stop offset="40%" stop-color="#BC37ED" stop-opacity="0.25" />
-      <stop offset="75%" stop-color="#7C3AED" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#08090C" stop-opacity="0" />
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.16" />
+      <stop offset="60%" stop-color="#9333EA" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#FAF8F5" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="symbolGrad" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="35%" stop-color="#E870FD" />
-      <stop offset="75%" stop-color="#BC37ED" />
-      <stop offset="100%" stop-color="#7C3AED" />
+      <stop offset="0%" stop-color="#9333EA" />
+      <stop offset="60%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
     </linearGradient>
     <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#E870FD" flood-opacity="0.9" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#7C3AED" flood-opacity="0.35" />
     </filter>
   </defs>
 </svg>`;
@@ -664,4 +649,4 @@ function drawVectorIcon(ctx, iconName, x, y, size = 36, color = '#FFFFFF', strok
   saveToAll('sowebuild-avatar-glow.svg', Buffer.from(SVG_AVATAR, 'utf-8'));
 }
 
-console.log('\n✨ All Social Media Logo & Banner Assets generated in 4K Quality!\n');
+console.log('\n✨ All Social Media Logo & Banner Assets generated in Ivory Violet 4K!\n');

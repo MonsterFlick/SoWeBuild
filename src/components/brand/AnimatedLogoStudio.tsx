@@ -31,24 +31,24 @@ export function AnimatedLogoStudio() {
       const width = canvas.width;
       const height = canvas.height;
 
-      // Dark Void background
-      ctx.fillStyle = "#120F1D";
+      // Warm Ivory Canvas background
+      ctx.fillStyle = "#FAF8F5";
       ctx.fillRect(0, 0, width, height);
 
       // Blueprint matrix grid dots
-      ctx.fillStyle = "rgba(255, 255, 255, 0.04)";
+      ctx.fillStyle = "rgba(22, 17, 36, 0.04)";
       for (let x = 20; x < width; x += 36) {
         for (let y = 20; y < height; y += 36) {
           ctx.fillRect(x, y, 1.5, 1.5);
         }
       }
 
-      // Breathing electric violet aura
-      const pulse = 0.35 + 0.2 * Math.sin(t * Math.PI * 2);
+      // Breathing Royal Violet aura
+      const pulse = 0.12 + 0.08 * Math.sin(t * Math.PI * 2);
       const rad = ctx.createRadialGradient(width * 0.3, height * 0.5, 20, width * 0.3, height * 0.5, 240);
-      rad.addColorStop(0, `rgba(232, 112, 253, ${pulse})`);
-      rad.addColorStop(0.5, `rgba(188, 55, 237, ${pulse * 0.6})`);
-      rad.addColorStop(1, "rgba(18, 15, 29, 0)");
+      rad.addColorStop(0, `rgba(124, 58, 237, ${pulse})`);
+      rad.addColorStop(0.6, `rgba(109, 40, 217, ${pulse * 0.4})`);
+      rad.addColorStop(1, "rgba(250, 248, 245, 0)");
       ctx.fillStyle = rad;
       ctx.fillRect(0, 0, width, height);
 
@@ -61,12 +61,12 @@ export function AnimatedLogoStudio() {
       ctx.translate(slashX, slashY);
 
       const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
-      polyGrad.addColorStop(0, "#FFFFFF");
-      polyGrad.addColorStop(0.4, "#E870FD");
-      polyGrad.addColorStop(1, "#BC37ED");
+      polyGrad.addColorStop(0, "#9333EA");
+      polyGrad.addColorStop(0.6, "#7C3AED");
+      polyGrad.addColorStop(1, "#6D28D9");
 
-      ctx.shadowColor = "rgba(232, 112, 253, 0.85)";
-      ctx.shadowBlur = 24 + 10 * Math.sin(t * Math.PI * 2);
+      ctx.shadowColor = "rgba(124, 58, 237, 0.35)";
+      ctx.shadowBlur = 18 + 8 * Math.sin(t * Math.PI * 2);
       ctx.fillStyle = polyGrad;
 
       ctx.beginPath();
@@ -91,27 +91,35 @@ export function AnimatedLogoStudio() {
 
       ctx.restore();
 
-      // Kinetic Typography
+      // Kinetic Typography with Syne
       const floatY = Math.sin(t * Math.PI * 2) * 2;
       ctx.save();
       ctx.translate(slashX + 115, slashY + 54 + floatY);
 
       // "SO WE"
-      ctx.fillStyle = "#F8F7FA";
-      ctx.font = '700 36px "Space Grotesk", sans-serif';
+      ctx.fillStyle = "#161124";
+      ctx.font = '700 36px "Syne", system-ui, sans-serif';
       ctx.letterSpacing = "5px";
       ctx.fillText("SO WE", 0, 0);
 
       // "BUILD"
-      ctx.font = '700 44px "Space Grotesk", sans-serif';
+      ctx.font = '700 44px "Syne", system-ui, sans-serif';
       ctx.fillText("BUILD", 0, 46);
 
       // ".IN"
       const bMetrics = ctx.measureText("BUILD");
-      ctx.fillStyle = "#E870FD";
-      ctx.shadowColor = "rgba(232, 112, 253, 0.85)";
-      ctx.shadowBlur = 16 + 8 * Math.cos(t * Math.PI * 2);
+      ctx.fillStyle = "#7C3AED";
+      ctx.shadowColor = "rgba(124, 58, 237, 0.35)";
+      ctx.shadowBlur = 12 + 6 * Math.cos(t * Math.PI * 2);
       ctx.fillText(".IN", bMetrics.width + 4, 46);
+
+      // Neon spark dot
+      ctx.fillStyle = "#c6ff3d";
+      ctx.shadowColor = "rgba(198, 255, 61, 0.8)";
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(bMetrics.width + 58, 38, 3.5, 0, Math.PI * 2);
+      ctx.fill();
 
       ctx.restore();
 
@@ -134,12 +142,12 @@ export function AnimatedLogoStudio() {
             Animated Brand Assets
           </h2>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Rendered frame-by-frame via 100% code (WebCodecs & Canvas algorithms, zero AI images). Optimized for website hero intros, video titles, and social announcement reels.
+            Rendered frame-by-frame via 100% code (Canvas & WebCodecs algorithms, zero AI images). Optimized for website hero intros, video titles, and social announcement reels.
           </p>
         </div>
 
         {/* Media Switcher */}
-        <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 p-1 font-mono text-xs">
+        <div className="flex items-center gap-1.5 rounded-full border border-[#E8DFF2] bg-white p-1 font-mono text-xs shadow-sm">
           <button
             onClick={() => setActiveTab("mp4")}
             className={`rounded-full px-3.5 py-1 transition-all ${
@@ -174,11 +182,11 @@ export function AnimatedLogoStudio() {
       </div>
 
       {/* Showcase Card */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-3xl border border-[#E8DFF2] bg-white p-6 sm:p-8 shadow-sm">
         <div className="grid gap-8 lg:grid-cols-12 items-center">
           {/* Main Visual Player */}
           <div className="lg:col-span-8 flex flex-col items-center justify-center">
-            <div className="relative w-full aspect-[16/9] max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-[#120F1D] shadow-[0_0_50px_rgba(188,55,237,0.15)] flex items-center justify-center">
+            <div className="relative w-full aspect-[16/9] max-w-3xl overflow-hidden rounded-2xl border border-[#E8DFF2] bg-[#FAF8F5] shadow-inner flex items-center justify-center">
               {activeTab === "mp4" && (
                 <video
                   src="/brand/sowebuild-animated.mp4"
@@ -208,20 +216,20 @@ export function AnimatedLogoStudio() {
               )}
 
               {/* Status Pill */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/60 px-3 py-1 font-mono text-[10px] text-muted-foreground backdrop-blur-md">
-                <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-white/90 px-3 py-1 font-mono text-[10px] text-foreground backdrop-blur-md shadow-xs">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>
-                  {activeTab === "mp4" ? "H.264 // 60 FPS // 960×540" : activeTab === "gif" ? "GIF89a // 36 FRAMES // LOOP" : "LIVE 2D CANVAS PIPELINE"}
+                  {activeTab === "mp4" ? "H.264 // 60 FPS // 3840×2160 MASTER" : activeTab === "gif" ? "GIF89a // 36 FRAMES // LOOP" : "LIVE 2D CANVAS PIPELINE"}
                 </span>
               </div>
             </div>
 
             {/* Canvas Controls if in canvas mode */}
             {activeTab === "canvas" && (
-              <div className="mt-4 flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs">
+              <div className="mt-4 flex items-center gap-4 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-4 py-2 font-mono text-xs">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex items-center gap-1.5 text-foreground hover:text-primary-glow transition-colors"
+                  className="flex items-center gap-1.5 text-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   {isPlaying ? (
                     <>
@@ -241,7 +249,7 @@ export function AnimatedLogoStudio() {
                   )}
                 </button>
 
-                <span className="text-white/20">|</span>
+                <span className="text-muted-foreground/30">|</span>
 
                 <div className="flex items-center gap-1 text-muted-foreground">
                   <span>Speed:</span>
@@ -249,7 +257,7 @@ export function AnimatedLogoStudio() {
                     <button
                       key={s}
                       onClick={() => setPlaybackSpeed(s)}
-                      className={`px-1.5 py-0.5 rounded ${
+                      className={`px-1.5 py-0.5 rounded cursor-pointer ${
                         playbackSpeed === s ? "bg-primary text-white font-bold" : "hover:text-foreground"
                       }`}
                     >
@@ -264,29 +272,29 @@ export function AnimatedLogoStudio() {
           {/* Right: Technical Spec & Action Panel */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-primary-glow">
+              <div className="inline-flex items-center gap-1.5 rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-primary">
                 Pure Code Generation
               </div>
               <h3 className="mt-3 font-display text-2xl font-bold text-foreground">
                 Cinematic Motion System
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Engineered with procedural math and timing curves. The diagonal slash initiates with a specular laser sweep followed by harmonic typographic reveal and neon resonance.
+                Engineered with procedural math and timing curves. The diagonal slash initiates with a specular laser sweep followed by harmonic typographic reveal and neon green spark resonance.
               </p>
 
               {/* Specs Table */}
-              <div className="mt-5 space-y-2 border-t border-white/10 pt-4 font-mono text-xs">
+              <div className="mt-5 space-y-2 border-t border-[#E8DFF2] pt-4 font-mono text-xs">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Aspect Ratio</span>
                   <span className="text-foreground font-semibold">16:9 Landscape</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Loop Duration</span>
-                  <span className="text-foreground font-semibold">3.00 Seconds</span>
+                  <span className="text-foreground font-semibold">2.00 Seconds</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Resolution</span>
-                  <span className="text-foreground font-semibold">960×540 / 640×360</span>
+                  <span>Theme Matrix</span>
+                  <span className="text-foreground font-semibold">Ivory Violet (#FAF8F5)</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Color Mode</span>
@@ -296,11 +304,11 @@ export function AnimatedLogoStudio() {
             </div>
 
             {/* Direct Download Actions */}
-            <div className="space-y-3 pt-4 border-t border-white/10">
+            <div className="space-y-3 pt-4 border-t border-[#E8DFF2]">
               <a
                 href="/brand/sowebuild-animated.mp4"
                 download="sowebuild-animated.mp4"
-                className="group flex w-full items-center justify-between rounded-xl bg-primary px-4 py-3 font-mono text-xs font-semibold text-white shadow-[0_0_25px_rgba(188,55,237,0.4)] transition-all hover:bg-primary-glow"
+                className="group flex w-full items-center justify-between rounded-xl bg-primary px-4 py-3 font-mono text-xs font-semibold text-white shadow-sm transition-all hover:bg-primary-hover"
               >
                 <div className="flex items-center gap-2.5">
                   <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -310,17 +318,17 @@ export function AnimatedLogoStudio() {
                   <span>Download Animated MP4</span>
                 </div>
                 <span className="text-[10px] opacity-80 group-hover:translate-x-0.5 transition-transform">
-                  672 KB ↓
+                  1.3 MB ↓
                 </span>
               </a>
 
               <a
                 href="/brand/sowebuild-animated.gif"
                 download="sowebuild-animated.gif"
-                className="group flex w-full items-center justify-between rounded-xl border border-white/15 bg-white/5 px-4 py-3 font-mono text-xs font-semibold text-foreground transition-all hover:bg-white/10 hover:border-white/30"
+                className="group flex w-full items-center justify-between rounded-xl border border-[#E8DFF2] bg-[#FAF8F5] px-4 py-3 font-mono text-xs font-semibold text-foreground transition-all hover:bg-[#F5EDFA] hover:border-primary/30"
               >
                 <div className="flex items-center gap-2.5">
-                  <svg className="size-4 text-primary-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                     <circle cx="8.5" cy="8.5" r="1.5" />
                     <polyline points="21 15 16 10 5 21" />
@@ -328,7 +336,7 @@ export function AnimatedLogoStudio() {
                   <span>Download Animated GIF</span>
                 </div>
                 <span className="text-[10px] text-muted-foreground group-hover:translate-x-0.5 transition-transform">
-                  838 KB ↓
+                  681 KB ↓
                 </span>
               </a>
             </div>

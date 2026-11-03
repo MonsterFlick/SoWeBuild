@@ -15,43 +15,44 @@ interface LogoItem {
 
 const LOGO_ASSETS: LogoItem[] = [
   {
+    id: "horizontal-light",
+    name: "Primary Lockup (Ivory Violet Light)",
+    usage: "Official default brand lockup for Warm Ivory canvas (#FAF8F5), white surfaces, web headers and documents.",
+    svgPath: "/brand/sowebuild-logo-light.svg",
+    pngPath: "/brand/sowebuild-logo-light.png",
+    previewBg: "light",
+    aspectRatio: "aspect-[4/1]",
+  },
+  {
     id: "horizontal-dark",
-    name: "Primary Lockup (Dark Void)",
-    usage: "Default mark for dark backgrounds, navigation bars, presentations and digital UI.",
+    name: "Primary Lockup (Inverted Violet)",
+    usage: "High-contrast inverted mark for dark footers, black-tie presentation cards and dark UI surfaces.",
     svgPath: "/brand/sowebuild-logo-dark.svg",
     pngPath: "/brand/sowebuild-logo-dark.png",
     previewBg: "dark",
     aspectRatio: "aspect-[4/1]",
   },
   {
-    id: "horizontal-light",
-    name: "Primary Lockup (Clean Light)",
-    usage: "High-contrast inverted lockup for light papers, invoices, print media and white themes.",
-    svgPath: "/brand/sowebuild-logo-light.svg",
-    previewBg: "light",
-    aspectRatio: "aspect-[4/1]",
-  },
-  {
     id: "stacked-lockup",
-    name: "Stacked App Lockup",
-    usage: "Balanced square lockup optimized for social avatars, app icons, cards and badges.",
+    name: "Stacked Studio Lockup",
+    usage: "Balanced square lockup optimized for social avatars, app icons, badges and profile identity.",
     svgPath: "/brand/sowebuild-logo-stacked.svg",
-    previewBg: "dark",
+    previewBg: "light",
     aspectRatio: "aspect-square",
   },
   {
     id: "symbol-glow",
-    name: "Cyber Slash Mark (Glow Container)",
-    usage: "Elevated icon for favicon, social avatars, software badges and launch graphics.",
+    name: "Signature Slash Mark (Elevated Frame)",
+    usage: "Luxury framed mark with soft Royal Violet aura and hairline border for favicons and software badges.",
     svgPath: "/brand/sowebuild-symbol-glow.svg",
     pngPath: "/brand/sowebuild-symbol.png",
-    previewBg: "dark",
+    previewBg: "light",
     aspectRatio: "aspect-square",
   },
   {
     id: "symbol-mark",
-    name: "Geometric Slash (Raw Glyph)",
-    usage: "Pure vector geometry for inline typography, watermarks, stamps and UI accents.",
+    name: "Geometric Slash (Raw Vector)",
+    usage: "Pure vector geometry for inline typography, watermarks, stamps and UI accents. Infinitely scalable.",
     svgPath: "/brand/sowebuild-symbol.svg",
     previewBg: "grid",
     aspectRatio: "aspect-square",
@@ -59,12 +60,12 @@ const LOGO_ASSETS: LogoItem[] = [
 ];
 
 export function LogoShowcase() {
-  const [activeTab, setActiveTab] = useState<"all" | "dark" | "light">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "light" | "dark">("all");
 
   const filteredLogos = LOGO_ASSETS.filter((item) => {
     if (activeTab === "all") return true;
-    if (activeTab === "dark") return item.previewBg === "dark" || item.previewBg === "grid";
-    if (activeTab === "light") return item.previewBg === "light";
+    if (activeTab === "light") return item.previewBg === "light" || item.previewBg === "grid";
+    if (activeTab === "dark") return item.previewBg === "dark";
     return true;
   });
 
@@ -85,8 +86,8 @@ export function LogoShowcase() {
         </div>
 
         {/* Theme Filter */}
-        <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 p-1 font-mono text-xs">
-          {(["all", "dark", "light"] as const).map((tab) => (
+        <div className="flex items-center gap-1.5 rounded-full border border-[#E8DFF2] bg-white p-1 font-mono text-xs shadow-sm">
+          {(["all", "light", "dark"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -111,16 +112,16 @@ export function LogoShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm hover:border-primary/50 transition-colors"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#E8DFF2] bg-white p-5 shadow-sm hover:border-primary/50 transition-all hover:shadow-md"
           >
             {/* Visual Canvas Stage */}
             <div
               className={`relative flex items-center justify-center rounded-xl p-8 overflow-hidden transition-all duration-300 ${
                 logo.previewBg === "light"
-                  ? "bg-slate-100 text-slate-900 border border-slate-200"
+                  ? "bg-[#FAF8F5] border border-[#E8DFF2]"
                   : logo.previewBg === "grid"
-                  ? "bg-[#120F1D] border border-white/10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"
-                  : "bg-[#120F1D] border border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]"
+                  ? "bg-[#FAF8F5] border border-[#E8DFF2] bg-[linear-gradient(to_right,rgba(22,17,36,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,17,36,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"
+                  : "bg-[#161124] border border-[#E8DFF2] shadow-inner"
               }`}
               style={{ minHeight: "220px" }}
             >
@@ -134,8 +135,8 @@ export function LogoShowcase() {
               />
 
               {/* Background badge */}
-              <span className="absolute top-2.5 right-2.5 rounded-md border border-white/10 bg-black/40 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground backdrop-blur-md">
-                {logo.previewBg === "light" ? "Light Background" : "Dark Void"}
+              <span className="absolute top-2.5 right-2.5 rounded-md border border-[#E8DFF2] bg-white/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-[#5A5068] backdrop-blur-md shadow-xs">
+                {logo.previewBg === "light" ? "Ivory Canvas" : logo.previewBg === "grid" ? "Grid Metric" : "Dark Inverted"}
               </span>
             </div>
 
@@ -150,13 +151,13 @@ export function LogoShowcase() {
                 </p>
               </div>
 
-              <div className="mt-5 flex items-center gap-2 pt-4 border-t border-white/10">
+              <div className="mt-5 flex items-center gap-2 pt-4 border-t border-[#E8DFF2]">
                 <a
                   href={logo.svgPath}
                   download
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 py-2 px-3 font-mono text-xs font-medium text-foreground hover:bg-white/10 hover:border-white/20 transition-all"
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg border border-[#E8DFF2] bg-[#FAF8F5] py-2 px-3 font-mono text-xs font-medium text-foreground hover:bg-[#F5EDFA] hover:border-primary/40 transition-all"
                 >
-                  <svg className="size-3.5 text-primary-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="size-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" />
@@ -168,14 +169,14 @@ export function LogoShowcase() {
                   <a
                     href={logo.pngPath}
                     download
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 py-2 px-3 font-mono text-xs font-medium text-foreground hover:bg-white/10 hover:border-white/20 transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-lg border border-[#E8DFF2] bg-[#FAF8F5] py-2 px-3 font-mono text-xs font-medium text-foreground hover:bg-[#F5EDFA] hover:border-primary/40 transition-all"
                   >
-                    <svg className="size-3.5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="size-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                       <circle cx="8.5" cy="8.5" r="1.5" />
                       <polyline points="21 15 16 10 5 21" />
                     </svg>
-                    <span>PNG (Hi-Res)</span>
+                    <span>PNG (4K)</span>
                   </a>
                 )}
               </div>

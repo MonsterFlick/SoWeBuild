@@ -13,7 +13,7 @@ import { Logo } from "@/components/Logo";
 export const metadata: Metadata = {
   title: "Brand Guidelines & Asset System — SoWeBuild",
   description:
-    "Official brand identity, vector logos, animated GIF & MP4 assets, OKLCH color tokens, and typography guidelines for SoWeBuild (sowebuild.in). 100% code-generated.",
+    "Official brand identity, vector logos, animated GIF & MP4 assets, OKLCH color tokens, and typography guidelines for SoWeBuild (sowebuild.in). 100% code-generated for the Ivory Violet design system.",
   openGraph: {
     title: "Brand Guidelines & Asset System — SoWeBuild",
     description:
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
 
 export default function BrandGuidelinesPage() {
   return (
-    <main className="relative min-h-screen bg-background text-foreground selection:bg-primary/40 selection:text-foreground">
+    <main className="relative min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-foreground">
       {/* Ambient background light aura */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-[120px]" />
-        <div className="absolute top-[40%] right-[-10%] h-[500px] w-[600px] rounded-full bg-accent/10 blur-[140px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] h-[600px] w-[700px] rounded-full bg-primary/10 blur-[150px]" />
-        <div className="grid-field absolute inset-0 opacity-40" />
+        <div className="absolute top-0 left-1/2 h-[600px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute top-[40%] right-[-10%] h-[500px] w-[600px] rounded-full bg-primary/5 blur-[140px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] h-[600px] w-[700px] rounded-full bg-primary/5 blur-[150px]" />
+        <div className="grid-field absolute inset-0 opacity-20" />
       </div>
 
       {/* Sticky Header */}
@@ -43,7 +43,7 @@ export default function BrandGuidelinesPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 font-mono text-[10px] tracking-[0.35em] text-muted-foreground uppercase">
               <span className="h-px w-8 bg-gradient-to-r from-primary to-transparent" />
-              Identity System & Digital Assets
+              Identity System &amp; Digital Assets
             </div>
 
             <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,4.5rem)] leading-[0.95] font-bold tracking-tight text-foreground">
@@ -52,13 +52,13 @@ export default function BrandGuidelinesPage() {
             </h1>
 
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Welcome to the official brand system of SoWeBuild. Designed for precision, engineering rigor, and cinematic visual impact. All brand marks, vectors, animated GIFs, and MP4 videos are synthesized 100% with code.
+              Welcome to the official brand system of SoWeBuild. Designed for precision, engineering rigor, and luxury architectural impact. All brand marks, vectors, animated GIFs, and MP4 videos are synthesized 100% with code.
             </p>
 
             {/* Quick Spec Metric Badges */}
             <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 font-mono text-xs">
-              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
-                <div className="text-[10px] text-[#16131D] font-bold">ASSET PROTOCOL</div>
+              <div className="rounded-xl border border-[#E8DFF2] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#161124] font-bold">ASSET PROTOCOL</div>
                 <div className="mt-1 text-sm font-bold text-foreground">100% Code</div>
                 <div className="text-[10px] text-muted-foreground">Zero AI Images</div>
               </div>
@@ -69,14 +69,14 @@ export default function BrandGuidelinesPage() {
                 <div className="text-[10px] text-muted-foreground">#7C3AED + #c6ff3d Spark</div>
               </div>
 
-              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
-                <div className="text-[10px] text-[#16131D] font-bold">TYPOGRAPHY</div>
+              <div className="rounded-xl border border-[#E8DFF2] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#161124] font-bold">TYPOGRAPHY</div>
                 <div className="mt-1 text-sm font-bold text-foreground">Syne &amp; Serif</div>
                 <div className="text-[10px] text-muted-foreground">+ DM Sans &amp; Mono</div>
               </div>
 
-              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
-                <div className="text-[10px] text-[#16131D] font-bold">CANVAS TONE</div>
+              <div className="rounded-xl border border-[#E8DFF2] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#161124] font-bold">CANVAS TONE</div>
                 <div className="mt-1 text-sm font-bold text-foreground">#FAF8F5</div>
                 <div className="text-[10px] text-muted-foreground">Warm Ivory</div>
               </div>
@@ -97,7 +97,7 @@ export default function BrandGuidelinesPage() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-32 border-t border-[#E8E0EE] bg-white px-6 py-12 sm:px-10">
+      <footer className="mt-32 border-t border-[#E8DFF2] bg-white px-6 py-12 sm:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 sm:flex-row font-mono text-xs text-muted-foreground">
           <div className="flex items-center gap-3">
             <Logo size="small" />
@@ -111,7 +111,7 @@ export default function BrandGuidelinesPage() {
             <a href="#downloads" className="hover:text-foreground transition-colors">
               Brand Assets
             </a>
-            <a href="mailto:sowebuild.in@gmail.com" className="hover:text-primary-glow transition-colors">
+            <a href="mailto:sowebuild.in@gmail.com" className="hover:text-primary transition-colors">
               sowebuild.in@gmail.com
             </a>
           </div>
