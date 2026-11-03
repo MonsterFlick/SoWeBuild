@@ -67,7 +67,7 @@ export function CaseStudyHeadline({
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="[grid-area:stack] text-[#c6ff3d] drop-shadow-[0_2px_16px_rgba(160,240,30,0.4)] will-change-transform"
+                className="[grid-area:stack] text-[#7C3AED] drop-shadow-[0_2px_16px_rgba(124,58,237,0.35)] will-change-transform"
               >
                 {words[index]}
               </motion.span>

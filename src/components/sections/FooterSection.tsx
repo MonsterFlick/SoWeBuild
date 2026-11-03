@@ -66,7 +66,7 @@ export default function FooterSection() {
               }}
             >
               SoWeBuild
-              <span style={{ color: "var(--color-accent)", marginLeft: "2px" }}>.</span>
+              <span style={{ color: "var(--color-neon, #c6ff3d)", marginLeft: "2px" }}>.</span>
             </div>
             <p
               style={{

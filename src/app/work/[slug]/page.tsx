@@ -83,39 +83,39 @@ export default async function WorkSlugPage({
   const otherCs = CASE_STUDIES[otherSlug];
 
   return (
-    <div className="relative min-h-screen bg-[#FAF8F5] text-[#16131D] overflow-x-hidden selection:bg-[#c6ff3d] selection:text-[#121019]">
+    <div className="relative min-h-screen bg-[#FAF8F5] text-[#161124] overflow-x-hidden selection:bg-[#7C3AED]/20 selection:text-[#161124]">
       {/* Luxury Trailing Cursor */}
       <CustomCursor />
 
       {/* Atmospheric Ambient Lighting Gradients */}
       <div
-        className="pointer-events-none fixed top-0 right-1/4 size-[700px] rounded-full blur-[180px] -z-10 opacity-25"
-        style={{ background: "radial-gradient(circle, rgba(198,255,61,0.12) 0%, transparent 70%)" }}
+        className="pointer-events-none fixed top-0 right-1/4 size-[700px] rounded-full blur-[180px] -z-10 opacity-20"
+        style={{ background: "radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)" }}
       />
       <div
         className="pointer-events-none fixed top-[45%] left-[-100px] size-[600px] rounded-full blur-[160px] -z-10 opacity-15"
-        style={{ background: "radial-gradient(circle, rgba(147,51,234,0.06) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%)" }}
       />
 
       {/* ============================================================== */}
       {/* TOP FLOATING NAVIGATION BAR                                    */}
       {/* ============================================================== */}
       <header className="fixed inset-x-0 top-0 z-50 px-3 py-2.5 sm:px-6 sm:py-3.5">
-        <div className="mx-auto max-w-7xl flex items-center justify-between rounded-full border border-[#E8E2EE] bg-[#FAF8F5]/90 px-3 py-2 sm:px-6 sm:py-2.5 backdrop-blur-xl shadow-lg shadow-purple-950/5 gap-2">
+        <div className="mx-auto max-w-7xl flex items-center justify-between rounded-full border border-[#E8DFF2] bg-[#FAF8F5]/90 px-3 py-2 sm:px-6 sm:py-2.5 backdrop-blur-xl shadow-lg shadow-purple-950/5 gap-2">
           {/* Back to Studio link */}
           <Link
             href="/#work"
-            className="group inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs text-[#585062] hover:text-[#16131D] transition-colors shrink-0"
+            className="group inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs text-[#5A5068] hover:text-[#161124] transition-colors shrink-0"
           >
-            <span className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-purple-900/[0.04] border border-[#E8E2EE] group-hover:border-[#c6ff3d] group-hover:bg-[#c6ff3d]/15 transition-all">
-              <ArrowLeftIcon className="size-3 sm:size-3.5 text-[#585062] group-hover:text-[#16131D] transition-colors" />
+            <span className="flex size-6 sm:size-7 items-center justify-center rounded-full bg-purple-900/[0.04] border border-[#E8DFF2] group-hover:border-[#7C3AED] group-hover:bg-[#7C3AED]/15 transition-all">
+              <ArrowLeftIcon className="size-3 sm:size-3.5 text-[#5A5068] group-hover:text-[#161124] transition-colors" />
             </span>
             <span className="hidden sm:inline">Back to Selected Work</span>
             <span className="sm:hidden font-semibold">Work</span>
           </Link>
 
           {/* Studio Brand Mark */}
-          <Link href="/" className="font-display text-xs sm:text-base font-extrabold tracking-tight text-[#16131D] hover:opacity-80 transition-opacity truncate px-2">
+          <Link href="/" className="font-display text-xs sm:text-base font-extrabold tracking-tight text-[#161124] hover:opacity-80 transition-opacity truncate px-2">
             SOWEBUILD<span className="text-[#c6ff3d]">.</span>IN
           </Link>
 
@@ -124,7 +124,7 @@ export default async function WorkSlugPage({
             href={cs.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 rounded-full bg-[#c6ff3d] px-3 py-1.5 sm:px-4 sm:py-1.5 font-mono text-[11px] sm:text-xs font-bold text-[#121019] shadow-md shadow-[#c6ff3d]/25 hover:bg-[#b4f028] hover:scale-[1.02] transition-all shrink-0"
+            className="inline-flex items-center gap-1 rounded-full bg-[#7C3AED] px-3 py-1.5 sm:px-4 sm:py-1.5 font-mono text-[11px] sm:text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] hover:scale-[1.02] transition-all shrink-0"
           >
             <span className="hidden sm:inline">Visit Live Platform</span>
             <span className="sm:hidden">Live ↗</span>
@@ -163,60 +163,60 @@ export default async function WorkSlugPage({
           {/* ============================================================== */}
           {/* THE PROJECT SPECIFICATIONS (METADATA CHIPS STRIP)             */}
           {/* ============================================================== */}
-          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#E8E2EE]">
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#E8DFF2]">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {/* Chip 1: Client Profile */}
-              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8DFF2] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#7C3AED] hover:shadow-md transition-all duration-300 min-w-0">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Client Profile</span>
-                  <span className="size-1.5 rounded-full bg-[#c6ff3d]" />
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">Client Profile</span>
+                  <span className="size-1.5 rounded-full bg-[#7C3AED]" />
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
+                <div className="font-display font-bold text-base sm:text-lg text-[#161124] leading-snug">
                   {cs.client}
                 </div>
                 {cs.established && (
-                  <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
+                  <div className="font-mono text-[11px] text-[#5A5068] mt-1 leading-normal">
                     {cs.established}
                   </div>
                 )}
               </div>
 
               {/* Chip 2: Timeline & Launch */}
-              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8DFF2] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#7C3AED] hover:shadow-md transition-all duration-300 min-w-0">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Timeline &amp; Year</span>
-                  <span className="font-mono text-[10px] font-semibold text-[#887E94]">{cs.year || "2024"}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">Timeline &amp; Year</span>
+                  <span className="font-mono text-[10px] font-semibold text-[#8C8299]">{cs.year || "2024"}</span>
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
+                <div className="font-display font-bold text-base sm:text-lg text-[#161124] leading-snug">
                   {cs.timeline || "Production"}
                 </div>
-                <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
+                <div className="font-mono text-[11px] text-[#5A5068] mt-1 leading-normal">
                   Ground-Up Turnaround
                 </div>
               </div>
 
               {/* Chip 3: Engineering Scope */}
-              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 min-w-0">
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8DFF2] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#7C3AED] hover:shadow-md transition-all duration-300 min-w-0">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Engineering Scope</span>
-                  <span className="size-1.5 rounded-full bg-[#16131D]" />
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">Engineering Scope</span>
+                  <span className="size-1.5 rounded-full bg-[#7C3AED]" />
                 </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#16131D] leading-snug">
+                <div className="font-display font-bold text-base sm:text-lg text-[#161124] leading-snug">
                   {cs.role || "Complete Custom Build"}
                 </div>
-                <div className="font-mono text-[11px] text-[#585062] mt-1 leading-normal">
+                <div className="font-mono text-[11px] text-[#5A5068] mt-1 leading-normal">
                   Zero Templates • 100% Bespoke
                 </div>
               </div>
 
               {/* Chip 4: Live Platform (Interactive Chip) */}
-              <div className="rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300 flex flex-col justify-between min-w-0">
+              <div className="rounded-xl sm:rounded-2xl border border-[#E8DFF2] bg-white p-4 sm:p-5 shadow-sm shadow-purple-950/3 backdrop-blur-md hover:border-[#7C3AED] hover:shadow-md transition-all duration-300 flex flex-col justify-between min-w-0">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#887E94]">Live Platform</span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">Live Platform</span>
                     <span className="size-2 rounded-full bg-[#c6ff3d] animate-pulse" />
                   </div>
-                  <div className="font-mono font-semibold text-xs sm:text-sm text-[#16131D] truncate">
+                  <div className="font-mono font-semibold text-xs sm:text-sm text-[#161124] truncate">
                     {cs.liveUrl.replace("https://", "")}
                   </div>
                 </div>
@@ -224,10 +224,10 @@ export default async function WorkSlugPage({
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-between gap-1 font-mono text-[11px] sm:text-xs font-bold text-[#16131D] bg-[#FAF8F5] hover:bg-[#c6ff3d] px-3 py-1.5 rounded-lg border border-[#E8E2EE] hover:border-[#c6ff3d] mt-3 transition-all group"
+                  className="inline-flex items-center justify-between gap-1 font-mono text-[11px] sm:text-xs font-bold text-white bg-[#7C3AED] hover:bg-[#6D28D9] px-3 py-1.5 rounded-lg border border-[#7C3AED] mt-3 transition-all group"
                 >
                   <span>Visit Platform</span>
-                  <ArrowUpRightIcon className="size-3 text-[#16131D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRightIcon className="size-3 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>
@@ -292,16 +292,16 @@ export default async function WorkSlugPage({
         {/* ============================================================== */}
         <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
           <div className="max-w-2xl mb-6 sm:mb-8">
-            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-2 sm:mb-3">
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-2 sm:mb-3">
               <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px]">
+              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px]">
                 01 // MEASURED BUSINESS IMPACT
               </span>
             </div>
-            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
-              Real builds. <span className="font-serif italic font-normal text-[#16131D]">Measured</span> results.
+            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#161124] tracking-tight leading-tight">
+              Real builds. <span className="font-serif italic font-normal text-[#161124]">Measured</span> results.
             </h2>
-            <p className="mt-2 text-xs sm:text-base text-[#585062] font-mono">
+            <p className="mt-2 text-xs sm:text-base text-[#5A5068] font-mono">
               Key business performance and production metrics delivered for {cs.client}.
             </p>
           </div>
@@ -310,16 +310,16 @@ export default async function WorkSlugPage({
             {cs.metrics.map((m) => (
               <div
                 key={m.label}
-                className="spotlight-card rounded-xl sm:rounded-2xl border border-[#E8E2EE] bg-white p-4 sm:p-6 lg:p-7 backdrop-blur-xl relative overflow-hidden shadow-sm shadow-purple-950/3 hover:border-[#c6ff3d] hover:shadow-md transition-all duration-300"
+                className="spotlight-card rounded-xl sm:rounded-2xl border border-[#E8DFF2] bg-white p-4 sm:p-6 lg:p-7 backdrop-blur-xl relative overflow-hidden shadow-sm shadow-purple-950/3 hover:border-[#7C3AED] hover:shadow-md transition-all duration-300"
               >
-                <div className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#16131D] tracking-tight">
+                <div className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#161124] tracking-tight">
                   {m.value}
                 </div>
-                <div className="font-mono text-[10px] sm:text-xs font-bold text-[#16131D] mt-2 uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="size-1.5 rounded-full bg-[#c6ff3d] shrink-0" />
+                <div className="font-mono text-[10px] sm:text-xs font-bold text-[#161124] mt-2 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="size-1.5 rounded-full bg-[#7C3AED] shrink-0" />
                   <span className="leading-tight break-words">{m.label}</span>
                 </div>
-                <div className="text-[11px] sm:text-xs text-[#585062] mt-1.5 sm:mt-2 leading-relaxed">
+                <div className="text-[11px] sm:text-xs text-[#5A5068] mt-1.5 sm:mt-2 leading-relaxed">
                   {m.note}
                 </div>
               </div>
@@ -333,18 +333,18 @@ export default async function WorkSlugPage({
         {/* ============================================================== */}
         <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
           <div className="max-w-2xl mb-8 sm:mb-12">
-            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-2 sm:mb-3">
-              <TargetIcon className="size-3.5 text-[#16131D]" />
-              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-2 sm:mb-3">
+              <TargetIcon className="size-3.5 text-[#7C3AED]" />
+              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
                 02 // THE BUSINESS CHALLENGE
               </span>
             </div>
 
-            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
+            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#161124] tracking-tight leading-tight">
               {cs.businessNeed.title}
             </h2>
 
-            <p className="mt-2 sm:mt-3 font-serif italic text-lg sm:text-2xl text-[#585062]">
+            <p className="mt-2 sm:mt-3 font-serif italic text-lg sm:text-2xl text-[#5A5068]">
               {cs.businessNeed.subtitle}
             </p>
           </div>
@@ -354,26 +354,26 @@ export default async function WorkSlugPage({
             {cs.businessNeed.points.map((p, index) => (
               <div
                 key={p.headline}
-                className="group relative rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-white p-5 sm:p-7 lg:p-8 backdrop-blur-xl hover:border-[#c6ff3d] transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
+                className="group relative rounded-2xl sm:rounded-3xl border border-[#E8DFF2] bg-white p-5 sm:p-7 lg:p-8 backdrop-blur-xl hover:border-[#7C3AED] transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
               >
                 <div>
-                  <div className="font-mono text-xs font-bold text-[#16131D] mb-4 sm:mb-5 flex items-center justify-between">
-                    <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px]">
+                  <div className="font-mono text-xs font-bold text-[#161124] mb-4 sm:mb-5 flex items-center justify-between">
+                    <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px]">
                       CHALLENGE 0{index + 1}
                     </span>
                     <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
                   </div>
-                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-[#16131D] leading-snug">
+                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-[#161124] leading-snug">
                     {p.headline}
                   </h3>
-                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm lg:text-base text-[#585062] leading-relaxed">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm lg:text-base text-[#5A5068] leading-relaxed">
                     {p.description}
                   </p>
                 </div>
 
-                <div className="mt-5 sm:mt-6 pt-4 border-t border-[#F1EBF7] flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-[#887E94]">
+                <div className="mt-5 sm:mt-6 pt-4 border-t border-[#F2EBF7] flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-[#8C8299]">
                   <span>Baseline State</span>
-                  <span className="text-[#16131D] font-medium">Pre-Launch Friction</span>
+                  <span className="text-[#161124] font-medium">Pre-Launch Friction</span>
                 </div>
               </div>
             ))}
@@ -384,27 +384,27 @@ export default async function WorkSlugPage({
         {/* SECTION 03: SO WE BUILD (THE BRAND KINETIC BANNER)            */}
         {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
-        <section className="relative mt-16 sm:mt-24 lg:mt-28 mb-16 sm:mb-24 lg:mb-28 py-14 sm:py-20 overflow-hidden border-y border-[#E8E2EE] bg-[#FAF8F5]">
+        <section className="relative mt-16 sm:mt-24 lg:mt-28 mb-16 sm:mb-24 lg:mb-28 py-14 sm:py-20 overflow-hidden border-y border-[#E8DFF2] bg-[#FAF8F5]">
           <div
             className="pointer-events-none absolute inset-0 opacity-20"
             style={{
-              backgroundImage: "radial-gradient(#c6ff3d 1.5px, transparent 1.5px)",
+              backgroundImage: "radial-gradient(#7C3AED 1.5px, transparent 1.5px)",
               backgroundSize: "32px 32px",
             }}
           />
           <div
             className="pointer-events-none absolute left-1/2 top-1/2 size-[450px] sm:size-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px] opacity-25"
-            style={{ background: "radial-gradient(circle, rgba(198,255,61,0.2) 0%, transparent 70%)" }}
+            style={{ background: "radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%)" }}
           />
 
           <div className="relative z-10 container-wide text-center flex flex-col items-center">
-            <div className="font-mono text-[10px] sm:text-xs font-bold text-[#16131D] uppercase tracking-[0.25em] sm:tracking-[0.35em] mb-3 sm:mb-4">
+            <div className="font-mono text-[10px] sm:text-xs font-bold text-[#161124] uppercase tracking-[0.25em] sm:tracking-[0.35em] mb-3 sm:mb-4">
               EXECUTION &amp; TRANSFORMATION
             </div>
 
             <CaseStudyHeadline words={cs.words} hook="Built from the ground up." />
 
-            <p className="mt-6 sm:mt-8 text-xs sm:text-base lg:text-lg text-[#585062] font-mono max-w-2xl px-4 leading-relaxed">
+            <p className="mt-6 sm:mt-8 text-xs sm:text-base lg:text-lg text-[#5A5068] font-mono max-w-2xl px-4 leading-relaxed">
               No generic templates. No legacy baggage. So We Build.
             </p>
           </div>
@@ -415,18 +415,18 @@ export default async function WorkSlugPage({
         {/* ============================================================== */}
         <section className="container-wide">
           <div className="max-w-2xl mb-8 sm:mb-12">
-            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#16131D] mb-3">
+            <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#161124] mb-3">
               <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
-              <span className="bg-[#16131D] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
+              <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-[11px]">
                 03 // SO WE BUILD
               </span>
             </div>
 
-            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] tracking-tight leading-tight">
+            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#161124] tracking-tight leading-tight">
               {cs.soWeBuild.title}
             </h2>
 
-            <p className="mt-2 sm:mt-3 font-serif italic text-lg sm:text-2xl text-[#585062]">
+            <p className="mt-2 sm:mt-3 font-serif italic text-lg sm:text-2xl text-[#5A5068]">
               {cs.soWeBuild.subtitle}
             </p>
           </div>
@@ -436,34 +436,34 @@ export default async function WorkSlugPage({
             {cs.soWeBuild.pillars.map((pillar, idx) => (
               <div
                 key={pillar.title}
-                className="group relative rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-white p-5 sm:p-7 lg:p-8 backdrop-blur-2xl hover:border-[#c6ff3d] transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
+                className="group relative rounded-2xl sm:rounded-3xl border border-[#E8DFF2] bg-white p-5 sm:p-7 lg:p-8 backdrop-blur-2xl hover:border-[#7C3AED] transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
               >
                 <div>
                   {/* Top Bar: Icon + Step Counter */}
                   <div className="flex items-center justify-between mb-5 sm:mb-6">
-                    <div className="size-10 sm:size-12 rounded-xl sm:rounded-2xl bg-[#c6ff3d]/20 border border-[#c6ff3d] flex items-center justify-center text-[#121019] group-hover:scale-110 transition-transform">
+                    <div className="size-10 sm:size-12 rounded-xl sm:rounded-2xl bg-[#7C3AED]/15 border border-[#7C3AED] flex items-center justify-center text-[#7C3AED] group-hover:scale-110 transition-transform">
                       <CheckCircleIcon className="size-4 sm:size-5" />
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#887E94] tracking-widest">
+                    <span className="font-mono text-xs font-semibold text-[#8C8299] tracking-widest">
                       0{idx + 1}
                     </span>
                   </div>
 
                   {/* Pillar Title */}
-                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-[#16131D] leading-snug">
+                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-[#161124] leading-snug">
                     {pillar.title}
                   </h3>
 
                   {/* Punchy Description */}
-                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm lg:text-base text-[#585062] leading-relaxed">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm lg:text-base text-[#5A5068] leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>
 
                 {/* Bottom Key Outcome Pill */}
                 {pillar.stat && (
-                  <div className="mt-6 pt-4 border-t border-[#F1EBF7] flex items-center justify-between">
-                    <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-[#887E94]">
+                  <div className="mt-6 pt-4 border-t border-[#F2EBF7] flex items-center justify-between">
+                    <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-[#8C8299]">
                       Result
                     </span>
                     <span className="font-mono text-[11px] sm:text-xs font-bold text-[#121019] bg-[#c6ff3d] px-2.5 py-0.5 rounded-full shadow-sm">
@@ -477,19 +477,19 @@ export default async function WorkSlugPage({
 
           {/* Leadership Testimonial */}
           {cs.testimonial && (
-            <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-white p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-lg shadow-purple-950/4">
-              <div className="font-serif italic text-lg sm:text-2xl lg:text-3xl text-[#16131D] leading-relaxed max-w-3xl">
+            <div className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl border border-[#E8DFF2] bg-white p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-lg shadow-purple-950/4">
+              <div className="font-serif italic text-lg sm:text-2xl lg:text-3xl text-[#161124] leading-relaxed max-w-3xl">
                 &ldquo;{cs.testimonial.quote}&rdquo;
               </div>
-              <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-[#F1EBF7]">
-                <div className="size-10 sm:size-11 rounded-full bg-[#16131D] text-[#c6ff3d] flex items-center justify-center font-display font-bold shrink-0">
+              <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-[#F2EBF7]">
+                <div className="size-10 sm:size-11 rounded-full bg-[#1E1330] text-[#7C3AED] flex items-center justify-center font-display font-bold shrink-0">
                   {cs.client.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-display font-bold text-[#16131D] text-xs sm:text-base">
+                  <div className="font-display font-bold text-[#161124] text-xs sm:text-base">
                     {cs.testimonial.author}
                   </div>
-                  <div className="font-mono text-[11px] sm:text-xs text-[#585062]">
+                  <div className="font-mono text-[11px] sm:text-xs text-[#5A5068]">
                     {cs.testimonial.role}
                   </div>
                 </div>
@@ -503,24 +503,24 @@ export default async function WorkSlugPage({
         {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
         <section className="container-wide mt-16 sm:mt-24 lg:mt-28">
-          <div className="relative rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-white p-6 sm:p-10 lg:p-12 overflow-hidden shadow-lg shadow-purple-950/4">
+          <div className="relative rounded-2xl sm:rounded-3xl border border-[#E8DFF2] bg-white p-6 sm:p-10 lg:p-12 overflow-hidden shadow-lg shadow-purple-950/4">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
               {/* Text Info */}
               <div className="lg:col-span-7">
-                <div className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#585062] mb-1.5 sm:mb-2">
+                <div className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#5A5068] mb-1.5 sm:mb-2">
                   NEXT CLIENT SHOWCASE //
                 </div>
-                <h3 className="heading-lg font-display text-2xl sm:text-4xl font-bold text-[#16131D]">
+                <h3 className="heading-lg font-display text-2xl sm:text-4xl font-bold text-[#161124]">
                   {otherCs.client}
                 </h3>
-                <p className="mt-2 sm:mt-3 text-xs sm:text-base text-[#585062] max-w-lg leading-relaxed">
+                <p className="mt-2 sm:mt-3 text-xs sm:text-base text-[#5A5068] max-w-lg leading-relaxed">
                   {otherCs.subtitle}
                 </p>
 
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                   <Link
                     href={`/work/${otherCs.slug}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c6ff3d] px-5 py-3 font-mono text-xs font-bold text-[#121019] shadow-md shadow-[#c6ff3d]/25 hover:bg-[#b4f028] hover:scale-105 transition-all text-center"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#7C3AED] px-5 py-3 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] hover:scale-105 transition-all text-center"
                   >
                     <span>Read {otherCs.client} Case Study</span>
                     <ArrowUpRightIcon className="size-4" />
@@ -530,10 +530,10 @@ export default async function WorkSlugPage({
                     href={otherCs.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E8E2EE] bg-white px-5 py-3 font-mono text-xs font-semibold text-[#16131D] hover:bg-black/[0.04] transition-all text-center"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E8DFF2] bg-white px-5 py-3 font-mono text-xs font-semibold text-[#161124] hover:bg-black/[0.04] transition-all text-center"
                   >
                     <span>Visit Live Platform</span>
-                    <ArrowUpRightIcon className="size-3.5 text-[#585062]" />
+                    <ArrowUpRightIcon className="size-3.5 text-[#5A5068]" />
                   </a>
                 </div>
               </div>
@@ -569,29 +569,29 @@ export default async function WorkSlugPage({
         {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
         {/* ============================================================== */}
         <section className="container-wide mt-16 sm:mt-24 lg:mt-28 text-center">
-          <div className="rounded-2xl sm:rounded-3xl border border-[#E8E2EE] bg-gradient-to-b from-[#FAF8F5] to-white px-4 py-12 sm:px-10 sm:py-16 shadow-md shadow-purple-950/3">
-            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#585062]">
+          <div className="rounded-2xl sm:rounded-3xl border border-[#E8DFF2] bg-gradient-to-b from-[#FAF8F5] to-white px-4 py-12 sm:px-10 sm:py-16 shadow-md shadow-purple-950/3">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#5A5068]">
               BUILT FOR AMBITIOUS BRANDS
             </span>
-            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#16131D] mt-2 sm:mt-3 leading-tight">
+            <h2 className="heading-lg font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-[#161124] mt-2 sm:mt-3 leading-tight">
               Have A Vision To Launch, Scale, Or Automate? <br className="hidden sm:inline" />
-              <span className="font-serif italic font-normal text-[#16131D]">So We Build<span className="text-[#c6ff3d]">.</span></span>
+              <span className="font-serif italic font-normal text-[#161124]">So We Build<span className="text-[#c6ff3d]">.</span></span>
             </h2>
-            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#585062] max-w-xl mx-auto leading-relaxed px-2">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#5A5068] max-w-xl mx-auto leading-relaxed px-2">
               We design and engineer bespoke web applications, flagship digital products, and automated software for ambitious brands worldwide.
             </p>
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c6ff3d] px-7 py-3 sm:px-8 sm:py-3.5 font-mono text-xs font-bold text-[#121019] shadow-lg shadow-[#c6ff3d]/25 hover:bg-[#b4f028] hover:scale-105 transition-all text-center"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#7C3AED] px-7 py-3 sm:px-8 sm:py-3.5 font-mono text-xs font-bold text-white shadow-lg shadow-[#7C3AED]/25 hover:bg-[#6D28D9] hover:scale-105 transition-all text-center"
               >
                 <span>Start a Project Brief</span>
                 <ArrowUpRightIcon className="size-4" />
               </Link>
               <Link
                 href="/#work"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E8E2EE] bg-white px-6 py-3 sm:px-7 sm:py-3.5 font-mono text-xs font-semibold text-[#16131D] hover:bg-black/[0.03] transition-all text-center"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E8DFF2] bg-white px-6 py-3 sm:px-7 sm:py-3.5 font-mono text-xs font-semibold text-[#161124] hover:bg-black/[0.03] transition-all text-center"
               >
                 <span>Explore Selected Work</span>
               </Link>
@@ -604,25 +604,25 @@ export default async function WorkSlugPage({
       {/* STUDIO LUXURY FOOTER                                           */}
       {/* Standard Section Spacing: mt-16 sm:mt-24 lg:mt-28              */}
       {/* ============================================================== */}
-      <footer className="border-t border-[#E8E2EE] bg-white py-8 sm:py-12 mt-16 sm:mt-24 lg:mt-28">
+      <footer className="border-t border-[#E8DFF2] bg-white py-8 sm:py-12 mt-16 sm:mt-24 lg:mt-28">
         <div className="container-wide flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-center sm:text-left">
           <div>
-            <div className="font-display font-extrabold text-sm sm:text-base text-[#16131D]">
+            <div className="font-display font-extrabold text-sm sm:text-base text-[#161124]">
               SOWEBUILD<span className="text-[#c6ff3d]">.</span>IN
             </div>
-            <div className="font-mono text-[11px] sm:text-xs text-[#585062] mt-1">
+            <div className="font-mono text-[11px] sm:text-xs text-[#5A5068] mt-1">
               Technology Development Studio — Mumbai &amp; Global
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-[11px] sm:text-xs text-[#585062]">
-            <Link href="/#work" className="hover:text-[#16131D] transition-colors">Work</Link>
-            <Link href="/#services" className="hover:text-[#16131D] transition-colors">Capabilities</Link>
-            <Link href="/#contact" className="hover:text-[#16131D] transition-colors">Contact</Link>
-            <a href="https://sowebuild.in" target="_blank" rel="noreferrer" className="hover:text-[#16131D] transition-colors">sowebuild.in</a>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-[11px] sm:text-xs text-[#5A5068]">
+            <Link href="/#work" className="hover:text-[#161124] transition-colors">Work</Link>
+            <Link href="/#services" className="hover:text-[#161124] transition-colors">Capabilities</Link>
+            <Link href="/#contact" className="hover:text-[#161124] transition-colors">Contact</Link>
+            <a href="https://sowebuild.in" target="_blank" rel="noreferrer" className="hover:text-[#161124] transition-colors">sowebuild.in</a>
           </div>
 
-          <div className="font-mono text-[10px] sm:text-xs text-[#887E94]">
+          <div className="font-mono text-[10px] sm:text-xs text-[#8C8299]">
             © {new Date().getFullYear()} SoWeBuild Studio. All rights reserved.
           </div>
         </div>

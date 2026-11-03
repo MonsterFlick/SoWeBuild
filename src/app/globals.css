@@ -5,26 +5,28 @@
    ============================================ */
 
 @theme {
-  /* Colors - Warm Ivory Canvas, Signature Electric Lime Accent & Deep Slate-Purple Text */
+  /* Colors - Warm Ivory Canvas, Regal Royal Violet Accent & Deep Obsidian-Violet Text, Neon Green Spark Addon */
   --color-bg: #FAF8F5;
   --color-surface: #FFFFFF;
-  --color-surface-elevated: #F5F1EB;
-  --color-border: #E8E2EE;
-  --color-border-subtle: #F2EDF7;
-  --color-text: #16131D;
-  --color-text-secondary: #585062;
-  --color-text-muted: #887E94;
-  --color-accent: #c6ff3d;
-  --color-accent-hover: #b4f028;
-  --color-accent-dim: rgba(198, 255, 61, 0.12);
+  --color-surface-elevated: #F5EDFA;
+  --color-border: #E8DFF2;
+  --color-border-subtle: #F2EBF7;
+  --color-text: #161124;
+  --color-text-secondary: #5A5068;
+  --color-text-muted: #8C8299;
+  --color-accent: #7C3AED;
+  --color-accent-hover: #6D28D9;
+  --color-accent-dim: rgba(124, 58, 237, 0.08);
+  --color-neon: #c6ff3d;
+  --color-neon-dim: rgba(198, 255, 61, 0.15);
   --color-error: #E11D48;
   --color-success: #059669;
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
   --color-muted-foreground: var(--color-text-secondary);
   --color-primary: var(--color-accent);
-  --color-primary-glow: #c6ff3d;
-  --color-purple-deep: #261A3B;
+  --color-primary-glow: #7C3AED;
+  --color-purple-deep: #1E1330;
   --color-purple-soft: #F5EDFA;
   --color-purple-tint: #ECE4F5;
 
@@ -114,8 +116,8 @@
   }
 
   ::selection {
-    background-color: rgba(198, 255, 61, 0.45);
-    color: #121019;
+    background-color: rgba(124, 58, 237, 0.22);
+    color: #161124;
   }
 }
 
@@ -366,7 +368,7 @@
   inset: 0;
   background: radial-gradient(
     600px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(198, 255, 61, 0.08),
+    rgba(124, 58, 237, 0.08),
     transparent 40%
   );
   opacity: 0;
@@ -386,7 +388,7 @@
   border-radius: inherit;
   background: radial-gradient(
     400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(198, 255, 61, 0.22),
+    rgba(124, 58, 237, 0.22),
     transparent 40%
   );
   opacity: 0;
@@ -456,19 +458,19 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #121019;
+  color: #FFFFFF;
   background: var(--color-accent);
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 4px 18px -2px rgba(198, 255, 61, 0.5);
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.45);
   transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
 }
 
 .btn-primary:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 24px -2px rgba(198, 255, 61, 0.65);
+  box-shadow: 0 6px 26px -2px rgba(124, 58, 237, 0.65);
 }
 
 .btn-primary::before {
@@ -503,7 +505,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-text);
-  background: rgba(22, 19, 29, 0.02);
+  background: rgba(22, 17, 36, 0.02);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -514,8 +516,8 @@
 
 .btn-outline:hover {
   border-color: var(--color-accent);
-  color: #121019;
-  background: rgba(198, 255, 61, 0.18);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
 }
 
 /* ============================================
@@ -626,7 +628,7 @@
 .chip.active {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: #121019;
+  color: #FFFFFF;
   font-weight: 700;
 }
 

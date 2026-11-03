@@ -63,10 +63,10 @@ export default function BrandGuidelinesPage() {
                 <div className="text-[10px] text-muted-foreground">Zero AI Images</div>
               </div>
 
-              <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">
-                <div className="text-[10px] text-[#16131D] font-bold">CORE ACCENT</div>
-                <div className="mt-1 text-sm font-bold text-foreground">#c6ff3d</div>
-                <div className="text-[10px] text-muted-foreground">Electric Lime</div>
+              <div className="rounded-xl border border-[#E8DFF2] bg-white p-3.5 shadow-sm">
+                <div className="text-[10px] text-[#161124] font-bold">CORE THEME</div>
+                <div className="mt-1 text-sm font-bold text-foreground">Ivory Violet</div>
+                <div className="text-[10px] text-muted-foreground">#7C3AED + #c6ff3d Spark</div>
               </div>
 
               <div className="rounded-xl border border-[#E8E0EE] bg-white p-3.5 shadow-sm">

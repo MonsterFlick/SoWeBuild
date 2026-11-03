@@ -53,8 +53,9 @@ export default function BackgroundCanvas() {
       initParticles();
     };
 
-    const colorAccent = "rgba(198, 255, 61, 0.65)";
-    const colorDim = "rgba(160, 145, 180, 0.25)";
+    const colorViolet = "rgba(124, 58, 237, 0.45)";
+    const colorNeon = "rgba(198, 255, 61, 0.55)";
+    const colorDim = "rgba(180, 165, 200, 0.22)";
 
     const initParticles = () => {
       particles = [];
@@ -69,15 +70,19 @@ export default function BackgroundCanvas() {
         const x = centerX + Math.cos(angle) * dist * 1.2;
         const y = centerY + Math.sin(angle) * dist * 0.8;
 
-        const isAccent = Math.random() > 0.82;
+        const rand = Math.random();
+        const isNeon = rand > 0.90;
+        const isViolet = !isNeon && rand > 0.72;
+        const color = isNeon ? colorNeon : isViolet ? colorViolet : colorDim;
+
         particles.push({
           x,
           y,
           baseX: x,
           baseY: y,
-          radius: isAccent ? 1.5 + Math.random() * 1 : 1 + Math.random() * 0.8,
-          alpha: isAccent ? 0.45 : 0.25,
-          color: isAccent ? colorAccent : colorDim,
+          radius: (isNeon || isViolet) ? 1.5 + Math.random() * 1 : 1 + Math.random() * 0.8,
+          alpha: isNeon ? 0.5 : isViolet ? 0.4 : 0.22,
+          color,
           speed: 0.0002 + Math.random() * 0.0003,
           angle,
         });

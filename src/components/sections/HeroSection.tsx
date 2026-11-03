@@ -169,7 +169,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
           background: `
             radial-gradient(
               ellipse 70% 50% at var(--gx, 50%) var(--gy, 50%),
-              rgba(198, 255, 61, 0.035) 0%,
+              rgba(124, 58, 237, 0.055) 0%,
               transparent 65%
             ),
             var(--color-bg)
@@ -203,7 +203,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "var(--color-accent)",
+              background: "var(--color-neon, #c6ff3d)",
+              boxShadow: "0 0 8px rgba(198, 255, 61, 0.6)",
               display: "inline-block",
             }}
           />
@@ -222,7 +223,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 color: "var(--color-text)",
               }}
             >
-              SoWeBuild<span style={{ color: "var(--color-accent)" }}>.</span>
+              SoWeBuild<span style={{ color: "var(--color-neon, #c6ff3d)" }}>.</span>
             </h1>
           </div>
 

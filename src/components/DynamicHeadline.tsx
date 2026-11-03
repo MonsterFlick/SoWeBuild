@@ -64,7 +64,7 @@ export function DynamicHeadline({ active = true }: { active?: boolean }) {
           <span>So we build</span>
 
           {/* High-Performance Smooth Word Transition */}
-          <span className="inline-grid [grid-template-areas:'stack'] align-baseline overflow-visible text-[#c6ff3d] drop-shadow-[0_2px_16px_rgba(160,240,30,0.45)] min-w-[140px] sm:min-w-[240px]">
+          <span className="inline-grid [grid-template-areas:'stack'] align-baseline overflow-visible text-[#7C3AED] drop-shadow-[0_2px_16px_rgba(124,58,237,0.35)] min-w-[140px] sm:min-w-[240px]">
             <AnimatePresence mode="wait">
               <motion.span
                 key={WORDS[index]}

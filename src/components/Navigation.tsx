@@ -124,7 +124,7 @@ export default function Navigation() {
             }}
           >
             SWB
-            <span style={{ color: "var(--color-accent)", marginLeft: "2px" }}>.</span>
+            <span style={{ color: "var(--color-neon, #c6ff3d)", marginLeft: "2px" }}>.</span>
           </a>
 
           {/* Desktop links */}

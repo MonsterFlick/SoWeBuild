@@ -368,7 +368,7 @@ export default function ContactSection() {
                                 ? "var(--color-accent)"
                                 : "rgba(22, 19, 29, 0.02)",
                               color: isSelected
-                                ? "#121019"
+                                ? "#FFFFFF"
                                 : "var(--color-text-secondary)",
                               cursor: "pointer",
                               transition: "all 0.2s ease",

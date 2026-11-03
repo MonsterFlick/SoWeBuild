@@ -98,8 +98,8 @@ export default function CustomCursor() {
           gsap.to(ring, {
             width: 58,
             height: 58,
-            borderColor: "#c6ff3d",
-            backgroundColor: "rgba(198, 255, 61, 0.12)",
+            borderColor: "#7C3AED",
+            backgroundColor: "rgba(124, 58, 237, 0.10)",
             borderRadius: "32%",
             mixBlendMode: "normal",
             duration: 0.35,
