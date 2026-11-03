@@ -37,14 +37,14 @@ export default function Navigation() {
 
   const navLinks = [
     { label: "Work", href: "#work" },
-    { label: "Capabilities", href: "#services" },
+    { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
   ];
 
   const menuLinks = [
     { label: "Home", href: "/" },
     { label: "Selected Work", href: "#work" },
-    { label: "Capabilities", href: "#services" },
+    { label: "Master Services", href: "#services" },
     { label: "Start a Project", href: "#contact" },
     { label: "Brand Guidelines", href: "/brand-guidelines" },
   ];

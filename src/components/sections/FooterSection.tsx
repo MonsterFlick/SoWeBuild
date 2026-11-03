@@ -29,7 +29,7 @@ export default function FooterSection() {
 
   const navLinks = [
     { label: "Work", href: "#work" },
-    { label: "Capabilities", href: "#services" },
+    { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
   ];
 

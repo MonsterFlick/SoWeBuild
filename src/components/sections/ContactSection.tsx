@@ -8,12 +8,16 @@ import MagneticButton from "../MagneticButton";
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECT_TYPES = [
-  "Web App / SaaS",
-  "High-Performance Website",
-  "AI Agent / Chatbot",
-  "WhatsApp Automation",
-  "Mobile App",
-  "Cloud & API Infra",
+  "Branding & Identity",
+  "Website & Web Development",
+  "Mobile App & Software",
+  "Digital Marketing & Ads",
+  "Social Media Management",
+  "SEO & Online Visibility",
+  "Creative Studio & Video",
+  "AI, Automation & BI",
+  "E-Commerce Solutions",
+  "IT & Cloud Consulting",
 ];
 
 function ZapIcon() {
@@ -241,8 +245,8 @@ export default function ContactSection() {
                       width: "2.5rem",
                       height: "2.5rem",
                       borderRadius: "var(--radius-md)",
-                      background: "#16131D",
-                      border: "1px solid rgba(198, 255, 61, 0.4)",
+                      background: "#F5EDFA",
+                      border: "1px solid #E8DFF2",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
