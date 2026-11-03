@@ -78,13 +78,23 @@ interface ServiceCardProps {
   cat: ServiceCategory;
   isExpanded: boolean;
   onToggle: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
-function ServiceCard({ cat, isExpanded, onToggle }: ServiceCardProps) {
+function ServiceCard({
+  cat,
+  isExpanded,
+  onToggle,
+  onMouseEnter,
+  onMouseLeave,
+}: ServiceCardProps) {
   return (
     <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 bg-white overflow-hidden shadow-sm hover:shadow-md ${
-        isExpanded ? "border-[#7C3AED] ring-1 ring-[#7C3AED]/20" : "border-[#E8DFF2]"
+        isExpanded ? "border-[#7C3AED] ring-1 ring-[#7C3AED]/20 shadow-md" : "border-[#E8DFF2]"
       }`}
     >
       {/* Header Toggle Button */}
@@ -155,7 +165,7 @@ function ServiceCard({ cat, isExpanded, onToggle }: ServiceCardProps) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
             <div className="px-5 pb-5 sm:px-7 sm:pb-7 pt-2 border-t border-[#F2EBF7] bg-gradient-to-b from-white to-[#FAF8F5]/30">
@@ -216,29 +226,28 @@ const FILTER_GROUPS = [
 
 export default function ServicesSection() {
   const [selectedGroup, setSelectedGroup] = useState<string>("All Disciplines");
-  // Default first 2 categories open so users immediately see the expandable dropdown feature
-  const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({
-    branding: true,
-    "web-development": true,
-  });
+  // Hover-to-open state: tracks which category card is currently under the cursor
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // Pinned state: user can click to lock a drawer open (essential for mobile & persistent viewing)
+  const [pinnedIds, setPinnedIds] = useState<Record<string, boolean>>({});
+  // Master toggle state
+  const [isAllExpanded, setIsAllExpanded] = useState<boolean>(false);
 
   const toggleCategory = (id: string) => {
-    setExpandedIds((prev) => ({
+    setPinnedIds((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
   const handleExpandAll = () => {
-    const allExpanded: Record<string, boolean> = {};
-    SERVICE_CATEGORIES.forEach((cat) => {
-      allExpanded[cat.id] = true;
-    });
-    setExpandedIds(allExpanded);
+    setIsAllExpanded(true);
   };
 
   const handleCollapseAll = () => {
-    setExpandedIds({});
+    setIsAllExpanded(false);
+    setPinnedIds({});
+    setHoveredId(null);
   };
 
   const filteredCategories =
@@ -250,9 +259,6 @@ export default function ServicesSection() {
   // row-height locking dead space when drawers expand
   const leftColCategories = filteredCategories.filter((_, idx) => idx % 2 === 0);
   const rightColCategories = filteredCategories.filter((_, idx) => idx % 2 !== 0);
-
-  const totalExpanded = Object.values(expandedIds).filter(Boolean).length;
-  const isAllExpanded = totalExpanded === SERVICE_CATEGORIES.length;
 
   return (
     <section
@@ -269,11 +275,15 @@ export default function ServicesSection() {
         {/* ============================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div className="max-w-3xl">
-            {/* Eyebrow Label with Neon Green Spark Dot */}
-            <div className="label flex items-center gap-2 mb-3">
+            {/* Eyebrow Label with Neon Green Spark Dot & Hover Indicator */}
+            <div className="label flex flex-wrap items-center gap-2 mb-3">
               <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d]" />
               <span className="bg-[#1E1330] text-[#c6ff3d] px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase">
                 Master Services Catalogue
+              </span>
+              <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-[10px] text-[#7C3AED] bg-[#F5EDFA] border border-[#E8DFF2] px-2.5 py-0.5 rounded-full font-semibold">
+                <span className="size-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
+                Hover to Open
               </span>
             </div>
 
@@ -295,7 +305,7 @@ export default function ServicesSection() {
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={isAllExpanded ? handleCollapseAll : handleExpandAll}
-              className="inline-flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-4 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-4 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-sm cursor-pointer"
             >
               <span>{isAllExpanded ? "Collapse All Drawers" : "Expand All Drawers"}</span>
               <ChevronDownIcon
@@ -325,7 +335,7 @@ export default function ServicesSection() {
               <button
                 key={grp}
                 onClick={() => setSelectedGroup(grp)}
-                className={`shrink-0 rounded-full px-4 py-1.5 font-mono text-xs font-medium transition-all duration-200 ${
+                className={`shrink-0 rounded-full px-4 py-1.5 font-mono text-xs font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#7C3AED] text-white shadow-md shadow-[#7C3AED]/20"
                     : "border border-[#E8DFF2] bg-white text-[#5A5068] hover:border-[#7C3AED] hover:text-[#161124]"
@@ -338,31 +348,35 @@ export default function ServicesSection() {
         </div>
 
         {/* ============================================================== */}
-        {/* 10 CORE SERVICES ACCORDION / DROPDOWN LAYOUT                   */}
+        {/* 10 CORE SERVICES ACCORDION / HOVER-TO-OPEN LAYOUT              */}
         {/* Dual independent columns eliminate empty space next to drawers */}
         {/* ============================================================== */}
 
-        {/* Mobile View: Single continuous column */}
+        {/* Mobile View: Single continuous column (Tap/Click to toggle) */}
         <div className="flex flex-col gap-4 lg:hidden">
           {filteredCategories.map((cat) => (
             <ServiceCard
               key={cat.id}
               cat={cat}
-              isExpanded={!!expandedIds[cat.id]}
+              isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
               onToggle={() => toggleCategory(cat.id)}
+              onMouseEnter={() => setHoveredId(cat.id)}
+              onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
             />
           ))}
         </div>
 
-        {/* Desktop View: 2 Independent Columns (Zero Grid Row Dead Space) */}
+        {/* Desktop View: 2 Independent Columns with Hover-to-Open */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-6 items-start">
           <div className="flex flex-col gap-6">
             {leftColCategories.map((cat) => (
               <ServiceCard
                 key={cat.id}
                 cat={cat}
-                isExpanded={!!expandedIds[cat.id]}
+                isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
                 onToggle={() => toggleCategory(cat.id)}
+                onMouseEnter={() => setHoveredId(cat.id)}
+                onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
               />
             ))}
           </div>
@@ -372,8 +386,10 @@ export default function ServicesSection() {
               <ServiceCard
                 key={cat.id}
                 cat={cat}
-                isExpanded={!!expandedIds[cat.id]}
+                isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
                 onToggle={() => toggleCategory(cat.id)}
+                onMouseEnter={() => setHoveredId(cat.id)}
+                onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
               />
             ))}
           </div>
