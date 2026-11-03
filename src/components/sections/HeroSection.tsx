@@ -37,7 +37,6 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const scrollHintRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
 
@@ -54,12 +53,11 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
     const section = sectionRef.current;
     const headline = headlineRef.current;
     const subtitle = subtitleRef.current;
-    const scrollHint = scrollHintRef.current;
 
-    if (!section || !headline || !subtitle || !scrollHint) return;
+    if (!section || !headline || !subtitle) return;
 
     // Immediately present all core elements with zero blank delay
-    gsap.set([subtitle, scrollHint], { opacity: 1, y: 0 });
+    gsap.set(subtitle, { opacity: 1, y: 0 });
     const inners = headline.querySelectorAll(".hero-line-inner");
     gsap.set(inners, { y: "0%", opacity: 1 });
     setIsLoaded(true);
@@ -286,39 +284,6 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             </div>
           ))}
         </div>
-
-        {/* Scroll hint — positioned closely below the studio credentials strip with zero excessive gap */}
-        <div
-          ref={scrollHintRef}
-          className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-1.5"
-          style={{
-            opacity: 0,
-          }}
-        >
-          <span
-            className="label text-[9px] uppercase tracking-widest text-[#8C8299] font-medium"
-          >
-            Scroll
-          </span>
-          <div
-            style={{
-              width: 1,
-              height: 22,
-              background: "var(--color-border)",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            <div
-              style={{
-                width: "100%",
-                height: "50%",
-                background: "var(--color-accent)",
-                animation: "scrollLine 2s ease-in-out infinite",
-              }}
-            />
-          </div>
-        </div>
       </div>
 
       <style>{`
@@ -331,10 +296,6 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             transform: translateY(0);
             opacity: 1;
           }
-        }
-        @keyframes scrollLine {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(250%); }
         }
       `}</style>
     </section>
