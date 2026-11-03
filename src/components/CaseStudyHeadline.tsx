@@ -55,11 +55,11 @@ export function CaseStudyHeadline({
         initial={{ opacity: 0.9, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="w-full text-[clamp(1.75rem,5.2vw,4.5rem)] font-bold tracking-tight text-[#16131D] leading-tight"
+        className="w-full text-[clamp(1.75rem,5.2vw,4.5rem)] font-bold tracking-tight text-[#16131D] leading-[1.18] pb-3"
       >
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-1 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-1 text-center pb-2">
           <span className="whitespace-nowrap">So we build</span>
-          <span className="inline-grid [grid-template-areas:'stack'] align-baseline min-h-[1.2em]">
+          <span className="inline-grid [grid-template-areas:'stack'] align-baseline min-h-[1.25em] pb-2 overflow-visible">
             <AnimatePresence mode="popLayout">
               <motion.span
                 key={words[index]}
@@ -67,7 +67,7 @@ export function CaseStudyHeadline({
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="[grid-area:stack] text-[#7C3AED] drop-shadow-[0_2px_16px_rgba(124,58,237,0.35)] will-change-transform"
+                className="[grid-area:stack] text-[#7C3AED] drop-shadow-[0_2px_16px_rgba(124,58,237,0.35)] will-change-transform pb-2"
               >
                 {words[index]}
               </motion.span>

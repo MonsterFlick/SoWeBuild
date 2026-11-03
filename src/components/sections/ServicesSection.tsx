@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   SERVICE_CATEGORIES,
   INDUSTRY_SOLUTIONS,
@@ -138,80 +137,81 @@ function ServiceCard({
         </p>
 
         {/* Collapsed Preview Chips (Quick Glance) */}
-        {!isExpanded && (
-          <div className="flex flex-wrap items-center gap-1.5 pt-2">
-            {cat.subcategories.slice(0, 3).map((sub) => (
-              <span
-                key={sub}
-                className="font-mono text-[10px] text-[#5A5068] bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-1 rounded-full truncate max-w-[200px]"
-              >
-                {sub}
-              </span>
-            ))}
-            {cat.subcategories.length > 3 && (
-              <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2 py-1 rounded-full">
-                +{cat.subcategories.length - 3} more
-              </span>
-            )}
-          </div>
-        )}
+        <div
+          className={`flex flex-wrap items-center gap-1.5 transition-all duration-200 overflow-hidden ${
+            isExpanded
+              ? "opacity-0 max-h-0 pt-0 pointer-events-none"
+              : "opacity-100 max-h-14 pt-2"
+          }`}
+        >
+          {cat.subcategories.slice(0, 3).map((sub) => (
+            <span
+              key={sub}
+              className="font-mono text-[10px] text-[#5A5068] bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-1 rounded-full truncate max-w-[200px]"
+            >
+              {sub}
+            </span>
+          ))}
+          {cat.subcategories.length > 3 && (
+            <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2 py-1 rounded-full">
+              +{cat.subcategories.length - 3} more
+            </span>
+          )}
+        </div>
       </button>
 
-      {/* Expandable Dropdown Drawer */}
-      <AnimatePresence initial={false}>
-        {isExpanded && (
-          <motion.div
-            key={`content-${cat.id}`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 sm:px-7 sm:pb-7 pt-2 border-t border-[#F2EBF7] bg-gradient-to-b from-white to-[#FAF8F5]/30">
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">
-                  All Capabilities ({cat.subcategories.length})
-                </span>
-                <span className="font-mono text-[10px] text-[#7C3AED] font-semibold">
-                  Full Production Depth
-                </span>
-              </div>
-
-              {/* Subcategory Capabilities Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
-                {cat.subcategories.map((sub) => (
-                  <div
-                    key={sub}
-                    className="group/item flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-[#E8DFF2] hover:border-[#7C3AED] hover:shadow-sm transition-all"
-                  >
-                    <div className="size-5 rounded-full bg-[#F5EDFA] text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-[#7C3AED] group-hover/item:text-white transition-colors">
-                      <CheckIcon className="size-3" />
-                    </div>
-                    <span className="text-xs sm:text-[13px] font-medium text-[#161124] leading-snug">
-                      {sub}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Quick Brief CTA Link */}
-              <div className="mt-4 pt-3.5 border-t border-[#F2EBF7] flex items-center justify-between">
-                <span className="text-xs text-[#5A5068]">
-                  Looking to deploy this division?
-                </span>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#7C3AED] hover:text-[#6D28D9] transition-colors"
-                >
-                  <span>Brief {cat.title.split(" ")[0]}</span>
-                  <ArrowUpRightIcon className="size-3" />
-                </a>
-              </div>
+      {/* Expandable Dropdown Drawer — 100% GPU-accelerated CSS Grid transition (ZERO lag) */}
+      <div
+        className="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          gridTemplateRows: isExpanded ? "1fr" : "0fr",
+          opacity: isExpanded ? 1 : 0,
+        }}
+      >
+        <div className="overflow-hidden min-h-0">
+          <div className="px-5 pb-5 sm:px-7 sm:pb-7 pt-2 border-t border-[#F2EBF7] bg-gradient-to-b from-white to-[#FAF8F5]/30">
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">
+                All Capabilities ({cat.subcategories.length})
+              </span>
+              <span className="font-mono text-[10px] text-[#7C3AED] font-semibold">
+                Full Production Depth
+              </span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            {/* Subcategory Capabilities Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+              {cat.subcategories.map((sub) => (
+                <div
+                  key={sub}
+                  className="group/item flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-[#E8DFF2] hover:border-[#7C3AED] hover:shadow-sm transition-all"
+                >
+                  <div className="size-5 rounded-full bg-[#F5EDFA] text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-[#7C3AED] group-hover/item:text-white transition-colors">
+                    <CheckIcon className="size-3" />
+                  </div>
+                  <span className="text-xs sm:text-[13px] font-medium text-[#161124] leading-snug">
+                    {sub}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick Brief CTA Link */}
+            <div className="mt-4 pt-3.5 border-t border-[#F2EBF7] flex items-center justify-between">
+              <span className="text-xs text-[#5A5068]">
+                Looking to deploy this division?
+              </span>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#7C3AED] hover:text-[#6D28D9] transition-colors"
+              >
+                <span>Brief {cat.title.split(" ")[0]}</span>
+                <ArrowUpRightIcon className="size-3" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

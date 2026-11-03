@@ -18,18 +18,18 @@ const WORDS = [
 ];
 
 const wordVariants = {
-  hidden: { opacity: 0, y: 22, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 14, filter: "blur(2px)" },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
   },
   exit: {
     opacity: 0,
-    y: -18,
-    filter: "blur(4px)",
-    transition: { duration: 0.32, ease: [0.16, 1, 0.3, 1] as const },
+    y: -14,
+    filter: "blur(2px)",
+    transition: { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -49,10 +49,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Entrance animation
+  // Entrance animation — Instant visibility to ensure site never looks empty on start
   useEffect(() => {
-    if (!ready) return;
-
     const section = sectionRef.current;
     const headline = headlineRef.current;
     const subtitle = subtitleRef.current;
@@ -60,50 +58,14 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
 
     if (!section || !headline || !subtitle || !scrollHint) return;
 
-    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-
-    if (isReducedMotion) {
-      gsap.set([subtitle, scrollHint], { opacity: 1, y: 0 });
-      const inners = headline.querySelectorAll(".hero-line-inner");
-      gsap.set(inners, { y: "0%" });
-      setIsLoaded(true);
-      return;
-    }
-
-    const tl = gsap.timeline();
-
-    // Split headline into lines
-    const lines = headline.querySelectorAll(".hero-line");
-    lines.forEach((line) => {
-      const inner = line.querySelector(".hero-line-inner");
-      if (inner) {
-        gsap.set(inner, { y: "110%" });
-      }
-    });
-
-    tl.to(headline.querySelectorAll(".hero-line-inner"), {
-      y: "0%",
-      stagger: 0.12,
-      duration: 1.1,
-      ease: "power4.out",
-    });
-
-    tl.fromTo(
-      subtitle,
-      { opacity: 0, y: 25 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power4.out" },
-      "-=0.6"
-    );
-
-    tl.fromTo(
-      scrollHint,
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power4.out" },
-      "-=0.3"
-    );
+    // Immediately present all core elements with zero blank delay
+    gsap.set([subtitle, scrollHint], { opacity: 1, y: 0 });
+    const inners = headline.querySelectorAll(".hero-line-inner");
+    gsap.set(inners, { y: "0%", opacity: 1 });
+    setIsLoaded(true);
 
     // Parallax on desktop scroll only (avoid scroll lag on phones)
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
     let parallaxTween: gsap.core.Tween | null = null;
     if (!isTouch) {
       parallaxTween = gsap.to(headline, {
@@ -119,10 +81,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
       });
     }
 
-    setIsLoaded(true);
-
     return () => {
-      tl.kill();
       if (parallaxTween) {
         parallaxTween.kill();
         parallaxTween.scrollTrigger?.kill();
@@ -214,26 +173,29 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         {/* Headline */}
         <div ref={headlineRef} style={{ userSelect: "none" }}>
           {/* Brand Studio Title */}
-          <div className="hero-line" style={{ overflow: "hidden", display: "block" }}>
+          <div className="hero-line" style={{ overflow: "visible", display: "block" }}>
             <h1
               className="hero-line-inner heading-display"
               style={{
                 display: "block",
                 letterSpacing: "-0.04em",
                 color: "var(--color-text)",
+                lineHeight: 1.12,
+                paddingBottom: "0.1em",
               }}
             >
               SoWeBuild<span style={{ color: "var(--color-neon, #c6ff3d)" }}>.</span>
             </h1>
           </div>
 
-          {/* Changing Deliverable Animation */}
+          {/* Changing Deliverable Animation (Zero Bottom Clipping) */}
           <div
             className="hero-line"
             style={{
-              overflow: "hidden",
+              overflow: "visible",
               display: "block",
               marginTop: "clamp(0.2rem, 0.8vw, 0.5rem)",
+              paddingBottom: "0.3em",
             }}
           >
             <div
@@ -243,7 +205,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                 alignItems: "baseline",
                 flexWrap: "wrap",
                 color: "var(--color-accent)",
-                lineHeight: 1,
+                lineHeight: 1.18,
+                paddingBottom: "0.2em",
               }}
             >
               <span
@@ -252,6 +215,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                   gridTemplateAreas: "'stack'",
                   minWidth: "min(280px, 86vw)",
                   maxWidth: "100%",
+                  paddingBottom: "0.25em",
+                  overflow: "visible",
                 }}
               >
                 <AnimatePresence mode="wait">
@@ -266,6 +231,8 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
                       whiteSpace: "nowrap",
                       willChange: "transform, opacity, filter",
                       color: "var(--color-accent)",
+                      paddingBottom: "0.2em",
+                      display: "inline-block",
                     }}
                   >
                     {WORDS[wordIndex]}
@@ -283,7 +250,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
           style={{
             maxWidth: "560px",
             marginTop: "clamp(0.875rem, 1.8vw, 1.75rem)",
-            opacity: 0,
+            opacity: 1,
             color: "var(--color-text-secondary)",
             lineHeight: 1.6,
           }}
