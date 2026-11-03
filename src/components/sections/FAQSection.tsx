@@ -89,15 +89,10 @@ function XIcon({ className = "size-3.5" }: { className?: string }) {
 }
 
 export default function FAQSection() {
-  const [openIndices, setOpenIndices] = useState<Record<number, boolean>>({
-    0: true, // First item open for immediate reader value
-  });
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFAQ = (idx: number) => {
-    setOpenIndices((prev) => ({
-      ...prev,
-      [idx]: !prev[idx],
-    }));
+    setOpenIndex((curr) => (curr === idx ? null : idx));
   };
 
   const faqSchema = {
@@ -222,7 +217,7 @@ export default function FAQSection() {
         {/* ============================================================== */}
         <div className="max-w-4xl mx-auto flex flex-col gap-3.5">
           {FAQS.map((faq, idx) => {
-            const isOpen = !!openIndices[idx];
+            const isOpen = openIndex === idx;
             return (
               <div
                 key={faq.question}
