@@ -82,6 +82,11 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
           desc: "Digital authority honoring 40+ years of healthcare manufacturing.",
           stat: "40-Yr Legacy",
         },
+        {
+          title: "NMC Ethical Compliance",
+          desc: "Built in adherence with NMC Guidelines on ethical medical communication and transparent cataloging.",
+          stat: "NMC Aligned",
+        },
       ],
     },
     metrics: [

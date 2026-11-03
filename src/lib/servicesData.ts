@@ -12,6 +12,8 @@ export interface IndustrySolution {
   tagline: string;
   solutions: string[];
   serviceCategoryRef: string;
+  complianceBadge?: string;
+  complianceNote?: string;
 }
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -186,9 +188,16 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
 export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
   {
     name: "Healthcare & Pharma",
-    tagline: "Clinical-grade digital presence with seamless procurement and patient trust.",
-    solutions: ["Healthcare websites", "Product catalogues", "Appointment systems"],
+    tagline: "Clinical-grade digital presence with ethical communication, patient privacy, and seamless procurement.",
+    solutions: [
+      "Healthcare & Hospital Websites",
+      "Product & Equipment Catalogues",
+      "Doctor Credentials & Appointment Systems",
+      "Ethical Medical Communication",
+    ],
     serviceCategoryRef: "web-development",
+    complianceBadge: "NMC Ethical Guidelines Compliant",
+    complianceNote: "Strictly aligned with The National Medical Commission (NMC) Guidelines on Ethical Advertising and Public Communication by Hospitals/Medical Institutions and Registered Medical Practitioners (issued October 6, 2026).",
   },
   {
     name: "Real Estate",
@@ -227,3 +236,4 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
     serviceCategoryRef: "mobile-software",
   },
 ];
+

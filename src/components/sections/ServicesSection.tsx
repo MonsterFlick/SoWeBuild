@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useId } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   SERVICE_CATEGORIES,
@@ -57,6 +57,155 @@ function ArrowUpRightIcon({ className = "size-4" }: { className?: string }) {
   );
 }
 
+function ShieldCheckIcon({ className = "size-3.5" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
+interface ServiceCardProps {
+  cat: ServiceCategory;
+  isExpanded: boolean;
+  onToggle: () => void;
+}
+
+function ServiceCard({ cat, isExpanded, onToggle }: ServiceCardProps) {
+  return (
+    <div
+      className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 bg-white overflow-hidden shadow-sm hover:shadow-md ${
+        isExpanded ? "border-[#7C3AED] ring-1 ring-[#7C3AED]/20" : "border-[#E8DFF2]"
+      }`}
+    >
+      {/* Header Toggle Button */}
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full text-left p-5 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer focus:outline-none transition-colors hover:bg-[#FAF8F5]/50"
+        aria-expanded={isExpanded}
+      >
+        <div className="flex items-center justify-between w-full mb-3">
+          {/* Number Badge + Group Tag */}
+          <div className="flex items-center gap-2.5">
+            <span className="font-mono text-xs font-bold text-[#7C3AED] bg-[#F5EDFA] border border-[#E8DFF2] px-2.5 py-1 rounded-full">
+              {cat.num}
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[#8C8299]">
+              {cat.group}
+            </span>
+          </div>
+
+          {/* Expand/Collapse Dropdown Indicator */}
+          <div
+            className={`size-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+              isExpanded
+                ? "bg-[#7C3AED] border-[#7C3AED] text-white rotate-180 shadow-sm"
+                : "border-[#E8DFF2] bg-[#FAF8F5] text-[#7C3AED]"
+            }`}
+          >
+            <ChevronDownIcon className="size-4" />
+          </div>
+        </div>
+
+        {/* Category Title */}
+        <h3 className="font-display text-xl sm:text-2xl font-bold text-[#161124] leading-tight mb-2">
+          {cat.title}
+        </h3>
+
+        {/* Category Tagline */}
+        <p className="text-sm text-[#5A5068] leading-relaxed mb-4">
+          {cat.tagline}
+        </p>
+
+        {/* Collapsed Preview Chips (Quick Glance) */}
+        {!isExpanded && (
+          <div className="flex flex-wrap items-center gap-1.5 pt-2">
+            {cat.subcategories.slice(0, 3).map((sub) => (
+              <span
+                key={sub}
+                className="font-mono text-[10px] text-[#5A5068] bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-1 rounded-full truncate max-w-[200px]"
+              >
+                {sub}
+              </span>
+            ))}
+            {cat.subcategories.length > 3 && (
+              <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2 py-1 rounded-full">
+                +{cat.subcategories.length - 3} more
+              </span>
+            )}
+          </div>
+        )}
+      </button>
+
+      {/* Expandable Dropdown Drawer */}
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            key={`content-${cat.id}`}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 sm:px-7 sm:pb-7 pt-2 border-t border-[#F2EBF7] bg-gradient-to-b from-white to-[#FAF8F5]/30">
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">
+                  All Capabilities ({cat.subcategories.length})
+                </span>
+                <span className="font-mono text-[10px] text-[#7C3AED] font-semibold">
+                  Full Production Depth
+                </span>
+              </div>
+
+              {/* Subcategory Capabilities Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                {cat.subcategories.map((sub) => (
+                  <div
+                    key={sub}
+                    className="group/item flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-[#E8DFF2] hover:border-[#7C3AED] hover:shadow-sm transition-all"
+                  >
+                    <div className="size-5 rounded-full bg-[#F5EDFA] text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-[#7C3AED] group-hover/item:text-white transition-colors">
+                      <CheckIcon className="size-3" />
+                    </div>
+                    <span className="text-xs sm:text-[13px] font-medium text-[#161124] leading-snug">
+                      {sub}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quick Brief CTA Link */}
+              <div className="mt-4 pt-3.5 border-t border-[#F2EBF7] flex items-center justify-between">
+                <span className="text-xs text-[#5A5068]">
+                  Looking to deploy this division?
+                </span>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#7C3AED] hover:text-[#6D28D9] transition-colors"
+                >
+                  <span>Brief {cat.title.split(" ")[0]}</span>
+                  <ArrowUpRightIcon className="size-3" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 const FILTER_GROUPS = [
   "All Disciplines",
   "Engineering",
@@ -96,6 +245,11 @@ export default function ServicesSection() {
     selectedGroup === "All Disciplines"
       ? SERVICE_CATEGORIES
       : SERVICE_CATEGORIES.filter((cat) => cat.group === selectedGroup);
+
+  // Divide into two independent vertical columns for desktop to completely avoid
+  // row-height locking dead space when drawers expand
+  const leftColCategories = filteredCategories.filter((_, idx) => idx % 2 === 0);
+  const rightColCategories = filteredCategories.filter((_, idx) => idx % 2 !== 0);
 
   const totalExpanded = Object.values(expandedIds).filter(Boolean).length;
   const isAllExpanded = totalExpanded === SERVICE_CATEGORIES.length;
@@ -184,137 +338,45 @@ export default function ServicesSection() {
         </div>
 
         {/* ============================================================== */}
-        {/* 10 CORE SERVICES ACCORDION / DROPDOWN GRID                     */}
+        {/* 10 CORE SERVICES ACCORDION / DROPDOWN LAYOUT                   */}
+        {/* Dual independent columns eliminate empty space next to drawers */}
         {/* ============================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
-          {filteredCategories.map((cat) => {
-            const isExpanded = !!expandedIds[cat.id];
 
-            return (
-              <div
+        {/* Mobile View: Single continuous column */}
+        <div className="flex flex-col gap-4 lg:hidden">
+          {filteredCategories.map((cat) => (
+            <ServiceCard
+              key={cat.id}
+              cat={cat}
+              isExpanded={!!expandedIds[cat.id]}
+              onToggle={() => toggleCategory(cat.id)}
+            />
+          ))}
+        </div>
+
+        {/* Desktop View: 2 Independent Columns (Zero Grid Row Dead Space) */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 items-start">
+          <div className="flex flex-col gap-6">
+            {leftColCategories.map((cat) => (
+              <ServiceCard
                 key={cat.id}
-                className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 bg-white overflow-hidden shadow-sm hover:shadow-md ${
-                  isExpanded ? "border-[#7C3AED] ring-1 ring-[#7C3AED]/20" : "border-[#E8DFF2]"
-                }`}
-              >
-                {/* Header Toggle Button */}
-                <button
-                  type="button"
-                  onClick={() => toggleCategory(cat.id)}
-                  className="w-full text-left p-5 sm:p-6 lg:p-7 flex flex-col justify-between cursor-pointer focus:outline-none transition-colors hover:bg-[#FAF8F5]/50"
-                  aria-expanded={isExpanded}
-                >
-                  <div className="flex items-center justify-between w-full mb-3">
-                    {/* Number Badge + Group Tag */}
-                    <div className="flex items-center gap-2.5">
-                      <span className="font-mono text-xs font-bold text-[#7C3AED] bg-[#F5EDFA] border border-[#E8DFF2] px-2.5 py-1 rounded-full">
-                        {cat.num}
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-[#8C8299]">
-                        {cat.group}
-                      </span>
-                    </div>
+                cat={cat}
+                isExpanded={!!expandedIds[cat.id]}
+                onToggle={() => toggleCategory(cat.id)}
+              />
+            ))}
+          </div>
 
-                    {/* Expand/Collapse Dropdown Indicator */}
-                    <div
-                      className={`size-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                        isExpanded
-                          ? "bg-[#7C3AED] border-[#7C3AED] text-white rotate-180 shadow-sm"
-                          : "border-[#E8DFF2] bg-[#FAF8F5] text-[#7C3AED]"
-                      }`}
-                    >
-                      <ChevronDownIcon className="size-4" />
-                    </div>
-                  </div>
-
-                  {/* Category Title */}
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[#161124] leading-tight mb-2">
-                    {cat.title}
-                  </h3>
-
-                  {/* Category Tagline */}
-                  <p className="text-sm text-[#5A5068] leading-relaxed mb-4">
-                    {cat.tagline}
-                  </p>
-
-                  {/* Collapsed Preview Chips (Quick Glance) */}
-                  {!isExpanded && (
-                    <div className="flex flex-wrap items-center gap-1.5 pt-2">
-                      {cat.subcategories.slice(0, 3).map((sub) => (
-                        <span
-                          key={sub}
-                          className="font-mono text-[10px] text-[#5A5068] bg-[#FAF8F5] border border-[#E8DFF2] px-2.5 py-1 rounded-full truncate max-w-[200px]"
-                        >
-                          {sub}
-                        </span>
-                      ))}
-                      {cat.subcategories.length > 3 && (
-                        <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2 py-1 rounded-full">
-                          +{cat.subcategories.length - 3} more
-                        </span>
-                      )}
-                    </div>
-                  )}
-                </button>
-
-                {/* Expandable Dropdown Drawer */}
-                <AnimatePresence initial={false}>
-                  {isExpanded && (
-                    <motion.div
-                      key={`content-${cat.id}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-5 pb-5 sm:px-7 sm:pb-7 pt-2 border-t border-[#F2EBF7] bg-gradient-to-b from-white to-[#FAF8F5]/30">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-[#8C8299]">
-                            All Capabilities ({cat.subcategories.length})
-                          </span>
-                          <span className="font-mono text-[10px] text-[#7C3AED] font-semibold">
-                            Full Production Depth
-                          </span>
-                        </div>
-
-                        {/* Subcategory Capabilities Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
-                          {cat.subcategories.map((sub) => (
-                            <div
-                              key={sub}
-                              className="group/item flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-[#E8DFF2] hover:border-[#7C3AED] hover:shadow-sm transition-all"
-                            >
-                              <div className="size-5 rounded-full bg-[#F5EDFA] text-[#7C3AED] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-[#7C3AED] group-hover/item:text-white transition-colors">
-                                <CheckIcon className="size-3" />
-                              </div>
-                              <span className="text-xs sm:text-[13px] font-medium text-[#161124] leading-snug">
-                                {sub}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Quick Brief CTA Link */}
-                        <div className="mt-4 pt-3.5 border-t border-[#F2EBF7] flex items-center justify-between">
-                          <span className="text-xs text-[#5A5068]">
-                            Looking to deploy this division?
-                          </span>
-                          <a
-                            href="#contact"
-                            className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#7C3AED] hover:text-[#6D28D9] transition-colors"
-                          >
-                            <span>Brief {cat.title.split(" ")[0]}</span>
-                            <ArrowUpRightIcon className="size-3" />
-                          </a>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+          <div className="flex flex-col gap-6">
+            {rightColCategories.map((cat) => (
+              <ServiceCard
+                key={cat.id}
+                cat={cat}
+                isExpanded={!!expandedIds[cat.id]}
+                onToggle={() => toggleCategory(cat.id)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* ============================================================== */}
@@ -338,8 +400,8 @@ export default function ServicesSection() {
             </p>
           </div>
 
-          {/* 7 Industry Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+          {/* Industry Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 items-stretch">
             {INDUSTRY_SOLUTIONS.map((ind, idx) => (
               <div
                 key={ind.name}
@@ -347,9 +409,17 @@ export default function ServicesSection() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2.5 py-0.5 rounded-full border border-[#E8DFF2]">
-                      SECTOR 0{idx + 1}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] font-bold text-[#7C3AED] bg-[#F5EDFA] px-2.5 py-0.5 rounded-full border border-[#E8DFF2]">
+                        SECTOR 0{idx + 1}
+                      </span>
+                      {ind.complianceBadge && (
+                        <span className="font-mono text-[9px] font-bold text-[#15803D] bg-[#DCFCE7] border border-[#BBF7D0] px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <ShieldCheckIcon className="size-2.5 text-[#15803D]" />
+                          NMC 2026
+                        </span>
+                      )}
+                    </div>
                     <span className="size-2 rounded-full bg-[#c6ff3d] shadow-[0_0_6px_#c6ff3d]" />
                   </div>
 
@@ -377,6 +447,21 @@ export default function ServicesSection() {
                       </div>
                     ))}
                   </div>
+
+                  {/* Regulatory Compliance Assurance Callout (e.g. Healthcare & Pharma NMC 2026) */}
+                  {ind.complianceNote && (
+                    <div className="mt-4 pt-3 border-t border-[#F2EBF7] p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E8DFF2]">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <ShieldCheckIcon className="size-3.5 text-[#15803D]" />
+                        <span className="font-mono text-[9px] font-bold text-[#15803D] uppercase tracking-wider">
+                          {ind.complianceBadge}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-[#5A5068] leading-relaxed">
+                        {ind.complianceNote}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
