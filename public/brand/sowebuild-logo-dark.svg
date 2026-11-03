@@ -6,7 +6,7 @@
   <!-- Wordmark -->
   <text x="74" y="34" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#FAF8F5">SO WE</text>
   <text x="74" y="60" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#FAF8F5">
-    BUILD<tspan fill="#c6ff3d">.IN</tspan>
+    BUILD<tspan fill="#A78BFA">.IN</tspan>
   </text>
   <defs>
     <linearGradient id="violetGlowDark" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">

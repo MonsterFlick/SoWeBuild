@@ -14,7 +14,6 @@ fs.mkdirSync(BRAND_DIR, { recursive: true });
 const fontSyne = path.resolve('scripts', 'fonts', 'Syne-Variable.ttf');
 const fontManrope = path.resolve('scripts', 'fonts', 'Manrope.ttf');
 const fontMono = path.resolve('scripts', 'fonts', 'JetBrainsMono.ttf');
-const fontSpaceGrotesk = path.resolve('scripts', 'fonts', 'SpaceGrotesk.ttf');
 
 if (fs.existsSync(fontSyne)) {
   GlobalFonts.registerFromPath(fontSyne, 'Syne');
@@ -24,9 +23,6 @@ if (fs.existsSync(fontManrope)) {
 }
 if (fs.existsSync(fontMono)) {
   GlobalFonts.registerFromPath(fontMono, 'JetBrains Mono');
-}
-if (fs.existsSync(fontSpaceGrotesk)) {
-  GlobalFonts.registerFromPath(fontSpaceGrotesk, 'Space Grotesk');
 }
 
 console.log('Registered fonts successfully for Ivory Violet Brand Suite.');
@@ -75,7 +71,7 @@ const SVG_LOGO_DARK = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 
   <!-- Wordmark -->
   <text x="74" y="34" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" letter-spacing="0.14em" fill="#FAF8F5">SO WE</text>
   <text x="74" y="60" font-family="'Syne', system-ui, -apple-system, sans-serif" font-weight="700" font-size="24" letter-spacing="0.14em" fill="#FAF8F5">
-    BUILD<tspan fill="#c6ff3d">.IN</tspan>
+    BUILD<tspan fill="#A78BFA">.IN</tspan>
   </text>
   <defs>
     <linearGradient id="violetGlowDark" x1="2" y1="2" x2="38" y2="58" gradientUnits="userSpaceOnUse">
@@ -144,11 +140,9 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
   const ctx = canvas.getContext('2d');
 
   if (isDark) {
-    // Deep Purple Ink / Obsidian Void
     ctx.fillStyle = '#161124';
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle 4K grid pattern
     ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
     const gridStep = Math.round(width / 80);
     for (let gx = 0; gx < width; gx += gridStep) {
@@ -157,7 +151,6 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
       }
     }
 
-    // Radial royal violet glow
     const radial = ctx.createRadialGradient(width * 0.18, height * 0.5, 20, width * 0.18, height * 0.5, height * 0.85);
     radial.addColorStop(0, 'rgba(124, 58, 237, 0.28)');
     radial.addColorStop(0.6, 'rgba(109, 40, 217, 0.12)');
@@ -165,11 +158,9 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
     ctx.fillStyle = radial;
     ctx.fillRect(0, 0, width, height);
   } else {
-    // Warm Ivory Canvas (#FAF8F5)
     ctx.fillStyle = '#FAF8F5';
     ctx.fillRect(0, 0, width, height);
 
-    // Subtle 4K dot matrix
     ctx.fillStyle = 'rgba(22, 17, 36, 0.035)';
     const gridStep = Math.round(width / 80);
     for (let gx = 0; gx < width; gx += gridStep) {
@@ -178,10 +169,9 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
       }
     }
 
-    // Soft warm violet ambient aura
     const radial = ctx.createRadialGradient(width * 0.18, height * 0.5, 20, width * 0.18, height * 0.5, height * 0.9);
-    radial.addColorStop(0, 'rgba(124, 58, 237, 0.08)');
-    radial.addColorStop(0.6, 'rgba(198, 255, 61, 0.04)');
+    radial.addColorStop(0, 'rgba(124, 58, 237, 0.10)');
+    radial.addColorStop(0.6, 'rgba(109, 40, 217, 0.03)');
     radial.addColorStop(1, 'rgba(250, 248, 245, 0)');
     ctx.fillStyle = radial;
     ctx.fillRect(0, 0, width, height);
@@ -194,7 +184,6 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
   ctx.save();
   ctx.translate(markX, markY);
 
-  // Draw slash polygon
   const sGrad = ctx.createLinearGradient(0, 0, 40 * scale, 60 * scale);
   if (isDark) {
     sGrad.addColorStop(0, '#C4B5FD');
@@ -231,15 +220,9 @@ function renderLogoToCanvas4K(width, height, isDark = false) {
   ctx.fillText('BUILD', 95 * scale, 76 * scale);
 
   const buildMetrics = ctx.measureText('BUILD');
-  if (isDark) {
-    ctx.fillStyle = '#c6ff3d';
-    ctx.shadowColor = 'rgba(198, 255, 61, 0.7)';
-    ctx.shadowBlur = 20 * (scale / 4);
-  } else {
-    ctx.fillStyle = '#7C3AED';
-    ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
-    ctx.shadowBlur = 12 * (scale / 4);
-  }
+  ctx.fillStyle = isDark ? '#A78BFA' : '#7C3AED';
+  ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
+  ctx.shadowBlur = 14 * (scale / 4);
   ctx.fillText('.IN', 95 * scale + buildMetrics.width + 1 * scale, 76 * scale);
   ctx.restore();
 
@@ -263,21 +246,19 @@ const symbolCanvas = createCanvas(3840, 3840);
   ctx.fillStyle = '#FAF8F5';
   ctx.fillRect(0, 0, 3840, 3840);
 
-  // Elegant subtle radial glow
   const radial = ctx.createRadialGradient(1920, 1920, 100, 1920, 1920, 1800);
-  radial.addColorStop(0, 'rgba(124, 58, 237, 0.18)');
-  radial.addColorStop(0.5, 'rgba(198, 255, 61, 0.05)');
+  radial.addColorStop(0, 'rgba(124, 58, 237, 0.16)');
+  radial.addColorStop(0.5, 'rgba(109, 40, 217, 0.05)');
   radial.addColorStop(1, 'rgba(250, 248, 245, 0)');
   ctx.fillStyle = radial;
   ctx.fillRect(0, 0, 3840, 3840);
 
-  // Border frame
   ctx.strokeStyle = '#E8DFF2';
   ctx.lineWidth = 16;
   ctx.strokeRect(120, 120, 3600, 3600);
 
   ctx.save();
-  const scale = 3840 / 120; // 32x scale
+  const scale = 3840 / 120;
   const markW = 40 * scale * 0.7;
   const markH = 60 * scale * 0.7;
   ctx.translate(1920 - markW / 2, 1920 - markH / 2);
@@ -306,15 +287,15 @@ fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-symbol.png'), symbolCanvas.toBu
 console.log('Wrote 4K PNG raster files.');
 
 /* -------------------------------------------------------------------------- */
-/* 3. Generate High-Definition Looping Animated GIF (960 x 540)               */
+/* 3. Generate High-Definition Looping Animated GIF (960 x 540 @ 30 FPS)      */
 /* -------------------------------------------------------------------------- */
 
 async function generateAnimatedGIF() {
   console.log('Rendering High-Definition Animated GIF in Ivory Violet (960 x 540)...');
   const width = 960;
   const height = 540;
-  const totalFrames = 36;
-  const fps = 18;
+  const totalFrames = 50; // 2.0s loop @ 25fps
+  const fps = 25;
 
   const encoder = new GIFEncoder();
   const canvas = createCanvas(width, height);
@@ -328,103 +309,108 @@ async function generateAnimatedGIF() {
     ctx.fillRect(0, 0, width, height);
 
     // Subtle dot grid
-    ctx.fillStyle = 'rgba(22, 17, 36, 0.04)';
-    for (let gx = 20; gx < width; gx += 40) {
-      for (let gy = 20; gy < height; gy += 40) {
+    ctx.fillStyle = 'rgba(22, 17, 36, 0.035)';
+    for (let gx = 24; gx < width; gx += 40) {
+      for (let gy = 24; gy < height; gy += 40) {
         ctx.fillRect(gx, gy, 1.5, 1.5);
       }
     }
 
     // Radial breathing violet glow
-    const glowPulse = 0.12 + 0.08 * Math.sin(t * Math.PI * 2);
-    const rad = ctx.createRadialGradient(width * 0.35, height * 0.5, 30, width * 0.35, height * 0.5, 380);
-    rad.addColorStop(0, `rgba(124, 58, 237, ${glowPulse})`);
-    rad.addColorStop(0.6, `rgba(109, 40, 217, ${glowPulse * 0.4})`);
+    const pulse = 0.10 + 0.05 * Math.sin(t * Math.PI * 2);
+    const rad = ctx.createRadialGradient(width * 0.38, height * 0.5, 30, width * 0.38, height * 0.5, 320);
+    rad.addColorStop(0, `rgba(124, 58, 237, ${pulse})`);
+    rad.addColorStop(0.6, `rgba(109, 40, 217, ${pulse * 0.3})`);
     rad.addColorStop(1, 'rgba(250, 248, 245, 0)');
     ctx.fillStyle = rad;
     ctx.fillRect(0, 0, width, height);
 
-    // Slash animation: entrance & light flare sweep
-    const slashScale = 3.6;
-    const slashX = width * 0.2;
-    const slashY = height * 0.5 - (30 * slashScale);
+    // Layout coordinates
+    const scale = 3.6;
+    const slashW = 40 * scale;
+    const slashH = 60 * scale;
+    const slashX = 180;
+    const slashY = (height - slashH) / 2;
 
-    // Laser flare position moving across slash
-    const sweepProgress = (t * 1.5) % 1;
-    const flareY = sweepProgress * (60 * slashScale);
-
+    // Draw Slash Mark
     ctx.save();
     ctx.translate(slashX, slashY);
 
-    // Base slash gradient
-    const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
+    const polyGrad = ctx.createLinearGradient(0, 0, slashW, slashH);
     polyGrad.addColorStop(0, '#9333EA');
     polyGrad.addColorStop(0.6, '#7C3AED');
     polyGrad.addColorStop(1, '#6D28D9');
 
-    ctx.shadowColor = 'rgba(124, 58, 237, 0.35)';
-    ctx.shadowBlur = 24 + 10 * Math.sin(t * Math.PI * 2);
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.3)';
+    ctx.shadowBlur = 24;
     ctx.fillStyle = polyGrad;
 
     ctx.beginPath();
-    ctx.moveTo(26 * slashScale, 2 * slashScale);
-    ctx.lineTo(38 * slashScale, 2 * slashScale);
-    ctx.lineTo(14 * slashScale, 58 * slashScale);
-    ctx.lineTo(2 * slashScale, 58 * slashScale);
+    ctx.moveTo(26 * scale, 2 * scale);
+    ctx.lineTo(38 * scale, 2 * scale);
+    ctx.lineTo(14 * scale, 58 * scale);
+    ctx.lineTo(2 * scale, 58 * scale);
     ctx.closePath();
     ctx.fill();
 
-    // Specular flare highlight across the slash
-    ctx.save();
-    ctx.clip();
-    const flareGrad = ctx.createLinearGradient(0, flareY - 45, 0, flareY + 45);
-    flareGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
-    flareGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.95)');
-    flareGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    ctx.fillStyle = flareGrad;
-    ctx.fillRect(0, flareY - 45, 40 * slashScale, 90);
-    ctx.restore();
+    // Specular flare sweep (smoothstep from t=0.1 to t=0.7)
+    if (t >= 0.1 && t <= 0.7) {
+      const p = (t - 0.1) / 0.6;
+      const smoothP = p * p * (3 - 2 * p);
+      const flareY = -30 + smoothP * (slashH + 60);
+      const flareAlpha = Math.sin(p * Math.PI) * 0.92;
+
+      ctx.save();
+      ctx.clip();
+      const flareGrad = ctx.createLinearGradient(0, flareY - 45, 0, flareY + 45);
+      flareGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+      flareGrad.addColorStop(0.5, `rgba(255, 255, 255, ${flareAlpha})`);
+      flareGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = flareGrad;
+      ctx.fillRect(0, flareY - 45, slashW, 90);
+      ctx.restore();
+    }
 
     ctx.restore();
 
-    // Kinetic Typography "SO WE" and "BUILD.IN"
-    const textFloatY = Math.sin(t * Math.PI * 2) * 3;
+    // Rock-Solid Typography (Zero bobbing)
+    const textX = slashX + slashW + 36;
+    const textY = slashY + 72;
 
     ctx.save();
-    ctx.translate(slashX + 175, slashY + 84 + textFloatY);
+    ctx.translate(textX, textY);
 
     // "SO WE"
     ctx.fillStyle = '#161124';
-    ctx.font = '700 52px "Syne", system-ui, sans-serif';
-    ctx.letterSpacing = '6px';
+    ctx.font = '700 48px "Syne", system-ui, sans-serif';
+    ctx.letterSpacing = '5px';
     ctx.fillText('SO WE', 0, 0);
 
     // "BUILD"
-    ctx.font = '700 64px "Syne", system-ui, sans-serif';
-    ctx.fillText('BUILD', 0, 68);
+    ctx.font = '700 60px "Syne", system-ui, sans-serif';
+    ctx.letterSpacing = '2px';
+    ctx.fillText('BUILD', 0, 64);
 
-    // ".IN" with Royal Violet & Neon Spark accent
-    const buildWidth = ctx.measureText('BUILD').width;
+    // ".IN"
+    const bMetrics = ctx.measureText('BUILD');
     ctx.fillStyle = '#7C3AED';
-    ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
-    ctx.shadowBlur = 14 + 6 * Math.cos(t * Math.PI * 2);
-    ctx.fillText('.IN', buildWidth + 6, 68);
 
-    // Neon Spark dot
-    ctx.fillStyle = '#c6ff3d';
-    ctx.shadowColor = 'rgba(198, 255, 61, 0.8)';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    ctx.arc(buildWidth + 88, 56, 5, 0, Math.PI * 2);
-    ctx.fill();
+    let inGlow = 10;
+    if (t >= 0.55 && t <= 0.85) {
+      const shP = (t - 0.55) / 0.3;
+      inGlow += Math.sin(shP * Math.PI) * 12;
+    }
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.4)';
+    ctx.shadowBlur = inGlow;
+    ctx.fillText('.IN', bMetrics.width + 6, 64);
 
     ctx.restore();
 
-    // Tech metadata subtitle
-    ctx.font = '500 14px "JetBrains Mono", monospace';
-    ctx.letterSpacing = '6px';
+    // Subtitle Spec
+    ctx.font = '500 13px "JetBrains Mono", monospace';
+    ctx.letterSpacing = '5px';
     ctx.fillStyle = '#5A5068';
-    ctx.fillText('TECHNOLOGY STUDIO // SOWEBUILD.IN', slashX + 175, slashY + 188 + textFloatY);
+    ctx.fillText('TECHNOLOGY STUDIO // SOWEBUILD.IN', textX, textY + 118);
 
     // Get RGBA pixel data
     const imgData = ctx.getImageData(0, 0, width, height);
@@ -445,22 +431,22 @@ async function generateAnimatedGIF() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. Generate Animated 4K MP4 Video Intro (3840 x 2160 UHD @ 30 FPS)        */
+/* 4. Generate Animated Full HD 60fps MP4 (1920 x 1080 @ 60 FPS Lossless QP)  */
 /* -------------------------------------------------------------------------- */
 
 async function generateAnimatedMP4() {
-  console.log('Rendering 4K UHD Animated Video Intro in Ivory Violet (3840 x 2160 @ 30 FPS)...');
-  const width = 3840;
-  const height = 2160;
-  const fps = 30;
-  const totalFrames = 60; // 2.0s loop
+  console.log('Rendering Full HD 60 FPS Video Intro in Ivory Violet (1920 x 1080 @ 60 FPS)...');
+  const width = 1920;
+  const height = 1080;
+  const fps = 60;
+  const totalFrames = 150; // 2.5s loop
 
   const encoder = await createH264MP4Encoder();
   encoder.width = width;
   encoder.height = height;
   encoder.frameRate = fps;
-  encoder.kbps = 16000;
-  encoder.speed = 10;
+  encoder.quantizationParameter = 12; // Ultra-crisp near lossless quality
+  encoder.speed = 1; // Highest quality profile
   encoder.initialize();
 
   const canvas = createCanvas(width, height);
@@ -473,102 +459,110 @@ async function generateAnimatedMP4() {
     ctx.fillStyle = '#FAF8F5';
     ctx.fillRect(0, 0, width, height);
 
-    // 4K Subtle Grid
+    // Subtle Grid
     ctx.fillStyle = 'rgba(22, 17, 36, 0.035)';
-    for (let gx = 0; gx < width; gx += 96) {
-      for (let gy = 0; gy < height; gy += 96) {
-        ctx.fillRect(gx, gy, 3, 3);
+    for (let gx = 0; gx < width; gx += 48) {
+      for (let gy = 0; gy < height; gy += 48) {
+        ctx.fillRect(gx, gy, 1.5, 1.5);
       }
     }
 
-    // Glowing energy aura in Royal Violet
-    const pulse = 0.14 + 0.08 * Math.sin(t * Math.PI * 2);
-    const rad = ctx.createRadialGradient(width * 0.32, height * 0.5, 80, width * 0.32, height * 0.5, 1200);
+    // Breathing Royal Violet radial glow
+    const pulse = 0.10 + 0.05 * Math.sin(t * Math.PI * 2);
+    const rad = ctx.createRadialGradient(width * 0.38, height * 0.5, 40, width * 0.38, height * 0.5, 600);
     rad.addColorStop(0, `rgba(124, 58, 237, ${pulse})`);
-    rad.addColorStop(0.5, `rgba(198, 255, 61, ${pulse * 0.3})`);
+    rad.addColorStop(0.6, `rgba(109, 40, 217, ${pulse * 0.3})`);
     rad.addColorStop(1, 'rgba(250, 248, 245, 0)');
     ctx.fillStyle = rad;
     ctx.fillRect(0, 0, width, height);
 
-    // Slash geometry scaled for 4K
-    const slashScale = 14.4;
-    const slashX = width * 0.2;
-    const slashY = height * 0.5 - (30 * slashScale);
+    // Layout coordinates
+    const scale = 7.2;
+    const slashW = 40 * scale;
+    const slashH = 60 * scale;
+    const slashX = 360;
+    const slashY = (height - slashH) / 2;
 
-    // Flare sweep
-    const sweepProgress = (t * 1.3) % 1;
-    const flareY = sweepProgress * (60 * slashScale);
-
+    // Draw Slash Mark
     ctx.save();
     ctx.translate(slashX, slashY);
 
-    const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
+    const polyGrad = ctx.createLinearGradient(0, 0, slashW, slashH);
     polyGrad.addColorStop(0, '#9333EA');
     polyGrad.addColorStop(0.6, '#7C3AED');
     polyGrad.addColorStop(1, '#6D28D9');
 
-    ctx.shadowColor = 'rgba(124, 58, 237, 0.45)';
-    ctx.shadowBlur = 80 + 30 * Math.sin(t * Math.PI * 2);
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.35)';
+    ctx.shadowBlur = 36;
     ctx.fillStyle = polyGrad;
 
     ctx.beginPath();
-    ctx.moveTo(26 * slashScale, 2 * slashScale);
-    ctx.lineTo(38 * slashScale, 2 * slashScale);
-    ctx.lineTo(14 * slashScale, 58 * slashScale);
-    ctx.lineTo(2 * slashScale, 58 * slashScale);
+    ctx.moveTo(26 * scale, 2 * scale);
+    ctx.lineTo(38 * scale, 2 * scale);
+    ctx.lineTo(14 * scale, 58 * scale);
+    ctx.lineTo(2 * scale, 58 * scale);
     ctx.closePath();
     ctx.fill();
 
-    // Specular highlight flare
-    ctx.save();
-    ctx.clip();
-    const flareGrad = ctx.createLinearGradient(0, flareY - 180, 0, flareY + 180);
-    flareGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
-    flareGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.98)');
-    flareGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    ctx.fillStyle = flareGrad;
-    ctx.fillRect(0, flareY - 180, 40 * slashScale, 360);
-    ctx.restore();
+    // Specular flare sweep (smoothstep from t=0.1 to t=0.7)
+    if (t >= 0.1 && t <= 0.7) {
+      const p = (t - 0.1) / 0.6;
+      const smoothP = p * p * (3 - 2 * p);
+      const flareY = -60 + smoothP * (slashH + 120);
+      const flareAlpha = Math.sin(p * Math.PI) * 0.95;
+
+      ctx.save();
+      ctx.clip();
+      const flareGrad = ctx.createLinearGradient(0, flareY - 90, 0, flareY + 90);
+      flareGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+      flareGrad.addColorStop(0.5, `rgba(255, 255, 255, ${flareAlpha})`);
+      flareGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = flareGrad;
+      ctx.fillRect(0, flareY - 90, slashW, 180);
+      ctx.restore();
+    }
 
     ctx.restore();
 
-    // Typography in 4K resolution
-    const floatY = Math.sin(t * Math.PI * 2) * 12;
-    ctx.save();
-    ctx.translate(slashX + 700, slashY + 336 + floatY);
+    // Rock-Solid Typography (Zero bobbing)
+    const textX = slashX + slashW + 72;
+    const textY = slashY + 144;
 
-    // "SO WE"
+    ctx.save();
+    ctx.translate(textX, textY);
+
+    // 'SO WE'
     ctx.fillStyle = '#161124';
-    ctx.font = '700 208px "Syne", system-ui, sans-serif';
-    ctx.letterSpacing = '24px';
+    ctx.font = '700 96px "Syne", system-ui, sans-serif';
+    ctx.letterSpacing = '10px';
     ctx.fillText('SO WE', 0, 0);
 
-    // "BUILD"
-    ctx.font = '700 256px "Syne", system-ui, sans-serif';
-    ctx.fillText('BUILD', 0, 272);
+    // 'BUILD'
+    ctx.font = '700 120px "Syne", system-ui, sans-serif';
+    ctx.letterSpacing = '4px';
+    ctx.fillText('BUILD', 0, 126);
 
-    // ".IN"
+    // '.IN'
     const bMetrics = ctx.measureText('BUILD');
     ctx.fillStyle = '#7C3AED';
-    ctx.shadowColor = 'rgba(124, 58, 237, 0.45)';
-    ctx.shadowBlur = 48 + 20 * Math.sin(t * Math.PI * 2);
-    ctx.fillText('.IN', bMetrics.width + 24, 272);
 
-    // Neon Spark dot
-    ctx.fillStyle = '#c6ff3d';
-    ctx.shadowColor = 'rgba(198, 255, 61, 0.9)';
-    ctx.shadowBlur = 36;
-    ctx.beginPath();
-    ctx.arc(bMetrics.width + 360, 220, 20, 0, Math.PI * 2);
-    ctx.fill();
+    // Shimmer on .IN between t=0.55 and t=0.85
+    let inGlow = 18;
+    if (t >= 0.55 && t <= 0.85) {
+      const shP = (t - 0.55) / 0.3;
+      inGlow += Math.sin(shP * Math.PI) * 22;
+    }
+    ctx.shadowColor = 'rgba(124, 58, 237, 0.45)';
+    ctx.shadowBlur = inGlow;
+    ctx.fillText('.IN', bMetrics.width + 12, 126);
 
     ctx.restore();
 
-    // Subtitle Spec
-    ctx.font = '500 56px "JetBrains Mono", monospace';
-    ctx.letterSpacing = '24px';
+    // Subtitle
+    ctx.font = '500 24px "JetBrains Mono", monospace';
+    ctx.letterSpacing = '10px';
     ctx.fillStyle = '#5A5068';
-    ctx.fillText('STUDIO // SOWEBUILD.IN', slashX + 700, slashY + 750 + floatY);
+    ctx.fillText('TECHNOLOGY STUDIO // SOWEBUILD.IN', textX, textY + 236);
 
     const imgData = ctx.getImageData(0, 0, width, height);
     encoder.addFrameRgba(imgData.data);
@@ -578,7 +572,7 @@ async function generateAnimatedMP4() {
   const mp4Bytes = encoder.FS.readFile(encoder.outputFilename);
   fs.writeFileSync(path.join(BRAND_DIR, 'sowebuild-animated.mp4'), Buffer.from(mp4Bytes));
   encoder.delete();
-  console.log('Saved 4K sowebuild-animated.mp4 (', mp4Bytes.length, 'bytes).');
+  console.log('Saved pristine 60fps sowebuild-animated.mp4 (', mp4Bytes.length, 'bytes).');
 }
 
 /* -------------------------------------------------------------------------- */
@@ -588,7 +582,7 @@ async function generateAnimatedMP4() {
 async function main() {
   await generateAnimatedGIF();
   await generateAnimatedMP4();
-  console.log('All brand assets successfully updated to Ivory Violet identity!');
+  console.log('All brand assets successfully updated to high-end Ivory Violet identity!');
 }
 
 main().catch(err => {

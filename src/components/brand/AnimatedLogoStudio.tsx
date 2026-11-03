@@ -8,7 +8,7 @@ export function AnimatedLogoStudio() {
   const [playbackSpeed, setPlaybackSpeed] = useState<0.5 | 1 | 2>(1);
   const [activeTab, setActiveTab] = useState<"mp4" | "gif" | "canvas">("mp4");
 
-  // Real-time canvas animation loop
+  // Real-time canvas animation loop with high-DPI rendering and seamless motion
   useEffect(() => {
     if (activeTab !== "canvas") return;
     const canvas = canvasRef.current;
@@ -26,7 +26,7 @@ export function AnimatedLogoStudio() {
       }
 
       const elapsed = (now - startTime) * 0.001 * playbackSpeed;
-      const t = (elapsed % 2.5) / 2.5; // loop every 2.5 seconds
+      const t = (elapsed % 2.5) / 2.5; // seamless 2.5 second loop
 
       const width = canvas.width;
       const height = canvas.height;
@@ -35,93 +35,109 @@ export function AnimatedLogoStudio() {
       ctx.fillStyle = "#FAF8F5";
       ctx.fillRect(0, 0, width, height);
 
-      // Blueprint matrix grid dots
-      ctx.fillStyle = "rgba(22, 17, 36, 0.04)";
-      for (let x = 20; x < width; x += 36) {
-        for (let y = 20; y < height; y += 36) {
-          ctx.fillRect(x, y, 1.5, 1.5);
+      // Subtle blueprint matrix grid dots
+      ctx.fillStyle = "rgba(22, 17, 36, 0.035)";
+      for (let x = 24; x < width; x += 48) {
+        for (let y = 24; y < height; y += 48) {
+          ctx.fillRect(x, y, 2, 2);
         }
       }
 
-      // Breathing Royal Violet aura
-      const pulse = 0.12 + 0.08 * Math.sin(t * Math.PI * 2);
-      const rad = ctx.createRadialGradient(width * 0.3, height * 0.5, 20, width * 0.3, height * 0.5, 240);
+      // Breathing Royal Violet ambient radial aura
+      const pulse = 0.10 + 0.05 * Math.sin(t * Math.PI * 2);
+      const rad = ctx.createRadialGradient(width * 0.38, height * 0.5, 40, width * 0.38, height * 0.5, 600);
       rad.addColorStop(0, `rgba(124, 58, 237, ${pulse})`);
-      rad.addColorStop(0.6, `rgba(109, 40, 217, ${pulse * 0.4})`);
+      rad.addColorStop(0.6, `rgba(109, 40, 217, ${pulse * 0.3})`);
       rad.addColorStop(1, "rgba(250, 248, 245, 0)");
       ctx.fillStyle = rad;
       ctx.fillRect(0, 0, width, height);
 
-      // Geometric slash
-      const slashScale = 2.4;
-      const slashX = width * 0.2;
-      const slashY = height * 0.5 - 30 * slashScale;
+      // Layout coordinates (scale based on 1920x1080)
+      const scale = 7.2;
+      const slashW = 40 * scale;
+      const slashH = 60 * scale;
+      const slashX = 360;
+      const slashY = (height - slashH) / 2;
 
+      // Draw Slash Mark
       ctx.save();
       ctx.translate(slashX, slashY);
 
-      const polyGrad = ctx.createLinearGradient(0, 0, 40 * slashScale, 60 * slashScale);
+      const polyGrad = ctx.createLinearGradient(0, 0, slashW, slashH);
       polyGrad.addColorStop(0, "#9333EA");
       polyGrad.addColorStop(0.6, "#7C3AED");
       polyGrad.addColorStop(1, "#6D28D9");
 
       ctx.shadowColor = "rgba(124, 58, 237, 0.35)";
-      ctx.shadowBlur = 18 + 8 * Math.sin(t * Math.PI * 2);
+      ctx.shadowBlur = 36;
       ctx.fillStyle = polyGrad;
 
       ctx.beginPath();
-      ctx.moveTo(26 * slashScale, 2 * slashScale);
-      ctx.lineTo(38 * slashScale, 2 * slashScale);
-      ctx.lineTo(14 * slashScale, 58 * slashScale);
-      ctx.lineTo(2 * slashScale, 58 * slashScale);
+      ctx.moveTo(26 * scale, 2 * scale);
+      ctx.lineTo(38 * scale, 2 * scale);
+      ctx.lineTo(14 * scale, 58 * scale);
+      ctx.lineTo(2 * scale, 58 * scale);
       ctx.closePath();
       ctx.fill();
 
-      // Specular flare moving across diagonal
-      const flareY = ((t * 1.4) % 1) * (60 * slashScale);
-      ctx.save();
-      ctx.clip();
-      const flareGrad = ctx.createLinearGradient(0, flareY - 35, 0, flareY + 35);
-      flareGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-      flareGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
-      flareGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-      ctx.fillStyle = flareGrad;
-      ctx.fillRect(0, flareY - 35, 40 * slashScale, 70);
-      ctx.restore();
+      // Specular flare sweep (smoothstep from t=0.1 to t=0.7)
+      if (t >= 0.1 && t <= 0.7) {
+        const p = (t - 0.1) / 0.6;
+        const smoothP = p * p * (3 - 2 * p);
+        const flareY = -60 + smoothP * (slashH + 120);
+        const flareAlpha = Math.sin(p * Math.PI) * 0.95;
+
+        ctx.save();
+        ctx.clip();
+        const flareGrad = ctx.createLinearGradient(0, flareY - 90, 0, flareY + 90);
+        flareGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+        flareGrad.addColorStop(0.5, `rgba(255, 255, 255, ${flareAlpha})`);
+        flareGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+        ctx.fillStyle = flareGrad;
+        ctx.fillRect(0, flareY - 90, slashW, 180);
+        ctx.restore();
+      }
 
       ctx.restore();
 
-      // Kinetic Typography with Syne
-      const floatY = Math.sin(t * Math.PI * 2) * 2;
+      // Rock-Solid Typography (Zero bobbing)
+      const textX = slashX + slashW + 72;
+      const textY = slashY + 144;
+
       ctx.save();
-      ctx.translate(slashX + 115, slashY + 54 + floatY);
+      ctx.translate(textX, textY);
 
       // "SO WE"
       ctx.fillStyle = "#161124";
-      ctx.font = '700 36px "Syne", system-ui, sans-serif';
-      ctx.letterSpacing = "5px";
+      ctx.font = '700 96px var(--font-syne), "Syne", system-ui, sans-serif';
+      ctx.letterSpacing = "10px";
       ctx.fillText("SO WE", 0, 0);
 
       // "BUILD"
-      ctx.font = '700 44px "Syne", system-ui, sans-serif';
-      ctx.fillText("BUILD", 0, 46);
+      ctx.font = '700 120px var(--font-syne), "Syne", system-ui, sans-serif';
+      ctx.letterSpacing = "4px";
+      ctx.fillText("BUILD", 0, 126);
 
       // ".IN"
       const bMetrics = ctx.measureText("BUILD");
       ctx.fillStyle = "#7C3AED";
-      ctx.shadowColor = "rgba(124, 58, 237, 0.35)";
-      ctx.shadowBlur = 12 + 6 * Math.cos(t * Math.PI * 2);
-      ctx.fillText(".IN", bMetrics.width + 4, 46);
 
-      // Neon spark dot
-      ctx.fillStyle = "#c6ff3d";
-      ctx.shadowColor = "rgba(198, 255, 61, 0.8)";
-      ctx.shadowBlur = 8;
-      ctx.beginPath();
-      ctx.arc(bMetrics.width + 58, 38, 3.5, 0, Math.PI * 2);
-      ctx.fill();
+      let inGlow = 18;
+      if (t >= 0.55 && t <= 0.85) {
+        const shP = (t - 0.55) / 0.3;
+        inGlow += Math.sin(shP * Math.PI) * 22;
+      }
+      ctx.shadowColor = "rgba(124, 58, 237, 0.45)";
+      ctx.shadowBlur = inGlow;
+      ctx.fillText(".IN", bMetrics.width + 12, 126);
 
       ctx.restore();
+
+      // Subtitle
+      ctx.font = '500 24px var(--font-jetbrains-mono), "JetBrains Mono", monospace';
+      ctx.letterSpacing = "10px";
+      ctx.fillStyle = "#5A5068";
+      ctx.fillText("TECHNOLOGY STUDIO // SOWEBUILD.IN", textX, textY + 236);
 
       animId = requestAnimationFrame(render);
     };
@@ -142,7 +158,7 @@ export function AnimatedLogoStudio() {
             Animated Brand Assets
           </h2>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Rendered frame-by-frame via 100% code (Canvas & WebCodecs algorithms, zero AI images). Optimized for website hero intros, video titles, and social announcement reels.
+            Rendered frame-by-frame via 100% code (Canvas &amp; H.264 WebCodecs, zero AI images). Optimized for website hero intros, video titles, and social announcement reels.
           </p>
         </div>
 
@@ -150,7 +166,7 @@ export function AnimatedLogoStudio() {
         <div className="flex items-center gap-1.5 rounded-full border border-[#E8DFF2] bg-white p-1 font-mono text-xs shadow-sm">
           <button
             onClick={() => setActiveTab("mp4")}
-            className={`rounded-full px-3.5 py-1 transition-all ${
+            className={`rounded-full px-3.5 py-1 transition-all cursor-pointer ${
               activeTab === "mp4"
                 ? "bg-primary text-white shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
@@ -160,7 +176,7 @@ export function AnimatedLogoStudio() {
           </button>
           <button
             onClick={() => setActiveTab("gif")}
-            className={`rounded-full px-3.5 py-1 transition-all ${
+            className={`rounded-full px-3.5 py-1 transition-all cursor-pointer ${
               activeTab === "gif"
                 ? "bg-primary text-white shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
@@ -170,7 +186,7 @@ export function AnimatedLogoStudio() {
           </button>
           <button
             onClick={() => setActiveTab("canvas")}
-            className={`rounded-full px-3.5 py-1 transition-all ${
+            className={`rounded-full px-3.5 py-1 transition-all cursor-pointer ${
               activeTab === "canvas"
                 ? "bg-primary text-white shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
@@ -209,8 +225,8 @@ export function AnimatedLogoStudio() {
               {activeTab === "canvas" && (
                 <canvas
                   ref={canvasRef}
-                  width={640}
-                  height={360}
+                  width={1920}
+                  height={1080}
                   className="size-full object-contain"
                 />
               )}
@@ -219,7 +235,7 @@ export function AnimatedLogoStudio() {
               <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full border border-[#E8DFF2] bg-white/90 px-3 py-1 font-mono text-[10px] text-foreground backdrop-blur-md shadow-xs">
                 <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>
-                  {activeTab === "mp4" ? "H.264 // 60 FPS // 3840×2160 MASTER" : activeTab === "gif" ? "GIF89a // 36 FRAMES // LOOP" : "LIVE 2D CANVAS PIPELINE"}
+                  {activeTab === "mp4" ? "H.264 // 60 FPS // 1080p FULL HD" : activeTab === "gif" ? "GIF89a // 50 FRAMES // 25 FPS LOOP" : "LIVE 2D RETINA CANVAS"}
                 </span>
               </div>
             </div>
@@ -279,7 +295,7 @@ export function AnimatedLogoStudio() {
                 Cinematic Motion System
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Engineered with procedural math and timing curves. The diagonal slash initiates with a specular laser sweep followed by harmonic typographic reveal and neon green spark resonance.
+                Engineered with procedural math and timing curves. The diagonal slash initiates with a smooth specular laser sweep followed by harmonic typographic reveal and seamless zero-pop looping.
               </p>
 
               {/* Specs Table */}
@@ -290,15 +306,15 @@ export function AnimatedLogoStudio() {
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Loop Duration</span>
-                  <span className="text-foreground font-semibold">2.00 Seconds</span>
+                  <span className="text-foreground font-semibold">2.50 Seconds</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Theme Matrix</span>
                   <span className="text-foreground font-semibold">Ivory Violet (#FAF8F5)</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Color Mode</span>
-                  <span className="text-foreground font-semibold">sRGB Full Range</span>
+                  <span>Frame Rate</span>
+                  <span className="text-foreground font-semibold">60 FPS Ultra-Smooth</span>
                 </div>
               </div>
             </div>
@@ -315,10 +331,10 @@ export function AnimatedLogoStudio() {
                     <polygon points="23 7 16 12 23 17 23 7" />
                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
                   </svg>
-                  <span>Download Animated MP4</span>
+                  <span>Download Animated MP4 (60fps)</span>
                 </div>
                 <span className="text-[10px] opacity-80 group-hover:translate-x-0.5 transition-transform">
-                  1.3 MB ↓
+                  1080p60 ↓
                 </span>
               </a>
 
@@ -336,7 +352,7 @@ export function AnimatedLogoStudio() {
                   <span>Download Animated GIF</span>
                 </div>
                 <span className="text-[10px] text-muted-foreground group-hover:translate-x-0.5 transition-transform">
-                  681 KB ↓
+                  HD Loop ↓
                 </span>
               </a>
             </div>
