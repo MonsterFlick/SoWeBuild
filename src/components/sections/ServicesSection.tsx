@@ -77,8 +77,8 @@ interface ServiceCardProps {
   cat: ServiceCategory;
   isExpanded: boolean;
   onToggle: () => void;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 function ServiceCard({
@@ -226,34 +226,68 @@ const FILTER_GROUPS = [
 
 export default function ServicesSection() {
   const [selectedGroup, setSelectedGroup] = useState<string>("All Disciplines");
-  // Hover-to-open state: tracks which category card is currently under the cursor
+  // Set of open category IDs (manual click toggle / expand all)
+  const [openIds, setOpenIds] = useState<Record<string, boolean>>({});
+  // Hovered ID (desktop only)
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  // Pinned state: user can click to lock a drawer open (essential for mobile & persistent viewing)
-  const [pinnedIds, setPinnedIds] = useState<Record<string, boolean>>({});
-  // Master toggle state
-  const [isAllExpanded, setIsAllExpanded] = useState<boolean>(false);
+  // If user explicitly clicks to close while hovering, keep it closed until mouse leaves
+  const [dismissedHoverId, setDismissedHoverId] = useState<string | null>(null);
+
+  // Check if a category is expanded
+  const isCardExpanded = (id: string) => {
+    // If explicitly opened via click / Expand All
+    if (openIds[id]) return true;
+    // If hovered on desktop and user has not clicked to dismiss it
+    if (hoveredId === id && dismissedHoverId !== id) return true;
+    return false;
+  };
 
   const toggleCategory = (id: string) => {
-    setPinnedIds((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    const currentlyOpen = isCardExpanded(id);
+    if (currentlyOpen) {
+      // User clicked to COLLAPSE
+      setOpenIds((prev) => {
+        const next = { ...prev };
+        delete next[id];
+        return next;
+      });
+      // Suppress hover reopening while mouse stays over this card
+      if (hoveredId === id) {
+        setDismissedHoverId(id);
+      }
+    } else {
+      // User clicked to OPEN
+      setOpenIds((prev) => ({
+        ...prev,
+        [id]: true,
+      }));
+      setDismissedHoverId(null);
+    }
   };
 
   const handleExpandAll = () => {
-    setIsAllExpanded(true);
+    const all: Record<string, boolean> = {};
+    SERVICE_CATEGORIES.forEach((cat) => {
+      all[cat.id] = true;
+    });
+    setOpenIds(all);
+    setDismissedHoverId(null);
   };
 
   const handleCollapseAll = () => {
-    setIsAllExpanded(false);
-    setPinnedIds({});
+    setOpenIds({});
     setHoveredId(null);
+    setDismissedHoverId(null);
   };
 
   const filteredCategories =
     selectedGroup === "All Disciplines"
       ? SERVICE_CATEGORIES
       : SERVICE_CATEGORIES.filter((cat) => cat.group === selectedGroup);
+
+  const isAllExpanded =
+    filteredCategories.length > 0 &&
+    filteredCategories.every((cat) => openIds[cat.id]);
 
   // Divide into two independent vertical columns for desktop to completely avoid
   // row-height locking dead space when drawers expand
@@ -352,31 +386,37 @@ export default function ServicesSection() {
         {/* Dual independent columns eliminate empty space next to drawers */}
         {/* ============================================================== */}
 
-        {/* Mobile View: Single continuous column (Tap/Click to toggle) */}
+        {/* Mobile View: Single continuous column (Tap/Click only — no sticky hover) */}
         <div className="flex flex-col gap-4 lg:hidden">
           {filteredCategories.map((cat) => (
             <ServiceCard
               key={cat.id}
               cat={cat}
-              isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
+              isExpanded={isCardExpanded(cat.id)}
               onToggle={() => toggleCategory(cat.id)}
-              onMouseEnter={() => setHoveredId(cat.id)}
-              onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
             />
           ))}
         </div>
 
-        {/* Desktop View: 2 Independent Columns with Hover-to-Open */}
+        {/* Desktop View: 2 Independent Columns with Hover-to-Open & Click-to-Lock/Dismiss */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-6 items-start">
           <div className="flex flex-col gap-6">
             {leftColCategories.map((cat) => (
               <ServiceCard
                 key={cat.id}
                 cat={cat}
-                isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
+                isExpanded={isCardExpanded(cat.id)}
                 onToggle={() => toggleCategory(cat.id)}
-                onMouseEnter={() => setHoveredId(cat.id)}
-                onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
+                onMouseEnter={() => {
+                  setHoveredId(cat.id);
+                  if (dismissedHoverId === cat.id) {
+                    setDismissedHoverId(null);
+                  }
+                }}
+                onMouseLeave={() => {
+                  setHoveredId((curr) => (curr === cat.id ? null : curr));
+                  setDismissedHoverId(null);
+                }}
               />
             ))}
           </div>
@@ -386,10 +426,18 @@ export default function ServicesSection() {
               <ServiceCard
                 key={cat.id}
                 cat={cat}
-                isExpanded={isAllExpanded || hoveredId === cat.id || !!pinnedIds[cat.id]}
+                isExpanded={isCardExpanded(cat.id)}
                 onToggle={() => toggleCategory(cat.id)}
-                onMouseEnter={() => setHoveredId(cat.id)}
-                onMouseLeave={() => setHoveredId((curr) => (curr === cat.id ? null : curr))}
+                onMouseEnter={() => {
+                  setHoveredId(cat.id);
+                  if (dismissedHoverId === cat.id) {
+                    setDismissedHoverId(null);
+                  }
+                }}
+                onMouseLeave={() => {
+                  setHoveredId((curr) => (curr === cat.id ? null : curr));
+                  setDismissedHoverId(null);
+                }}
               />
             ))}
           </div>

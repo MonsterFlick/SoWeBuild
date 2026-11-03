@@ -59,7 +59,7 @@ export default function WorkSection() {
       style={{
         background: "var(--color-bg)",
         position: "relative",
-        paddingTop: "clamp(1.5rem, 4vw, 4.5rem)",
+        paddingTop: "clamp(1.25rem, 3vw, 3rem)",
         paddingBottom: "var(--space-section)",
       }}
     >

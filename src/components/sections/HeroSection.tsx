@@ -286,47 +286,38 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Scroll hint */}
-      <div
-        ref={scrollHintRef}
-        className="hidden lg:flex"
-        style={{
-          position: "absolute",
-          bottom: "2rem",
-          left: "50%",
-          transform: "translateX(-50%)",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "0.5rem",
-          opacity: 0,
-          zIndex: 2,
-        }}
-      >
-        <span
-          className="label"
-          style={{ fontSize: "0.5625rem" }}
-        >
-          Scroll
-        </span>
+        {/* Scroll hint — positioned closely below the studio credentials strip with zero excessive gap */}
         <div
+          ref={scrollHintRef}
+          className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-1.5"
           style={{
-            width: 1,
-            height: 40,
-            background: "var(--color-border)",
-            position: "relative",
-            overflow: "hidden",
+            opacity: 0,
           }}
         >
+          <span
+            className="label text-[9px] uppercase tracking-widest text-[#8C8299] font-medium"
+          >
+            Scroll
+          </span>
           <div
             style={{
-              width: "100%",
-              height: "40%",
-              background: "var(--color-accent)",
-              animation: "scrollLine 2s ease-in-out infinite",
+              width: 1,
+              height: 22,
+              background: "var(--color-border)",
+              position: "relative",
+              overflow: "hidden",
             }}
-          />
+          >
+            <div
+              style={{
+                width: "100%",
+                height: "50%",
+                background: "var(--color-accent)",
+                animation: "scrollLine 2s ease-in-out infinite",
+              }}
+            />
+          </div>
         </div>
       </div>
 

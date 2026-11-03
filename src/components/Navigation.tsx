@@ -24,14 +24,20 @@ export default function Navigation() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen]);
 
@@ -166,22 +172,25 @@ export default function Navigation() {
 
           {/* Mobile menu toggle with morphing SVG icon */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex md:hidden items-center justify-center"
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            className="flex md:hidden items-center justify-center cursor-pointer"
             style={{
-              background: "rgba(22, 19, 29, 0.03)",
+              background: isMenuOpen ? "#FAF8F5" : "rgba(22, 19, 29, 0.03)",
               border: "1px solid var(--color-border)",
               borderRadius: "var(--radius-full)",
-              cursor: "pointer",
-              padding: "8px",
-              width: "42px",
-              height: "42px",
+              padding: "10px",
+              width: "44px",
+              height: "44px",
+              minWidth: "44px",
+              minHeight: "44px",
               position: "relative",
-              zIndex: 102,
+              zIndex: 120,
               color: "var(--color-text)",
               WebkitTapHighlightColor: "transparent",
+              touchAction: "manipulation",
             }}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <motion.path
