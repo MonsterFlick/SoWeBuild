@@ -7,10 +7,11 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navigation from "@/components/Navigation";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
-// 4 Essential Luxury Sections
+// Core Studio Sections
 import HeroSection from "@/components/sections/HeroSection";
 import WorkSection from "@/components/sections/WorkSection";
 import ServicesSection from "@/components/sections/ServicesSection";
+import FAQSection from "@/components/sections/FAQSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
@@ -49,7 +50,10 @@ export default function HomePage() {
         {/* 3. Capabilities / What We Build */}
         <ServicesSection />
 
-        {/* 4. Start a Build / Project Brief Configurator */}
+        {/* 4. Studio Standards & AEO Knowledge Architecture */}
+        <FAQSection />
+
+        {/* 5. Start a Build / Project Brief Configurator */}
         <ContactSection />
       </main>
 

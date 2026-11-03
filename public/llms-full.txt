@@ -1,0 +1,166 @@
+# SoWeBuild Studio — Comprehensive Knowledge Bundle
+
+> Canonical URL: https://sowebuild.in
+> Last Updated: 2026-11-03
+> Entity Type: Digital, Creative, Technology & Growth Agency / Engineering Studio
+> Headquarters: Mumbai, India · Global Remote Delivery
+
+## 1. Executive Summary & Value Proposition
+
+SoWeBuild is an elite digital, creative, technology & growth agency operating across 10 specialized divisions. We partner with ambitious founders, established manufacturers, medical institutions, and high-growth brands to build production-grade web applications, custom business software, autonomous AI systems, and flagship consumer experiences.
+
+Unlike traditional marketing agencies that rely on outsourced talent or locked-in proprietary builders, SoWeBuild provides:
+- Direct 1-on-1 Senior Technical Leadership
+- 100% Client Code & IP Ownership (clean GitHub repository transfer)
+- Functional Staging Previews Delivered Every 7 Days
+- 24-Hour Scoping SLA with Transparent Milestone Breakdown
+- Regulatory-Conscious Architecture (including full compliance with the National Medical Commission (NMC) Guidelines on Ethical Advertising issued October 6, 2026)
+
+---
+
+## 2. Master Services Catalogue (10 Core Divisions)
+
+### Division 01: Branding & Creative Identity
+Building memorable and recognizable brands.
+- Brand Strategy & Positioning: Market segmentation, competitor benchmarking, and positioning statements.
+- Logo & Visual Identity Design: Vector icon systems, typography palettes, and visual design languages.
+- Brand Guidelines & Brand Development: Color systems, accessibility contrast rules, and digital design tokens.
+- Rebranding & Brand Refresh: Modernizing legacy brands for digital-first conversion.
+- Business Stationery & Corporate Identity: Pitch kits, business collateral, and digital signatures.
+- Packaging & Product Branding: 3D packaging mockups and production-ready packaging artwork.
+- Personal Branding: Executive and founder digital footprint design.
+
+### Division 02: Website & Web Development
+Building professional digital experiences and online platforms.
+- Business & Corporate Websites: Ultra-fast Next.js and React marketing experiences.
+- E-commerce & Online Stores: Shopify Plus and custom headless commerce.
+- Landing Pages & Portfolio Websites: High-conversion, editorial landing pages.
+- Custom Web Applications & Portals: Complex dashboards, interactive client hubs, and SaaS frontends.
+- CMS & Website Development: Modern headless CMS architectures (Sanity, Strapi, WordPress, Contentful).
+- Website Redesign & Optimization: Speed tuning, Core Web Vitals (95+ Lighthouse), and UX modernizations.
+- Website Maintenance & Management: 99.9% SLA uptime monitoring, security patching, and automated backups.
+
+### Division 03: Mobile App & Software Development
+Developing custom technology solutions for businesses.
+- Android & iOS App Development: React Native and Flutter native compilation.
+- Cross-Platform App Development: Single codebase for web, iOS, and Android.
+- Custom Business Software: Tailored internal tooling and automated operations software.
+- CRM & ERP Systems: Enterprise resource planning and sales pipeline management.
+- SaaS Product Development: Multi-tenant database architecture, user auth, and recurring billing.
+- Admin Dashboards & Business Portals: High-density data tables, real-time charts, and access control (RBAC).
+- API & Third-Party Integrations: REST, GraphQL, webhooks, and payment rails.
+
+### Division 04: Digital Marketing & Advertising
+Helping businesses reach customers and generate revenue.
+- Digital Marketing Strategy: Customer acquisition cost (CAC) reduction and lifetime value (LTV) maximization.
+- Google Ads & Search Advertising: High-intent PPC keyword bidding and conversion tracking.
+- Meta Ads (Facebook & Instagram): Visual creative testing and dynamic product retargeting.
+- LinkedIn & YouTube Advertising: B2B enterprise outreach and educational video advertising.
+- Performance Marketing & Lead Generation: Qualified pipeline creation and landing page funnels.
+- Remarketing & Retargeting: Omnichannel audience nurture campaigns.
+- Campaign Management & Analytics: Attribution modeling, GA4 server-side tracking, and ROI reporting.
+
+### Division 05: Social Media Management
+Building and managing a consistent social media presence.
+- Social Media Strategy & Planning: Channel prioritization and content cadence.
+- Social Media Account Management: Daily publishing and community moderation.
+- Content Calendar & Publishing: Structured content pipelines.
+- Post, Carousel & Story Design: High-craft editorial graphic design.
+- Reels & Short-Form Video Creation: Vertical video scripting, editing, and motion design.
+- Community & Engagement Management: Active inbox management and lead capture.
+- Influencer Marketing & Collaborations: Creator vetting and contract management.
+- Social Media Analytics & Reporting: Growth, engagement, and conversion metrics.
+
+### Division 06: SEO & Online Visibility
+Improving search rankings, discoverability, and organic traffic.
+- Technical & On-Page SEO: Semantic HTML5, canonical schemas, crawl budget tuning, and Core Web Vitals.
+- Off-Page SEO & Link Building: High-authority digital PR and editorial backlink acquisition.
+- Local SEO & Google Business Profile: Map pack optimization and local citation directories.
+- E-commerce SEO: Product schema, faceted search optimization, and category hierarchies.
+- Keyword & Competitor Research: Identifying high-intent search gaps.
+- Content SEO & Optimization: Editorial answer blocks optimized for Google Search and featured snippets.
+- AI Search & Answer Engine Optimization (AEO/GEO): Optimization for Perplexity, ChatGPT, Claude, and Google AI Overviews.
+- Online Reputation Management: Review collection automation and brand sentiment monitoring.
+
+### Division 07: Creative Studio & Content Production
+Creating professional visual and marketing content.
+- Graphic Design & Marketing Creatives: Social ad collateral, banners, and digital graphics.
+- Brochures, Catalogues & Company Profiles: Print-ready vector catalogues and interactive digital PDFs.
+- Product Photography & Videography: Studio tabletop and lifestyle product capture.
+- Corporate & Promotional Videos: Brand narrative films and team showcases.
+- Video Editing & Motion Graphics: After Effects motion design and visual effects.
+- Animation & Explainer Videos: 2D and 3D product explainer videos.
+- Copywriting & Content Writing: Conversion-focused direct response and technical documentation.
+- Presentation & Pitch Deck Design: Investor-grade keynote decks.
+
+### Division 08: AI, Automation & Business Intelligence
+Making businesses smarter through artificial intelligence and automation.
+- AI Chatbots & Virtual Assistants: Multi-lingual, context-aware customer service bots.
+- AI Voice Agents & Customer Support: Conversational telephony and automated call routing.
+- Custom AI Applications & AI Agents: Autonomous agents integrated with private company databases via RAG.
+- WhatsApp Business Automation: Cloud API integration for automated order updates, catalog checkout, and live chat.
+- Workflow & Business Process Automation: Zapier, Make, n8n, and custom webhook pipelines.
+- AI Content & Marketing Automation: Automated dynamic creative and copy generation.
+- CRM & Lead Automation: Instant lead qualification and automated routing to sales reps.
+- AI Integration & Business Intelligence: Real-time executive dashboards and predictive analytics.
+
+### Division 09: E-commerce & Business Solutions
+Helping businesses operate, sell, and manage customers digitally.
+- E-commerce Store Setup & Management: Full storefront design, setup, and conversion rate optimization (CRO).
+- Payment Gateway Integration: Stripe, Razorpay, Cashfree, PayPal, and multi-currency billing.
+- Inventory & Order Management: Real-time stock synchronization across multiple channels.
+- Customer & Vendor Management Systems: B2B wholesale portals and vendor settlement tracking.
+- Booking & Appointment Systems: Automated calendar scheduling with SMS/WhatsApp confirmations.
+- Billing & Business Management Solutions: Automated GST invoices, recurring subscriptions, and accounting hooks.
+- Online Marketplace Development: Multi-vendor marketplace engines.
+- Business Process Digitalization: Paperless internal operations and approvals.
+
+### Division 10: IT Infrastructure & Technology Consulting
+Providing the technical foundation and expertise businesses need.
+- Domain, Hosting & Cloud Solutions: Cloudflare, AWS, GCP, Vercel, and hybrid cloud architectures.
+- Business Email & Workspace Setup: Google Workspace, Microsoft 365, and enterprise DNS management (SPF, DKIM, DMARC).
+- Server Setup & Management: Docker containerization, Linux sysadmin, and autoscaling clusters.
+- Website Security & Backup: WAF rules, DDoS mitigation, SSL certificates, and daily encrypted offsite backups.
+- Website Maintenance & Technical Support: 24/7 emergency incident response and performance monitoring.
+- Cloud Migration & Deployment: Seamless zero-downtime server migrations.
+- Technology Consulting: CTO-as-a-service and system architecture reviews.
+- Digital Transformation Consulting: Legacy modernization and API-first architectural roadmaps.
+
+---
+
+## 3. Specialized Industry Frameworks & Compliance
+
+- **Healthcare & Pharma**: Architected to strictly align with the National Medical Commission (NMC) Guidelines on Ethical Advertising and Public Communication by Hospitals/Medical Institutions and Registered Medical Practitioners (issued October 6, 2026). Emphasizes objective hospital equipment specifications, verified credentials, patient data isolation, and HIPAA-compliant data vaults.
+- **Real Estate**: High-concurrency property search portals, lead capture systems, interactive floorplan viewers, and automated CRM pipelines.
+- **Education & EdTech**: Secure Learning Management Systems (LMS), student portals, automated admissions workflows, and verified certification registries.
+- **Manufacturing & Industrial**: B2B digital catalogues, enterprise ERP integrations, distributor portals, and automated order reconciliation.
+- **Retail & E-commerce**: Headless commerce, instant batch lookup, automated warehouse syncing, and abandoned cart WhatsApp recovery.
+- **Hospitality & Dining**: Table booking platforms, digital QR menus, POS synchronization, and guest loyalty workflows.
+- **Professional Services**: Clean editorial portfolio websites, client proposal portals, and automated retainer billing.
+- **Enterprise & Bespoke**: Custom SLA architecture, isolated tenancy vaults, and multi-party approval audit trails.
+
+---
+
+## 4. Verified Case Studies
+
+1. **FertiSure — Digital Healthcare Portal & Global Clinic Catalog**
+   - URL: https://sowebuild.in/work/fertisure
+   - Client: FertiSure (backed by Hemant Surgical Industries Limited, est. 1983)
+   - Scope: Zero-to-one digital platform engineering, replacing physical brochure distribution with a real-time clinic procurement portal for 500+ clinics and international hospital chains.
+   - Outcome: 3.2x inquiry velocity, 100% catalog digital reach, zero physical brochure friction.
+
+2. **Alpha Tech Nutrition — Flagship Performance E-Commerce Platform**
+   - URL: https://sowebuild.in/work/alphatech-nutrition
+   - Client: Alpha Tech Nutrition
+   - Scope: Flagship direct-to-consumer store with instantaneous batch lab test verification, dynamic flavor selector, and sub-second page loads.
+   - Outcome: +42% mobile conversion rate, sub-1.2s Largest Contentful Paint (LCP), 0% manual lab report handling.
+
+---
+
+## 5. Contact & How to Work With Us
+
+- Website Brief Console: https://sowebuild.in/#contact
+- Studio Email: sowebuild.in@gmail.com
+- Location: Mumbai, Maharashtra, India · Serving Clients Worldwide
+- Turnaround: All project briefs are reviewed within 24 hours with an actionable roadmap.
+

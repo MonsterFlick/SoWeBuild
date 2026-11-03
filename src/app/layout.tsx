@@ -42,30 +42,37 @@ const fontSerif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SoWeBuild — Technology Development Studio",
+  title: {
+    default: "SoWeBuild — Digital Product & Technology Development Studio",
+    template: "%s — SoWeBuild",
+  },
   description:
-    "SoWeBuild is a technology development studio building high-performance websites, web apps, mobile apps, AI chatbots, WhatsApp automation, custom software, and cloud infrastructure. Engineered from zero to production. So We Build.",
+    "SoWeBuild is an engineering and digital product studio building bespoke web applications, AI automation, and cloud platforms for ambitious brands worldwide. 100% IP ownership, senior-led development.",
   keywords: [
     "SoWeBuild",
     "sowebuild.in",
-    "web development studio India",
-    "web apps",
-    "AI chatbots",
-    "WhatsApp automation",
-    "custom software",
-    "Next.js development",
+    "technology development studio",
+    "web development agency India",
+    "bespoke web applications",
+    "AI chatbots and automation",
+    "WhatsApp business automation",
+    "custom software development",
+    "Next.js engineering studio",
     "React development",
-    "mobile app development",
-    "API integrations",
+    "enterprise software development",
+    "cloud infrastructure consulting",
   ],
   authors: [{ name: "SoWeBuild Studio", url: "https://sowebuild.in" }],
   creator: "SoWeBuild",
   publisher: "SoWeBuild",
   metadataBase: new URL("https://sowebuild.in"),
+  alternates: {
+    canonical: "https://sowebuild.in",
+  },
   openGraph: {
-    title: "SoWeBuild — Technology Development Studio",
+    title: "SoWeBuild — Digital Product & Technology Development Studio",
     description:
-      "Engineered from zero to production. High-performance websites, web apps, AI chatbots & WhatsApp automation. So We Build.",
+      "Engineered from zero to production. High-performance web apps, AI automation, and custom platforms with 100% full IP ownership.",
     url: "https://sowebuild.in",
     siteName: "SoWeBuild",
     type: "website",
@@ -73,9 +80,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SoWeBuild — Technology Development Studio",
+    title: "SoWeBuild — Digital Product & Technology Development Studio",
     description:
-      "Engineered from zero to production. High-performance websites, web apps, AI chatbots & automation. So We Build.",
+      "Engineered from zero to production. High-performance web apps, AI automation, and custom platforms with 100% full IP ownership.",
   },
   robots: {
     index: true,
@@ -97,25 +104,158 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "SoWeBuild",
-    url: "https://sowebuild.in",
-    email: "sowebuild.in@gmail.com",
-    description:
-      "Technology development studio building websites, web apps, AI chatbots, and WhatsApp automation.",
-    sameAs: ["https://instagram.com/sowebuild.in"],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "IN",
-    },
-    knowsAbout: [
-      "Web Development",
-      "Mobile App Development",
-      "AI Chatbots",
-      "WhatsApp Automation",
-      "Custom Software",
-      "API Integration",
-      "Cloud Infrastructure",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://sowebuild.in/#website",
+        url: "https://sowebuild.in",
+        name: "SoWeBuild",
+        alternateName: ["SWB", "SoWeBuild Studio", "SoWeBuild.in"],
+        description: "Technology development and digital product engineering studio.",
+        publisher: {
+          "@id": "https://sowebuild.in/#organization",
+        },
+        inLanguage: "en-IN",
+      },
+      {
+        "@type": ["ProfessionalService", "Organization"],
+        "@id": "https://sowebuild.in/#organization",
+        name: "SoWeBuild",
+        legalName: "SoWeBuild Studio",
+        url: "https://sowebuild.in",
+        logo: "https://sowebuild.in/icon.png",
+        image: "https://sowebuild.in/og-image.jpg",
+        description:
+          "SoWeBuild is an elite digital, creative, technology & growth agency building web applications, mobile platforms, AI automation systems, and enterprise software with guaranteed 100% IP ownership.",
+        email: "sowebuild.in@gmail.com",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Mumbai",
+          addressRegion: "Maharashtra",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 19.076,
+          longitude: 72.8777,
+        },
+        areaServed: [
+          "India",
+          "United States",
+          "United Kingdom",
+          "United Arab Emirates",
+          "European Union",
+          "Global Remote",
+        ],
+        priceRange: "$$$",
+        currenciesAccepted: "INR, USD, EUR, GBP, AED",
+        paymentAccepted: "Bank Transfer, Stripe, Wire Transfer",
+        sameAs: [
+          "https://instagram.com/sowebuild.in",
+          "https://github.com/MonsterFlick/SoWeBuild",
+        ],
+        knowsAbout: [
+          "Web Application Development",
+          "Mobile App Development",
+          "Custom Software & Enterprise ERP",
+          "AI Chatbots & Autonomous AI Agents",
+          "WhatsApp Cloud API Automation",
+          "Digital Marketing & Performance Ads",
+          "SEO & Online Visibility",
+          "Creative Studio & Video Production",
+          "Cloud Migration & IT Infrastructure",
+          "National Medical Commission (NMC) Ethical Advertising Guidelines (Oct 6, 2026)",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Master Services Catalogue",
+          itemListElement: [
+            {
+              "@type": "OfferCatalog",
+              name: "01. Branding & Creative Identity",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Strategy & Positioning" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Logo & Visual Identity Design" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Packaging & Product Branding" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "02. Website & Web Development",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business & Corporate Websites" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Web Applications & Portals" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-commerce & Online Stores" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "03. Mobile App & Software Development",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Android & iOS App Development" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Business Software & ERP" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "SaaS Product Development" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "04. Digital Marketing & Advertising",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Performance Marketing & Google Ads" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Meta, LinkedIn & YouTube Ads" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "05. Social Media Management",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Strategy & Planning" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Content Creation, Reels & Analytics" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "06. SEO & Online Visibility",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Technical, On-Page & Local SEO" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Search & Answer Engine Optimization (AEO)" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "07. Creative Studio & Content Production",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Product Video Production & 3D Motion" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Copywriting & Pitch Deck Design" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "08. AI, Automation & Business Intelligence",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom AI Applications & Autonomous Agents" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "WhatsApp Business Automation & CRM Workflows" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "09. E-commerce & Business Solutions",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Online Marketplace Development" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Inventory & Order Management Automation" } },
+              ],
+            },
+            {
+              "@type": "OfferCatalog",
+              name: "10. IT Infrastructure & Technology Consulting",
+              itemListElement: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud Migration, Security & DevOps" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Transformation Consulting" } },
+              ],
+            },
+          ],
+        },
+      },
     ],
   };
 
@@ -125,6 +265,7 @@ export default function RootLayout({
       className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable} ${fontSerif.variable}`}
     >
       <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

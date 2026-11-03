@@ -30,7 +30,10 @@ export default function FooterSection() {
   const navLinks = [
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
+    { label: "Standards", href: "#faq" },
     { label: "Contact", href: "#contact" },
+    { label: "Brand", href: "/brand-guidelines" },
+    { label: "llms.txt", href: "/llms.txt" },
   ];
 
   return (
@@ -170,7 +173,29 @@ export default function FooterSection() {
             © {new Date().getFullYear()} SoWeBuild Studio. Engineered in India for the world.
           </span>
 
-          <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", justifyContent: "center" }}>
+          <div className="flex gap-4 sm:gap-6 items-center justify-center flex-wrap">
+            <a
+              href="/sitemap.xml"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+              }}
+            >
+              Sitemap
+            </a>
+            <a
+              href="/llms.txt"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+              }}
+            >
+              llms.txt
+            </a>
             <a
               href="mailto:sowebuild.in@gmail.com"
               className="link-sweep mono"

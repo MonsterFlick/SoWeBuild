@@ -44,6 +44,7 @@ export default function Navigation() {
   const navLinks = [
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
+    { label: "Standards", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -51,6 +52,7 @@ export default function Navigation() {
     { label: "Home", href: "/" },
     { label: "Selected Work", href: "#work" },
     { label: "Master Services", href: "#services" },
+    { label: "Studio Standards & FAQ", href: "#faq" },
     { label: "Start a Project", href: "#contact" },
     { label: "Brand Guidelines", href: "/brand-guidelines" },
   ];

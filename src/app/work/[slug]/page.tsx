@@ -22,9 +22,13 @@ export async function generateMetadata({
   return {
     title: `${cs.title} — SoWeBuild Case Study`,
     description: cs.summary,
+    alternates: {
+      canonical: `https://sowebuild.in/work/${slug}`,
+    },
     openGraph: {
       title: `${cs.client} Case Study — SoWeBuild`,
       description: cs.subtitle,
+      url: `https://sowebuild.in/work/${slug}`,
       images: [cs.image],
     },
   };
@@ -82,8 +86,69 @@ export default async function WorkSlugPage({
   const otherSlug = slug === "fertisure" ? "alphatech-nutrition" : "fertisure";
   const otherCs = CASE_STUDIES[otherSlug];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://sowebuild.in",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Selected Work",
+            item: "https://sowebuild.in/#work",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: cs.client,
+            item: `https://sowebuild.in/work/${slug}`,
+          },
+        ],
+      },
+      {
+        "@type": "Article",
+        "@id": `https://sowebuild.in/work/${slug}#article`,
+        headline: cs.title,
+        description: cs.summary,
+        image: cs.image ? `https://sowebuild.in${cs.image}` : undefined,
+        author: {
+          "@type": "Organization",
+          name: "SoWeBuild Studio",
+          url: "https://sowebuild.in",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "SoWeBuild",
+          url: "https://sowebuild.in",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://sowebuild.in/icon.png",
+          },
+        },
+        mainEntityOfPage: `https://sowebuild.in/work/${slug}`,
+        about: {
+          "@type": "Organization",
+          name: cs.client,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="relative min-h-screen bg-[#FAF8F5] text-[#161124] overflow-x-hidden selection:bg-[#7C3AED]/20 selection:text-[#161124]">
+      {/* Schema Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Luxury Trailing Cursor */}
       <CustomCursor />
 
