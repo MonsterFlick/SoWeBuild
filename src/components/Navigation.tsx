@@ -56,7 +56,7 @@ export default function Navigation() {
     { label: "Store (Tools & Books) ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder (Om Thakur) ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Start a Project", href: "#contact" },
-    { label: "Brand Guidelines", href: "/brand-guidelines" },
+    { label: "Brand Assets ↗", href: "https://github.com/MonsterFlick/SoWeBuild-assets", isExternal: true },
   ];
 
   const handleLinkClick = (

@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     // Construct high-impact Discord embed message
     const discordPayload = {
       username: "SoWeBuild Studio Leads",
-      avatar_url: "https://sowebuild.in/brand/sowebuild-symbol.png",
+      avatar_url: "https://raw.githubusercontent.com/MonsterFlick/SoWeBuild-assets/main/logos/sowebuild-symbol.png",
       embeds: [
         {
           title: "🚀 New Project Inquiry Received!",

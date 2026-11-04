@@ -33,7 +33,7 @@ export default function FooterSection() {
     { label: "Standards", href: "#faq" },
     { label: "Store ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder ↗", href: "https://omthakur.in", isExternal: true },
-    { label: "Brand", href: "/brand-guidelines" },
+    { label: "Brand Assets ↗", href: "https://github.com/MonsterFlick/SoWeBuild-assets", isExternal: true },
     { label: "Contact", href: "#contact" },
   ];
 
