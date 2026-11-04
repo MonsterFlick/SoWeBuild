@@ -69,12 +69,31 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://sowebuild.in",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: "SoWeBuild — Digital Product & Technology Development Studio",
     description:
       "Engineered from zero to production. High-performance web apps, AI automation, and custom platforms with 100% full IP ownership.",
     url: "https://sowebuild.in",
     siteName: "SoWeBuild",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SoWeBuild — Digital Product & Technology Development Studio",
+      },
+    ],
     type: "website",
     locale: "en_IN",
   },
@@ -83,6 +102,8 @@ export const metadata: Metadata = {
     title: "SoWeBuild — Digital Product & Technology Development Studio",
     description:
       "Engineered from zero to production. High-performance web apps, AI automation, and custom platforms with 100% full IP ownership.",
+    images: ["/og-image.png"],
+    creator: "@sowebuild",
   },
   robots: {
     index: true,
@@ -124,7 +145,7 @@ export default function RootLayout({
         legalName: "SoWeBuild Studio",
         url: "https://sowebuild.in",
         logo: "https://sowebuild.in/icon.png",
-        image: "https://sowebuild.in/og-image.jpg",
+        image: "https://sowebuild.in/og-image.png",
         description:
           "SoWeBuild is an elite digital, creative, technology & growth agency building web applications, mobile platforms, AI automation systems, and enterprise software with guaranteed 100% IP ownership.",
         email: "sowebuild.in@gmail.com",
