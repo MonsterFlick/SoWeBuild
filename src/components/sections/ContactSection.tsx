@@ -3,20 +3,8 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MagneticButton from "../MagneticButton";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PROJECT_TYPES = [
-  "Website & Web Development",
-  "Mobile App & Software",
-  "WhatsApp & AI Automation",
-  "Social Media & Growth",
-  "Branding & Identity",
-  "Digital Marketing & Ads",
-  "Online Store (E-Commerce)",
-  "Other / Let's Talk",
-];
 
 function ZapIcon() {
   return (
@@ -54,7 +42,7 @@ function WhatsAppIcon({ className = "size-4" }: { className?: string }) {
 
 function PhoneIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   );
@@ -103,7 +91,6 @@ export default function ContactSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Form state
-  const [selectedTypes, setSelectedTypes] = useState<string[]>(["Website & Web Development"]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -115,16 +102,6 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const toggleType = (type: string) => {
-    setSelectedTypes((prev) =>
-      prev.includes(type)
-        ? prev.length > 1
-          ? prev.filter((t) => t !== type)
-          : prev
-        : [...prev, type]
-    );
-  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -178,7 +155,7 @@ export default function ContactSection() {
         email: formData.email,
         countryCode: formData.countryCode,
         phone: digitsOnly,
-        projectType: selectedTypes.join(", "),
+        projectType: "Direct Build Brief",
         message: formData.message,
       };
 
@@ -190,14 +167,12 @@ export default function ContactSection() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        // If webhook failed on development, still offer graceful fallback
         console.warn("API response:", data);
       }
 
       setIsSubmitted(true);
     } catch (err) {
       console.error("Submission error:", err);
-      // Gracefully show success to client since lead was recorded
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -237,7 +212,7 @@ export default function ContactSection() {
                 marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
-              Tell us about your business and what you want to achieve. We reply within 24 hours with a clear plan, honest pricing, and zero technical jargon.
+              Tell us about your business goals. We review every brief and reply within 24 hours with a clear roadmap, upfront pricing, and zero agency fluff.
             </p>
 
             {/* Client Assurance Badges */}
@@ -247,24 +222,23 @@ export default function ContactSection() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "1.25rem",
-                marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
               {[
                 {
                   icon: <ZapIcon />,
                   title: "Fast 24-Hour Plan",
-                  desc: "We review your requirements and send a clear timeline and upfront pricing.",
+                  desc: "We review your requirements and send a clear timeline and transparent pricing.",
                 },
                 {
                   icon: <EyeIcon />,
                   title: "Weekly Working Previews",
-                  desc: "Test your website or app on your own phone every week as we build it.",
+                  desc: "Test your website or application on your own mobile device every 7 days as we build it.",
                 },
                 {
                   icon: <LockIcon />,
-                  title: "100% Full Ownership",
-                  desc: "You own all code, designs, and accounts. Zero agency hostage lock-ins.",
+                  title: "100% Full IP Ownership",
+                  desc: "You own all code, repositories, designs, and cloud accounts. Zero agency hostage lock-ins.",
                 },
               ].map((badge) => (
                 <div
@@ -315,140 +289,9 @@ export default function ContactSection() {
                 </div>
               ))}
             </div>
-
-            {/* Direct Studio Channels */}
-            <div
-              className="w-full text-left pt-6 mt-4 border-t border-[var(--color-border)]"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.875rem",
-              }}
-            >
-              <div
-                className="label"
-                style={{ fontSize: "0.6875rem", color: "var(--color-text-muted)" }}
-              >
-                Prefer Direct Communication?
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
-                  <a
-                    href="tel:+917756898550"
-                    className="link-sweep"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      fontWeight: 600,
-                      color: "var(--color-text)",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <PhoneIcon />
-                    +91 77568 98550
-                  </a>
-                  <a
-                    href="https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-sweep"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      fontWeight: 600,
-                      color: "var(--color-accent)",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <WhatsAppIcon className="size-3.5" />
-                    WhatsApp (sowebuild.in) ↗
-                  </a>
-                </div>
-
-                <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
-                  <a
-                    href="mailto:sowebuild.in@gmail.com"
-                    className="link-sweep"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8125rem",
-                      color: "var(--color-text-secondary)",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                    }}
-                  >
-                    <MailIcon />
-                    sowebuild.in@gmail.com
-                  </a>
-                </div>
-
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", paddingTop: "0.25rem", flexWrap: "wrap" }}>
-                  <a
-                    href="https://instagram.com/sowebuild.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-sweep"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      color: "var(--color-text-muted)",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.35rem",
-                    }}
-                  >
-                    <InstagramIcon />
-                    @sowebuild.in
-                  </a>
-                  <span style={{ color: "var(--color-border)" }}>·</span>
-                  <a
-                    href="https://linkedin.com/company/sowebuild-in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-sweep"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      color: "var(--color-text-muted)",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.35rem",
-                    }}
-                  >
-                    <LinkedInIcon />
-                    LinkedIn
-                  </a>
-                  <span style={{ color: "var(--color-border)" }}>·</span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      color: "var(--color-text-muted)",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.35rem",
-                    }}
-                  >
-                    <MapPinIcon />
-                    Mumbai · Global Delivery
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Interactive Brief Form Console */}
+          {/* Right Column: Brief Form Console with Direct Contact Channels Below */}
           <div className="lg:col-span-7">
             <div
               style={{
@@ -460,57 +303,13 @@ export default function ContactSection() {
               }}
             >
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit}>
-                  {/* Step 1: Project Type Chips */}
-                  <div style={{ marginBottom: "1.75rem" }}>
+                <div>
+                  <form onSubmit={handleSubmit}>
                     <div
                       className="label"
-                      style={{ marginBottom: "0.75rem" }}
+                      style={{ marginBottom: "1.25rem" }}
                     >
-                      1. What do you need built? (Select all that apply)
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                      {PROJECT_TYPES.map((type) => {
-                        const isSelected = selectedTypes.includes(type);
-                        return (
-                          <button
-                            key={type}
-                            type="button"
-                            onClick={() => toggleType(type)}
-                            style={{
-                              padding: "0.5rem 0.9rem",
-                              borderRadius: "var(--radius-full)",
-                              fontFamily: "var(--font-mono)",
-                              fontSize: "0.75rem",
-                              fontWeight: isSelected ? 700 : 500,
-                              border: isSelected
-                                ? "1px solid var(--color-accent)"
-                                : "1px solid var(--color-border)",
-                              background: isSelected
-                                ? "var(--color-accent)"
-                                : "rgba(22, 19, 29, 0.02)",
-                              color: isSelected
-                                ? "#FFFFFF"
-                                : "var(--color-text-secondary)",
-                              cursor: "pointer",
-                              transition: "all 0.2s ease",
-                            }}
-                          >
-                            {isSelected && <span style={{ marginRight: 6 }}>✓</span>}
-                            {type}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Step 2: Contact Details */}
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <div
-                      className="label"
-                      style={{ marginBottom: "0.75rem" }}
-                    >
-                      2. Your Details
+                      Brief Your Project
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -566,72 +365,195 @@ export default function ContactSection() {
                       </div>
                     </div>
 
-                    {/* Message */}
-                    <div className="input-group">
+                    {/* Requirements / Project Scope */}
+                    <div className="input-group mb-4">
                       <textarea
-                        rows={3}
+                        rows={4}
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder=" "
                         style={{ resize: "vertical" }}
                       />
-                      <label>Tell us about the problem you are solving *</label>
+                      <label>Tell us about the project, business problem, or timeline *</label>
+                    </div>
+
+                    {errorMessage && (
+                      <div
+                        style={{
+                          padding: "0.75rem 1rem",
+                          marginBottom: "1rem",
+                          borderRadius: "var(--radius-md)",
+                          background: "rgba(255, 68, 68, 0.1)",
+                          border: "1px solid var(--color-error)",
+                          color: "var(--color-error)",
+                          fontSize: "0.8125rem",
+                          fontFamily: "var(--font-mono)",
+                        }}
+                      >
+                        {errorMessage}
+                      </div>
+                    )}
+
+                    {/* Submit Button */}
+                    <div style={{ marginTop: "1rem" }}>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="btn-primary w-full"
+                        style={{
+                          width: "100%",
+                          justifyContent: "center",
+                          padding: "1rem",
+                          fontSize: "0.875rem",
+                          opacity: isSubmitting ? 0.7 : 1,
+                          cursor: isSubmitting ? "not-allowed" : "pointer",
+                        }}
+                      >
+                        <span>
+                          {isSubmitting ? "Dispatching Brief..." : "Initiate Build Brief →"}
+                        </span>
+                      </button>
+                      <div
+                        style={{
+                          textAlign: "center",
+                          marginTop: "0.625rem",
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.625rem",
+                          color: "var(--color-text-muted)",
+                        }}
+                      >
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
+                          <LockIcon size={12} />
+                          Confidentiality guaranteed · Zero spam · Direct builder review
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+
+                  {/* Direct Contact Channels Below Inquiry Form */}
+                  <div
+                    style={{
+                      marginTop: "1.75rem",
+                      paddingTop: "1.5rem",
+                      borderTop: "1px solid var(--color-border)",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.875rem",
+                    }}
+                  >
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span
+                        className="label"
+                        style={{ fontSize: "0.6875rem", color: "var(--color-text-muted)" }}
+                      >
+                        Prefer Direct Contact?
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.6875rem",
+                          color: "var(--color-accent)",
+                          fontWeight: 600,
+                        }}
+                      >
+                        24-Hour Scope SLA
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {/* Direct Calling Channel */}
+                      <a
+                        href="tel:+917756898550"
+                        className="link-sweep"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.75rem",
+                          padding: "0.75rem 1rem",
+                          borderRadius: "var(--radius-md)",
+                          background: "var(--color-bg)",
+                          border: "1px solid var(--color-border)",
+                          textDecoration: "none",
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.8125rem",
+                          color: "var(--color-text)",
+                        }}
+                      >
+                        <PhoneIcon />
+                        <div>
+                          <div style={{ fontSize: "0.625rem", color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Call Directly</div>
+                          <div style={{ fontWeight: 700 }}>+91 77568 98550</div>
+                        </div>
+                      </a>
+
+                      {/* WhatsApp Channel (Number + Username) */}
+                      <a
+                        href="https://api.whatsapp.com/send?phone=917588666776&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-sweep"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.75rem",
+                          padding: "0.75rem 1rem",
+                          borderRadius: "var(--radius-md)",
+                          background: "var(--color-bg)",
+                          border: "1px solid var(--color-border)",
+                          textDecoration: "none",
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "0.8125rem",
+                          color: "var(--color-accent)",
+                        }}
+                      >
+                        <WhatsAppIcon className="size-4" />
+                        <div>
+                          <div style={{ fontSize: "0.625rem", color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>WhatsApp (@sowebuild.in)</div>
+                          <div style={{ fontWeight: 700 }}>+91 75886 66776</div>
+                        </div>
+                      </a>
+                    </div>
+
+                    {/* Email & Social Channels */}
+                    <div className="flex items-center justify-between flex-wrap gap-3 pt-1 text-xs font-mono text-[var(--color-text-secondary)]">
+                      <a
+                        href="mailto:sowebuild.in@gmail.com"
+                        className="link-sweep flex items-center gap-1.5 hover:text-[var(--color-text)]"
+                      >
+                        <MailIcon />
+                        sowebuild.in@gmail.com
+                      </a>
+
+                      <div className="flex items-center gap-3">
+                        <a
+                          href="https://instagram.com/sowebuild.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-sweep flex items-center gap-1 text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+                        >
+                          <InstagramIcon />
+                          @sowebuild.in
+                        </a>
+                        <span>·</span>
+                        <a
+                          href="https://linkedin.com/company/sowebuild-in"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-sweep flex items-center gap-1 text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+                        >
+                          <LinkedInIcon />
+                          LinkedIn
+                        </a>
+                        <span>·</span>
+                        <span className="flex items-center gap-1 text-[var(--color-text-muted)]">
+                          <MapPinIcon />
+                          Mumbai · Worldwide
+                        </span>
+                      </div>
                     </div>
                   </div>
-
-                  {errorMessage && (
-                    <div
-                      style={{
-                        padding: "0.75rem 1rem",
-                        marginBottom: "1rem",
-                        borderRadius: "var(--radius-md)",
-                        background: "rgba(255, 68, 68, 0.1)",
-                        border: "1px solid var(--color-error)",
-                        color: "var(--color-error)",
-                        fontSize: "0.8125rem",
-                        fontFamily: "var(--font-mono)",
-                      }}
-                    >
-                      {errorMessage}
-                    </div>
-                  )}
-
-                  {/* Submit Button */}
-                  <div style={{ marginTop: "1rem" }}>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn-primary w-full"
-                      style={{
-                        width: "100%",
-                        justifyContent: "center",
-                        padding: "1rem",
-                        fontSize: "0.875rem",
-                        opacity: isSubmitting ? 0.7 : 1,
-                        cursor: isSubmitting ? "not-allowed" : "pointer",
-                      }}
-                    >
-                      <span>
-                        {isSubmitting ? "Dispatching Brief..." : "Initiate Build Brief →"}
-                      </span>
-                    </button>
-                    <div
-                      style={{
-                        textAlign: "center",
-                        marginTop: "0.75rem",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.625rem",
-                        color: "var(--color-text-muted)",
-                      }}
-                    >
-                      <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
-                        <LockIcon size={12} />
-                        Confidentiality guaranteed · Zero spam · Direct engineer reply
-                      </span>
-                    </div>
-                  </div>
-                </form>
+                </div>
               ) : (
                 /* Success Confirmation State */
                 <div
@@ -700,7 +622,7 @@ export default function ContactSection() {
 
                   <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
                     <a
-                      href="https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20site."
+                      href="https://api.whatsapp.com/send?phone=917588666776&text=Hi%20SoWeBuild%2C%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20site."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-outline"
@@ -715,7 +637,7 @@ export default function ContactSection() {
                       }}
                     >
                       <WhatsAppIcon className="size-4" />
-                      <span>Chat directly on WhatsApp (sowebuild.in) ↗</span>
+                      <span>Chat directly on WhatsApp (+91 75886 66776 · @sowebuild.in) ↗</span>
                     </a>
                   </div>
 

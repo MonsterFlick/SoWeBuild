@@ -232,7 +232,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             lineHeight: 1.6,
           }}
         >
-          We build custom websites, automated WhatsApp &amp; AI tools, and social media systems that bring in more customers and run your business smoothly. No confusing tech jargon — just clear communication and real results.
+          We engineer bespoke web platforms, custom applications, and automated growth systems for ambitious businesses worldwide. Direct access to builders, 100% full IP ownership, and zero agency bloat.
         </p>
 
         {/* CTA Buttons */}

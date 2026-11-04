@@ -3,10 +3,15 @@
 > SoWeBuild is a premier digital, creative, technology & growth agency. We architect and engineer bespoke web applications, mobile apps, autonomous AI agents, WhatsApp business automations, and enterprise software with guaranteed 100% full IP ownership.
 
 Website: https://sowebuild.in
+Calling Phone: +91 77568 98550
+WhatsApp: +91 75886 66776 (Username: @sowebuild.in)
+WhatsApp Direct Link: https://api.whatsapp.com/send?username=sowebuild.in&type=username
 Founder Portfolio: https://omthakur.in
 Digital Store: https://store.sowebuild.in
-Location: Mumbai, India (Global Remote)
+Location: Mumbai, India (Worldwide Delivery)
 Inquiries: sowebuild.in@gmail.com
+Instagram: https://instagram.com/sowebuild.in (@sowebuild.in)
+LinkedIn: https://linkedin.com/company/sowebuild-in
 Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 
 ## Founder & Engineering Leadership
@@ -60,7 +65,8 @@ Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 
 ## How to Initiate a Build
 
-- Visit the contact section at https://sowebuild.in/#contact
-- Call or WhatsApp directly: +91 77568 98550 (https://api.whatsapp.com/send?phone=917756898550)
+- Submit a brief online: https://sowebuild.in/#contact
+- Direct Phone Call: +91 77568 98550
+- WhatsApp Directly: +91 75886 66776 (Username: @sowebuild.in — https://api.whatsapp.com/send?username=sowebuild.in&type=username)
 - Email directly to sowebuild.in@gmail.com with your project goals and timeline.
-- We review every brief and send a clear plan and pricing within 24 hours.
+- We review every brief and send a clear roadmap and upfront pricing within 24 hours.
