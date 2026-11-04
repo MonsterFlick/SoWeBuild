@@ -60,7 +60,8 @@ export default function EcosystemSection() {
           </div>
 
           <h2 className="heading-xl tracking-tight text-[#161124]">
-            Hands-on engineering.{" "}
+            Hands-on engineering.
+            <br />
             <span className="font-serif italic font-normal text-[#7C3AED]">
               Direct communication.
             </span>

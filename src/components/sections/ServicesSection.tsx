@@ -275,9 +275,10 @@ export default function ServicesSection() {
           </div>
 
           <h2 className="heading-xl tracking-tight text-[#161124]">
-            Everything your brand needs,{" "}
+            Everything your brand needs.
+            <br />
             <span className="font-serif italic font-normal text-[#7C3AED]">
-              built under one roof.
+              Built under one roof.
             </span>
           </h2>
         </div>

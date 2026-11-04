@@ -200,7 +200,8 @@ export default function ContactSection() {
               Get In Touch
             </div>
             <h2 className="heading-xl mb-6">
-              Have a project in mind?{" "}
+              Have a project in mind?
+              <br />
               <span className="serif-accent">Let&apos;s build it</span> together.
             </h2>
 

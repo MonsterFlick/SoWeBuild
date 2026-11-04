@@ -70,7 +70,8 @@ export default function WorkSection() {
             Selected Work
           </div>
           <h2 className="heading-xl tracking-tight text-[#161124]">
-            Real builds.{" "}
+            Real builds.
+            <br />
             <span className="serif-accent">Measured</span> results.
           </h2>
         </div>

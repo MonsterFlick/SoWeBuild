@@ -129,7 +129,8 @@ export default function FAQSection() {
           </div>
 
           <h2 className="heading-xl tracking-tight text-[#161124]">
-            Direct answers.{" "}
+            Direct answers.
+            <br />
             <span className="font-serif italic font-normal text-[#7C3AED]">
               Zero agency fluff.
             </span>

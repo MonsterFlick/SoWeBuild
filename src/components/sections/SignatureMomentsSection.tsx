@@ -48,7 +48,8 @@ export default function SignatureMomentsSection() {
             How We Work
           </div>
           <h2 className="heading-xl">
-            Built different,{" "}
+            Built different,
+            <br />
             <span className="serif-accent">shipped</span> faster.
           </h2>
         </div>
