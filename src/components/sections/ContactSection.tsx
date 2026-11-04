@@ -8,16 +8,14 @@ import MagneticButton from "../MagneticButton";
 gsap.registerPlugin(ScrollTrigger);
 
 const PROJECT_TYPES = [
-  "Branding & Identity",
   "Website & Web Development",
   "Mobile App & Software",
+  "WhatsApp & AI Automation",
+  "Social Media & Growth",
+  "Branding & Identity",
   "Digital Marketing & Ads",
-  "Social Media Management",
-  "SEO & Online Visibility",
-  "Creative Studio & Video",
-  "AI, Automation & BI",
-  "E-Commerce Solutions",
-  "IT & Cloud Consulting",
+  "Online Store (E-Commerce)",
+  "Other / Let's Talk",
 ];
 
 function ZapIcon() {
@@ -46,6 +44,42 @@ function LockIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+function WhatsAppIcon({ className = "size-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.148.566 4.167 1.554 5.918l-1.554 5.666 5.798-1.521c1.706.945 3.664 1.487 5.752 1.487 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
 function MailIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -69,7 +103,7 @@ export default function ContactSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Form state
-  const [selectedTypes, setSelectedTypes] = useState<string[]>(["Web App / SaaS"]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(["Website & Web Development"]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -188,12 +222,12 @@ export default function ContactSection() {
           {/* Left Column: Studio Line & Assurance */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 max-w-lg lg:max-w-none">
             <div className="label" style={{ marginBottom: "0.75rem" }}>
-              Start a Build
+              Get In Touch
             </div>
             <h2 className="heading-xl" style={{ marginBottom: "1rem" }}>
-              Got a problem?
+              Have a project in mind?
               <br />
-              <span className="serif-accent">We build</span> the solution.
+              <span className="serif-accent">Let&apos;s build it</span> together.
             </h2>
             <p
               className="body-lg"
@@ -203,10 +237,10 @@ export default function ContactSection() {
                 marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
-              Tell us what you need. We review every brief and return a detailed technical roadmap with transparent estimates within 24 hours.
+              Tell us about your business and what you want to achieve. We reply within 24 hours with a clear plan, honest pricing, and zero technical jargon.
             </p>
 
-            {/* Engineering Assurance Badges */}
+            {/* Client Assurance Badges */}
             <div
               className="w-full text-left"
               style={{
@@ -219,18 +253,18 @@ export default function ContactSection() {
               {[
                 {
                   icon: <ZapIcon />,
-                  title: "24-Hour Scope & Roadmap",
-                  desc: "Clear milestone breakdown and transparent investment estimate.",
+                  title: "Fast 24-Hour Plan",
+                  desc: "We review your requirements and send a clear timeline and upfront pricing.",
                 },
                 {
                   icon: <EyeIcon />,
-                  title: "Weekly Functional Previews",
-                  desc: "Test working software every week as we build, not just static slides.",
+                  title: "Weekly Working Previews",
+                  desc: "Test your website or app on your own phone every week as we build it.",
                 },
                 {
                   icon: <LockIcon />,
-                  title: "100% Full IP Ownership",
-                  desc: "You own all code, designs, and intellectual property. Zero lock-in.",
+                  title: "100% Full Ownership",
+                  desc: "You own all code, designs, and accounts. Zero agency hostage lock-ins.",
                 },
               ].map((badge) => (
                 <div
@@ -286,19 +320,78 @@ export default function ContactSection() {
             <div
               className="w-full text-left"
               style={{
-                padding: "1.25rem",
+                padding: "1.5rem",
                 borderRadius: "var(--radius-lg)",
                 background: "var(--color-surface)",
                 border: "1px solid var(--color-border)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
               }}
             >
-              <div
-                className="label"
-                style={{ fontSize: "0.625rem", marginBottom: "0.5rem" }}
-              >
-                Direct Studio Contact
+              <div>
+                <div
+                  className="label"
+                  style={{ fontSize: "0.625rem", marginBottom: "0.25rem" }}
+                >
+                  Direct Studio Contact
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                    color: "var(--color-text)",
+                  }}
+                >
+                  sowebuild.in
+                </div>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+
+              {/* Instant WhatsApp CTA Button */}
+              <a
+                href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.625rem",
+                  padding: "0.75rem 1.25rem",
+                  borderRadius: "var(--radius-full)",
+                  background: "#25D366",
+                  color: "#FFFFFF",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.8125rem",
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: "0 4px 14px rgba(37, 211, 102, 0.3)",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <WhatsAppIcon className="size-4" />
+                <span>Chat on WhatsApp (+91 77568 98550) ↗</span>
+              </a>
+
+              {/* Direct Channels List */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", paddingTop: "0.5rem", borderTop: "1px solid var(--color-border)" }}>
+                <a
+                  href="tel:+917756898550"
+                  className="link-sweep"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.8125rem",
+                    color: "var(--color-text)",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.625rem",
+                  }}
+                >
+                  <PhoneIcon />
+                  +91 77568 98550
+                </a>
                 <a
                   href="mailto:sowebuild.in@gmail.com"
                   className="link-sweep"
@@ -309,12 +402,50 @@ export default function ContactSection() {
                     textDecoration: "none",
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "0.5rem",
+                    gap: "0.625rem",
                   }}
                 >
                   <MailIcon />
                   sowebuild.in@gmail.com
                 </a>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", paddingTop: "0.25rem" }}>
+                  <a
+                    href="https://instagram.com/sowebuild.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-sweep"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.75rem",
+                      color: "var(--color-accent)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.35rem",
+                    }}
+                  >
+                    <InstagramIcon />
+                    @sowebuild.in
+                  </a>
+                  <a
+                    href="https://linkedin.com/company/sowebuild-in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-sweep"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.75rem",
+                      color: "var(--color-accent)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.35rem",
+                    }}
+                  >
+                    <LinkedInIcon />
+                    LinkedIn
+                  </a>
+                </div>
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
@@ -323,10 +454,11 @@ export default function ContactSection() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "0.5rem",
+                    marginTop: "0.25rem",
                   }}
                 >
                   <MapPinIcon />
-                  Mumbai, India · Global Remote
+                  Mumbai, India · Worldwide Delivery
                 </span>
               </div>
             </div>
@@ -560,7 +692,7 @@ export default function ContactSection() {
                       margin: "0 auto 1.5rem",
                     }}
                   >
-                    Our engineering lead has been notified. We will review your requirements and reach out via email / WhatsApp within 24 hours.
+                    We&apos;ve received your message. We will review your requirements and reply via email / WhatsApp within 24 hours.
                   </p>
 
                   <div
@@ -570,19 +702,44 @@ export default function ContactSection() {
                       gap: "0.5rem",
                       padding: "0.5rem 1.1rem",
                       borderRadius: "var(--radius-full)",
-                      background: "rgba(198, 255, 61, 0.25)",
-                      border: "1px solid rgba(198, 255, 61, 0.6)",
+                      background: "#F5EDFA",
+                      border: "1px solid #E8DFF2",
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.6875rem",
                       fontWeight: 700,
-                      color: "#121019",
+                      color: "#7C3AED",
                     }}
                   >
-                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#121019" }} />
-                    Status: Priority Project Review In Progress
+                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#7C3AED" }} />
+                    Status: Received &amp; Queued for Review
                   </div>
 
-                  <div style={{ marginTop: "2rem" }}>
+                  <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+                    <a
+                      href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20site."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        padding: "0.625rem 1.25rem",
+                        borderRadius: "var(--radius-full)",
+                        background: "#25D366",
+                        color: "#FFFFFF",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textDecoration: "none",
+                        boxShadow: "0 2px 8px rgba(37, 211, 102, 0.25)",
+                      }}
+                    >
+                      <WhatsAppIcon className="size-4" />
+                      <span>Message us directly on WhatsApp ↗</span>
+                    </a>
+                  </div>
+
+                  <div style={{ marginTop: "1.75rem" }}>
                     <button
                       type="button"
                       onClick={() => setIsSubmitted(false)}

@@ -8,13 +8,12 @@ import { motion, AnimatePresence } from "motion/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const WORDS = [
-  "the solution.",
-  "flagship websites.",
-  "web applications.",
-  "AI systems.",
-  "WhatsApp bots.",
-  "mobile apps.",
-  "custom software.",
+  "websites that get clients.",
+  "smart AI & WhatsApp bots.",
+  "mobile web apps.",
+  "social media growth.",
+  "online stores.",
+  "your business growth.",
 ];
 
 const wordVariants = {
@@ -153,7 +152,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               display: "inline-block",
             }}
           />
-          Technology Development Studio
+          Websites • AI Automation • Social Media • Apps
         </div>
 
         {/* Headline */}
@@ -226,14 +225,14 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
         {/* Subtitle */}
         <p
           ref={subtitleRef}
-          className="body-lg text-center sm:text-left mx-auto sm:mx-0 max-w-[560px] text-[#5A5068]"
+          className="body-lg text-center sm:text-left mx-auto sm:mx-0 max-w-[580px] text-[#5A5068]"
           style={{
             marginTop: "clamp(0.875rem, 1.8vw, 1.5rem)",
             opacity: 1,
             lineHeight: 1.6,
           }}
         >
-          We design and engineer bespoke web applications, flagship digital products, and automated software for ambitious brands worldwide.
+          We build custom websites, automated WhatsApp &amp; AI tools, and social media systems that bring in more customers and run your business smoothly. No confusing tech jargon — just clear communication and real results.
         </p>
 
         {/* CTA Buttons */}
@@ -256,6 +255,17 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               />
             </svg>
           </a>
+          <a
+            href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20building%20a%20project%20for%20my%20business.%20Can%20we%20talk%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 hover:bg-[#25D366]/20 px-5 py-3 font-mono text-xs font-bold text-[#128C7E] transition-all shadow-xs"
+          >
+            <svg className="size-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.148.566 4.167 1.554 5.918l-1.554 5.666 5.798-1.521c1.706.945 3.664 1.487 5.752 1.487 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z" />
+            </svg>
+            <span>WhatsApp (+91 77568 98550) ↗</span>
+          </a>
           <a href="#work" className="btn-outline w-full sm:w-auto text-center justify-center">
             <span>Explore selected work</span>
           </a>
@@ -266,9 +276,9 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
           className="w-full mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-2 sm:gap-8 text-center sm:text-left"
         >
           {[
-            { val: "99.9%", lbl: "System Reliability" },
-            { val: "100%", lbl: "Code Ownership" },
-            { val: "1-on-1", lbl: "Senior Lead" },
+            { val: "100%", lbl: "You Own Everything" },
+            { val: "< 24h", lbl: "Fast Human Response" },
+            { val: "Direct", lbl: "Talk to Builders" },
           ].map((stat) => (
             <div key={stat.lbl} className="flex flex-col items-center sm:items-start">
               <div

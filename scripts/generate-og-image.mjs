@@ -253,29 +253,29 @@ ctx.restore();
 ctx.save();
 ctx.font = '700 46px Syne';
 ctx.fillStyle = '#161124';
-ctx.fillText('Architected for scale.', leftMargin, 184);
+ctx.fillText('Websites, apps & AI.', leftMargin, 184);
 
 ctx.font = 'italic 48px "Instrument Serif", Georgia, serif';
 const headlineGrad = ctx.createLinearGradient(leftMargin, 0, leftMargin + 500, 0);
 headlineGrad.addColorStop(0, '#7C3AED');
 headlineGrad.addColorStop(1, '#9333EA');
 ctx.fillStyle = headlineGrad;
-ctx.fillText('Engineered with senior-led rigor.', leftMargin, 240);
+ctx.fillText('Built to grow your business.', leftMargin, 240);
 ctx.restore();
 
 // 5. Studio Description Subhead
 ctx.save();
 ctx.font = '500 16px "Plus Jakarta Sans"';
 ctx.fillStyle = '#5A5068';
-ctx.fillText('High-performance web applications, autonomous AI automation, and', leftMargin, 294);
-ctx.fillText('distributed cloud infrastructure. 100% full client IP & code ownership.', leftMargin, 320);
+ctx.fillText('Custom websites, automated WhatsApp & AI tools, and social media growth.', leftMargin, 294);
+ctx.fillText('Simple communication, fast delivery, and 100% owned by you.', leftMargin, 320);
 ctx.restore();
 
 // 6. Three Value Badges with Vector Icons (NO EMOJIS!)
 const badges = [
-  { icon: 'bolt', text: 'High-Throughput Web Apps' },
-  { icon: 'cpu', text: 'Production AI Systems' },
-  { icon: 'shield', text: '100% Client Code Ownership' }
+  { icon: 'bolt', text: 'Fast Websites & Apps' },
+  { icon: 'cpu', text: 'WhatsApp & AI Automation' },
+  { icon: 'shield', text: '100% Owned by You' }
 ];
 
 let badgeX = leftMargin;
@@ -377,9 +377,9 @@ ctx.stroke();
 
 // Slab Spec Grid (3 columns)
 const specs = [
-  { top: '0 → 100', bottom: 'PRODUCTION' },
-  { top: 'ZERO', bottom: 'AGENCY BLOAT' },
-  { top: '100%', bottom: 'CODE OWN' }
+  { top: 'DIRECT', bottom: 'DEVELOPER' },
+  { top: 'ZERO', bottom: 'MIDDLEMEN' },
+  { top: '100%', bottom: 'YOU OWN IT' }
 ];
 const colW = (slabW - 48) / 3;
 specs.forEach((s, idx) => {
@@ -407,19 +407,19 @@ ctx.moveTo(leftMargin, footerY);
 ctx.lineTo(cardX + cardW - 48, footerY);
 ctx.stroke();
 
-// Founder Credit (Left)
+// Contact & Location Credit (Left)
 ctx.font = '700 11px "Plus Jakarta Sans Bold"';
 ctx.fillStyle = '#8C8299';
-ctx.fillText('ENGINEERING LEAD: ', leftMargin, footerY + 37);
+ctx.fillText('DIRECT CALL / WHATSAPP: ', leftMargin, footerY + 37);
 
-const leadW = ctx.measureText('ENGINEERING LEAD: ').width;
+const leadW = ctx.measureText('DIRECT CALL / WHATSAPP: ').width;
 ctx.fillStyle = '#161124';
-ctx.fillText('OM THAKUR', leftMargin + leadW, footerY + 37);
+ctx.fillText('+91 77568 98550', leftMargin + leadW, footerY + 37);
 
-const nameW2 = ctx.measureText('OM THAKUR').width;
+const nameW2 = ctx.measureText('+91 77568 98550').width;
 ctx.font = '500 11px "Plus Jakarta Sans"';
 ctx.fillStyle = '#8C8299';
-ctx.fillText(' • BACKEND & DISTRIBUTED SYSTEMS • MUMBAI', leftMargin + leadW + nameW2, footerY + 37);
+ctx.fillText(' • SOWEBUILD.IN • MUMBAI', leftMargin + leadW + nameW2, footerY + 37);
 
 // URL Button Pill (Right)
 const urlW = 186;

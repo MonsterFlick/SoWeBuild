@@ -4,62 +4,62 @@ import { useState } from "react";
 
 export const FAQS = [
   {
-    question: "Who owns the intellectual property and source code?",
+    question: "Who owns the website, designs, and code?",
     answer:
-      "You own 100% of all intellectual property, source code, design systems, database schemas, and CI/CD pipelines from day one. Everything is committed directly to your private Git repository. We sign mutual IP assignment agreements and non-disclosure agreements (NDAs) prior to kickoff. There are zero licensing lock-ins or proprietary vendor traps.",
+      "You own 100% of everything we build for you from day one. All files, designs, code, accounts, and credentials belong entirely to you. We sign an NDA and ownership transfer agreement before kickoff. Zero monthly hostage fees or agency lock-ins.",
     category: "Ownership & IP",
   },
   {
-    question: "How quickly can SoWeBuild scope and start our build?",
+    question: "Do I need to be technical to work with you?",
     answer:
-      "Within 24 hours of receiving your brief, a senior technical architect analyzes your problem statement and returns a structured roadmap, technical stack recommendation, and transparent milestone estimate. Once approved, development environments are provisioned immediately, and live running software is deployed to staging within the first 7 days.",
-    category: "Velocity & Delivery",
+      "Not at all. Most of our clients are business owners, founders, retailers, and doctors who want more customers, not technical headaches. We speak plain English, handle all the setup, hosting, and domains, and walk you through everything step-by-step.",
+    category: "Communication",
   },
   {
-    question: "How do you handle healthcare advertising regulations and NMC compliance?",
+    question: "How quickly can SoWeBuild start my project?",
     answer:
-      "For healthcare and pharmaceutical platforms, our solutions strictly adhere to the National Medical Commission (NMC) Guidelines on Ethical Advertising and Public Communication (issued October 6, 2026). We design objective, verified medical equipment catalogs, patient booking workflows, and practitioner directories that meet stringent statutory standards without deceptive claims or algorithmic bias.",
-    category: "Regulatory Compliance",
+      "Within 24 hours of contacting us, we review your requirements and send you a clear plan, fixed timeline, and straightforward pricing. Once approved, we get straight to work, and you can test working progress on your phone within the first week.",
+    category: "Timeline & Delivery",
   },
   {
-    question: "How is SoWeBuild different from a traditional marketing agency?",
+    question: "How is SoWeBuild different from traditional agencies?",
     answer:
-      "Traditional agencies rely on billable hours, junior account managers playing telephone, and hidden subcontracting. SoWeBuild is an engineering-first studio: senior architects write and direct your code, weekly functional preview builds let you test working software continuously, and scope is fixed by milestones with guaranteed deliverables.",
-    category: "Studio Structure",
+      "At traditional agencies, you pay inflated fees for salespeople and junior account managers who don't understand code and outsource your project. At SoWeBuild, you talk directly with the developers writing the code. No middlemen, no endless back-and-forth — just fast, high-quality work.",
+    category: "Why SoWeBuild",
   },
   {
-    question: "What technology stack and infrastructure do you build with?",
+    question: "What services do you provide beyond websites?",
     answer:
-      "We engineer production-grade systems using Next.js (App Router, Turbopack), React, TypeScript, Node.js, Python, Fastify, PostgreSQL, Docker, and Tailwind CSS. For AI and automation, we integrate custom autonomous agents, RAG knowledge vaults, and official WhatsApp Cloud API gateways hosted on resilient Cloudflare and AWS infrastructure.",
-    category: "Engineering Stack",
+      "Along with modern websites and web apps, we build automated WhatsApp bots (for customer support, bookings, and inquiries), smart AI tools to automate repetitive work, and handle social media design, branding, and content growth to help you get more clients.",
+    category: "Services & Scope",
   },
 ];
 
 export const COMPARISONS = [
   {
-    criteria: "Code & IP Ownership",
-    traditional: "Proprietary lock-in, recurring licensing fees, or held hostage.",
-    soWeBuild: "100% Full IP ownership. Complete Git repository handed to you.",
+    criteria: "Ownership",
+    traditional: "Hidden fees, lock-in, or proprietary platform traps.",
+    soWeBuild: "100% Full ownership. You get all files, designs, and accounts.",
   },
   {
-    criteria: "Project Leadership",
-    traditional: "Junior account managers and multi-layered telephone games.",
-    soWeBuild: "Direct 1-on-1 access to the Senior Architect writing your code.",
+    criteria: "Who You Talk To",
+    traditional: "Account managers playing telephone with junior staff.",
+    soWeBuild: "Direct 1-on-1 access to the developer building your project.",
   },
   {
-    criteria: "Delivery Cadence",
-    traditional: "Months of static Figma mockups and slide deck status reports.",
-    soWeBuild: "Weekly live staging previews. Test real software on your phone every 7 days.",
+    criteria: "Progress Updates",
+    traditional: "Weeks of static presentation slides and delayed emails.",
+    soWeBuild: "Weekly live demos you can test directly on your phone.",
   },
   {
-    criteria: "Scoping & Pricing",
-    traditional: "Vague hourly estimates prone to uncontrolled scope creep.",
-    soWeBuild: "24-hour technical roadmap with milestone-based transparent pricing.",
+    criteria: "Pricing & Scope",
+    traditional: "Vague hourly rates with surprise scope creep and invoices.",
+    soWeBuild: "Clear milestone pricing agreed upfront with zero surprises.",
   },
   {
-    criteria: "Domain Regulations",
-    traditional: "Generic website templates with high regulatory and legal risks.",
-    soWeBuild: "Architected for NMC Oct 6, 2026 guidelines, HIPAA, and ISO standards.",
+    criteria: "Communication",
+    traditional: "Slow ticketing systems and days of waiting for replies.",
+    soWeBuild: "Direct WhatsApp and phone access whenever you need us.",
   },
 ];
 

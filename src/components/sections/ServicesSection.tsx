@@ -522,7 +522,7 @@ export default function ServicesSection() {
                     </span>
                   </div>
                   <p className="text-[10px] text-[#5A5068] leading-relaxed">
-                    Bespoke isolated tenancy architectures, dedicated IP transfer agreements, custom NDAs, and senior-led technical discovery within 24 hours.
+                    Custom software built for your business, full code ownership agreements, signed NDAs, and clear project planning within 24 hours.
                   </p>
                 </div>
 

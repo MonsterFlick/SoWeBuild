@@ -106,8 +106,8 @@ export default function EcosystemSection() {
               </div>
 
               <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#161124] mb-3 leading-snug">
-                Engineered by Builders, <br />
-                <span className="text-[#7C3AED]">Not Account Managers.</span>
+                Built by Real Developers, <br />
+                <span className="text-[#7C3AED]">Not Middlemen.</span>
               </h3>
 
               <p className="text-sm sm:text-base text-[#5A5068] leading-relaxed mb-6">
@@ -120,20 +120,17 @@ export default function EcosystemSection() {
                 >
                   Om Thakur
                 </a>
-                , a backend and distributed systems software engineer based in Mumbai. Having architected
-                event-driven pipelines, real-time WebSocket systems, and production platforms across diverse industries,
-                Om established SoWeBuild with a single directive: take ambitious products from 0 to 100 with{" "}
-                <strong className="text-[#161124]">100% client code ownership</strong>, senior-led precision,
-                and zero agency bloat.
+                , a software engineer based in Mumbai. Having built web applications, scalable platforms, and automation tools across multiple industries, Om established SoWeBuild to help business owners, creators, and founders launch digital products without technical headaches. You work directly with developers who actually write the code — getting fast, reliable results with{" "}
+                <strong className="text-[#161124]">100% full ownership</strong> and zero agency fluff.
               </p>
 
-              {/* Core Technical Disciplines */}
+              {/* Core Disciplines */}
               <div className="grid grid-cols-2 gap-2 mb-6">
                 {[
-                  "Distributed Systems & APIs",
-                  "Low-Latency Event Queues",
-                  "Real-Time WebSocket Rails",
-                  "Autonomous Agent Pipelines",
+                  "Fast Websites & Web Apps",
+                  "WhatsApp & AI Automation",
+                  "Social Media & Branding",
+                  "Online Stores & Checkout",
                 ].map((spec) => (
                   <div
                     key={spec}

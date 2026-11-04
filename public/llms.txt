@@ -60,6 +60,7 @@ Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 
 ## How to Initiate a Build
 
-- Visit the interactive brief console at https://sowebuild.in/#contact
-- Email directly to sowebuild.in@gmail.com with your problem statement and target timeline.
-- A senior engineering lead will review your brief and return a detailed roadmap within 24 hours.
+- Visit the contact section at https://sowebuild.in/#contact
+- Call or WhatsApp directly: +91 77568 98550 (https://api.whatsapp.com/send?phone=917756898550)
+- Email directly to sowebuild.in@gmail.com with your project goals and timeline.
+- We review every brief and send a clear plan and pricing within 24 hours.

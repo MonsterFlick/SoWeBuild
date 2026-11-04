@@ -31,6 +31,7 @@ export default function FooterSection() {
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
     { label: "Standards", href: "#faq" },
+    { label: "WhatsApp ↗", href: "https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F", isExternal: true },
     { label: "Store ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Brand Assets ↗", href: "https://github.com/MonsterFlick/SoWeBuild-assets", isExternal: true },
@@ -204,26 +205,29 @@ export default function FooterSection() {
               Om Thakur (Founder) ↗
             </a>
             <a
-              href="/sitemap.xml"
-              className="link-sweep mono"
+              href="tel:+917756898550"
+              className="link-sweep mono font-bold"
               style={{
                 fontSize: "0.6875rem",
-                color: "var(--color-text-muted)",
+                color: "var(--color-accent)",
                 textDecoration: "none",
               }}
             >
-              Sitemap
+              +91 77568 98550
             </a>
             <a
-              href="/llms.txt"
+              href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F"
+              target="_blank"
+              rel="noopener noreferrer"
               className="link-sweep mono"
               style={{
                 fontSize: "0.6875rem",
-                color: "var(--color-text-muted)",
+                color: "#25D366",
                 textDecoration: "none",
+                fontWeight: 700,
               }}
             >
-              llms.txt
+              WhatsApp ↗
             </a>
             <a
               href="mailto:sowebuild.in@gmail.com"
@@ -247,7 +251,42 @@ export default function FooterSection() {
                 textDecoration: "none",
               }}
             >
-              Instagram
+              Instagram (@sowebuild.in)
+            </a>
+            <a
+              href="https://linkedin.com/company/sowebuild-in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+              }}
+            >
+              LinkedIn
+            </a>
+            <a
+              href="/sitemap.xml"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+              }}
+            >
+              Sitemap
+            </a>
+            <a
+              href="/llms.txt"
+              className="link-sweep mono"
+              style={{
+                fontSize: "0.6875rem",
+                color: "var(--color-text-muted)",
+                textDecoration: "none",
+              }}
+            >
+              llms.txt
             </a>
           </div>
         </div>

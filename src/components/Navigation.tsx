@@ -53,6 +53,7 @@ export default function Navigation() {
     { label: "Selected Work", href: "#work" },
     { label: "Master Services", href: "#services" },
     { label: "Studio Standards & FAQ", href: "#faq" },
+    { label: "WhatsApp Chat (+91 77568 98550) ↗", href: "https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F", isExternal: true },
     { label: "Store (Tools & Books) ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder (Om Thakur) ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Start a Project", href: "#contact" },
@@ -363,26 +364,54 @@ export default function Navigation() {
                 width: "100%",
               }}
             >
-              <a
-                href="mailto:sowebuild.in@gmail.com"
-                className="mono"
-                style={{
-                  fontSize: "0.75rem",
-                  color: "var(--color-text-secondary)",
-                  textDecoration: "none",
-                }}
-              >
-                sowebuild.in@gmail.com
-              </a>
-              <span
-                className="mono"
-                style={{
-                  fontSize: "0.6875rem",
-                  color: "var(--color-text-muted)",
-                }}
-              >
-                Mumbai, IN · Worldwide
-              </span>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                <a
+                  href="tel:+917756898550"
+                  className="mono font-bold"
+                  style={{
+                    fontSize: "0.8125rem",
+                    color: "var(--color-accent)",
+                    textDecoration: "none",
+                  }}
+                >
+                  +91 77568 98550
+                </a>
+                <a
+                  href="mailto:sowebuild.in@gmail.com"
+                  className="mono"
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--color-text-secondary)",
+                    textDecoration: "none",
+                  }}
+                >
+                  sowebuild.in@gmail.com
+                </a>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                <a
+                  href="https://instagram.com/sowebuild.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mono"
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "var(--color-text-secondary)",
+                    textDecoration: "none",
+                  }}
+                >
+                  @sowebuild.in
+                </a>
+                <span
+                  className="mono"
+                  style={{
+                    fontSize: "0.6875rem",
+                    color: "var(--color-text-muted)",
+                  }}
+                >
+                  Mumbai, IN
+                </span>
+              </div>
             </motion.div>
           </motion.div>
         )}
