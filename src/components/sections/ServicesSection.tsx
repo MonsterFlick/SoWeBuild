@@ -375,21 +375,18 @@ export default function ServicesSection() {
         {/* ADDITIONAL SPECIALIZED INDUSTRY FRAMEWORKS                     */}
         {/* ============================================================== */}
         <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-[#E8DFF2]">
-          <div className="max-w-3xl mb-8 sm:mb-12 flex flex-col items-center sm:items-start text-center sm:text-left mx-auto sm:mx-0">
-            <div className="label flex items-center justify-center sm:justify-start gap-2 mb-2">
-              <span className="size-1.5 rounded-full bg-[#7C3AED]" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
-                Specialized Solutions By Industry
-              </span>
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <div className="label mb-2.5">
+              Specialized Solutions
             </div>
 
             <h3 className="heading-lg font-display text-2xl sm:text-4xl font-bold text-[#161124] tracking-tight">
-              Vertical Frameworks. Built for Your Exact Sector.
+              Vertical frameworks.
+              <br />
+              <span className="font-serif italic font-normal text-[#7C3AED]">
+                Built for your exact sector.
+              </span>
             </h3>
-            <p className="mt-2 text-sm sm:text-base text-[#5A5068] leading-relaxed max-w-2xl">
-              Instead of generic templates, we architect regulatory-conscious, high-conversion
-              solutions tailored to each vertical industry.
-            </p>
           </div>
 
           {/* Industry Cards Grid */}
