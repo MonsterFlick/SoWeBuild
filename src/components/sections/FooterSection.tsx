@@ -31,7 +31,6 @@ export default function FooterSection() {
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
     { label: "Standards", href: "#faq" },
-    { label: "WhatsApp ↗", href: "https://api.whatsapp.com/send?phone=917588666776&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business.", isExternal: true },
     { label: "Store ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Brand Assets ↗", href: "https://github.com/MonsterFlick/SoWeBuild-assets", isExternal: true },
@@ -165,7 +164,7 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Bottom Compact Legal & Social Strip */}
+        {/* Bottom Legal & Utility Strip */}
         <div className="border-t border-[var(--color-border)] pt-5 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
           <span
             className="mono"
@@ -178,94 +177,6 @@ export default function FooterSection() {
           </span>
 
           <div className="flex gap-4 sm:gap-6 items-center justify-center flex-wrap">
-            <a
-              href="https://store.sowebuild.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-text-secondary)",
-                textDecoration: "none",
-              }}
-            >
-              Digital Store ↗
-            </a>
-            <a
-              href="https://omthakur.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-text-secondary)",
-                textDecoration: "none",
-              }}
-            >
-              Om Thakur (Founder) ↗
-            </a>
-            <a
-              href="tel:+917756898550"
-              className="link-sweep mono font-bold"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-accent)",
-                textDecoration: "none",
-              }}
-            >
-              +91 77568 98550
-            </a>
-            <a
-              href="https://api.whatsapp.com/send?phone=917588666776&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-accent)",
-                textDecoration: "none",
-                fontWeight: 600,
-              }}
-            >
-              WhatsApp (+91 75886 66776) ↗
-            </a>
-            <a
-              href="mailto:sowebuild.in@gmail.com"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-text-muted)",
-                textDecoration: "none",
-              }}
-            >
-              sowebuild.in@gmail.com
-            </a>
-            <a
-              href="https://instagram.com/sowebuild.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-text-muted)",
-                textDecoration: "none",
-              }}
-            >
-              Instagram (@sowebuild.in)
-            </a>
-            <a
-              href="https://linkedin.com/company/sowebuild-in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-sweep mono"
-              style={{
-                fontSize: "0.6875rem",
-                color: "var(--color-text-muted)",
-                textDecoration: "none",
-              }}
-            >
-              LinkedIn
-            </a>
             <a
               href="/sitemap.xml"
               className="link-sweep mono"
