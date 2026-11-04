@@ -269,7 +269,7 @@ ctx.fillStyle = '#F5EDFA';
 ctx.strokeStyle = '#E8DFF2';
 ctx.lineWidth = 1;
 ctx.beginPath();
-ctx.roundRect(pillX, pillY, 340, 36, 18);
+ctx.roundRect(pillX, pillY, 210, 36, 18);
 ctx.fill();
 ctx.stroke();
 
@@ -279,10 +279,10 @@ ctx.beginPath();
 ctx.arc(pillX + 20, pillY + 18, 5, 0, Math.PI * 2);
 ctx.fill();
 
-ctx.font = '600 11px sans-serif';
+ctx.font = '700 11px sans-serif';
 ctx.fillStyle = '#7C3AED';
 ctx.letterSpacing = '1px';
-ctx.fillText('DIGITAL PRODUCT & TECHNOLOGY STUDIO', pillX + 34, pillY + 22);
+ctx.fillText('PREMIUM DIGITAL AGENCY', pillX + 34, pillY + 22);
 ctx.restore();
 
 // 5. Giant Geometric Slash Glyph Graphic on the Right
@@ -326,7 +326,7 @@ ctx.restore();
 ctx.save();
 ctx.font = '700 40px sans-serif';
 ctx.fillStyle = '#161124';
-ctx.fillText('Architected for scale.', 80, 250);
+ctx.fillText('Building businesses & brands.', 80, 248);
 
 // Gradient italic subhead
 const textGrad = ctx.createLinearGradient(80, 0, 700, 0);
@@ -334,24 +334,24 @@ textGrad.addColorStop(0, '#7C3AED');
 textGrad.addColorStop(1, '#9333EA');
 ctx.fillStyle = textGrad;
 ctx.font = 'italic 42px "Instrument Serif", Georgia, serif';
-ctx.fillText('Built with senior-led engineering rigor.', 80, 302);
+ctx.fillText('Websites, smart tools, and digital growth.', 80, 300);
 ctx.restore();
 
 // 8. Description paragraph
 ctx.save();
 ctx.font = '400 17px sans-serif';
 ctx.fillStyle = '#5A5068';
-const desc = 'We engineer high-performance web applications, production AI automation,';
-const desc2 = 'and distributed cloud infrastructure. 100% client code ownership.';
+const desc = 'We help businesses build a powerful online presence with premium websites,';
+const desc2 = 'intelligent digital tools, and 100% full client ownership.';
 ctx.fillText(desc, 80, 355);
 ctx.fillText(desc2, 80, 382);
 ctx.restore();
 
-// 9. Value Badges (3 horizontal tags)
+// 9. Value Badges (3 horizontal tags - NO EMOJIS)
 const tags = [
-  '⚡ High-Throughput Web Apps',
-  '🤖 Autonomous AI Systems',
-  '🔒 100% Client IP Ownership'
+  'Modern Websites & Apps',
+  'WhatsApp & AI Automation',
+  '100% Full Ownership'
 ];
 let tagStartX = 80;
 const tagY = 430;
@@ -389,15 +389,11 @@ ctx.stroke();
 // Founder / Engineering Credit on Bottom Left
 ctx.font = '500 13px monospace';
 ctx.fillStyle = '#5A5068';
-ctx.fillText('ENGINEERING DIRECTION: ', 80, 546);
+ctx.fillText('FOUNDER & ENGINEERING: ', 80, 546);
 
 ctx.font = '700 13px monospace';
 ctx.fillStyle = '#161124';
-ctx.fillText('OM THAKUR', 246, 546);
-
-ctx.font = '400 12px monospace';
-ctx.fillStyle = '#8C8299';
-ctx.fillText(' (BACKEND & DISTRIBUTED SYSTEMS)', 330, 546);
+ctx.fillText('OM THAKUR', 260, 546);
 
 // Website Domain Pill on Bottom Right
 const urlPillW = 200;

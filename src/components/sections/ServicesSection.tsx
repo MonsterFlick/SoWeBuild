@@ -269,26 +269,21 @@ export default function ServicesSection() {
         {/* ============================================================== */}
         {/* MASTER CATALOGUE HEADER                                        */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-14 text-center sm:text-left">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12 text-center sm:text-left">
           <div className="max-w-3xl flex flex-col items-center sm:items-start">
-            {/* Eyebrow Label */}
-            <div className="label flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="bg-[#1E1330] text-white px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase border border-[#7C3AED]/40 shadow-xs">
-                Master Services Catalogue
-              </span>
+            <div className="label mb-2">
+              Services &amp; Capabilities
             </div>
 
             <h2 className="heading-xl tracking-tight text-[#161124] mb-3 text-center sm:text-left">
-              A Complete Digital, Creative, <br className="hidden sm:inline" />
+              Everything your brand needs. <br className="hidden sm:inline" />
               <span className="font-serif italic font-normal text-[#7C3AED]">
-                Technology &amp; Growth
-              </span>{" "}
-              Agency.
+                Built under one roof.
+              </span>
             </h2>
 
             <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed text-center sm:text-left">
-              We operate across 10 specialized divisions delivering full-lifecycle digital dominance.
-              Zero generic handoffs, direct senior architecture from strategic inception to global scale.
+              We operate across 10 specialized divisions to design, engineer, and scale your brand online.
             </p>
           </div>
 

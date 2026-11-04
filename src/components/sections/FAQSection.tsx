@@ -6,7 +6,7 @@ export const FAQS = [
   {
     question: "Who owns the website, designs, and code?",
     answer:
-      "You own 100% of everything we build for you from day one. All files, designs, code, accounts, and credentials belong entirely to you. We sign an NDA and ownership transfer agreement before kickoff. Zero monthly hostage fees or agency lock-ins.",
+      "You own 100% of everything we build for you from day one. All files, designs, code, accounts, and credentials belong entirely to you. We sign an NDA and ownership transfer agreement before kickoff. Zero recurring lock-ins.",
     category: "Ownership & IP",
   },
   {
@@ -123,36 +123,22 @@ export default function FAQSection() {
         {/* ============================================================== */}
         {/* SECTION HEADER                                                 */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left">
-          <div className="max-w-3xl flex flex-col items-center sm:items-start mx-auto sm:mx-0">
-            <div className="label flex items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
-                Studio Standards &amp; Architecture FAQ
-              </span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12 text-center sm:text-left">
+          <div className="flex flex-col items-center sm:items-start mx-auto sm:mx-0">
+            <div className="label mb-2">
+              Standards &amp; FAQ
             </div>
 
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-3">
-              Direct answers. <br className="hidden sm:inline" />
+            <h2 className="heading-xl tracking-tight text-[#161124] mb-2">
+              Direct answers.{" "}
               <span className="font-serif italic font-normal text-[#7C3AED]">
-                Zero ambiguous
-              </span>{" "}
-              agency rhetoric.
+                Zero agency fluff.
+              </span>
             </h2>
 
-            <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed">
-              Before committing to a build, ambitious leaders need absolute clarity on intellectual property,
-              turnaround SLAs, compliance standards, and engineering leadership.
+            <p className="body-lg text-[#5A5068] max-w-xl leading-relaxed">
+              Everything you need to know about ownership, delivery timelines, and how we build.
             </p>
-          </div>
-
-          <div className="flex items-center justify-center sm:justify-start gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#7C3AED] px-5 py-2.5 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all"
-            >
-              <span>Ask an Architect →</span>
-            </a>
           </div>
         </div>
 

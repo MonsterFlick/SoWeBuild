@@ -54,26 +54,21 @@ export default function EcosystemSection() {
         {/* ============================================================== */}
         {/* SECTION HEADER                                                 */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 text-center sm:text-left">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12 text-center sm:text-left">
           <div className="max-w-3xl flex flex-col items-center sm:items-start mx-auto sm:mx-0">
-            <div className="label flex items-center justify-center sm:justify-start gap-2 mb-3">
-              <span className="size-2 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.4)]" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[#7C3AED] font-bold">
-                Ecosystem &amp; Engineering Direction
-              </span>
+            <div className="label mb-2">
+              Leadership &amp; Systems
             </div>
 
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-3">
-              Built by engineers. <br className="hidden sm:inline" />
+            <h2 className="heading-xl tracking-tight text-[#161124] mb-2">
+              Hands-on engineering.{" "}
               <span className="font-serif italic font-normal text-[#7C3AED]">
-                Backed by production
-              </span>{" "}
-              craft.
+                Direct communication.
+              </span>
             </h2>
 
-            <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed">
-              We connect client platform development with personal engineering depth and open-source tooling.
-              Zero agency bloat, directly architected from first principles.
+            <p className="body-lg text-[#5A5068] max-w-xl leading-relaxed">
+              Led by Om Thakur. You work directly with the developers writing your code, with zero middlemen.
             </p>
           </div>
 
@@ -194,9 +189,7 @@ export default function EcosystemSection() {
               </h3>
 
               <p className="text-sm sm:text-base text-[#5A5068] leading-relaxed mb-6">
-                We don&apos;t just build for clients, we package our production playbooks, developer tools, micro-apps,
-                and architectural guides for developers and founders worldwide. Hosted on an isolated digital store
-                for instant checkout.
+                We package our proven templates, starter code, and practical guides so businesses and developers can launch faster. Available for instant download.
               </p>
 
               {/* Store Product Category Highlights */}
@@ -204,18 +197,18 @@ export default function EcosystemSection() {
                 {[
                   {
                     icon: <BookOpenIcon className="size-4 text-[#7C3AED]" />,
-                    title: "Engineering Playbooks & Ebooks",
-                    desc: "Architectural blueprints for high-concurrency systems & WebSockets.",
+                    title: "Practical Guides & Ebooks",
+                    desc: "Step-by-step blueprints for building and scaling digital products.",
                   },
                   {
                     icon: <CodeIcon className="size-4 text-[#7C3AED]" />,
                     title: "Production Starter Stacks",
-                    desc: "Next.js, FastAPI & PostgreSQL boilerplates with authentication & RBAC.",
+                    desc: "Clean, production-ready website and application templates.",
                   },
                   {
                     icon: <CpuIcon className="size-4 text-[#7C3AED]" />,
-                    title: "AI & WhatsApp Agent Templates",
-                    desc: "Autonomous workflow scripts and Cloud API deployment setups.",
+                    title: "AI & WhatsApp Workflows",
+                    desc: "Ready-to-use automation and customer communication scripts.",
                   },
                 ].map((item) => (
                   <div

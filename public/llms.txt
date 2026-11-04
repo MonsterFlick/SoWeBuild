@@ -16,22 +16,22 @@ Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 
 ## Founder & Engineering Leadership
 
-- **Om Thakur** (https://omthakur.in): Founder & Principal Software Engineer. Background in backend engineering, distributed systems, real-time WebSocket pipelines, and low-latency event queues. Om directs technical architecture on every build, ensuring senior-led precision and zero agency bloat.
+- **Om Thakur** (https://omthakur.in): Founder & Principal Software Engineer. Om directs technical development on every project, ensuring direct communication with builders and zero middlemen.
 - GitHub: https://github.com/MonsterFlick
 
 ## The SoWeBuild Digital Store (store.sowebuild.in)
 
 - Production Toolkits & Developer Starters: Next.js, FastAPI, and PostgreSQL boilerplates with production-ready authentication and RBAC.
-- Engineering Ebooks & Architectural Playbooks: Deep-dive guides for distributed systems, event-driven pipelines, and real-time systems.
+- Engineering Ebooks & Practical Playbooks: Step-by-step guides for designing, building, and scaling software systems.
 - Autonomous AI & WhatsApp Agent Templates: Pre-built Cloud API integration scripts and automated lead qualification agents.
 - Storefront URL: https://store.sowebuild.in
 
-## Core Architectural Principles
+## Core Principles
 
 - **100% Full IP Ownership**: Clients retain complete ownership of all source code, databases, design tokens, CI/CD pipelines, and intellectual property. Zero vendor lock-in.
-- **Direct Senior Architecture**: Projects are led directly by senior engineers and technical architects. Zero junior account manager telephone games.
-- **Weekly Functional Previews**: Clients test working software in production-grade staging environments every 7 days, avoiding static slide decks.
-- **24-Hour Scope & Roadmap**: Every brief receives a structured milestone roadmap, architectural breakdown, and transparent investment estimate within 24 hours.
+- **Direct Builder Access**: Projects are built directly with software engineers. Zero junior account manager telephone games.
+- **Weekly Live Previews**: Clients test working software on their phone or browser every 7 days as we build, avoiding static slide decks.
+- **24-Hour Scope & Roadmap**: Every brief receives a structured milestone roadmap, clear breakdown, and transparent investment estimate within 24 hours.
 - **Sector Regulatory Compliance**: Deep architectural adherence to domain regulations, including the National Medical Commission (NMC) Guidelines on Ethical Advertising (Oct 6, 2026), HIPAA, and GDPR.
 
 ## Master Services Catalogue (10 Core Divisions)

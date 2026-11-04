@@ -232,11 +232,11 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             lineHeight: 1.6,
           }}
         >
-          We help businesses build their brand and powerful online presence with our premium services, from modern websites to intelligent digital tools that scale your company.
+          We help businesses build their brand and online presence with premium websites, custom tools, and smart automation.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center sm:justify-start gap-3 w-full sm:w-auto">
+        {/* CTA Button */}
+        <div className="mt-6 sm:mt-8 flex items-center justify-center sm:justify-start w-full sm:w-auto">
           <a href="#contact" className="btn-primary w-full sm:w-auto text-center justify-center">
             <span>Start a project</span>
             <svg
@@ -255,33 +255,6 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               />
             </svg>
           </a>
-          <a href="#work" className="btn-outline w-full sm:w-auto text-center justify-center">
-            <span>Explore selected work</span>
-          </a>
-        </div>
-
-        {/* Studio Credential Strip: Balanced 3-column grid across mobile */}
-        <div
-          className="w-full mt-8 sm:mt-12 pt-5 sm:pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-2 sm:gap-8 text-center sm:text-left"
-        >
-          {[
-            { val: "100%", lbl: "You Own Everything" },
-            { val: "< 24h", lbl: "Fast Human Response" },
-            { val: "Direct", lbl: "Talk to Builders" },
-          ].map((stat) => (
-            <div key={stat.lbl} className="flex flex-col items-center sm:items-start">
-              <div
-                className="font-display text-base sm:text-xl font-bold text-[var(--color-text)] leading-tight"
-              >
-                {stat.val}
-              </div>
-              <div
-                className="label text-[8px] sm:text-[10px] text-[var(--color-text-muted)] mt-1 tracking-tight sm:tracking-wider leading-tight"
-              >
-                {stat.lbl}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

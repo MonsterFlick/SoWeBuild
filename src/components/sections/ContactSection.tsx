@@ -212,7 +212,7 @@ export default function ContactSection() {
                 marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
               }}
             >
-              Tell us about your business goals. We review every brief and reply within 24 hours with a clear roadmap, upfront pricing, and zero agency fluff.
+              Tell us what you want to build. We reply within 24 hours with a clear roadmap and upfront pricing.
             </p>
 
             {/* Client Assurance Badges */}
@@ -227,18 +227,18 @@ export default function ContactSection() {
               {[
                 {
                   icon: <ZapIcon />,
-                  title: "Fast 24-Hour Plan",
-                  desc: "We review your requirements and send a clear timeline and transparent pricing.",
+                  title: "24-Hour Roadmap",
+                  desc: "Clear scope, milestone breakdown, and transparent pricing.",
                 },
                 {
                   icon: <EyeIcon />,
-                  title: "Weekly Working Previews",
-                  desc: "Test your website or application on your own mobile device every 7 days as we build it.",
+                  title: "Weekly Working Demos",
+                  desc: "Test live progress on your phone every 7 days as we build.",
                 },
                 {
                   icon: <LockIcon />,
-                  title: "100% Full IP Ownership",
-                  desc: "You own all code, repositories, designs, and cloud accounts. Zero agency hostage lock-ins.",
+                  title: "100% Full Ownership",
+                  desc: "You own all code, repositories, designs, and cloud accounts.",
                 },
               ].map((badge) => (
                 <div

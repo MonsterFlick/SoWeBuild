@@ -75,9 +75,6 @@ export default function WorkSection() {
               <span className="serif-accent">Measured</span> results.
             </h2>
           </div>
-          <p className="body-lg max-w-md text-center sm:text-left mx-auto sm:mx-0 text-[var(--color-text-secondary)]">
-            Digital products and flagship platforms engineered by our studio.
-          </p>
         </div>
 
         {/* 2-Column Responsive Grid: Both Cards Fit Beautifully On Screen */}

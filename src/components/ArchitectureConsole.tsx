@@ -41,7 +41,7 @@ const TIERS: ArchTier[] = [
       "Type-safe API layer with compiled schema contracts, role-based auth guards, and real-time streaming connections.",
     technologies: ["TypeScript", "Server Actions", "REST / GraphQL", "JWT Auth"],
     metrics: [
-      { label: "Throughput", value: "10K req/s" },
+      { label: "Capacity", value: "10K req/s" },
       { label: "Type Safety", value: "100% End-to-End" },
     ],
   },
@@ -53,7 +53,7 @@ const TIERS: ArchTier[] = [
     latency: "<8ms Query",
     status: "Replicated",
     description:
-      "High-throughput relational storage with sub-millisecond in-memory cache, vector embeddings for AI similarity, and automated encrypted backups.",
+      "High-performance database storage with sub-millisecond in-memory cache, vector embeddings for AI similarity, and automated encrypted backups.",
     technologies: ["PostgreSQL", "Supabase", "Redis Cache", "pgvector"],
     metrics: [
       { label: "Replication", value: "Multi-AZ" },
