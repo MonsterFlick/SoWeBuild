@@ -42,18 +42,15 @@ export default function SignatureMomentsSection() {
       }}
     >
       <div className="container-wide">
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-          <div className="label" style={{ marginBottom: "1.5rem" }}>
+        {/* Header: Centered, clean, NO subtext */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="label mb-2.5">
             How We Work
           </div>
           <h2 className="heading-xl">
             Built different,{" "}
-            <span className="serif-accent">shipped</span> faster
+            <span className="serif-accent">shipped</span> faster.
           </h2>
-          <p className="body-lg" style={{ maxWidth: "520px", margin: "1.5rem auto 0", color: "var(--color-text-secondary)", lineHeight: 1.65 }}>
-            Automated deployments, sub-second performance, and AI systems built for real operations.
-          </p>
         </div>
 
         {/* Terminal + Chat Demo Grid */}

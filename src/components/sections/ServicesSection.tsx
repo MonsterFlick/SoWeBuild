@@ -267,31 +267,48 @@ export default function ServicesSection() {
     >
       <div className="container-wide">
         {/* ============================================================== */}
-        {/* MASTER CATALOGUE HEADER                                        */}
+        {/* SERVICES HEADER: Centered, clean, NO subtext                   */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12 text-center sm:text-left">
-          <div className="max-w-3xl flex flex-col items-center sm:items-start">
-            <div className="label mb-2">
-              Services &amp; Capabilities
-            </div>
-
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-3 text-center sm:text-left">
-              Everything your brand needs. <br className="hidden sm:inline" />
-              <span className="font-serif italic font-normal text-[#7C3AED]">
-                Built under one roof.
-              </span>
-            </h2>
-
-            <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed text-center sm:text-left">
-              We operate across 10 specialized divisions to design, engineer, and scale your brand online.
-            </p>
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10">
+          <div className="label mb-2.5">
+            Services &amp; Capabilities
           </div>
 
-          {/* Action Buttons: Balanced on mobile */}
-          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2.5 w-full sm:w-auto">
+          <h2 className="heading-xl tracking-tight text-[#161124]">
+            Everything your brand needs,{" "}
+            <span className="font-serif italic font-normal text-[#7C3AED]">
+              built under one roof.
+            </span>
+          </h2>
+        </div>
+
+        {/* ============================================================== */}
+        {/* TOOLBAR: Filter Tabs + Action Buttons                          */}
+        {/* ============================================================== */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 mb-8">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+            {FILTER_GROUPS.map((grp) => {
+              const isActive = selectedGroup === grp;
+              return (
+                <button
+                  key={grp}
+                  onClick={() => setSelectedGroup(grp)}
+                  className={`shrink-0 rounded-full px-4 py-1.5 font-mono text-xs font-medium transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-[#7C3AED] text-white shadow-md shadow-[#7C3AED]/20"
+                      : "border border-[#E8DFF2] bg-white text-[#5A5068] hover:border-[#7C3AED] hover:text-[#161124]"
+                  }`}
+                >
+                  {grp}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-2.5 shrink-0 justify-end">
             <button
               onClick={isAllExpanded ? handleCollapseAll : handleExpandAll}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-3.5 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-sm cursor-pointer text-center"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E8DFF2] bg-[#FAF8F5] px-3.5 py-1.5 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:bg-white transition-all shadow-xs cursor-pointer text-center"
             >
               <span>{isAllExpanded ? "Collapse All" : "Expand All"}</span>
               <ChevronDownIcon
@@ -303,34 +320,12 @@ export default function ServicesSection() {
 
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-2 font-mono text-xs font-bold text-white shadow-md shadow-[#7C3AED]/25 hover:bg-[#6D28D9] transition-all text-center"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#7C3AED] px-4 py-1.5 font-mono text-xs font-bold text-white shadow-sm hover:bg-[#6D28D9] transition-all text-center"
             >
               <span>Brief a Project</span>
               <ArrowUpRightIcon className="size-3" />
             </a>
           </div>
-        </div>
-
-        {/* ============================================================== */}
-        {/* DISCIPLINE FILTER TABS                                         */}
-        {/* ============================================================== */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
-          {FILTER_GROUPS.map((grp) => {
-            const isActive = selectedGroup === grp;
-            return (
-              <button
-                key={grp}
-                onClick={() => setSelectedGroup(grp)}
-                className={`shrink-0 rounded-full px-4 py-1.5 font-mono text-xs font-medium transition-all duration-200 cursor-pointer ${
-                  isActive
-                    ? "bg-[#7C3AED] text-white shadow-md shadow-[#7C3AED]/20"
-                    : "border border-[#E8DFF2] bg-white text-[#5A5068] hover:border-[#7C3AED] hover:text-[#161124]"
-                }`}
-              >
-                {grp}
-              </button>
-            );
-          })}
         </div>
 
         {/* ============================================================== */}

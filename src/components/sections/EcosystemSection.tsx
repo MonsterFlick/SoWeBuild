@@ -52,36 +52,19 @@ export default function EcosystemSection() {
     >
       <div className="container-wide">
         {/* ============================================================== */}
-        {/* SECTION HEADER                                                 */}
+        {/* SECTION HEADER: Centered, clean, NO subtext                    */}
         {/* ============================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12 text-center sm:text-left">
-          <div className="max-w-3xl flex flex-col items-center sm:items-start mx-auto sm:mx-0">
-            <div className="label mb-2">
-              Leadership &amp; Systems
-            </div>
-
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-2">
-              Hands-on engineering.{" "}
-              <span className="font-serif italic font-normal text-[#7C3AED]">
-                Direct communication.
-              </span>
-            </h2>
-
-            <p className="body-lg text-[#5A5068] max-w-xl leading-relaxed">
-              Led by Om Thakur. You work directly with the developers writing your code, with zero middlemen.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="label mb-2.5">
+            Leadership &amp; Systems
           </div>
 
-          <div className="flex items-center justify-center sm:justify-start gap-3">
-            <a
-              href="https://store.sowebuild.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E8DFF2] bg-white px-4 py-2 font-mono text-xs font-semibold text-[#161124] hover:border-[#7C3AED] hover:shadow-sm transition-all"
-            >
-              <span>Visit Digital Store ↗</span>
-            </a>
-          </div>
+          <h2 className="heading-xl tracking-tight text-[#161124]">
+            Hands-on engineering.{" "}
+            <span className="font-serif italic font-normal text-[#7C3AED]">
+              Direct communication.
+            </span>
+          </h2>
         </div>
 
         {/* ============================================================== */}

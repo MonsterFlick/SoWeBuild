@@ -64,17 +64,15 @@ export default function WorkSection() {
       }}
     >
       <div className="container-wide">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12 text-center sm:text-left">
-          <div className="flex flex-col items-center sm:items-start">
-            <div className="label mb-2">
-              Selected Work
-            </div>
-            <h2 className="heading-xl">
-              Real builds.{" "}
-              <span className="serif-accent">Measured</span> results.
-            </h2>
+        {/* Section Header: Centered, clean, NOT stuck to left */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="label mb-2.5">
+            Selected Work
           </div>
+          <h2 className="heading-xl tracking-tight text-[#161124]">
+            Real builds.{" "}
+            <span className="serif-accent">Measured</span> results.
+          </h2>
         </div>
 
         {/* 2-Column Responsive Grid: Both Cards Fit Beautifully On Screen */}

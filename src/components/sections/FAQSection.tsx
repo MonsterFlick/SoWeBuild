@@ -121,25 +121,19 @@ export default function FAQSection() {
 
       <div className="container-wide">
         {/* ============================================================== */}
-        {/* SECTION HEADER                                                 */}
+        {/* SECTION HEADER: Centered, clean, NO subtext                    */}
         {/* ============================================================== */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12 text-center sm:text-left">
-          <div className="flex flex-col items-center sm:items-start mx-auto sm:mx-0">
-            <div className="label mb-2">
-              Standards &amp; FAQ
-            </div>
-
-            <h2 className="heading-xl tracking-tight text-[#161124] mb-2">
-              Direct answers.{" "}
-              <span className="font-serif italic font-normal text-[#7C3AED]">
-                Zero agency fluff.
-              </span>
-            </h2>
-
-            <p className="body-lg text-[#5A5068] max-w-xl leading-relaxed">
-              Everything you need to know about ownership, delivery timelines, and how we build.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="label mb-2.5">
+            Standards &amp; FAQ
           </div>
+
+          <h2 className="heading-xl tracking-tight text-[#161124]">
+            Direct answers.{" "}
+            <span className="font-serif italic font-normal text-[#7C3AED]">
+              Zero agency fluff.
+            </span>
+          </h2>
         </div>
 
         {/* ============================================================== */}

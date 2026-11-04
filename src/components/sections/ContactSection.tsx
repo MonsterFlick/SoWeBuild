@@ -196,24 +196,13 @@ export default function ContactSection() {
         >
           {/* Left Column: Studio Line & Assurance */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 max-w-lg lg:max-w-none">
-            <div className="label" style={{ marginBottom: "0.75rem" }}>
+            <div className="label mb-2.5">
               Get In Touch
             </div>
-            <h2 className="heading-xl" style={{ marginBottom: "1rem" }}>
-              Have a project in mind?
-              <br />
+            <h2 className="heading-xl mb-6">
+              Have a project in mind?{" "}
               <span className="serif-accent">Let&apos;s build it</span> together.
             </h2>
-            <p
-              className="body-lg"
-              style={{
-                color: "var(--color-text-secondary)",
-                lineHeight: 1.65,
-                marginBottom: "clamp(1.5rem, 3vw, 2.25rem)",
-              }}
-            >
-              Tell us what you want to build. We reply within 24 hours with a clear roadmap and upfront pricing.
-            </p>
 
             {/* Client Assurance Badges */}
             <div
