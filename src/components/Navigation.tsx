@@ -53,7 +53,7 @@ export default function Navigation() {
     { label: "Selected Work", href: "#work" },
     { label: "Master Services", href: "#services" },
     { label: "Studio Standards & FAQ", href: "#faq" },
-    { label: "WhatsApp Chat (+91 77568 98550) ↗", href: "https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F", isExternal: true },
+    { label: "WhatsApp (sowebuild.in) ↗", href: "https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business.", isExternal: true },
     { label: "Store (Tools & Books) ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder (Om Thakur) ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Start a Project", href: "#contact" },

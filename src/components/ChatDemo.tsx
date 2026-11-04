@@ -14,11 +14,11 @@ interface Message {
 
 const MESSAGES: Message[] = [
   { type: "user", text: "Hi, I need a website for my clinic", delay: 0 },
-  { type: "bot", text: "Welcome to SoWeBuild! 👋 I'd love to help. What type of clinic do you run?", delay: 1200 },
+  { type: "bot", text: "Welcome to SoWeBuild! I would love to help. I'd love to help. What type of clinic do you run?", delay: 1200 },
   { type: "user", text: "Orthopedic surgery center. We need patient portal + appointment booking", delay: 2800 },
   { type: "bot", text: "Got it. I'll set up a discovery call and share a live prototype by next week. Here's what we'll build:", delay: 4200 },
-  { type: "system", text: "📋 Project Brief Generated\n• Patient portal with HIPAA compliance\n• Real-time appointment booking\n• Doctor dashboard\n• Mobile-responsive design\n\nEstimate: 4-6 weeks\nDev server: live from Week 1", delay: 5800 },
-  { type: "bot", text: "Your dev server is being provisioned now. You'll have a live URL within 48 hours. ✅", delay: 7500 },
+  { type: "system", text: "Project Brief Generated\n• Patient portal with HIPAA compliance\n• Real-time appointment booking\n• Doctor dashboard\n• Mobile-responsive design\n\nEstimate: 4-6 weeks\nDev server: live from Week 1", delay: 5800 },
+  { type: "bot", text: "Your dev server is being provisioned now. You'll have a live URL within 48 hours.", delay: 7500 },
 ];
 
 export default function ChatDemo() {

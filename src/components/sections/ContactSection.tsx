@@ -318,97 +318,80 @@ export default function ContactSection() {
 
             {/* Direct Studio Channels */}
             <div
-              className="w-full text-left"
+              className="w-full text-left pt-6 mt-4 border-t border-[var(--color-border)]"
               style={{
-                padding: "1.5rem",
-                borderRadius: "var(--radius-lg)",
-                background: "var(--color-surface)",
-                border: "1px solid var(--color-border)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "1rem",
+                gap: "0.875rem",
               }}
             >
-              <div>
-                <div
-                  className="label"
-                  style={{ fontSize: "0.625rem", marginBottom: "0.25rem" }}
-                >
-                  Direct Studio Contact
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                    color: "var(--color-text)",
-                  }}
-                >
-                  sowebuild.in
-                </div>
+              <div
+                className="label"
+                style={{ fontSize: "0.6875rem", color: "var(--color-text-muted)" }}
+              >
+                Prefer Direct Communication?
               </div>
 
-              {/* Instant WhatsApp CTA Button */}
-              <a
-                href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.625rem",
-                  padding: "0.75rem 1.25rem",
-                  borderRadius: "var(--radius-full)",
-                  background: "#25D366",
-                  color: "#FFFFFF",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  boxShadow: "0 4px 14px rgba(37, 211, 102, 0.3)",
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <WhatsAppIcon className="size-4" />
-                <span>Chat on WhatsApp (+91 77568 98550) ↗</span>
-              </a>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
+                  <a
+                    href="tel:+917756898550"
+                    className="link-sweep"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: "var(--color-text)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <PhoneIcon />
+                    +91 77568 98550
+                  </a>
+                  <a
+                    href="https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-sweep"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: "var(--color-accent)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <WhatsAppIcon className="size-3.5" />
+                    WhatsApp (sowebuild.in) ↗
+                  </a>
+                </div>
 
-              {/* Direct Channels List */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", paddingTop: "0.5rem", borderTop: "1px solid var(--color-border)" }}>
-                <a
-                  href="tel:+917756898550"
-                  className="link-sweep"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.8125rem",
-                    color: "var(--color-text)",
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.625rem",
-                  }}
-                >
-                  <PhoneIcon />
-                  +91 77568 98550
-                </a>
-                <a
-                  href="mailto:sowebuild.in@gmail.com"
-                  className="link-sweep"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.8125rem",
-                    color: "var(--color-text)",
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.625rem",
-                  }}
-                >
-                  <MailIcon />
-                  sowebuild.in@gmail.com
-                </a>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", paddingTop: "0.25rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flexWrap: "wrap" }}>
+                  <a
+                    href="mailto:sowebuild.in@gmail.com"
+                    className="link-sweep"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.8125rem",
+                      color: "var(--color-text-secondary)",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                    }}
+                  >
+                    <MailIcon />
+                    sowebuild.in@gmail.com
+                  </a>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", paddingTop: "0.25rem", flexWrap: "wrap" }}>
                   <a
                     href="https://instagram.com/sowebuild.in"
                     target="_blank"
@@ -417,7 +400,7 @@ export default function ContactSection() {
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.75rem",
-                      color: "var(--color-accent)",
+                      color: "var(--color-text-muted)",
                       textDecoration: "none",
                       display: "inline-flex",
                       alignItems: "center",
@@ -427,6 +410,7 @@ export default function ContactSection() {
                     <InstagramIcon />
                     @sowebuild.in
                   </a>
+                  <span style={{ color: "var(--color-border)" }}>·</span>
                   <a
                     href="https://linkedin.com/company/sowebuild-in"
                     target="_blank"
@@ -435,7 +419,7 @@ export default function ContactSection() {
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "0.75rem",
-                      color: "var(--color-accent)",
+                      color: "var(--color-text-muted)",
                       textDecoration: "none",
                       display: "inline-flex",
                       alignItems: "center",
@@ -445,21 +429,21 @@ export default function ContactSection() {
                     <LinkedInIcon />
                     LinkedIn
                   </a>
+                  <span style={{ color: "var(--color-border)" }}>·</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.75rem",
+                      color: "var(--color-text-muted)",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.35rem",
+                    }}
+                  >
+                    <MapPinIcon />
+                    Mumbai · Global Delivery
+                  </span>
                 </div>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    color: "var(--color-text-muted)",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    marginTop: "0.25rem",
-                  }}
-                >
-                  <MapPinIcon />
-                  Mumbai, India · Worldwide Delivery
-                </span>
               </div>
             </div>
           </div>
@@ -716,26 +700,22 @@ export default function ContactSection() {
 
                   <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
                     <a
-                      href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20site."
+                      href="https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20site."
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="btn-outline"
                       style={{
+                        padding: "0.625rem 1.25rem",
+                        fontSize: "0.75rem",
+                        borderRadius: "var(--radius-full)",
+                        borderColor: "var(--color-border)",
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.5rem",
-                        padding: "0.625rem 1.25rem",
-                        borderRadius: "var(--radius-full)",
-                        background: "#25D366",
-                        color: "#FFFFFF",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                        textDecoration: "none",
-                        boxShadow: "0 2px 8px rgba(37, 211, 102, 0.25)",
                       }}
                     >
                       <WhatsAppIcon className="size-4" />
-                      <span>Message us directly on WhatsApp ↗</span>
+                      <span>Chat directly on WhatsApp (sowebuild.in) ↗</span>
                     </a>
                   </div>
 

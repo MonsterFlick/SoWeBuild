@@ -414,7 +414,7 @@ function DashboardScreen() {
         {/* Realtime Animated Chart */}
         <div className="glass flex flex-col justify-between h-24 rounded-lg p-2.5 relative overflow-hidden">
           <div className="flex items-center justify-between font-mono text-[8px] text-muted-foreground">
-            <span>THROUGHPUT GRAPH</span>
+            <span>LIVE TRAFFIC & PERFORMANCE</span>
             <span className="text-cyan">LIVE STREAM</span>
           </div>
           <div className="flex h-14 items-end gap-1.5 pt-2">

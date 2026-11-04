@@ -104,10 +104,10 @@ export const SERVICE_CARDS: ServiceCard[] = [
     id: "custom-software",
     num: "04",
     name: "Custom Software & Cloud Infra",
-    tagline: "High-concurrency Go microservices, database clusters & dedicated dev servers from Day 1.",
+    tagline: "Scalable backend systems and cloud infrastructure designed to run reliably 24/7 without crashing.",
     mode: "dashboard",
-    metric: { value: "25,000+", label: "Req / Sec Throughput" },
-    tags: ["Dedicated Dev Server", "Go Microservices", "Docker CI/CD"],
+    metric: { value: "99.99%", label: "Uptime & Scalability" },
+    tags: ["Private Cloud Servers", "Auto-Scaling", "Automated Backups"],
     icon: ServerIcon,
   },
 ];

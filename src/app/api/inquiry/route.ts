@@ -47,32 +47,32 @@ export async function POST(req: Request) {
       avatar_url: "https://raw.githubusercontent.com/MonsterFlick/SoWeBuild-assets/main/logos/sowebuild-symbol.png",
       embeds: [
         {
-          title: "🚀 New Project Inquiry Received!",
+          title: "[New Project Inquiry Received]",
           description: "A new client has submitted an inquiry on **sowebuild.in**.",
           color: 12335085, // #BC37ED (Electric Violet)
           fields: [
             {
-              name: "👤 Client Name",
+              name: "Client Name",
               value: name.trim(),
               inline: true,
             },
             {
-              name: "✉️ Work Email",
+              name: "Work Email",
               value: email.trim(),
               inline: true,
             },
             {
-              name: "📱 Phone / WhatsApp",
+              name: "Phone / WhatsApp",
               value: `\`${formattedPhone}\``,
               inline: true,
             },
             {
-              name: "🛠️ Project Type",
+              name: "Project Type",
               value: projectType ? String(projectType) : "Not specified",
               inline: true,
             },
             {
-              name: "📝 Requirements & Details",
+              name: "Requirements & Details",
               value: message && message.trim() ? message.trim() : "No additional details provided.",
               inline: false,
             },

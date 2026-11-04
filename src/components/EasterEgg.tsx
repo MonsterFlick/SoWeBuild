@@ -11,7 +11,7 @@ const EASTER_EGG_LINES = [
   "▸ Deploying to the metaverse...",
   "▸ Compiling happiness.tsx...",
   "",
-  "✓ Awesome mode activated 🚀",
+  "✓ Awesome mode activated",
   "",
   "   Built with love by SoWeBuild",
   "   sowebuild.in",

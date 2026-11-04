@@ -19,7 +19,7 @@ const TIERS: ArchTier[] = [
     id: "edge",
     name: "Global Edge & Client",
     category: "INGRESS TIER",
-    icon: "🌐",
+    icon: "globe",
     latency: "<28ms TTFB",
     status: "Active (Global)",
     description:
@@ -34,7 +34,7 @@ const TIERS: ArchTier[] = [
     id: "api",
     name: "Application & API Gateway",
     category: "CORE RUNTIME",
-    icon: "⚡",
+    icon: "zap",
     latency: "<45ms Exec",
     status: "Healthy",
     description:
@@ -49,7 +49,7 @@ const TIERS: ArchTier[] = [
     id: "data",
     name: "Distributed Data Engine",
     category: "PERSISTENCE TIER",
-    icon: "🗄️",
+    icon: "database",
     latency: "<8ms Query",
     status: "Replicated",
     description:
@@ -64,7 +64,7 @@ const TIERS: ArchTier[] = [
     id: "ai",
     name: "Autonomous AI & Event Bus",
     category: "INTELLIGENCE TIER",
-    icon: "🤖",
+    icon: "cpu",
     latency: "Real-time Stream",
     status: "Orchestrated",
     description:
@@ -76,6 +76,42 @@ const TIERS: ArchTier[] = [
     ],
   },
 ];
+
+function renderTierIcon(icon: string) {
+  switch (icon) {
+    case "globe":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" x2="22" y1="12" y2="12" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        </svg>
+      );
+    case "zap":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      );
+    case "database":
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <ellipse cx="12" cy="5" rx="9" ry="3" />
+          <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+        </svg>
+      );
+    case "cpu":
+    default:
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="16" height="16" x="4" y="4" rx="2" />
+          <rect width="6" height="6" x="9" y="9" rx="1" />
+          <path d="M15 2v2M9 2v2M20 15h2M20 9h2M9 20v2M15 20v2M2 9h2M2 15h2" />
+        </svg>
+      );
+  }
+}
 
 export default function ArchitectureConsole() {
   const [activeTier, setActiveTier] = useState<string>("edge");
@@ -193,7 +229,7 @@ export default function ArchitectureConsole() {
                     marginBottom: "0.75rem",
                   }}
                 >
-                  <span style={{ fontSize: "1.25rem" }}>{tier.icon}</span>
+                  <span style={{ display: "inline-flex", alignItems: "center", color: isActive ? "var(--color-accent)" : "var(--color-text)" }}>{renderTierIcon(tier.icon)}</span>
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
@@ -269,7 +305,7 @@ export default function ArchitectureConsole() {
                 marginBottom: "0.75rem",
               }}
             >
-              <span style={{ fontSize: "1.5rem" }}>{selected.icon}</span>
+              <span style={{ display: "inline-flex", alignItems: "center", color: "var(--color-accent)" }}>{renderTierIcon(selected.icon)}</span>
               <div>
                 <h4
                   style={{

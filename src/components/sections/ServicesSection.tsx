@@ -339,7 +339,7 @@ export default function ServicesSection() {
         </div>
 
         {/* ============================================================== */}
-        {/* 10 CORE SERVICES ACCORDION / HOVER-TO-OPEN LAYOUT              */}
+        {/* 10 CORE SERVICES ACCORDION LAYOUT (Click to toggle)            */}
         {/* Dual independent columns eliminate empty space next to drawers */}
         {/* ============================================================== */}
 

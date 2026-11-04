@@ -1,46 +1,101 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SpotlightCard from "../SpotlightCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const DIFFERENTIATORS = [
+function MonitorIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="14" x="2" y="3" rx="2" />
+      <line x1="8" x2="16" y1="21" y2="21" />
+      <line x1="12" x2="12" y1="17" y2="21" />
+    </svg>
+  );
+}
+
+function ZapIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function CpuIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="16" height="16" x="4" y="4" rx="2" />
+      <rect width="6" height="6" x="9" y="9" rx="1" />
+      <path d="M15 2v2M9 2v2M20 15h2M20 9h2M9 20v2M15 20v2M2 9h2M2 15h2" />
+    </svg>
+  );
+}
+
+function KeyIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="7.5" cy="15.5" r="5.5" />
+      <path d="m21 2-9.6 9.6M15.5 7.5l3 3M18.5 4.5l3 3" />
+    </svg>
+  );
+}
+
+function TargetIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
+  );
+}
+
+
+interface Differentiator {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  span: string;
+}
+
+const DIFFERENTIATORS: Differentiator[] = [
   {
     title: "Dedicated Dev Servers",
     description:
       "Live preview URL on day one. Test real running software on your mobile device, not static Figma mockups.",
-    icon: "🖥️",
+    icon: <MonitorIcon />,
     span: "md:col-span-3",
   },
   {
     title: "Instant Prototypes",
     description:
       "Working code from week one. Continuous iterations delivered via weekly preview builds.",
-    icon: "⚡",
+    icon: <ZapIcon />,
     span: "md:col-span-3",
   },
   {
     title: "AI Built for ROI",
     description:
       "Autonomous AI agents and automation flows designed for actual operational margins.",
-    icon: "🤖",
+    icon: <CpuIcon />,
     span: "md:col-span-2",
   },
   {
     title: "Clean Ownership",
     description:
       "100% IP ownership. Clean Git repository, full documentation, zero vendor lock-in.",
-    icon: "🔑",
+    icon: <KeyIcon />,
     span: "md:col-span-2",
   },
   {
     title: "Direct Engineering",
     description:
       "Direct communication with the engineers writing your code. Zero account-manager telephone.",
-    icon: "🎯",
+    icon: <TargetIcon />,
     span: "md:col-span-2",
   },
 ];
@@ -176,8 +231,8 @@ export default function WhyUsSection() {
                         width: "2.5rem",
                         height: "2.5rem",
                         borderRadius: "var(--radius-md)",
-                        background: "rgba(255, 255, 255, 0.03)",
-                        border: "1px solid var(--color-border)",
+                        background: "#F5EDFA", color: "#7C3AED",
+                        border: "1px solid #E8DFF2",
                       }}
                     >
                       {item.icon}

@@ -31,7 +31,7 @@ export default function FooterSection() {
     { label: "Work", href: "#work" },
     { label: "Services", href: "#services" },
     { label: "Standards", href: "#faq" },
-    { label: "WhatsApp ↗", href: "https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F", isExternal: true },
+    { label: "WhatsApp ↗", href: "https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business.", isExternal: true },
     { label: "Store ↗", href: "https://store.sowebuild.in", isExternal: true },
     { label: "Founder ↗", href: "https://omthakur.in", isExternal: true },
     { label: "Brand Assets ↗", href: "https://github.com/MonsterFlick/SoWeBuild-assets", isExternal: true },
@@ -216,18 +216,18 @@ export default function FooterSection() {
               +91 77568 98550
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=917756898550&text=Hi%20SoWeBuild%2C%20I%20am%20interested%20in%20working%20together%20on%20a%20project.%20Can%20we%20discuss%3F"
+              href="https://api.whatsapp.com/send?username=sowebuild.in&type=username&text=Hi%20SoWeBuild%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20business."
               target="_blank"
               rel="noopener noreferrer"
               className="link-sweep mono"
               style={{
                 fontSize: "0.6875rem",
-                color: "#25D366",
+                color: "var(--color-accent)",
                 textDecoration: "none",
-                fontWeight: 700,
+                fontWeight: 600,
               }}
             >
-              WhatsApp ↗
+              WhatsApp (sowebuild.in) ↗
             </a>
             <a
               href="mailto:sowebuild.in@gmail.com"
