@@ -43,11 +43,11 @@ const fontSerif = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "SoWeBuild — Digital Product & Technology Development Studio",
+    default: "SoWeBuild — Premium Digital Agency",
     template: "%s — SoWeBuild",
   },
   description:
-    "SoWeBuild is an independent digital technology studio engineering bespoke web platforms, custom applications, and automated growth systems with guaranteed 100% full IP ownership.",
+    "SoWeBuild is a premium digital agency. We help businesses build their brand and powerful online presence with our premium services — from modern websites to custom digital tools and smart automation.",
   keywords: [
     "SoWeBuild",
     "sowebuild.in",
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
   },
   openGraph: {
-    title: "SoWeBuild — Independent Technology & Digital Product Studio",
+    title: "SoWeBuild — Premium Digital Agency",
     description:
-      "Bespoke web platforms, custom mobile applications, and intelligent automation systems engineered for ambitious businesses worldwide. 100% client code ownership.",
+      "We help businesses build their brand and powerful online presence with our premium services — from modern websites to custom digital tools and smart automation.",
     url: "https://sowebuild.in",
     siteName: "SoWeBuild",
     images: [
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SoWeBuild — Independent Technology & Digital Product Studio",
+        alt: "SoWeBuild — Premium Digital Agency",
       },
     ],
     type: "website",
@@ -99,9 +99,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SoWeBuild — Independent Technology & Digital Product Studio",
+    title: "SoWeBuild — Premium Digital Agency",
     description:
-      "Bespoke web platforms, custom mobile applications, and intelligent automation systems engineered for ambitious businesses worldwide. 100% client code ownership.",
+      "We help businesses build their brand and powerful online presence with our premium services — from modern websites to custom digital tools and smart automation.",
     images: ["/og-image.png"],
     creator: "@sowebuild",
   },
@@ -147,7 +147,7 @@ export default function RootLayout({
         logo: "https://sowebuild.in/icon.png",
         image: "https://sowebuild.in/og-image.png",
         description:
-          "SoWeBuild is an independent digital technology studio engineering bespoke web platforms, custom mobile applications, intelligent automation, and digital brand presence with guaranteed 100% full IP ownership.",
+          "SoWeBuild is a premium digital agency. We help businesses build their brand and powerful online presence with our premium services — from modern websites to custom digital tools and smart automation.",
         email: "sowebuild.in@gmail.com",
         telephone: "+91-7756898550",
         address: {

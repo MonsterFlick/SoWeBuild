@@ -152,7 +152,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
               display: "inline-block",
             }}
           />
-          Websites • AI Automation • Social Media • Apps
+          Premium Digital Agency
         </div>
 
         {/* Headline */}
@@ -232,7 +232,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             lineHeight: 1.6,
           }}
         >
-          We engineer bespoke web platforms, custom applications, and automated growth systems for ambitious businesses worldwide. Direct access to builders, 100% full IP ownership, and zero agency bloat.
+          We help businesses build their brand and powerful online presence with our premium services — from modern websites to intelligent digital tools that scale your company.
         </p>
 
         {/* CTA Buttons */}

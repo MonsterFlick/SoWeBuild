@@ -7,7 +7,7 @@
 
 ## 1. Executive Summary & Value Proposition
 
-SoWeBuild is an elite digital, creative, technology & growth agency operating across 10 specialized divisions. We partner with ambitious founders, established manufacturers, medical institutions, and high-growth brands to build production-grade web applications, custom business software, autonomous AI systems, and flagship consumer experiences.
+SoWeBuild is a premium digital agency operating across 10 specialized divisions. We partner with ambitious businesses, founders, and high-growth brands to build their brand and powerful online presence with our premium services — from modern websites to custom business software and intelligent automation.
 
 Unlike traditional marketing agencies that rely on outsourced talent or locked-in proprietary builders, SoWeBuild provides:
 - Direct 1-on-1 Senior Technical Leadership
