@@ -17,7 +17,7 @@ Status: Accepting new builds · 24-Hour Scope & Roadmap SLA
 ## Founder & Engineering Leadership
 
 - **Om Thakur** (https://omthakur.in): Founder & Principal Software Engineer. Background in backend engineering, distributed systems, real-time WebSocket pipelines, and low-latency event queues. Om directs technical architecture on every build, ensuring senior-led precision and zero agency bloat.
-- GitHub: https://github.com/im-omthakur
+- GitHub: https://github.com/MonsterFlick
 
 ## The SoWeBuild Digital Store (store.sowebuild.in)
 

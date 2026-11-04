@@ -179,7 +179,6 @@ export default function RootLayout({
           jobTitle: "Founder & Lead Software Engineer",
           sameAs: [
             "https://omthakur.in",
-            "https://github.com/im-omthakur",
             "https://github.com/MonsterFlick",
           ],
         },

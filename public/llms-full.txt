@@ -19,7 +19,7 @@ Unlike traditional marketing agencies that rely on outsourced talent or locked-i
 ### 1.1 Founder & Engineering Leadership: Om Thakur
 SoWeBuild was founded and is directed by Om Thakur (https://omthakur.in), a backend and distributed systems software engineer based in Mumbai. Having architected event-driven pipelines, real-time WebSocket systems, and production platforms across diverse industries, Om established SoWeBuild with a single directive: take ambitious products from 0 to 100 with 100% client code ownership, senior-led precision, and zero agency bloat.
 - Founder Portfolio: https://omthakur.in
-- Founder GitHub: https://github.com/im-omthakur
+- Founder GitHub: https://github.com/MonsterFlick
 
 ### 1.2 Digital Store & Developer Toolkits: store.sowebuild.in
 In addition to bespoke client engineering, SoWeBuild packages its production toolkits, architecture playbooks, developer ebooks, and micro-applications into an isolated digital store:
