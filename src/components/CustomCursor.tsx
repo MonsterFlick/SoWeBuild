@@ -159,7 +159,7 @@ export default function CustomCursor() {
       }
     };
 
-    // Ultra-fast event delegation — zero MutationObserver, handles 100% of DOM dynamically
+    // Ultra-fast event delegation - zero MutationObserver, handles 100% of DOM dynamically
     const onPointerOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;

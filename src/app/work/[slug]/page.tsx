@@ -18,15 +18,15 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const cs = CASE_STUDIES[slug];
-  if (!cs) return { title: "Case Study Not Found — SoWeBuild" };
+  if (!cs) return { title: "Case Study Not Found - SoWeBuild" };
   return {
-    title: `${cs.title} — SoWeBuild Case Study`,
+    title: `${cs.title} - SoWeBuild Case Study`,
     description: cs.summary,
     alternates: {
       canonical: `https://sowebuild.in/work/${slug}`,
     },
     openGraph: {
-      title: `${cs.client} Case Study — SoWeBuild`,
+      title: `${cs.client} Case Study - SoWeBuild`,
       description: cs.subtitle,
       url: `https://sowebuild.in/work/${slug}`,
       images: [cs.image],
@@ -476,7 +476,7 @@ export default async function WorkSlugPage({
         </section>
 
         {/* ============================================================== */}
-        {/* SECTION 04: SO WE BUILD — THE GROUND-UP EXECUTION              */}
+        {/* SECTION 04: SO WE BUILD - THE GROUND-UP EXECUTION              */}
         {/* ============================================================== */}
         <section className="container-wide">
           <div className="max-w-2xl mb-8 sm:mb-12">
@@ -676,7 +676,7 @@ export default async function WorkSlugPage({
               SOWEBUILD<span className="text-[#7C3AED]">.</span>IN
             </div>
             <div className="font-mono text-[11px] sm:text-xs text-[#5A5068] mt-1">
-              Technology Development Studio — Mumbai &amp; Global
+              Technology Development Studio - Mumbai &amp; Global
             </div>
           </div>
 

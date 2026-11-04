@@ -19,21 +19,21 @@ const STEPS = [
     title: "Design",
     description:
       "Data schemas, API contracts, and design systems engineered for long-term scalability.",
-    duration: "Week 1–2",
+    duration: "Week 1-2",
   },
   {
     num: "03",
     title: "Dev Server Build",
     description:
       "Dedicated preview server goes live. Real running code tested weekly on your mobile device.",
-    duration: "Week 2–5",
+    duration: "Week 2-5",
   },
   {
     num: "04",
     title: "Launch",
     description:
       "Edge CDN routing, automated health monitoring, and sub-second performance delivery.",
-    duration: "Week 5–6",
+    duration: "Week 5-6",
   },
   {
     num: "05",

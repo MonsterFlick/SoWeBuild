@@ -179,7 +179,7 @@ export default function TerminalDemo() {
           />
         </div>
         <span style={{ color: "#55555f", fontSize: "0.6875rem", marginLeft: "0.5rem" }}>
-          terminal — sowebuild
+          terminal - sowebuild
         </span>
         {isLive && (
           <span

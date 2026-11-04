@@ -1,4 +1,4 @@
-# SoWeBuild Studio — Comprehensive Knowledge Bundle
+# SoWeBuild Studio - Comprehensive Knowledge Bundle
 
 > Canonical URL: https://sowebuild.in
 > Last Updated: 2026-11-03
@@ -7,7 +7,7 @@
 
 ## 1. Executive Summary & Value Proposition
 
-SoWeBuild is a premium digital agency operating across 10 specialized divisions. We partner with ambitious businesses, founders, and high-growth brands to build their brand and powerful online presence with our premium services — from modern websites to custom business software and intelligent automation.
+SoWeBuild is a premium digital agency operating across 10 specialized divisions. We partner with ambitious businesses, founders, and high-growth brands to build their brand and powerful online presence with our premium services, from modern websites to custom business software and intelligent automation.
 
 Unlike traditional marketing agencies that rely on outsourced talent or locked-in proprietary builders, SoWeBuild provides:
 - Direct 1-on-1 Senior Technical Leadership
@@ -153,13 +153,13 @@ Providing the technical foundation and expertise businesses need.
 
 ## 4. Verified Case Studies
 
-1. **FertiSure — Digital Healthcare Portal & Global Clinic Catalog**
+1. **FertiSure - Digital Healthcare Portal & Global Clinic Catalog**
    - URL: https://sowebuild.in/work/fertisure
    - Client: FertiSure (backed by Hemant Surgical Industries Limited, est. 1983)
    - Scope: Zero-to-one digital platform engineering, replacing physical brochure distribution with a real-time clinic procurement portal for 500+ clinics and international hospital chains.
    - Outcome: 3.2x inquiry velocity, 100% catalog digital reach, zero physical brochure friction.
 
-2. **Alpha Tech Nutrition — Flagship Performance E-Commerce Platform**
+2. **Alpha Tech Nutrition - Flagship Performance E-Commerce Platform**
    - URL: https://sowebuild.in/work/alphatech-nutrition
    - Client: Alpha Tech Nutrition
    - Scope: Flagship direct-to-consumer store with instantaneous batch lab test verification, dynamic flavor selector, and sub-second page loads.
@@ -171,7 +171,7 @@ Providing the technical foundation and expertise businesses need.
 
 - Website Contact: https://sowebuild.in/#contact
 - Phone / Direct Call: +91 77568 98550
-- WhatsApp: +91 75886 66776 (Username: @sowebuild.in — https://api.whatsapp.com/send?username=sowebuild.in&type=username)
+- WhatsApp: +91 75886 66776 (Username: @sowebuild.in - https://api.whatsapp.com/send?username=sowebuild.in&type=username)
 - Studio Email: sowebuild.in@gmail.com
 - Instagram: https://instagram.com/sowebuild.in (@sowebuild.in)
 - LinkedIn: https://linkedin.com/company/sowebuild-in

@@ -24,7 +24,7 @@ export const FAQS = [
   {
     question: "How is SoWeBuild different from traditional agencies?",
     answer:
-      "At traditional agencies, you pay inflated fees for salespeople and junior account managers who don't understand code and outsource your project. At SoWeBuild, you talk directly with the developers writing the code. No middlemen, no endless back-and-forth — just fast, high-quality work.",
+      "At traditional agencies, you pay inflated fees for salespeople and junior account managers who don't understand code and outsource your project. At SoWeBuild, you talk directly with the developers writing the code. No middlemen, no endless back-and-forth, just fast, high-quality work.",
     category: "Why SoWeBuild",
   },
   {

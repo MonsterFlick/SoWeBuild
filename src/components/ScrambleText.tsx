@@ -10,7 +10,7 @@ interface ScrambleTextProps {
   trigger?: "mount" | "inView";
 }
 
-const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#________";
+const SCRAMBLE_CHARS = "!<>-_\\/[]{}-=+*^?#________";
 
 export default function ScrambleText({
   text,

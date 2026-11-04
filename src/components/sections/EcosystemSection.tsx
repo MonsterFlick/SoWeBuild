@@ -73,7 +73,7 @@ export default function EcosystemSection() {
 
             <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed">
               We connect client platform development with personal engineering depth and open-source tooling.
-              Zero agency bloat — directly architected from first principles.
+              Zero agency bloat, directly architected from first principles.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function EcosystemSection() {
                 >
                   Om Thakur
                 </a>
-                , a software engineer based in Mumbai. Having built web applications, scalable platforms, and automation tools across multiple industries, Om established SoWeBuild to help business owners, creators, and founders launch digital products without technical headaches. You work directly with developers who actually write the code — getting fast, reliable results with{" "}
+                , a software engineer based in Mumbai. Having built web applications, scalable platforms, and automation tools across multiple industries, Om established SoWeBuild to help business owners, creators, and founders launch digital products without technical headaches. You work directly with developers who actually write the code, getting fast, reliable results with{" "}
                 <strong className="text-[#161124]">100% full ownership</strong> and zero agency fluff.
               </p>
 
@@ -194,7 +194,7 @@ export default function EcosystemSection() {
               </h3>
 
               <p className="text-sm sm:text-base text-[#5A5068] leading-relaxed mb-6">
-                We don&apos;t just build for clients — we package our production playbooks, developer tools, micro-apps,
+                We don&apos;t just build for clients, we package our production playbooks, developer tools, micro-apps,
                 and architectural guides for developers and founders worldwide. Hosted on an isolated digital store
                 for instant checkout.
               </p>

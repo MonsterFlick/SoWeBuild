@@ -154,7 +154,7 @@ function ServiceCard({
         </div>
       </button>
 
-      {/* Expandable Dropdown Drawer — 100% GPU-accelerated CSS Grid transition (ZERO lag) */}
+      {/* Expandable Dropdown Drawer - 100% GPU-accelerated CSS Grid transition (ZERO lag) */}
       <div
         className="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{
@@ -288,7 +288,7 @@ export default function ServicesSection() {
 
             <p className="body-lg text-[#5A5068] max-w-2xl leading-relaxed text-center sm:text-left">
               We operate across 10 specialized divisions delivering full-lifecycle digital dominance.
-              Zero generic handoffs — direct senior architecture from strategic inception to global scale.
+              Zero generic handoffs, direct senior architecture from strategic inception to global scale.
             </p>
           </div>
 

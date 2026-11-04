@@ -269,7 +269,7 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
     serviceCategoryRef: "web-development",
     shortBadge: "Direct Engine",
     complianceBadge: "Zero-Commission Direct Revenue System",
-    complianceNote: "Bypasses 18–30% OTA commissions with direct guest booking engines, instant room inventory calendar sync, automated WhatsApp itineraries, and secure POS integrations.",
+    complianceNote: "Bypasses 18-30% OTA commissions with direct guest booking engines, instant room inventory calendar sync, automated WhatsApp itineraries, and secure POS integrations.",
   },
   {
     name: "Professional Services",

@@ -47,7 +47,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Entrance animation — Instant visibility to ensure site never looks empty on start
+  // Entrance animation - Instant visibility to ensure site never looks empty on start
   useEffect(() => {
     const section = sectionRef.current;
     const headline = headlineRef.current;
@@ -232,7 +232,7 @@ export default function HeroSection({ ready = true }: { ready?: boolean }) {
             lineHeight: 1.6,
           }}
         >
-          We help businesses build their brand and powerful online presence with our premium services — from modern websites to intelligent digital tools that scale your company.
+          We help businesses build their brand and powerful online presence with our premium services, from modern websites to intelligent digital tools that scale your company.
         </p>
 
         {/* CTA Buttons */}
