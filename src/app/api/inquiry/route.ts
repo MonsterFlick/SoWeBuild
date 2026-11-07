@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 
-const DEFAULT_WEBHOOK_URL =
-  "https://discord.com/api/webhooks/1551442838720479332/z_UHR6w_Yg0CoJ5okNuetY-Dd1M0mtKwWigQb8FXJv75DxkU7DsBSkvWowLJQPTlkuC0";
-
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -38,8 +35,20 @@ export async function POST(req: Request) {
 
     const formattedPhone = `${cCode} ${digitsOnly}`;
 
-    // Get Webhook URL from server environment variable (never exposed to client/network tab)
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL || DEFAULT_WEBHOOK_URL;
+    // Webhook URL must be provided securely via environment variables (never committed to git)
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (!webhookUrl) {
+      console.error(
+        "[Inquiry API] DISCORD_WEBHOOK_URL environment variable is not configured."
+      );
+      return NextResponse.json(
+        {
+          error:
+            "Inquiry notification service is currently unconfigured. Please connect directly via WhatsApp (@sowebuild.in) or call +91 77568 98550.",
+        },
+        { status: 503 }
+      );
+    }
 
     // Construct high-impact Discord embed message
     const discordPayload = {

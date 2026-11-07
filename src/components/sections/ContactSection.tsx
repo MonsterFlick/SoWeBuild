@@ -167,13 +167,19 @@ export default function ContactSection() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        console.warn("API response:", data);
+        setErrorMessage(
+          data.error ||
+            "Unable to deliver your brief right now. Please reach us directly via WhatsApp (@sowebuild.in) or call +91 77568 98550."
+        );
+        return;
       }
 
       setIsSubmitted(true);
     } catch (err) {
       console.error("Submission error:", err);
-      setIsSubmitted(true);
+      setErrorMessage(
+        "Network connection error. Please connect directly via WhatsApp (@sowebuild.in) or call +91 77568 98550."
+      );
     } finally {
       setIsSubmitting(false);
     }
